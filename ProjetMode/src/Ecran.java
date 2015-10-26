@@ -24,7 +24,7 @@ public class Ecran {
 		a.setPreferredSize(fenetre.getSize());
 		fenetre.setContentPane(bg);
 		courbe(3,3,30,a);
-		courbe(30,4,3,a);
+		courbe(3,100,3,a);
 		courbe(3,50,3,a);
 		//fenetre.pack();
 	}
