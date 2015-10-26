@@ -11,7 +11,6 @@ public class Obstacle extends JPanel {
 	Point c;
 	boolean actif;
 
-	// ajouter angle pour l'oiseau
 	public Obstacle(Point c) {
 		this.taille = 80;
 		this.c = c;
@@ -39,7 +38,7 @@ public class Obstacle extends JPanel {
 		this.c.x = x;
 		this.c.y = y;
 	}
-
+	//dessin de l'obstacle
 	public void paintComponent(Graphics g) {
 		if (actif)
 			g.setColor(Color.GREEN);

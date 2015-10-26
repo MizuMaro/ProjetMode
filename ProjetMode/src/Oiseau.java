@@ -35,7 +35,7 @@ public class Oiseau extends JPanel {
 		this.c.y = y;
 		passage.add(new Point(x, y));
 	}
-
+// dessin de l'oiseau
 	public void paintComponent(Graphics g) {
 		g.setColor(Color.RED);
 		g.fillOval(c.x, c.y, taille, taille);
