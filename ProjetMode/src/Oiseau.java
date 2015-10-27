@@ -41,7 +41,7 @@ public class Oiseau extends JPanel {
 		g.fillOval(c.x, c.y, taille, taille);
 		g.setColor(Color.white);
 		for (int i = 0; i < passage.size(); i++) {
-			System.out.println(passage.get(i).x);
+			//System.out.println(passage.get(i).x);
 			g.fillOval(passage.get(i).x + taille / 2, passage.get(i).y + taille / 2, 3, 3);
 		}
 	}
