@@ -23,8 +23,8 @@ public class Ecran {
 
 	public Ecran() throws InterruptedException {
 		
-		this.fenetre = new JFrame("Projet Angry Bird");
-		fenetre.setSize(800, 600);
+		this.fenetre = new JFrame("Projet Angry Nerds");
+		fenetre.setSize(1200, 600);
 		fenetre.setResizable(false);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre.setVisible(true);
@@ -59,7 +59,7 @@ public class Ecran {
 		ob5.setPreferredSize(fenetre.getSize());
 		a.setPreferredSize(fenetre.getSize());
 		
-		// ajouts des obstacles dans l'obstacles puis dans l'oiseau puis dans le panel principal (poupée russe)
+		// ajout des obstacles dans l'obstacles puis dans l'oiseau puis dans le panel principal (poupée russe)
 		ob4.add(ob5);
 		ob3.add(ob4);
 		ob2.add(ob3);
@@ -67,13 +67,17 @@ public class Ecran {
 		a.add(ob1);
 		bg.add(a);
 		fenetre.setContentPane(bg);
-		//differentes courbes
 		
+		//differentes courbes
 		courbe(0.0009, -1, 500, a);
-		courbe(0.0008, -1.60,500, a);
-		courbe(3, 50, 3, a);
+		courbe(0.0008, -1.01, 500, a);
+		courbe(0.00077, -1.05, 500, a);
+		courbe(0.0007, -1.05, 500, a);
+		courbe(0.0005, -1, 500, a);
+		
 	}
 
+	
 	void courbe(double a, double b, double c, Oiseau o) throws InterruptedException {
 		
 		int y;
@@ -88,7 +92,7 @@ public class Ecran {
 			//nouvelle position de l'oiseau
 			o.setC(x, y);
 			//utiliser timer
-			Thread.sleep(50);
+			Thread.sleep(40);
 			
 			// test si un obstacle est touché
 			for (Obstacle ob : obstacles) {
@@ -103,4 +107,6 @@ public class Ecran {
 			bg.repaint();
 		}
 	}
+	
+	
 }

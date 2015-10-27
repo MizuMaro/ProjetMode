@@ -11,7 +11,7 @@ public class Obstacle extends JPanel {
 	boolean actif;
 
 	public Obstacle(Point c) {
-		this.taille = 80;
+		this.taille = 50;
 		this.c = c;
 		this.actif = true;
 
@@ -37,12 +37,18 @@ public class Obstacle extends JPanel {
 		this.c.x = x;
 		this.c.y = y;
 	}
+	
 	//dessin de l'obstacle
 	public void paintComponent(Graphics g) {
-		if (actif)
-			g.setColor(Color.GREEN);
-		else
-			g.setColor(Color.yellow);
-		g.fillOval(c.x, c.y, taille, taille);
+		g.setColor(Color.GREEN);
+		
+		if (actif){
+			//g.setColor(Color.GREEN);
+			g.drawOval(c.x, c.y, taille, taille);
+		}else{
+			//g.setColor(Color.yellow);
+			g.fillOval(c.x, c.y, taille, taille);
+		}
+		//g.drawOval(c.x, c.y, taille, taille);
 	}
 }
