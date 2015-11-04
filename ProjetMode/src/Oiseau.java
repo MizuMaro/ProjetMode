@@ -36,9 +36,9 @@ public class Oiseau extends JPanel {
 		this.c.y = y;
 		passage.add(new Point(x, y));
 	}
-	public void setC2(int x , int y){
-		this.c2.x = x;
-		this.c2.y = y;
+	public void setC2(int x2 , int y2){
+		this.c2.x = x2;
+		this.c2.y = y2;
 		
 	}
 
@@ -47,16 +47,21 @@ public class Oiseau extends JPanel {
 		//dessin de la trajectoire
 		if(Constantes.TRAJECTOIRES){
 			g.setColor(Constantes.COULEUR_TRAJECTOIRE);
-			g.drawLine(c.x+(taille/2),c.y+(taille/2),  c2.x+(taille*3), c2.y+(taille/2));
+			
 			for (int i = 0; i < passage.size(); i++) {
 				//System.out.println(passage.get(i).x);
 				g.fillOval(passage.get(i).x + taille / 2, passage.get(i).y + taille / 2, 3, 3);
+				//g.drawLine(c.x+(taille/2),c.y+(taille/2),  c2.x+(taille/2), c2.y+(taille/2));
+				
 			}
 		}
+		g.drawLine(c.x+(taille/2),c.y+(taille/2),  c2.x+(taille), c2.y+(taille));
+		System.out.println("c.x= " + c.x + " c.y = " + c.y + " c2.x = " + c2.x + " c2.y= " + c2.y);
 		
 		//dessin de l'oiseau
 		g.setColor(Color.RED);
 		g.fillOval(c.x, c.y, taille, taille);
+		
 	
 	}
 }

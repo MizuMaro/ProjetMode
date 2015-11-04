@@ -81,11 +81,13 @@ public class Ecran {
 		
 
 		// differentes courbes
+		
 		courbe(0.0009, -1, 500, a);
 		courbe(0.0008, -1.01, 500, a);
 		courbe(0.00077, -1.05, 500, a);
 		courbe(0.0007, -1.05, 500, a);
 		courbe(0.0005, -1, 500, a);
+		
 
 	}
 
@@ -118,7 +120,7 @@ public class Ecran {
 			// plus ou moins loin
 			x += 6;
 			//pour tangente
-			x2 = x + 6;
+			x2 = x + 600;
 			y2 = (int) (a * Math.pow(x2, 2) + b * x2 + c);
 			// courbe ax2+bx+c
 			y = (int) (a * Math.pow(x, 2) + b * x + c);
