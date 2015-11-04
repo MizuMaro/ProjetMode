@@ -105,6 +105,8 @@ public class Ecran {
 		
 		int y;
 		int x = 50;
+		int x2 = 0;
+		int y2;
 		boolean touch = false;
 		
 		long timeLancement = System.currentTimeMillis();
@@ -115,12 +117,17 @@ public class Ecran {
 			timeLancement = System.currentTimeMillis();
 			// plus ou moins loin
 			x += 6;
+			//pour tangente
+			x2 = x + 6;
+			y2 = (int) (a * Math.pow(x2, 2) + b * x2 + c);
 			// courbe ax2+bx+c
 			y = (int) (a * Math.pow(x, 2) + b * x + c);
+			
 			// System.out.println(y);
 			// nouvelle position de l'oiseau
 			o.setC(x, y);
-			
+			o.setC2(x2, y2);
+			o.setC(x,y);
 			// utiliser timer
 			long now = System.currentTimeMillis();
 			long time = now + 40;
