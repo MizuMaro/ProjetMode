@@ -13,7 +13,7 @@ public class Oiseau extends JPanel {
 
 	// ajouter angle pour l'oiseau
 	public Oiseau(Point c) {
-		this.taille = 40;
+		this.taille = Constantes.TAILLE_OISEAU;
 		this.c = c;
 
 	}
@@ -35,14 +35,21 @@ public class Oiseau extends JPanel {
 		this.c.y = y;
 		passage.add(new Point(x, y));
 	}
-// dessin de l'oiseau
+
 	public void paintComponent(Graphics g) {
+		
+		//dessin de la trajectoire
+		if(Constantes.TRAJECTOIRES){
+			g.setColor(Constantes.COULEUR_TRAJECTOIRE);
+			for (int i = 0; i < passage.size(); i++) {
+				//System.out.println(passage.get(i).x);
+				g.fillOval(passage.get(i).x + taille / 2, passage.get(i).y + taille / 2, 3, 3);
+			}
+		}
+		
+		//dessin de l'oiseau
 		g.setColor(Color.RED);
 		g.fillOval(c.x, c.y, taille, taille);
-		g.setColor(Color.white);
-		for (int i = 0; i < passage.size(); i++) {
-			//System.out.println(passage.get(i).x);
-			g.fillOval(passage.get(i).x + taille / 2, passage.get(i).y + taille / 2, 3, 3);
-		}
+	
 	}
 }

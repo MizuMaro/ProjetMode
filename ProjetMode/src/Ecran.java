@@ -28,19 +28,19 @@ public class Ecran {
 
 	public Ecran() throws InterruptedException {
 
-		this.fenetre = new JFrame("Projet Angry Nerds");
-		fenetre.setSize(1200, 600);
+		this.fenetre = new JFrame(Constantes.TITRE);
+		fenetre.setSize(Constantes.LARGEUR_ECRAN, Constantes.HAUTEUR_ECRAN);
 		fenetre.setResizable(false);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre.setVisible(true);
 		fenetre.setLocationRelativeTo(null);
 		bg = new JPanel();
-		bg.setSize(1200, 600);
+		bg.setSize(Constantes.LARGEUR_ECRAN, Constantes.HAUTEUR_ECRAN);
 
 		// fond du panel
 		bg.setBackground(Color.BLACK);
 		// initialisation de l'oiseau
-		a = new Oiseau(new Point(50, 450));
+		a = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
 
 		// initialisation des obstacles;
 		ob1 = new Obstacle(new Point(fenetre.getWidth() - 100,
@@ -81,7 +81,6 @@ public class Ecran {
 		
 
 		// differentes courbes
-		
 		courbe(0.0009, -1, 500, a);
 		courbe(0.0008, -1.01, 500, a);
 		courbe(0.00077, -1.05, 500, a);
@@ -96,8 +95,10 @@ public class Ecran {
 			throws InterruptedException {
 		o.setC(50, 450);
 		bg.repaint();
+		
 		long premier = System.currentTimeMillis();
 		long deuxieme = premier+1000;
+		
 		while(premier<deuxieme){
 			premier=System.currentTimeMillis();
 		}
@@ -105,9 +106,12 @@ public class Ecran {
 		int y;
 		int x = 50;
 		boolean touch = false;
+		
 		long timeLancement = System.currentTimeMillis();
 		long timeFin = timeLancement + 15000;
+		
 		while (x <= 800 * 7 && !touch && timeLancement<timeFin) {
+			
 			timeLancement = System.currentTimeMillis();
 			// plus ou moins loin
 			x += 6;
@@ -120,6 +124,7 @@ public class Ecran {
 			// utiliser timer
 			long now = System.currentTimeMillis();
 			long time = now + 40;
+			
 			while (now < time) {
 				now = System.currentTimeMillis();
 			}
@@ -140,6 +145,7 @@ public class Ecran {
 					}
 				}
 			}
+			
 			bg.repaint();
 		}
 	}

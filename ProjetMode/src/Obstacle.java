@@ -43,11 +43,11 @@ public class Obstacle extends JPanel {
 		g.setColor(Color.GREEN);
 		
 		if (actif){
-			//g.setColor(Color.GREEN);
+			g.setColor(Constantes.COULEUR_OBSTACLE);
 			g.drawOval(c.x, c.y, taille, taille);
 		}else{
-			//g.setColor(Color.yellow);
-			g.fillOval(c.x, c.y, taille, taille);
+			g.setColor(Constantes.COULEUR_OBSTACLE_TOUCHE);
+			g.drawOval(c.x, c.y, taille, taille);
 		}
 		//g.drawOval(c.x, c.y, taille, taille);
 	}
