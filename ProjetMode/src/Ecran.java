@@ -78,6 +78,7 @@ public class Ecran {
 		a.add(ob1);
 		bg.add(a);
 		fenetre.setContentPane(bg);
+		
 
 		// differentes courbes
 		
@@ -86,7 +87,6 @@ public class Ecran {
 		courbe(0.00077, -1.05, 500, a);
 		courbe(0.0007, -1.05, 500, a);
 		courbe(0.0005, -1, 500, a);
-		
 
 	}
 
@@ -126,10 +126,10 @@ public class Ecran {
 
 			// test si un obstacle est touch�
 			for (Obstacle ob : obstacles) {
-				if (this.a.getC().getX() > ob.getC().getX() - 40
-						&& this.a.getC().getX() < ob.getC().getX() + 40
-						&& this.a.getC().getY() > ob.getC().getY() - 40
-						&& this.a.getC().getY() < ob.getC().getY() + 40) {
+				if (this.a.getC().getX() > ob.getC().getX() - Constantes.TAILLE_OBSTACLES
+						&& this.a.getC().getX() < ob.getC().getX() + Constantes.TAILLE_OBSTACLES
+						&& this.a.getC().getY() > ob.getC().getY() - Constantes.TAILLE_OBSTACLES
+						&& this.a.getC().getY() < ob.getC().getY() + Constantes.TAILLE_OBSTACLES) {
 					touch = true;
 					ob.setActif(false);
 					bg.repaint();
