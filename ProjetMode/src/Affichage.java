@@ -37,6 +37,12 @@ public class Affichage extends JPanel {
 			}
 		}
 
+		// dessin du triangle
+		g.setColor(Color.orange); 
+		int[] x = { a.c.x + a.getTaille()/2, a.c.x + a.getTaille()/2, a.c.x + a.getTaille()+a.getTaille()/2};
+		int[] y = { a.c.y + a.getTaille(), a.c.y , a.c.y + a.getTaille()/2 };
+		
+		g.fillPolygon(x, y, 3);
 		// dessin de l'oiseau
 		g.setColor(Color.RED);
 		g.fillOval(a.c.x, a.c.y, a.taille, a.taille);
@@ -52,36 +58,8 @@ public class Affichage extends JPanel {
 				g.setColor(Constantes.COULEUR_OBSTACLE_TOUCHE);
 				g.fillOval(o.getC().x, o.getC().y, o.getTaille(), o.getTaille());
 			}
-			Polygon triangle = new Polygon();
-			triangle.addPoint(a.c.x + (a.taille - 4), a.c.y + (a.taille / 4)); // point
-																				// haut:
-																				// x
-																				// =
-																				// 446,
-																				// y
-																				// =
-																				// 90
-			triangle.addPoint(a.c.x + a.taille - 4, a.c.y + (3 * a.taille / 4)); // point
-																					// bas
-																					// droite:
-																					// x
-																					// =
-																					// 496,
-																					// y
-																					// =
-																					// 150
-			triangle.addPoint(a.c.x + a.taille + a.taille / 2, a.c2.y + (a.taille / 2)); // point
-																							// bas
-																							// gauche:
-																							// x
-																							// =
-																							// 396,
-																							// y
-																							// =
-																							// 150
-			g.setColor(Color.orange); // fond du triangle
-			g.fillPolygon(triangle); // remplissage
-			g.drawPolygon(triangle); // affichage
+
+			//g.drawPolygon(triangle); // affichage
 			g.setColor(Color.black);
 		}
 
