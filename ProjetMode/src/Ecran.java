@@ -1,16 +1,10 @@
 import java.awt.Point;
 import java.util.ArrayList;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 public class Ecran {
-
 	private JFrame fenetre;
 	private Oiseau a;
-
-	// panel principal
-	private JPanel bg;
-
 	// liste et obstacle
 	private ArrayList<Obstacle> obstacles = new ArrayList<>();
 	private Obstacle ob1;

@@ -1,7 +1,4 @@
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Point;
-
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -15,6 +12,10 @@ public class Obstacle extends JPanel {
 		this.c = c;
 		this.actif = true;
 
+	}
+
+	public boolean getActif() {
+		return this.actif;
 	}
 
 	public void setActif(boolean t) {
@@ -36,19 +37,5 @@ public class Obstacle extends JPanel {
 	public void setC(int x, int y) {
 		this.c.x = x;
 		this.c.y = y;
-	}
-	
-	//dessin de l'obstacle
-	public void paintComponent(Graphics g) {
-		g.setColor(Color.GREEN);
-		
-		if (actif){
-			g.setColor(Constantes.COULEUR_OBSTACLE);
-			g.drawOval(c.x, c.y, taille, taille);
-		}else{
-			g.setColor(Constantes.COULEUR_OBSTACLE_TOUCHE);
-			g.fillOval(c.x, c.y, taille, taille);
-		}
-		//g.drawOval(c.x, c.y, taille, taille);
 	}
 }

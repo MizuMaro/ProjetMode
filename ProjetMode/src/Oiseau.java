@@ -1,12 +1,8 @@
-import java.awt.Color;
-import java.awt.Graphics;
+
 import java.awt.Point;
 import java.util.ArrayList;
 
-import javax.swing.JPanel;
-
-@SuppressWarnings("serial")
-public class Oiseau extends JPanel {
+public class Oiseau {
 	int taille;
 	Point c;
 	Point c2 = new Point();
@@ -35,16 +31,17 @@ public class Oiseau extends JPanel {
 		this.c.x = x;
 		this.c.y = y;
 		// pour afficher en pointillé
-		if(x%3==0)
-		passage.add(new Point(x, y));
+		if (x % 3 == 0)
+			passage.add(new Point(x, y));
 	}
-	public void setC2(int x2 , int y2){
+
+	public void setC2(int x2, int y2) {
 		this.c2.x = x2;
 		this.c2.y = y2;
-		
+
 	}
-	
-	public void effacerTrajectoire(){
+
+	public void effacerTrajectoire() {
 		passage.clear();
 	}
 }
