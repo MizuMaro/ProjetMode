@@ -1,29 +1,23 @@
-import java.awt.Color;
 import java.awt.Point;
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Ecran {
 
-	JFrame fenetre;
-	Oiseau a;
-	Random r = new Random();
+	private JFrame fenetre;
+	private Oiseau a;
 
 	// panel principal
-	JPanel bg;
+	private JPanel bg;
 
 	// liste et obstacle
-	ArrayList<Obstacle> obstacles = new ArrayList<>();
-	Obstacle ob1;
-	Obstacle ob2;
-	Obstacle ob3;
-	Obstacle ob4;
-	Obstacle ob5;
+	private ArrayList<Obstacle> obstacles = new ArrayList<>();
+	private Obstacle ob1;
+	private Obstacle ob2;
+	private Obstacle ob3;
+	private Obstacle ob4;
+	private Obstacle ob5;
 	
 
 	public Ecran() throws InterruptedException {
@@ -38,7 +32,7 @@ public class Ecran {
 		bg.setSize(Constantes.LARGEUR_ECRAN, Constantes.HAUTEUR_ECRAN);
 
 		// fond du panel
-		bg.setBackground(Color.BLACK);
+		bg.setBackground(Constantes.COULEUR_BACKGROUND);
 		// initialisation de l'oiseau
 		a = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
 
@@ -70,7 +64,7 @@ public class Ecran {
 		a.setPreferredSize(fenetre.getSize());
 
 		// ajout des obstacles dans l'obstacles puis dans l'oiseau puis dans le
-		// panel principal (poupï¿½e russe)
+		// panel principal (poupée russe)
 		ob4.add(ob5);
 		ob3.add(ob4);
 		ob2.add(ob3);
@@ -93,8 +87,11 @@ public class Ecran {
 
 	
 
-	void courbe(double a, double b, double c, Oiseau o)
-			throws InterruptedException {
+	void courbe(double a, double b, double c, Oiseau o) throws InterruptedException {
+		
+		if(Constantes.TRAJECTOIRE_UNIQUE)
+			o.effacerTrajectoire();
+		
 		o.setC(50, 450);
 		bg.repaint();
 		
@@ -149,6 +146,7 @@ public class Ecran {
 					bg.repaint();
 					now = System.currentTimeMillis();
 					time = now + 2000;
+					
 					while (now < time) {
 						now = System.currentTimeMillis();
 					}

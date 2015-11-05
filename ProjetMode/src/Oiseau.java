@@ -44,24 +44,28 @@ public class Oiseau extends JPanel {
 
 	public void paintComponent(Graphics g) {
 		
-		//dessin de la trajectoire
 		if(Constantes.TRAJECTOIRES){
 			g.setColor(Constantes.COULEUR_TRAJECTOIRE);
 			
+			//dessin de la trajectoire
 			for (int i = 0; i < passage.size(); i++) {
-				//System.out.println(passage.get(i).x);
 				g.fillOval(passage.get(i).x + taille / 2, passage.get(i).y + taille / 2, 3, 3);
 				//g.drawLine(c.x+(taille/2),c.y+(taille/2),  c2.x+(taille/2), c2.y+(taille/2));
 				
 			}
 		}
-		g.drawLine(c.x+(taille/2),c.y+(taille/2),  c2.x+(taille), c2.y+(taille));
-		System.out.println("c.x= " + c.x + " c.y = " + c.y + " c2.x = " + c2.x + " c2.y= " + c2.y);
 		
 		//dessin de l'oiseau
 		g.setColor(Color.RED);
 		g.fillOval(c.x, c.y, taille, taille);
 		
+		//dessin de la tangente
+		g.drawLine(c.x+(taille/2),c.y+(taille/2),  c2.x+(taille), c2.y+(taille));
+		//System.out.println("c.x= " + c.x + " c.y = " + c.y + " c2.x = " + c2.x + " c2.y= " + c2.y);
+		
+	}
 	
+	public void effacerTrajectoire(){
+		passage.clear();
 	}
 }
