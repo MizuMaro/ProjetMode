@@ -41,12 +41,12 @@ public class Affichage extends JPanel{
 
 		// dessin du triangle
 		g.setColor(Color.orange); 
-		int[] x = { a.c.x + a.getTaille()/2 , a.c.x + a.getTaille()/2 , a.c.x + a.getTaille()+a.getTaille()/2};
+		int[] x = { a.c.x + a.getTaille()/2 , a.c.x + a.getTaille()/2 , a.c.x + a.getTaille()+a.getTaille()};
 		int[] y = { a.c.y + a.getTaille() , a.c.y , a.c.y + a.getTaille()/2 };
 		Polygon triangle = new Polygon(x,y,3);
 		AffineTransform at = new AffineTransform();
 
-		at.rotate(Math.toRadians(a.getC().getX()),a.getC().getX(),a.getC().getY());
+		at.rotate(Math.toRadians(30) ,a.getC().getX(),a.getC().getY());
 
 		Polygon triangle2  = new Polygon();
 		  for (int i=0; i<triangle.npoints; i++)
@@ -55,7 +55,6 @@ public class Affichage extends JPanel{
 		     at.transform(p, p);
 		     triangle2.addPoint(p.x, p.y);
 		  }
-		  System.out.println(triangle.toString());
 		g.fillPolygon(triangle2);
 		
 		
