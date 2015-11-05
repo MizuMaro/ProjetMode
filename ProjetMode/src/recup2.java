@@ -57,15 +57,15 @@ public class recup2 {
 		ob3.setPreferredSize(fenetre.getSize());
 		ob4.setPreferredSize(fenetre.getSize());
 		ob5.setPreferredSize(fenetre.getSize());
-		a.setPreferredSize(fenetre.getSize());
+		//a.setPreferredSize(fenetre.getSize());
 		
 		// ajout des obstacles dans l'obstacles puis dans l'oiseau puis dans le panel principal (poup�e russe)
 		ob4.add(ob5);
 		ob3.add(ob4);
 		ob2.add(ob3);
 		ob1.add(ob2);
-		a.add(ob1);
-		bg.add(a);
+		//a.add(ob1);
+		//bg.add(a);
 		fenetre.setContentPane(bg);
 		
 		//differentes courbes
@@ -83,20 +83,20 @@ public class recup2 {
 		int y;
 		int x = 50;
 		//new
-		int x2 = 0; 
-		int y2;
+		//int x2 = 0; 
+		//int y2;
 		//
 		boolean touch = false;
 		while (x <= 800 * 7 && !touch) {
 			//plus ou moins loin 
 			x += 6;
 			//new
-			x2 =x+6;
+			//x2 =x+6;
 			//
 			//courbe ax2+bx+c
 			y = (int) (a * Math.pow(x, 2) + b * x + c);
 			//new
-			y2 = (int) (a * Math.pow(x2, 2) + b * x2 + c);
+			//y2 = (int) (a * Math.pow(x2, 2) + b * x2 + c);
 			//
 			//System.out.println(y);
 			//nouvelle position de l'oiseau
