@@ -8,7 +8,7 @@ public class Constantes {
 	
 	final static int LARGEUR_ECRAN = 1200;
 	final static int HAUTEUR_ECRAN = 600;
-	final static Color COULEUR_BACKGROUND = Color.WHITE;
+	final static Color COULEUR_BACKGROUND = Color.BLACK;
 	final static Point COORDONNEES_ORIGINE = new Point(50,400);
 	
 	

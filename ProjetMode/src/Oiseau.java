@@ -34,6 +34,8 @@ public class Oiseau extends JPanel {
 	public void setC(int x, int y) {
 		this.c.x = x;
 		this.c.y = y;
+		// pour afficher en pointillé
+		if(x%3==0)
 		passage.add(new Point(x, y));
 	}
 	public void setC2(int x2 , int y2){

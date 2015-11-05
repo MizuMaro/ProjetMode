@@ -115,7 +115,7 @@ public class Ecran {
 			
 			timeLancement = System.currentTimeMillis();
 			// plus ou moins loin
-			x += 6;
+			x += 2;
 			//pour tangente
 			x2 = x + 600;
 			y2 = (int) (a * Math.pow(x2, 2) + b * x2 + c);
@@ -129,7 +129,7 @@ public class Ecran {
 			o.setC(x,y);
 			// utiliser timer
 			long now = System.currentTimeMillis();
-			long time = now + 40;
+			long time = now + 10;
 			
 			while (now < time) {
 				now = System.currentTimeMillis();
