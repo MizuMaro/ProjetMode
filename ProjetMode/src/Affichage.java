@@ -2,12 +2,13 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Polygon;
+import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class Affichage extends JPanel {
+public class Affichage extends JPanel{
 	Oiseau a;
 	ArrayList<Obstacle> listeObstacle;
 
@@ -39,10 +40,24 @@ public class Affichage extends JPanel {
 
 		// dessin du triangle
 		g.setColor(Color.orange); 
-		int[] x = { a.c.x + a.getTaille()/2, a.c.x + a.getTaille()/2, a.c.x + a.getTaille()+a.getTaille()/2};
-		int[] y = { a.c.y + a.getTaille(), a.c.y , a.c.y + a.getTaille()/2 };
+		int[] x = { a.c.x + a.getTaille()/2 , a.c.x + a.getTaille()/2 , a.c.x + a.getTaille()+a.getTaille()/2};
+		int[] y = { a.c.y + a.getTaille() , a.c.y , a.c.y + a.getTaille()/2 };
+		Polygon triangle = new Polygon(x,y,3);
+		AffineTransform at = new AffineTransform();
 		
-		g.fillPolygon(x, y, 3);
+		at.rotate(Math.sin(a.getC().getX()));
+		Polygon triangle2  = new Polygon();
+		  for (int i=0; i<triangle.npoints; i++)
+		  {
+		     Point p = new Point(triangle.xpoints[i], triangle.ypoints[i]);
+		     at.transform(p, p);
+		     triangle2.addPoint(p.x, p.y);
+		  }
+		  System.out.println(triangle.toString());
+		g.fillPolygon(triangle2);
+		
+		
+		
 		// dessin de l'oiseau
 		g.setColor(Color.RED);
 		g.fillOval(a.c.x, a.c.y, a.taille, a.taille);
