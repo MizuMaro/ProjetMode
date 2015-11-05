@@ -52,7 +52,7 @@ public class recup2 {
 		obstacles.add(ob5);
 		
 		//setPreferredSize pour permetre l'affichage sans layout		
-		ob1.setPreferredSize(fenetre.getSize());
+		/*ob1.setPreferredSize(fenetre.getSize());
 		ob2.setPreferredSize(fenetre.getSize());
 		ob3.setPreferredSize(fenetre.getSize());
 		ob4.setPreferredSize(fenetre.getSize());
@@ -65,7 +65,7 @@ public class recup2 {
 		ob2.add(ob3);
 		ob1.add(ob2);
 		a.add(ob1);
-		bg.add(a);
+		bg.add(a);*/
 		fenetre.setContentPane(bg);
 		
 		//differentes courbes
