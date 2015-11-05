@@ -3,6 +3,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -44,8 +45,9 @@ public class Affichage extends JPanel{
 		int[] y = { a.c.y + a.getTaille() , a.c.y , a.c.y + a.getTaille()/2 };
 		Polygon triangle = new Polygon(x,y,3);
 		AffineTransform at = new AffineTransform();
-		
-		at.rotate(Math.sin(a.getC().getX()));
+
+		at.rotate(Math.toRadians(a.getC().getX()),a.getC().getX(),a.getC().getY());
+
 		Polygon triangle2  = new Polygon();
 		  for (int i=0; i<triangle.npoints; i++)
 		  {
