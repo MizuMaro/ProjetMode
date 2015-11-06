@@ -19,6 +19,14 @@ public class Affichage extends JPanel {
 		this.setSize(Constantes.LARGEUR_ECRAN, Constantes.HAUTEUR_ECRAN);
 
 	}
+	
+	Point[] p = new Point[3];
+	public void CreerTriangle(int x1, int y1, int x2, int y2, int x3, int y3)
+	{
+	p[0] = new Point(x1, y1);
+	p[1] = new Point(x2, y2);
+	p[2] = new Point(x3, y3);
+	}
 
 	public void paintComponent(Graphics g) {
 
@@ -26,21 +34,27 @@ public class Affichage extends JPanel {
 		g.setColor(Constantes.COULEUR_BACKGROUND);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
-		// dessin de la trajectoire passé
+		// dessin de la trajectoire passï¿½
 		if (Constantes.TRAJECTOIRES) {
 			g.setColor(Constantes.COULEUR_TRAJECTOIRE);
 
 			// dessin de la trajectoire
 			for (int i = 0; i < a.passage.size(); i++) {
 				g.fillOval(a.passage.get(i).x + a.taille / 2, a.passage.get(i).y + a.taille / 2, 3, 3);
-				// g.drawLine(c.x+(taille/2),c.y+(taille/2), c2.x+(taille/2),
-				// c2.y+(taille/2));
+				// g.drawLine(c.x+(taille/2),c.y+(taille/2), c2.x+(taille/2), c2.y+(taille/2));
 
 			}
+			
+			/*for (int i = 0; i < a.passageTang.size()-1; i++) {
+				g.drawLine(a.passageTang.get(i).x+a.taille/2, a.passageTang.get(i).y+a.taille/2, a.passageTang.get(i+1).x+a.taille/2, a.passageTang.get(i+1).y+a.taille/2);
+			}*/
+			
 		}
 
 		// dessin du triangle
-		g.setColor(Color.orange);
+		
+		
+		/*g.setColor(Color.orange);
 		int[] x = { a.c.x + a.getTaille() / 2, a.c.x + a.getTaille() / 2, a.c.x + a.getTaille() + a.getTaille() };
 		int[] y = { a.c.y + a.getTaille(), a.c.y, a.c.y + a.getTaille() / 2 };
 		Polygon triangle = new Polygon(x, y, 3);
@@ -55,7 +69,13 @@ public class Affichage extends JPanel {
 			at.transform(p, p);
 			triangle2.addPoint(p.x, p.y);
 		}
-		g.fillPolygon(triangle2);
+		g.fillPolygon(triangle2);*/
+		
+		CreerTriangle(a.c.x+a.getTaille()/2, a.c.y+a.getTaille(), a.c.x+a.getTaille()/2, a.c.y, (a.c2.x-50)+a.getTaille()+a.getTaille()/2, a.c2.y+a.getTaille()/2);
+		int[] px = { p[0].x, p[1].x, p[2].x };
+		int[] py = { p[0].y, p[1].y, p[2].y };
+		g.fillPolygon(px, py, 3);
+		
 
 		// dessin de l'oiseau
 		g.setColor(Color.RED);

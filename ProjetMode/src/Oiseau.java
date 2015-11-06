@@ -7,11 +7,12 @@ public class Oiseau {
 	Point c;
 	Point c2 = new Point();
 	ArrayList<Point> passage = new ArrayList<>();
+	ArrayList<Point> passageTang = new ArrayList<>();
 
 	// ajouter angle pour l'oiseau
 	/**
 	 * Constructeur de l'oiseau.
-	 * @param c Coordonnées où l'on souhaite placer l'oiseau.
+	 * @param c Coordonnï¿½es oï¿½ l'on souhaite placer l'oiseau.
 	 */
 	public Oiseau(Point c) {
 		this.taille = Constantes.TAILLE_OISEAU;
@@ -28,30 +29,30 @@ public class Oiseau {
 	}
 
 	/**
-	 * Paramètre la taille de l'oiseau.
-	 * @param taille Taille souhaitée pour l'oiseau.
+	 * Paramï¿½tre la taille de l'oiseau.
+	 * @param taille Taille souhaitï¿½e pour l'oiseau.
 	 */
 	public void setTaille(int taille) {
 		this.taille = taille;
 	}
 
 	/**
-	 * Permet de savoir les coordonnées actuelles de l'oiseau.
-	 * @return Retourne un point, comportant les coordonnées en x et y de l'oiseau.
+	 * Permet de savoir les coordonnï¿½es actuelles de l'oiseau.
+	 * @return Retourne un point, comportant les coordonnï¿½es en x et y de l'oiseau.
 	 */
 	public Point getC() {
 		return c;
 	}
 
 	/**
-	 * Paramètre la position de l'oiseau.
-	 * @param x Coordonnée en x de l'oiseau.
-	 * @param y Coordonnée en y de l'oiseau.
+	 * Paramï¿½tre la position de l'oiseau.
+	 * @param x Coordonnï¿½e en x de l'oiseau.
+	 * @param y Coordonnï¿½e en y de l'oiseau.
 	 */
 	public void setC(int x, int y) {
 		this.c.x = x;
 		this.c.y = y;
-		// pour afficher en pointillé
+		// pour afficher en pointillï¿½
 		if (x % 3 == 0)
 			passage.add(new Point(x, y));
 	}
@@ -59,13 +60,19 @@ public class Oiseau {
 	public void setC2(int x2, int y2) {
 		this.c2.x = x2;
 		this.c2.y = y2;
+		if (x2 % 3 == 0)
+			passageTang.add(new Point(x2, y2));
 
 	}
 
 	/**
-	 * Permet d'effacer les trajectoires retenues en mémoire.
+	 * Permet d'effacer les trajectoires retenues en mï¿½moire.
 	 */
 	public void effacerTrajectoire() {
 		passage.clear();
+	}
+	
+	public void effacerTrajectoireTangeante() {
+		passageTang.clear();
 	}
 }

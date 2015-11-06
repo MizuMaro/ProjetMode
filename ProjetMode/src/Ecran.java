@@ -59,7 +59,7 @@ public class Ecran {
 		a.setPreferredSize(fenetre.getSize());
 	
 		// ajout des obstacles dans l'obstacles puis dans l'oiseau puis dans le
-		// panel principal (poupée russe)
+		// panel principal (poupï¿½e russe)
 		ob4.add(ob5);
 		ob3.add(ob4);
 		ob2.add(ob3);
@@ -114,8 +114,8 @@ public class Ecran {
 			// plus ou moins loin
 			x += 2;
 			//pour tangente
-			x2 = x+10;
-			y2 = (int) (a * Math.pow(x2, 2) + b * x2 + c);
+			x2 = x+50;
+			y2 = (int) ((int) (a*2*x2+b)*(x2-a)+(a * Math.pow(x2, 2) + b * x2 + c));
 			// courbe ax2+bx+c
 			y = (int) (a * Math.pow(x, 2) + b * x + c);
 			
@@ -123,7 +123,7 @@ public class Ecran {
 			// nouvelle position de l'oiseau
 			o.setC(x, y);
 			o.setC2(x2, y2);
-			o.setC(x,y);
+			
 			// utiliser timer
 			long now = System.currentTimeMillis();
 			long time = now + 10;
