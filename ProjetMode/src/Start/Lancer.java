@@ -3,7 +3,7 @@ import IHM.Ecran;
 
 /**
  * La classe Lancer est le point d'entree du programme, celle-ci contenant la methode main.
- * @author R�my
+ * @author Remy
  *
  */
 public class Lancer {
