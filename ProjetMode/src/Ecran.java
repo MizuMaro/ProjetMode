@@ -12,6 +12,7 @@ public class Ecran {
 	private Obstacle ob3;
 	private Obstacle ob4;
 	private Obstacle ob5;
+	private int compteurTouch=0;
 	
 	private Affichage affichage ;
 	public Ecran() throws InterruptedException {
@@ -67,16 +68,20 @@ public class Ecran {
 		a.add(ob1);
 		bg.add(a);
 		*/
-		affichage = new Affichage(a, obstacles);
+		affichage = new Affichage(a, obstacles, compteurTouch);
 		fenetre.setContentPane(affichage);
 		
 
 		// differentes courbes
 		
 		courbe(0.0009, -1, 500, a);
+		affichage.modifIntCouleur(compteurTouch);
 		courbe(0.0008, -1.01, 500, a);
+		affichage.modifIntCouleur(compteurTouch);
 		courbe(0.00077, -1.05, 500, a);
+		affichage.modifIntCouleur(compteurTouch);
 		courbe(0.0007, -1.05, 500, a);
+		affichage.modifIntCouleur(compteurTouch);
 		courbe(0.0005, -1, 500, a);
 
 	}
@@ -140,6 +145,7 @@ public class Ecran {
 						&& this.a.getC().getY() > ob.getC().getY() - Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getY() < ob.getC().getY() + Constantes.TAILLE_OBSTACLES) {
 					touch = true;
+					compteurTouch++;
 					ob.setActif(false);
 					affichage.repaint();
 					now = System.currentTimeMillis();

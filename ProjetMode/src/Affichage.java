@@ -9,13 +9,19 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class Affichage extends JPanel {
+	int couleur =0;
 	Oiseau a;
 	ArrayList<Obstacle> listeObstacle;
 
-	public Affichage(Oiseau a, ArrayList<Obstacle> listeObstacle) {
+	public Affichage(Oiseau a, ArrayList<Obstacle> listeObstacle, int i) {
 		this.a = a;
 		this.listeObstacle = listeObstacle;
 		this.setSize(Constantes.LARGEUR_ECRAN, Constantes.HAUTEUR_ECRAN);
+		if (i%1==0){
+			couleur =0;
+		} else { 
+			couleur =1;
+		}
 
 	}
 	
@@ -78,7 +84,11 @@ public class Affichage extends JPanel {
 		
 
 		// dessin de l'oiseau
+		if (couleur == 0){
 		g.setColor(Color.RED);
+		} else {
+			g.setColor(Color.CYAN);
+		}
 		g.fillOval(a.c.x, a.c.y, a.taille, a.taille);
 		g.setColor(Color.WHITE);
 		g.fillOval(a.c.x+23, a.c.y+8, 12, 12);
@@ -108,6 +118,10 @@ public class Affichage extends JPanel {
 		double yDiff = c2.y - c.y;
 		return Math.toDegrees(Math.atan2(yDiff, xDiff)); 
 
+	}
+	
+	public void modifIntCouleur (int i){
+		couleur=i;
 	}
 
 }
