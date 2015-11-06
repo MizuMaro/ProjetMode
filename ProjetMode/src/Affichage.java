@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class Affichage extends JPanel{
+public class Affichage extends JPanel {
 	Oiseau a;
 	ArrayList<Obstacle> listeObstacle;
 
@@ -40,25 +40,23 @@ public class Affichage extends JPanel{
 		}
 
 		// dessin du triangle
-		g.setColor(Color.orange); 
-		int[] x = { a.c.x + a.getTaille()/2 , a.c.x + a.getTaille()/2 , a.c.x + a.getTaille()+a.getTaille()};
-		int[] y = { a.c.y + a.getTaille() , a.c.y , a.c.y + a.getTaille()/2 };
-		Polygon triangle = new Polygon(x,y,3);
+		g.setColor(Color.orange);
+		int[] x = { a.c.x + a.getTaille() / 2, a.c.x + a.getTaille() / 2, a.c.x + a.getTaille() + a.getTaille() };
+		int[] y = { a.c.y + a.getTaille(), a.c.y, a.c.y + a.getTaille() / 2 };
+		Polygon triangle = new Polygon(x, y, 3);
 		AffineTransform at = new AffineTransform();
+		double angle = getAngle(a.c, a.c2);
+		System.out.println(angle);
+		at.rotate(angle, a.getC().getX(), a.getC().getY());
 
-		at.rotate(Math.toRadians(30) ,a.getC().getX(),a.getC().getY());
-
-		Polygon triangle2  = new Polygon();
-		  for (int i=0; i<triangle.npoints; i++)
-		  {
-		     Point p = new Point(triangle.xpoints[i], triangle.ypoints[i]);
-		     at.transform(p, p);
-		     triangle2.addPoint(p.x, p.y);
-		  }
+		Polygon triangle2 = new Polygon();
+		for (int i = 0; i < triangle.npoints; i++) {
+			Point p = new Point(triangle.xpoints[i], triangle.ypoints[i]);
+			at.transform(p, p);
+			triangle2.addPoint(p.x, p.y);
+		}
 		g.fillPolygon(triangle2);
-		
-		
-		
+
 		// dessin de l'oiseau
 		g.setColor(Color.RED);
 		g.fillOval(a.c.x, a.c.y, a.taille, a.taille);
@@ -75,9 +73,16 @@ public class Affichage extends JPanel{
 				g.fillOval(o.getC().x, o.getC().y, o.getTaille(), o.getTaille());
 			}
 
-			//g.drawPolygon(triangle); // affichage
+			// g.drawPolygon(triangle); // affichage
 			g.setColor(Color.black);
 		}
+
+	}
+
+	public double getAngle(Point c, Point c2) {
+		double xDiff = c2.x - c.x;
+		double yDiff = c2.y - c.y;
+		return Math.toDegrees(Math.atan2(yDiff, xDiff)); 
 
 	}
 

@@ -101,7 +101,7 @@ public class Ecran {
 		
 		int y;
 		int x = 50;
-		int x2 = 0;
+		int x2;
 		int y2;
 		boolean touch = false;
 		
@@ -114,7 +114,7 @@ public class Ecran {
 			// plus ou moins loin
 			x += 2;
 			//pour tangente
-			x2 = x + 600;
+			x2 = x+10;
 			y2 = (int) (a * Math.pow(x2, 2) + b * x2 + c);
 			// courbe ax2+bx+c
 			y = (int) (a * Math.pow(x, 2) + b * x + c);
