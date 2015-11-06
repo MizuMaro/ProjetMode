@@ -80,6 +80,10 @@ public class Affichage extends JPanel {
 		// dessin de l'oiseau
 		g.setColor(Color.RED);
 		g.fillOval(a.c.x, a.c.y, a.taille, a.taille);
+		g.setColor(Color.WHITE);
+		g.fillOval(a.c.x+23, a.c.y+8, 12, 12);
+		g.setColor(Color.BLACK);
+		g.fillOval(a.c.x+27, a.c.y+11, 6, 6);
 
 		// Dessin des obstacles
 
