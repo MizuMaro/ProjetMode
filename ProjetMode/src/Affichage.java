@@ -1,8 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.awt.Polygon;
-import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -42,40 +40,16 @@ public class Affichage extends JPanel {
 				g.fillOval(a.passage.get(i).x + a.taille / 2, a.passage.get(i).y + a.taille / 2, 3, 3);
 				// g.drawLine(c.x+(taille/2),c.y+(taille/2), c2.x+(taille/2), c2.y+(taille/2));
 
-			}
-			
-			/*for (int i = 0; i < a.passageTang.size()-1; i++) {
-				g.drawLine(a.passageTang.get(i).x+a.taille/2, a.passageTang.get(i).y+a.taille/2, a.passageTang.get(i+1).x+a.taille/2, a.passageTang.get(i+1).y+a.taille/2);
-			}*/
+			}	
 			
 		}
 
-		// dessin du triangle
-		
-		
-		/*g.setColor(Color.orange);
-		int[] x = { a.c.x + a.getTaille() / 2, a.c.x + a.getTaille() / 2, a.c.x + a.getTaille() + a.getTaille() };
-		int[] y = { a.c.y + a.getTaille(), a.c.y, a.c.y + a.getTaille() / 2 };
-		Polygon triangle = new Polygon(x, y, 3);
-		AffineTransform at = new AffineTransform();
-		double angle = getAngle(a.c, a.c2);
-		System.out.println(angle);
-		at.rotate(angle, a.getC().getX(), a.getC().getY());
-
-		Polygon triangle2 = new Polygon();
-		for (int i = 0; i < triangle.npoints; i++) {
-			Point p = new Point(triangle.xpoints[i], triangle.ypoints[i]);
-			at.transform(p, p);
-			triangle2.addPoint(p.x, p.y);
-		}
-		g.fillPolygon(triangle2);*/
-		
+		//dessin du bec
 		CreerTriangle(a.c.x+a.getTaille()/2, a.c.y+a.getTaille(), a.c.x+a.getTaille()/2, a.c.y, (a.c2.x-50)+a.getTaille()+a.getTaille()/2, a.c2.y+a.getTaille()/2);
 		int[] px = { p[0].x, p[1].x, p[2].x };
 		int[] py = { p[0].y, p[1].y, p[2].y };
 		g.setColor(Constantes.COULEUR_BEC);
 		g.fillPolygon(px, py, 3);
-		
 
 		// dessin de l'oiseau
 		g.setColor(Color.RED);
@@ -86,7 +60,6 @@ public class Affichage extends JPanel {
 		g.fillOval(a.c.x+27, a.c.y+11, 6, 6);
 
 		// Dessin des obstacles
-
 		for (Obstacle o : listeObstacle) {
 
 			if (o.getActif()) {
@@ -94,11 +67,8 @@ public class Affichage extends JPanel {
 				g.drawOval(o.getC().x, o.getC().y, o.getTaille(), o.getTaille());
 			} else {
 				g.setColor(Constantes.COULEUR_OBSTACLE_TOUCHE);
-				g.fillOval(o.getC().x, o.getC().y, o.getTaille(), o.getTaille());
+				g.drawOval(o.getC().x, o.getC().y, o.getTaille(), o.getTaille());
 			}
-
-			// g.drawPolygon(triangle); // affichage
-			g.setColor(Color.black);
 		}
 
 	}
