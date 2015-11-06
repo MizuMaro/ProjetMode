@@ -2,10 +2,10 @@ import java.awt.Color;
 import java.awt.Point;
 
 /**
- * La classe Constantes contient toutes les constantes utilisées dans le projet :
- * couleurs, tailles d'obstacles ainsi que d'autres paramètres y sont présents.
+ * La classe Constantes contient toutes les constantes utilisï¿½es dans le projet :
+ * couleurs, tailles d'obstacles ainsi que d'autres paramï¿½tres y sont prï¿½sents.
  * 
- * @author Rémy
+ * @author Rï¿½my
  *
  */
 public class Constantes {
@@ -21,6 +21,8 @@ public class Constantes {
 	final static int TAILLE_OISEAU = 40;
 	final static Color COULEUR_OISEAU = Color.RED;
 	final static Color COULEUR_OISEAU_TOUCHE = Color.YELLOW;
+	
+	final static Color COULEUR_BEC = Color.YELLOW;
 	
 	final static Color COULEUR_TRAJECTOIRE = Color.gray;
 	final static boolean TRAJECTOIRES = true;

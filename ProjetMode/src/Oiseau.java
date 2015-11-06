@@ -7,7 +7,7 @@ public class Oiseau {
 	Point c;
 	Point c2 = new Point();
 	ArrayList<Point> passage = new ArrayList<>();
-	ArrayList<Point> passageTang = new ArrayList<>();
+	ArrayList<Point> passageTangInter = new ArrayList<>();
 
 	// ajouter angle pour l'oiseau
 	/**
@@ -63,7 +63,7 @@ public class Oiseau {
 		this.c2.x = x2;
 		this.c2.y = y2;
 		if (x2 % 3 == 0)
-			passageTang.add(new Point(x2, y2));
+			passageTangInter.add(new Point(x2, y2));
 
 	}
 
@@ -75,6 +75,6 @@ public class Oiseau {
 	}
 	
 	public void effacerTrajectoireTangeante() {
-		passageTang.clear();
+		passageTangInter.clear();
 	}
 }

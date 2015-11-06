@@ -73,6 +73,7 @@ public class Affichage extends JPanel {
 		CreerTriangle(a.c.x+a.getTaille()/2, a.c.y+a.getTaille(), a.c.x+a.getTaille()/2, a.c.y, (a.c2.x-50)+a.getTaille()+a.getTaille()/2, a.c2.y+a.getTaille()/2);
 		int[] px = { p[0].x, p[1].x, p[2].x };
 		int[] py = { p[0].y, p[1].y, p[2].y };
+		g.setColor(Constantes.COULEUR_BEC);
 		g.fillPolygon(px, py, 3);
 		
 

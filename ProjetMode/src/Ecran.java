@@ -87,8 +87,10 @@ public class Ecran {
 		
 		if(Constantes.TRAJECTOIRE_UNIQUE)
 			o.effacerTrajectoire();
+			o.effacerTrajectoireTangeante();
 		
 		o.setC(50, 450);
+		o.setC2(100, (int) ((int) (a*2+100+b)*(100-a)+(a* Math.pow(100,2)+b*100+c)));
 		affichage.repaint();
 		
 		long premier = System.currentTimeMillis();
