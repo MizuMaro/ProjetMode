@@ -76,7 +76,7 @@ public class Ecran {
 			
 		affichage.repaint();
 		o.setC(50, 450);
-		o.setC2(120, 430);
+		o.setC2(100, 430);
 		affichage.repaint();
 		
 		long premier = System.currentTimeMillis();
