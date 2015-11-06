@@ -7,29 +7,19 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class Affichage extends JPanel {
-	int couleur =0;
+	
 	Oiseau a;
 	ArrayList<Obstacle> listeObstacle;
+	private boolean collision = false;
 
 	public Affichage(Oiseau a, ArrayList<Obstacle> listeObstacle, int i) {
 		this.a = a;
 		this.listeObstacle = listeObstacle;
 		this.setSize(Constantes.LARGEUR_ECRAN, Constantes.HAUTEUR_ECRAN);
-		if (i%1==0){
-			couleur =0;
-		} else { 
-			couleur =1;
-		}
 
 	}
 	
 	Point[] p = new Point[3];
-	public void CreerTriangle(int x1, int y1, int x2, int y2, int x3, int y3)
-	{
-	p[0] = new Point(x1, y1);
-	p[1] = new Point(x2, y2);
-	p[2] = new Point(x3, y3);
-	}
 
 	public void paintComponent(Graphics g) {
 
@@ -37,15 +27,13 @@ public class Affichage extends JPanel {
 		g.setColor(Constantes.COULEUR_BACKGROUND);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
-		// dessin de la trajectoire pass�
+		// dessin de la trajectoire passee
 		if (Constantes.TRAJECTOIRES) {
 			g.setColor(Constantes.COULEUR_TRAJECTOIRE);
 
 			// dessin de la trajectoire
 			for (int i = 0; i < a.passage.size(); i++) {
 				g.fillOval(a.passage.get(i).x + a.taille / 2, a.passage.get(i).y + a.taille / 2, 3, 3);
-				// g.drawLine(c.x+(taille/2),c.y+(taille/2), c2.x+(taille/2), c2.y+(taille/2));
-
 			}	
 			
 		}
@@ -57,17 +45,6 @@ public class Affichage extends JPanel {
 		g.setColor(Constantes.COULEUR_BEC);
 		g.fillPolygon(px, py, 3);
 
-		// dessin de l'oiseau
-		if (couleur == 0){
-		g.setColor(Color.RED);
-		} else {
-			g.setColor(Color.CYAN);
-		}
-		g.fillOval(a.c.x, a.c.y, a.taille, a.taille);
-		g.setColor(Color.WHITE);
-		g.fillOval(a.c.x+23, a.c.y+8, 12, 12);
-		g.setColor(Color.BLACK);
-		g.fillOval(a.c.x+27, a.c.y+11, 6, 6);
 
 		// Dessin des obstacles
 		for (Obstacle o : listeObstacle) {
@@ -80,6 +57,19 @@ public class Affichage extends JPanel {
 				g.drawOval(o.getC().x, o.getC().y, o.getTaille(), o.getTaille());
 			}
 		}
+		
+		// dessin de l'oiseau
+				if (!collision){
+					g.setColor(Constantes.COULEUR_OISEAU);
+				} else {
+					g.setColor(Constantes.COULEUR_OISEAU_TOUCHE);
+				}
+				
+				g.fillOval(a.c.x, a.c.y, a.taille, a.taille);
+				g.setColor(Color.WHITE);
+				g.fillOval(a.c.x+23, a.c.y+8, 12, 12);
+				g.setColor(Color.BLACK);
+				g.fillOval(a.c.x+27, a.c.y+11, 6, 6);
 
 	}
 
@@ -90,8 +80,14 @@ public class Affichage extends JPanel {
 
 	}
 	
-	public void modifIntCouleur (int i){
-		couleur=i;
+	public void setCollision(boolean b){
+		this.collision = b;
+	}
+	
+	public void CreerTriangle(int x1, int y1, int x2, int y2, int x3, int y3){
+		p[0] = new Point(x1, y1);
+		p[1] = new Point(x2, y2);
+		p[2] = new Point(x3, y3);
 	}
 
 }
