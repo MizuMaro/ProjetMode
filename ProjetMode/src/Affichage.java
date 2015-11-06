@@ -15,10 +15,10 @@ public class Affichage extends JPanel {
 		this.a = a;
 		this.listeObstacle = listeObstacle;
 		this.setSize(Constantes.LARGEUR_ECRAN, Constantes.HAUTEUR_ECRAN);
-		if (i%1==0){
-			couleur =0;
+		if (i%2==1){
+			couleur = 0;
 		} else { 
-			couleur =1;
+			couleur = 1;
 		}
 
 	}
