@@ -23,12 +23,7 @@ public class Ecran {
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre.setVisible(true);
 		fenetre.setLocationRelativeTo(null);
-		/*bg = new JPanel();
-		bg.setSize(Constantes.LARGEUR_ECRAN, Constantes.HAUTEUR_ECRAN);
-
-		// fond du panel
-		bg.setBackground(Constantes.COULEUR_BACKGROUND);
-		*/
+		
 		// initialisation de l'oiseau
 		a = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
 
@@ -50,25 +45,10 @@ public class Ecran {
 		obstacles.add(ob3);
 		obstacles.add(ob4);
 		obstacles.add(ob5);
-		/*
-		// setPreferredSize pour permetre l'affichage sans layout
-		ob1.setPreferredSize(fenetre.getSize());
-		ob2.setPreferredSize(fenetre.getSize());
-		ob3.setPreferredSize(fenetre.getSize());
-		ob4.setPreferredSize(fenetre.getSize());
-		ob5.setPreferredSize(fenetre.getSize());
-		a.setPreferredSize(fenetre.getSize());
-	
-		// ajout des obstacles dans l'obstacles puis dans l'oiseau puis dans le
-		// panel principal (poup�e russe)
-		ob4.add(ob5);
-		ob3.add(ob4);
-		ob2.add(ob3);
-		ob1.add(ob2);
-		a.add(ob1);
-		bg.add(a);
-		*/
+
 		affichage = new Affichage(a, obstacles, compteurTouch);
+
+		
 		fenetre.setContentPane(affichage);
 		
 
