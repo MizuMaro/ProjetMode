@@ -12,7 +12,7 @@ public class Oiseau {
 	// ajouter angle pour l'oiseau
 	/**
 	 * Constructeur de l'oiseau.
-	 * @param c Coordonn�es o� l'on souhaite placer l'oiseau.
+	 * @param c Coordonnees ou l'on souhaite placer l'oiseau.
 	 */
 	public Oiseau(Point c) {
 		this.taille = Constantes.TAILLE_OISEAU;
@@ -29,32 +29,31 @@ public class Oiseau {
 	}
 
 	/**
-	 * Param�tre la taille de l'oiseau.
-	 * @param taille Taille souhait�e pour l'oiseau.
+	 * Parametre la taille de l'oiseau.
+	 * @param taille Taille souhaitee pour l'oiseau.
 	 */
 	public void setTaille(int taille) {
 		this.taille = taille;
 	}
 
 	/**
-	 * Permet de savoir les coordonn�es actuelles de l'oiseau.
-	 * @return Retourne un point, comportant les coordonn�es en x et y de l'oiseau.
+	 * Permet de savoir les coordonnees actuelles de l'oiseau.
+	 * @return Retourne un point, comportant les coordonnees en x et y de l'oiseau.
 	 */
 	public Point getC() {
 		return c;
 	}
 
 	/**
-	 * Param�tre la position de l'oiseau.
-	 * @param x Coordonn�e en x de l'oiseau.
-	 * @param y Coordonn�e en y de l'oiseau.
+	 * Parametre la position de l'oiseau.
+	 * @param x Coordonnee en x de l'oiseau.
+	 * @param y Coordonnee en y de l'oiseau.
 	 */
 	public void setC(int x, int y) {
 		this.c.x = x;
 		this.c.y = y;
 
-		// pour afficher en pointill�
-
+		// pour afficher en pointilles
 		if (x % 3 == 0)
 			passage.add(new Point(x, y));
 	}
@@ -68,7 +67,7 @@ public class Oiseau {
 	}
 
 	/**
-	 * Permet d'effacer les trajectoires retenues en m�moire.
+	 * Permet d'effacer les trajectoires retenues en memoire.
 	 */
 	public void effacerTrajectoire() {
 		passage.clear();
