@@ -1,5 +1,5 @@
 /**
- * La classe Lancer est le point d'entrée du programme, celle-ci contenant la méthode main.
+ * La classe Lancer est le point d'entree du programme, celle-ci contenant la methode main.
  * @author Rémy
  *
  */

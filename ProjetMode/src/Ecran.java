@@ -47,21 +47,13 @@ public class Ecran {
 		obstacles.add(ob5);
 
 		affichage = new Affichage(a, obstacles, compteurTouch);
-
-		
-		fenetre.setContentPane(affichage);
-		
+		fenetre.setContentPane(affichage);		
 
 		// differentes courbes
-		
 		courbe(0.0009, -1, 500, a);
-		affichage.modifIntCouleur(compteurTouch);
 		courbe(0.0008, -1.01, 500, a);
-		affichage.modifIntCouleur(compteurTouch);
 		courbe(0.00077, -1.05, 500, a);
-		affichage.modifIntCouleur(compteurTouch);
 		courbe(0.0007, -1.05, 500, a);
-		affichage.modifIntCouleur(compteurTouch);
 		courbe(0.0005, -1, 500, a);
 
 	}
@@ -69,6 +61,8 @@ public class Ecran {
 	
 
 	void courbe(double a, double b, double c, Oiseau o) throws InterruptedException {
+		
+		affichage.setCollision(false);
 		
 		if(Constantes.TRAJECTOIRE_UNIQUE)
 			o.effacerTrajectoire();
@@ -119,12 +113,13 @@ public class Ecran {
 				now = System.currentTimeMillis();
 			}
 
-			// test si un obstacle est touch�
+			// test si un obstacle est touche
 			for (Obstacle ob : obstacles) {
 				if (this.a.getC().getX() > ob.getC().getX() - Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getX() < ob.getC().getX() + Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getY() > ob.getC().getY() - Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getY() < ob.getC().getY() + Constantes.TAILLE_OBSTACLES) {
+					affichage.setCollision(true);
 					touch = true;
 					compteurTouch++;
 					ob.setActif(false);

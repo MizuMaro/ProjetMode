@@ -20,7 +20,7 @@ public class Constantes {
 	
 	final static int TAILLE_OISEAU = 40;
 	final static Color COULEUR_OISEAU = Color.RED;
-	final static Color COULEUR_OISEAU_TOUCHE = Color.YELLOW;
+	final static Color COULEUR_OISEAU_TOUCHE = Color.pink;
 	
 	final static Color COULEUR_BEC = Color.YELLOW;
 	
