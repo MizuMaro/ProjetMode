@@ -19,6 +19,7 @@ public class Ecran {
 	private Obstacle ob4;
 	private Obstacle ob5;
 	private Obstacle ob6;
+	private Obstacle ob7;
 	private int compteurTouch=1;
 	
 	private Affichage affichage ;
@@ -45,7 +46,9 @@ public class Ecran {
 				fenetre.getHeight() - 470));
 		ob5 = new Obstacle(new Point(fenetre.getWidth() - 180,
 				fenetre.getHeight() - 600));
-		ob6 = new Obstacle(new Point(fenetre.getWidth() - 800,
+		ob6 = new Obstacle(new Point(fenetre.getWidth() - 600,
+				fenetre.getHeight() - 180));
+		ob7 = new Obstacle(new Point(fenetre.getWidth() - 200,
 				fenetre.getHeight() - 150));
 
 		// ajout des obstacles dans la liste pour pouvoir les gerer
@@ -55,6 +58,7 @@ public class Ecran {
 		obstacles.add(ob4);
 		obstacles.add(ob5);
 		obstacles.add(ob6);
+		obstacles.add(ob7);
 
 		affichage = new Affichage(a, obstacles, compteurTouch);
 		fenetre.setContentPane(affichage);		
@@ -62,6 +66,7 @@ public class Ecran {
 		// differentes courbes
 		courbe(0.0009, -1, 500, a);
 		courbeCubique(-0.0000005, 0.1, 450, a);
+		courbe(0.0009, -1, 500, a);
 		courbe(0.0008, -1.01, 500, a);
 		courbe(0.00077, -1.05, 500, a);
 		courbe(0.0007, -1.05, 500, a);
@@ -87,7 +92,6 @@ public class Ecran {
 		
 		long premier = System.currentTimeMillis();
 		long deuxieme = premier+1000;
-		
 		while(premier<deuxieme){
 			premier=System.currentTimeMillis();
 		}
@@ -130,7 +134,8 @@ public class Ecran {
 				if (this.a.getC().getX() > ob.getC().getX() - Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getX() < ob.getC().getX() + Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getY() > ob.getC().getY() - Constantes.TAILLE_OBSTACLES
-						&& this.a.getC().getY() < ob.getC().getY() + Constantes.TAILLE_OBSTACLES) {
+						&& this.a.getC().getY() < ob.getC().getY() + Constantes.TAILLE_OBSTACLES
+						&& ob.getActif()) {
 					affichage.setCollision(true);
 					touch = true;
 					compteurTouch++;
