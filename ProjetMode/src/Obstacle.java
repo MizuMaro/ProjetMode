@@ -12,6 +12,10 @@ public class Obstacle extends JPanel {
 	Point c;
 	boolean actif;
 
+	/**
+	 * Constructeur à appeler pour créer un obstacle.
+	 * @param c Coordonnées de l'obstacle à créer.
+	 */
 	public Obstacle(Point c) {
 		this.taille = Constantes.TAILLE_OBSTACLES;
 		this.c = c;
@@ -19,26 +23,51 @@ public class Obstacle extends JPanel {
 
 	}
 
+	/**
+	 * Cette fonction permet de savoir si l'obstacle a déjà été touché ou non.
+	 * @return Si la fonction retourne vrai, l'obstacle peut être touché par l'oiseau.
+	 */
 	public boolean getActif() {
 		return this.actif;
 	}
 
+	/**
+	 * Cette fonction permet de paramétrer l'état de l'obstacle.
+	 * @param t Si vrai, l'obstacle sera sujet aux collisions avec l'oiseau ; sinon, non.
+	 */
 	public void setActif(boolean t) {
 		this.actif = t;
 	}
 
+	/**
+	 * Cette fonction permet d'obtenir la taille de l'obstacle.
+	 * @return La taille de l'obstacle sur lequel la fonction a été appelée.
+	 */
 	public int getTaille() {
 		return taille;
 	}
 
+	/**
+	 * Cette fonction permet de paramétrer la taille de l'obstacle.
+	 * @param taille La taille de l'obstacle que l'on veut paramétrer.
+	 */
 	public void setTaille(int taille) {
 		this.taille = taille;
 	}
 
+	/**
+	 * Cette fonction permet d'obtenir les coordonnées de l'obstacle.
+	 * @return Point contenant les coordonnées x et y de l'obstacle.
+	 */
 	public Point getC() {
 		return c;
 	}
 
+	/**
+	 * Cette fonction permet de paramétrer les coordonnées de l'obstacle.
+	 * @param x Coordonnée en x de l'obstacle.
+	 * @param y Coordonnée en y de l'obstacle.
+	 */
 	public void setC(int x, int y) {
 		this.c.x = x;
 		this.c.y = y;

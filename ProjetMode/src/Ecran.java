@@ -78,7 +78,6 @@ public class Ecran {
 		courbe(0.00077, -1.05, 500, a);
 		courbe(0.0007, -1.05, 500, a);
 		courbe(0.0005, -1, 500, a);
-		
 
 	}
 
