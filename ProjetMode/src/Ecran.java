@@ -60,7 +60,7 @@ public class Ecran {
 
 	
 
-	void courbe(double a, double b, double c, Oiseau o) throws InterruptedException {
+	void courbe(double a, double b, double c, Oiseau o) {
 		
 		affichage.setCollision(false);
 		
@@ -70,7 +70,6 @@ public class Ecran {
 			
 		affichage.repaint();
 		o.setC(50, 450);
-		o.setC2(100, (int) ((int) (a*2+100+b)*(100-a)+(a* Math.pow(100,2)+b*100+c)));
 		affichage.repaint();
 		
 		long premier = System.currentTimeMillis();
@@ -93,9 +92,9 @@ public class Ecran {
 			
 			timeLancement = System.currentTimeMillis();
 			// plus ou moins loin
-			x += 2;
+			x += 4;
 			//pour tangente
-			x2 = x+50;
+			x2 = x+60;
 			y2 = (int) ((int) (a*2*x2+b)*(x2-a)+(a * Math.pow(x2, 2) + b * x2 + c));
 			// courbe ax2+bx+c
 			y = (int) (a * Math.pow(x, 2) + b * x + c);
