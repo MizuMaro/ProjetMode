@@ -1,8 +1,10 @@
+package Element;
+
 import java.awt.Point;
 import javax.swing.JPanel;
 /**
  * La classe Obstacle est la classe incarnant les obstacles du projet.
- * @author Rémy
+ * @author Rï¿½my
  *
  */
 
@@ -32,7 +34,7 @@ public class Obstacle extends JPanel {
 	}
 
 	/**
-	 * Cette fonction permet de paramétrer l'etat de l'obstacle.
+	 * Cette fonction permet de paramï¿½trer l'etat de l'obstacle.
 	 * @param t Si vrai, l'obstacle sera sujet aux collisions avec l'oiseau ; sinon, non.
 	 */
 	public void setActif(boolean t) {
@@ -56,17 +58,17 @@ public class Obstacle extends JPanel {
 	}
 
 	/**
-	 * Cette fonction permet d'obtenir les coordonnées de l'obstacle.
-	 * @return Point contenant les coordonnées x et y de l'obstacle.
+	 * Cette fonction permet d'obtenir les coordonnï¿½es de l'obstacle.
+	 * @return Point contenant les coordonnï¿½es x et y de l'obstacle.
 	 */
 	public Point getC() {
 		return c;
 	}
 
 	/**
-	 * Cette fonction permet de parametrer les coordonnées de l'obstacle.
-	 * @param x Coordonnée en x de l'obstacle.
-	 * @param y Coordonnée en y de l'obstacle.
+	 * Cette fonction permet de parametrer les coordonnï¿½es de l'obstacle.
+	 * @param x Coordonnï¿½e en x de l'obstacle.
+	 * @param y Coordonnï¿½e en y de l'obstacle.
 	 */
 	public void setC(int x, int y) {
 		this.c.x = x;

@@ -1,12 +1,14 @@
+package Element;
+
 
 import java.awt.Point;
 import java.util.ArrayList;
 
 public class Oiseau {
-	int taille;
-	Point c;
-	Point c2 = new Point();
-	ArrayList<Point> passage = new ArrayList<>();
+	public int taille;
+	public Point c;
+	public Point c2 = new Point();
+	public ArrayList<Point> passage = new ArrayList<>();
 	ArrayList<Point> passageTangInter = new ArrayList<>();
 
 	// ajouter angle pour l'oiseau

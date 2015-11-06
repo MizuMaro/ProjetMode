@@ -1,9 +1,17 @@
+package IHM;
+import Element.Constantes;
+import Element.Oiseau;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
+
+import Element.Constantes;
+import Element.Obstacle;
+import Element.Oiseau;
 
 @SuppressWarnings("serial")
 public class Affichage extends JPanel {

@@ -1,6 +1,12 @@
+package IHM;
+
 import java.awt.Point;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+
+import Element.Constantes;
+import Element.Obstacle;
+import Element.Oiseau;
 
 public class Ecran {
 	private JFrame fenetre;
@@ -60,7 +66,7 @@ public class Ecran {
 
 	
 
-	void courbe(double a, double b, double c, Oiseau o) {
+	void courbe(double a, double b, double c, Oiseau o) throws InterruptedException {
 		
 		affichage.setCollision(false);
 		
@@ -70,6 +76,7 @@ public class Ecran {
 			
 		affichage.repaint();
 		o.setC(50, 450);
+		o.setC2(120, 430);
 		affichage.repaint();
 		
 		long premier = System.currentTimeMillis();
@@ -81,8 +88,8 @@ public class Ecran {
 		
 		int y;
 		int x = 50;
-		int x2;
-		int y2;
+		int x2 = 50+50;
+		int y2 =0;
 		boolean touch = false;
 		
 		long timeLancement = System.currentTimeMillis();
@@ -94,7 +101,7 @@ public class Ecran {
 			// plus ou moins loin
 			x += 4;
 			//pour tangente
-			x2 = x+60;
+			x2 = x+50;
 			y2 = (int) ((int) (a*2*x2+b)*(x2-a)+(a * Math.pow(x2, 2) + b * x2 + c));
 			// courbe ax2+bx+c
 			y = (int) (a * Math.pow(x, 2) + b * x + c);
@@ -102,7 +109,7 @@ public class Ecran {
 			// System.out.println(y);
 			// nouvelle position de l'oiseau
 			o.setC(x, y);
-			o.setC2(x2, y2);
+			//o.setC2(x2, y2);
 			
 			// utiliser timer
 			long now = System.currentTimeMillis();
@@ -130,6 +137,8 @@ public class Ecran {
 						now = System.currentTimeMillis();
 					}
 				}
+				if (touch == false)
+				o.setC2(x2, y2);
 			}
 			
 			affichage.repaint();
