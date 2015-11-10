@@ -56,7 +56,8 @@ public class Affichage extends JPanel {
 		// Dessin des obstacles
 		for (Obstacle o : listeObstacle) {
 
-			if (o.getActif()) {
+			if (o.isActif()) {
+				
 				g.setColor(Constantes.COULEUR_OBSTACLE);
 				g.drawOval(o.getC().x, o.getC().y, o.getTaille(), o.getTaille());
 			} else {

@@ -4,7 +4,7 @@ import java.awt.Point;
 import javax.swing.JPanel;
 /**
  * La classe Obstacle est la classe incarnant les obstacles du projet.
- * @author R�my
+ * @author Rmy
  *
  */
 
@@ -29,7 +29,7 @@ public class Obstacle extends JPanel {
 	 * Cette fonction permet de savoir si l'obstacle a deja ete touche ou non.
 	 * @return Si la fonction retourne vrai, l'obstacle peut etre touche par l'oiseau.
 	 */
-	public boolean getActif() {
+	public boolean isActif() {
 		return this.actif;
 	}
 

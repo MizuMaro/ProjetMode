@@ -32,5 +32,7 @@ public class Constantes {
 	public final static int TAILLE_OBSTACLES = 40;
 	public final static Color COULEUR_OBSTACLE = Color.GREEN;
 	public final static Color COULEUR_OBSTACLE_TOUCHE = Color.RED;
+	public final static int VITESSE_OBSTACLES = 1;
+	
 	
 }

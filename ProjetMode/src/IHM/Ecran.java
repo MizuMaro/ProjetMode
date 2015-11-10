@@ -6,11 +6,13 @@ import javax.swing.JFrame;
 
 import Element.Constantes;
 import Element.Obstacle;
+import Element.ObstacleQuiBougeOmg;
 import Element.Oiseau;
 
 public class Ecran {
 	private JFrame fenetre;
 	private Oiseau a;
+	
 	// liste et obstacle
 	private ArrayList<Obstacle> obstacles = new ArrayList<>();
 	private Obstacle ob1;
@@ -19,7 +21,10 @@ public class Ecran {
 	private Obstacle ob4;
 	private Obstacle ob5;
 	private Obstacle ob6;
-	private Obstacle ob7;
+	private Obstacle ob7;	
+	private ObstacleQuiBougeOmg ob8;
+	private ObstacleQuiBougeOmg ob9;
+	
 	private int compteurTouch=1;
 	
 	private Affichage affichage ;
@@ -50,7 +55,18 @@ public class Ecran {
 				fenetre.getHeight() - 180));
 		ob7 = new Obstacle(new Point(fenetre.getWidth() - 200,
 				fenetre.getHeight() - 150));
+		
+		ob8 = new ObstacleQuiBougeOmg(new Point(fenetre.getWidth() - 400,
+				fenetre.getHeight() - 550));
+		ob8.setLimites_x(new int[]{fenetre.getWidth() - 400, fenetre.getWidth() - 400});
+		ob8.setLimites_y(new int[]{fenetre.getHeight() - 550, fenetre.getHeight() - 400});
 
+		ob9 = new ObstacleQuiBougeOmg(new Point(fenetre.getWidth() - 1000,
+				fenetre.getHeight()/3));
+		ob9.setLimites_x(new int[]{fenetre.getWidth() - 1000, fenetre.getWidth() - 800});
+		ob9.setLimites_y(new int[]{fenetre.getHeight()/3, fenetre.getHeight()/3});
+		
+		
 		// ajout des obstacles dans la liste pour pouvoir les gerer
 		obstacles.add(ob1);
 		obstacles.add(ob2);
@@ -59,6 +75,8 @@ public class Ecran {
 		obstacles.add(ob5);
 		obstacles.add(ob6);
 		obstacles.add(ob7);
+		obstacles.add(ob8);
+		obstacles.add(ob9);
 
 		affichage = new Affichage(a, obstacles, compteurTouch);
 		fenetre.setContentPane(affichage);		
@@ -129,13 +147,21 @@ public class Ecran {
 				now = System.currentTimeMillis();
 			}
 
-			// test si un obstacle est touche
 			for (Obstacle ob : obstacles) {
+				
+				//on bouge les obstacles qui se déplacent
+				if(ob.isActif() && ob instanceof ObstacleQuiBougeOmg){
+					((ObstacleQuiBougeOmg)ob).moveX();
+					((ObstacleQuiBougeOmg)ob).moveY();
+				}
+				
+				// test si un obstacle est touche
 				if (this.a.getC().getX() > ob.getC().getX() - Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getX() < ob.getC().getX() + Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getY() > ob.getC().getY() - Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getY() < ob.getC().getY() + Constantes.TAILLE_OBSTACLES
-						&& ob.getActif()) {
+						&& ob.isActif()) {
+					
 					affichage.setCollision(true);
 					touch = true;
 					compteurTouch++;
@@ -211,10 +237,20 @@ void courbeCubique(double a, double b, double c, Oiseau o) throws InterruptedExc
 
 			// test si un obstacle est touche
 			for (Obstacle ob : obstacles) {
+				
+				//on bouge les obstacles qui se déplacent
+				if(ob.isActif() && ob instanceof ObstacleQuiBougeOmg){
+					((ObstacleQuiBougeOmg)ob).moveX();
+					((ObstacleQuiBougeOmg)ob).moveY();
+				}
+				
+				// test si un obstacle est touche
 				if (this.a.getC().getX() > ob.getC().getX() - Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getX() < ob.getC().getX() + Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getY() > ob.getC().getY() - Constantes.TAILLE_OBSTACLES
-						&& this.a.getC().getY() < ob.getC().getY() + Constantes.TAILLE_OBSTACLES) {
+						&& this.a.getC().getY() < ob.getC().getY() + Constantes.TAILLE_OBSTACLES
+						&& ob.isActif()) {
+					
 					affichage.setCollision(true);
 					touch = true;
 					compteurTouch++;
