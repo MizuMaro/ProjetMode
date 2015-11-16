@@ -2,11 +2,12 @@ package IHM;
 
 import java.awt.Point;
 import java.util.ArrayList;
+
 import javax.swing.JFrame;
 
 import Element.Constantes;
 import Element.Obstacle;
-import Element.ObstacleQuiBougeOmg;
+import Element.ObstacleMouvant;
 import Element.Oiseau;
 
 public class Ecran {
@@ -22,8 +23,8 @@ public class Ecran {
 	private Obstacle ob5;
 	private Obstacle ob6;
 	private Obstacle ob7;	
-	private ObstacleQuiBougeOmg ob8;
-	private ObstacleQuiBougeOmg ob9;
+	private ObstacleMouvant ob8;
+	private ObstacleMouvant ob9;
 	
 	private int compteurTouch=1;
 	
@@ -56,12 +57,12 @@ public class Ecran {
 		ob7 = new Obstacle(new Point(fenetre.getWidth() - 200,
 				fenetre.getHeight() - 150));
 		
-		ob8 = new ObstacleQuiBougeOmg(new Point(fenetre.getWidth() - 400,
+		ob8 = new ObstacleMouvant(new Point(fenetre.getWidth() - 400,
 				fenetre.getHeight() - 550));
 		ob8.setLimites_x(new int[]{fenetre.getWidth() - 400, fenetre.getWidth() - 400});
 		ob8.setLimites_y(new int[]{fenetre.getHeight() - 550, fenetre.getHeight() - 400});
 
-		ob9 = new ObstacleQuiBougeOmg(new Point(fenetre.getWidth() - 1000,
+		ob9 = new ObstacleMouvant(new Point(fenetre.getWidth() - 1000,
 				fenetre.getHeight()/3));
 		ob9.setLimites_x(new int[]{fenetre.getWidth() - 1000, fenetre.getWidth() - 800});
 		ob9.setLimites_y(new int[]{fenetre.getHeight()/3, fenetre.getHeight()/3});
@@ -150,9 +151,9 @@ public class Ecran {
 			for (Obstacle ob : obstacles) {
 				
 				//on bouge les obstacles qui se déplacent
-				if(ob.isActif() && ob instanceof ObstacleQuiBougeOmg){
-					((ObstacleQuiBougeOmg)ob).moveX();
-					((ObstacleQuiBougeOmg)ob).moveY();
+				if(ob.isActif() && ob instanceof ObstacleMouvant){
+					((ObstacleMouvant)ob).moveX();
+					((ObstacleMouvant)ob).moveY();
 				}
 				
 				// test si un obstacle est touche
@@ -239,9 +240,9 @@ void courbeCubique(double a, double b, double c, Oiseau o) throws InterruptedExc
 			for (Obstacle ob : obstacles) {
 				
 				//on bouge les obstacles qui se déplacent
-				if(ob.isActif() && ob instanceof ObstacleQuiBougeOmg){
-					((ObstacleQuiBougeOmg)ob).moveX();
-					((ObstacleQuiBougeOmg)ob).moveY();
+				if(ob.isActif() && ob instanceof ObstacleMouvant){
+					((ObstacleMouvant)ob).moveX();
+					((ObstacleMouvant)ob).moveY();
 				}
 				
 				// test si un obstacle est touche

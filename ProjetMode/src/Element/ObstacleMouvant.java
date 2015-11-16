@@ -3,15 +3,15 @@ package Element;
 import java.awt.Point;
 
 /**
- * La classe ObstacleMouvant, qui hérite de la classe Obstacle, permet d'instancier
- * des obstacles qui peuvent se déplacer sur des trajectoires linéaires, sur les axes 
+ * La classe ObstacleMouvant, qui herite de la classe Obstacle, permet d'instancier
+ * des obstacles qui peuvent se deplacer sur des trajectoires lineaires, sur les axes 
  * x et y.
  * @author Rémy
  *
  */
 
 @SuppressWarnings("serial")
-public class ObstacleQuiBougeOmg extends Obstacle{
+public class ObstacleMouvant extends Obstacle{
 	
 	/**
 	 * @param limites_x Définit les limites du mouvement de l'obstacle sur l'axe x
@@ -23,7 +23,7 @@ public class ObstacleQuiBougeOmg extends Obstacle{
 	private boolean descente = true;
 	private boolean vers_droite = true;
 	
-	public ObstacleQuiBougeOmg(Point c) {
+	public ObstacleMouvant(Point c) {
 		super(c);
 	}
 
