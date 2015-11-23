@@ -34,5 +34,8 @@ public class Constantes {
 	public final static Color COULEUR_OBSTACLE_TOUCHE = Color.RED;
 	public final static int VITESSE_OBSTACLES = 1;
 	
+	public final static int HAUTEUR_SOL = 550;
+	public final static Color COULEUR_SOL = Color.LIGHT_GRAY;
+	
 	
 }

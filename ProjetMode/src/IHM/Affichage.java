@@ -51,7 +51,12 @@ public class Affichage extends JPanel {
 		int[] py = { p[0].y, p[1].y, p[2].y };
 		g.setColor(Constantes.COULEUR_BEC);
 		g.fillPolygon(px, py, 3);
-
+		
+		
+		// Dessin du sol
+		g.setColor(Constantes.COULEUR_SOL);
+		g.drawLine(0, Constantes.HAUTEUR_SOL, Constantes.LARGEUR_ECRAN, Constantes.HAUTEUR_SOL);
+		
 
 		// Dessin des obstacles
 		for (Obstacle o : listeObstacle) {
