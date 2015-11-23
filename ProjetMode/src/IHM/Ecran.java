@@ -83,12 +83,14 @@ public class Ecran {
 		fenetre.setContentPane(affichage);		
 
 		// differentes courbes
+		/*
 		courbe(0.0009, -1, 500, a);
 		courbeCubique(-0.0000005, 0.1, 450, a);
 		courbe(0.0009, -1, 500, a);
 		courbe(0.0008, -1.01, 500, a);
 		courbe(0.00077, -1.05, 500, a);
 		courbe(0.0007, -1.05, 500, a);
+		*/
 		courbeCubique(0.000001, 0.001, 450, a);
 		courbe(0.0005, -1, 500, a);
 
@@ -99,6 +101,13 @@ public class Ecran {
 	void courbe(double a, double b, double c, Oiseau o) throws InterruptedException {
 		
 		affichage.setCollision(false);
+		
+		//collision avec le sol
+		//System.out.println(this.a.getC());
+		if(this.a.getC().getY() > Constantes.HAUTEUR_SOL){
+			Thread.sleep(1000);
+			System.out.println("collision");
+		}
 		
 		if(Constantes.TRAJECTOIRE_UNIQUE){
 			o.effacerTrajectoire();
@@ -157,7 +166,7 @@ public class Ecran {
 					((ObstacleMouvant)ob).moveY();
 				}
 				
-				// test si un obstacle est touche
+				//test si un obstacle est touche
 				if (ob.isActif() && this.a.getC().getX() > ob.getC().getX() - Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getX() < ob.getC().getX() + Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getY() > ob.getC().getY() - Constantes.TAILLE_OBSTACLES
@@ -187,6 +196,13 @@ public class Ecran {
 	void courbeCubique(double a, double b, double c, Oiseau o) throws InterruptedException {
 		
 		affichage.setCollision(false);
+		
+		//collision avec le sol
+		//System.out.println(this.a.getC());
+		if(this.a.getC().getY() > 400){
+			System.out.println("collision");
+			Thread.sleep(5000);
+		}
 		
 		if(Constantes.TRAJECTOIRE_UNIQUE){
 			o.effacerTrajectoire();
