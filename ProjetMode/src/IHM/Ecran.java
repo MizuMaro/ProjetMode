@@ -27,8 +27,8 @@ public class Ecran {
 	private ObstacleMouvant ob9;
 	
 	private int compteurTouch=1;
-	
 	private Affichage affichage ;
+	
 	public Ecran() throws InterruptedException {
 
 		this.fenetre = new JFrame(Constantes.TITRE);
@@ -100,9 +100,10 @@ public class Ecran {
 		
 		affichage.setCollision(false);
 		
-		if(Constantes.TRAJECTOIRE_UNIQUE)
+		if(Constantes.TRAJECTOIRE_UNIQUE){
 			o.effacerTrajectoire();
 			o.effacerTrajectoireTangeante();
+		}
 			
 		affichage.repaint();
 		o.setC(50, 450);
@@ -151,17 +152,16 @@ public class Ecran {
 			for (Obstacle ob : obstacles) {
 				
 				//on bouge les obstacles qui se déplacent
-				if(ob.isActif() && ob instanceof ObstacleMouvant){
+				if(ob instanceof ObstacleMouvant && ob.isActif()){
 					((ObstacleMouvant)ob).moveX();
 					((ObstacleMouvant)ob).moveY();
 				}
 				
 				// test si un obstacle est touche
-				if (this.a.getC().getX() > ob.getC().getX() - Constantes.TAILLE_OBSTACLES
+				if (ob.isActif() && this.a.getC().getX() > ob.getC().getX() - Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getX() < ob.getC().getX() + Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getY() > ob.getC().getY() - Constantes.TAILLE_OBSTACLES
-						&& this.a.getC().getY() < ob.getC().getY() + Constantes.TAILLE_OBSTACLES
-						&& ob.isActif()) {
+						&& this.a.getC().getY() < ob.getC().getY() + Constantes.TAILLE_OBSTACLES) {
 					
 					affichage.setCollision(true);
 					touch = true;
@@ -183,13 +183,15 @@ public class Ecran {
 		}
 	}
 	
-void courbeCubique(double a, double b, double c, Oiseau o) throws InterruptedException {
+	
+	void courbeCubique(double a, double b, double c, Oiseau o) throws InterruptedException {
 		
 		affichage.setCollision(false);
 		
-		if(Constantes.TRAJECTOIRE_UNIQUE)
+		if(Constantes.TRAJECTOIRE_UNIQUE){
 			o.effacerTrajectoire();
 			o.effacerTrajectoireTangeante();
+		}
 			
 		affichage.repaint();
 		o.setC(50, 450);
@@ -240,17 +242,16 @@ void courbeCubique(double a, double b, double c, Oiseau o) throws InterruptedExc
 			for (Obstacle ob : obstacles) {
 				
 				//on bouge les obstacles qui se déplacent
-				if(ob.isActif() && ob instanceof ObstacleMouvant){
+				if(ob instanceof ObstacleMouvant && ob.isActif()){
 					((ObstacleMouvant)ob).moveX();
 					((ObstacleMouvant)ob).moveY();
 				}
 				
 				// test si un obstacle est touche
-				if (this.a.getC().getX() > ob.getC().getX() - Constantes.TAILLE_OBSTACLES
+				if (ob.isActif() && this.a.getC().getX() > ob.getC().getX() - Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getX() < ob.getC().getX() + Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getY() > ob.getC().getY() - Constantes.TAILLE_OBSTACLES
-						&& this.a.getC().getY() < ob.getC().getY() + Constantes.TAILLE_OBSTACLES
-						&& ob.isActif()) {
+						&& this.a.getC().getY() < ob.getC().getY() + Constantes.TAILLE_OBSTACLES) {
 					
 					affichage.setCollision(true);
 					touch = true;

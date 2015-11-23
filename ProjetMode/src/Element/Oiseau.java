@@ -1,15 +1,14 @@
 package Element;
 
-
 import java.awt.Point;
 import java.util.ArrayList;
 
 public class Oiseau {
-	public int taille;
-	public Point c;
-	public Point c2 = new Point();
-	public ArrayList<Point> passage = new ArrayList<>();
-	ArrayList<Point> passageTangInter = new ArrayList<>();
+	private int taille;
+	private Point c;
+	private Point c2 = new Point();
+	private ArrayList<Point> passage = new ArrayList<>();
+	private ArrayList<Point> passageTangInter = new ArrayList<>();
 
 	// ajouter angle pour l'oiseau
 	/**
@@ -19,7 +18,6 @@ public class Oiseau {
 	public Oiseau(Point c) {
 		this.taille = Constantes.TAILLE_OISEAU;
 		this.c = c;
-
 	}
 
 	/**
@@ -27,7 +25,7 @@ public class Oiseau {
 	 * @return taille de l'oiseau.
 	 */
 	public int getTaille() {
-		return taille;
+		return this.taille;
 	}
 
 	/**
@@ -43,7 +41,11 @@ public class Oiseau {
 	 * @return Retourne un point, comportant les coordonnees en x et y de l'oiseau.
 	 */
 	public Point getC() {
-		return c;
+		return this.c;
+	}
+	
+	public Point getC2() {
+		return this.c2;
 	}
 
 	/**
@@ -66,6 +68,10 @@ public class Oiseau {
 		if (x2 % 3 == 0)
 			passageTangInter.add(new Point(x2, y2));
 
+	}
+	
+	public ArrayList<Point> getPassage(){
+		return this.passage;
 	}
 
 	/**

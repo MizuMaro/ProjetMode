@@ -15,8 +15,8 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class Affichage extends JPanel {
 	
-	Oiseau a;
-	ArrayList<Obstacle> listeObstacle;
+	private Oiseau a;
+	private ArrayList<Obstacle> listeObstacle;
 	private boolean collision = false;
 
 	public Affichage(Oiseau a, ArrayList<Obstacle> listeObstacle, int i) {
@@ -26,7 +26,7 @@ public class Affichage extends JPanel {
 
 	}
 	
-	Point[] p = new Point[3];
+	private Point[] p = new Point[3];
 
 	public void paintComponent(Graphics g) {
 
@@ -39,14 +39,14 @@ public class Affichage extends JPanel {
 			g.setColor(Constantes.COULEUR_TRAJECTOIRE);
 
 			// dessin de la trajectoire
-			for (int i = 0; i < a.passage.size(); i++) {
-				g.fillOval(a.passage.get(i).x + a.taille / 2, a.passage.get(i).y + a.taille / 2, 3, 3);
+			for (int i = 0; i < a.getPassage().size(); i++) {
+				g.fillOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2, 3, 3);
 			}	
 			
 		}
 
 		//dessin du bec
-		CreerTriangle(a.c.x+a.getTaille()/2, a.c.y+a.getTaille(), a.c.x+a.getTaille()/2, a.c.y, (a.c2.x-50)+a.getTaille()+a.getTaille()/2, a.c2.y+a.getTaille()/2);
+		CreerTriangle(a.getC().x+a.getTaille()/2, a.getC().y+a.getTaille(), a.getC().x+a.getTaille()/2, a.getC().y, (a.getC2().x-50)+a.getTaille()+a.getTaille()/2, a.getC2().y+a.getTaille()/2);
 		int[] px = { p[0].x, p[1].x, p[2].x };
 		int[] py = { p[0].y, p[1].y, p[2].y };
 		g.setColor(Constantes.COULEUR_BEC);
@@ -78,11 +78,11 @@ public class Affichage extends JPanel {
 					g.setColor(Constantes.COULEUR_OISEAU_TOUCHE);
 				}
 				
-				g.fillOval(a.c.x, a.c.y, a.taille, a.taille);
+				g.fillOval(a.getC().x, a.getC().y, a.getTaille(), a.getTaille());
 				g.setColor(Color.WHITE);
-				g.fillOval(a.c.x+23, a.c.y+8, 12, 12);
+				g.fillOval(a.getC().x+23, a.getC().y+8, 12, 12);
 				g.setColor(Color.BLACK);
-				g.fillOval(a.c.x+27, a.c.y+11, 6, 6);
+				g.fillOval(a.getC().x+27, a.getC().y+11, 6, 6);
 
 	}
 
