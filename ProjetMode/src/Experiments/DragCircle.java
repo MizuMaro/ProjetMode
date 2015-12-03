@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+// https://openclassrooms.com/courses/apprenez-a-programmer-en-java/le-drag-n-drop
+
+
 public class DragCircle extends JFrame {
 	
 
@@ -42,7 +45,7 @@ public class DragCircle extends JFrame {
 
     }
 
-    public void paint(Graphics g) {
+    public void paintComponent(Graphics g) {
     	super.paint(g);
     	g.setColor(Color.RED);
     	g.fillOval(cX, cY, r * 2, r * 2);
