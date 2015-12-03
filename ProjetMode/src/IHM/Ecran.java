@@ -197,13 +197,6 @@ public class Ecran {
 		
 		affichage.setCollision(false);
 		
-		//collision avec le sol
-		//System.out.println(this.a.getC());
-		if(this.a.getC().getY() > 400){
-			System.out.println("collision");
-			Thread.sleep(5000);
-		}
-		
 		if(Constantes.TRAJECTOIRE_UNIQUE){
 			o.effacerTrajectoire();
 			o.effacerTrajectoireTangeante();
@@ -231,6 +224,11 @@ public class Ecran {
 		long timeFin = timeLancement + 15000;
 		
 		while (x <= 800 * 7 && !touch && timeLancement<timeFin) {
+			
+			//collision avec le sol
+			if(this.a.getC().getY() > Constantes.HAUTEUR_SOL - Constantes.TAILLE_OISEAU){
+				System.out.println("lel collision");
+			}
 			
 			timeLancement = System.currentTimeMillis();
 			// plus ou moins loin
