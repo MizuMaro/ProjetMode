@@ -54,7 +54,15 @@ public class Affichage extends JPanel {
 		g.drawLine(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, a.getC().x+Constantes.TAILLE_OISEAU/2, a.getC().y+Constantes.TAILLE_OISEAU/2);
 		
 		//valeur du vecteur de lancer
+		if(distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, 
+				a.getC().x+Constantes.TAILLE_OISEAU/2, a.getC().y+Constantes.TAILLE_OISEAU/2) > Constantes.RAYON_DEPART){g.setColor(Color.red);}
 		g.drawString(String.valueOf(distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, a.getC().x+Constantes.TAILLE_OISEAU/2, a.getC().y+Constantes.TAILLE_OISEAU/2)), a.getC().x+Constantes.TAILLE_OISEAU, a.getC().y+Constantes.TAILLE_OISEAU/2-20);
+		
+		//zone possible au lancer
+		/*
+		g.setColor(Color.GRAY);
+		g.drawOval(Constantes.COORDONNEES_ORIGINE.x - Constantes.RAYON_DEPART, Constantes.COORDONNEES_ORIGINE.y- Constantes.RAYON_DEPART, Constantes.RAYON_DEPART*2, Constantes.RAYON_DEPART*2);
+		*/
 		
 		//dessin du bec
 		CreerTriangle(a.getC().x+a.getTaille()/2, a.getC().y+a.getTaille(), a.getC().x+a.getTaille()/2, a.getC().y, (a.getC2().x-50)+a.getTaille()+a.getTaille()/2, a.getC2().y+a.getTaille()/2);

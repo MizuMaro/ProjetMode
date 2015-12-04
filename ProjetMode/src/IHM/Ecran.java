@@ -42,7 +42,7 @@ public class Ecran {
 		
 		
 		// Si vous voulez faire des tests en conditions normales d'execution (sans le drag&drop),
-		// mettez en commentaire le Listener ci-dessous.
+		// mettez en commentaire le Listener ci-dessous et decommentez les fonctions courbes.
 		
 		fenetre.addMouseMotionListener(new MouseMotionListener() {
 			
@@ -51,9 +51,26 @@ public class Ecran {
 			
 			@Override
 			public void mouseDragged(MouseEvent e) {	
-				getOiseau().setC(e.getX()-Constantes.TAILLE_OISEAU/2,e.getY()-Constantes.TAILLE_OISEAU);
-				getOiseau().setC2(getOiseau().getC().x+50, getOiseau().getC().y);
-				affichage.repaint();	
+				if(affichage.distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, 
+						Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, 
+						a.getC().x+Constantes.TAILLE_OISEAU/2, 
+						a.getC().y+Constantes.TAILLE_OISEAU/2)< Constantes.RAYON_DEPART){
+				
+					getOiseau().setC2(getOiseau().getC().x+50, getOiseau().getC().y);	
+					getOiseau().setC(e.getX()-Constantes.TAILLE_OISEAU/2,e.getY()-Constantes.TAILLE_OISEAU);
+					affichage.repaint();
+				}else{
+					//sorti de la zone de depart
+					/*
+					getOiseau().setC2(getOiseau().getC().x+50, getOiseau().getC().y);	
+					getOiseau().setC(Constantes.COORDONNEES_ORIGINE.x, Constantes.COORDONNEES_ORIGINE.y);
+					*/
+					getOiseau().setC2(getOiseau().getC().x+50, getOiseau().getC().y);	
+					getOiseau().setC(e.getX()-Constantes.TAILLE_OISEAU/2,e.getY()-Constantes.TAILLE_OISEAU);
+					
+					
+					affichage.repaint();
+				}
 			}
 		});
 		
