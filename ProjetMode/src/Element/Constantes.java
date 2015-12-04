@@ -16,7 +16,7 @@ public class Constantes {
 	public final static int LARGEUR_ECRAN = 1200;
 	public final static int HAUTEUR_ECRAN = 610;
 	public final static Color COULEUR_BACKGROUND = Color.BLACK;
-	public final static Point COORDONNEES_ORIGINE = new Point(50,400);
+	public final static Point COORDONNEES_ORIGINE = new Point(150,350);
 	
 	
 	public final static int TAILLE_OISEAU = 40;
@@ -36,6 +36,10 @@ public class Constantes {
 	
 	public final static int HAUTEUR_SOL = 550;
 	public final static Color COULEUR_SOL = Color.LIGHT_GRAY;
+	
+	
+	
+	public final static int RAYON_DEPART = 50;
 	
 	
 }

@@ -50,10 +50,10 @@ public class Ecran {
 			public void mouseMoved(MouseEvent e) {}
 			
 			@Override
-			public void mouseDragged(MouseEvent e) {
+			public void mouseDragged(MouseEvent e) {	
 				getOiseau().setC(e.getX()-Constantes.TAILLE_OISEAU/2,e.getY()-Constantes.TAILLE_OISEAU);
 				getOiseau().setC2(getOiseau().getC().x+50, getOiseau().getC().y);
-				affichage.repaint();				
+				affichage.repaint();	
 			}
 		});
 		
