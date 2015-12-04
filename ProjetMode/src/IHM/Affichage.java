@@ -53,6 +53,9 @@ public class Affichage extends JPanel {
 		g.setColor(Color.WHITE);
 		g.drawLine(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, a.getC().x+Constantes.TAILLE_OISEAU/2, a.getC().y+Constantes.TAILLE_OISEAU/2);
 		
+		//valeur du vecteur de lancer
+		g.drawString(String.valueOf(distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, a.getC().x+Constantes.TAILLE_OISEAU/2, a.getC().y+Constantes.TAILLE_OISEAU/2)), a.getC().x+Constantes.TAILLE_OISEAU, a.getC().y+Constantes.TAILLE_OISEAU/2-20);
+		
 		//dessin du bec
 		CreerTriangle(a.getC().x+a.getTaille()/2, a.getC().y+a.getTaille(), a.getC().x+a.getTaille()/2, a.getC().y, (a.getC2().x-50)+a.getTaille()+a.getTaille()/2, a.getC2().y+a.getTaille()/2);
 		int[] px = { p[0].x, p[1].x, p[2].x };
@@ -110,5 +113,9 @@ public class Affichage extends JPanel {
 		p[1] = new Point(x2, y2);
 		p[2] = new Point(x3, y3);
 	}
+	
+	public double distance(double x1, double y1, double x2, double y2) {
+        return Math.round(Math.sqrt((y2 - y1)*(y2 - y1) + (x2 - x1)*(x2 - x1)));
+    }
 
 }
