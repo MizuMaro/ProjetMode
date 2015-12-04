@@ -1,6 +1,8 @@
 package IHM;
 
 import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -13,9 +15,7 @@ import Element.Oiseau;
 public class Ecran {
 	private JFrame fenetre;
 	private Oiseau a;
-	
-	
-	
+
 	// liste et obstacle
 	private ArrayList<Obstacle> obstacles = new ArrayList<>();
 	private Obstacle ob1;
@@ -39,6 +39,35 @@ public class Ecran {
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre.setVisible(true);
 		fenetre.setLocationRelativeTo(null);
+		
+		// Si vous voulez faire des tests en conditions normales d'execution (sans le drag&drop),
+		// mettez en commentaire le Listener ci-dessous.
+		
+		fenetre.addMouseListener(new MouseListener(){
+			
+			public void mouseClicked(MouseEvent e) {
+		    }
+
+			@Override
+			public void mouseEntered(MouseEvent e) {		
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {		
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				getOiseau().setC(e.getX()-Constantes.TAILLE_OISEAU/2,e.getY()-Constantes.TAILLE_OISEAU);
+				getOiseau().setC2(100, 430);
+				affichage.repaint();
+			}
+		});
+		
 		
 		// initialisation de l'oiseau
 		a = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
@@ -85,14 +114,16 @@ public class Ecran {
 		fenetre.setContentPane(affichage);		
 
 		// differentes courbes
+		/*
 		courbe(0.0009, -1, 500, a);
-		//courbeCubique(-0.0000005, 0.1, 450, a);
-		//courbe(0.0009, -1, 500, a);
-		//courbe(0.0008, -1.01, 500, a);
-		//courbe(0.00077, -1.05, 500, a);
-		//courbe(0.0007, -1.05, 500, a);
+		courbeCubique(-0.0000005, 0.1, 450, a);
+		courbe(0.0009, -1, 500, a);
+		courbe(0.0008, -1.01, 500, a);
+		courbe(0.00077, -1.05, 500, a);
+		courbe(0.0007, -1.05, 500, a);
 		courbeCubique(0.000001, 0.001, 450, a);
 		courbe(0.0005, -1, 500, a);
+		*/
 		
 
 	}
@@ -290,6 +321,10 @@ public class Ecran {
 			
 			affichage.repaint();
 		}
+	}
+	
+	public Oiseau getOiseau() {
+		return a;
 	}
 
 }
