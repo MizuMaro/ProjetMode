@@ -63,7 +63,7 @@ public class Ecran {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				getOiseau().setC(e.getX()-Constantes.TAILLE_OISEAU/2,e.getY()-Constantes.TAILLE_OISEAU);
-				getOiseau().setC2(100, 430);
+				getOiseau().setC2(getOiseau().getC().x+50, getOiseau().getC().y);
 				affichage.repaint();
 			}
 		});
