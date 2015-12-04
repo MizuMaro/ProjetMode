@@ -45,6 +45,10 @@ public class Affichage extends JPanel {
 			
 		}
 
+		//position de depart
+		g.setColor(Color.GREEN);
+		g.fillOval(Constantes.COORDONNEES_ORIGINE.x-3, Constantes.COORDONNEES_ORIGINE.y-3, Constantes.TAILLE_OISEAU+6, Constantes.TAILLE_OISEAU+6);
+		
 		//dessin du bec
 		CreerTriangle(a.getC().x+a.getTaille()/2, a.getC().y+a.getTaille(), a.getC().x+a.getTaille()/2, a.getC().y, (a.getC2().x-50)+a.getTaille()+a.getTaille()/2, a.getC2().y+a.getTaille()/2);
 		int[] px = { p[0].x, p[1].x, p[2].x };
