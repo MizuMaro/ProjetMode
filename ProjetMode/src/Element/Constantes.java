@@ -26,8 +26,8 @@ public class Constantes {
 	public final static Color COULEUR_BEC = Color.YELLOW;
 	
 	public final static Color COULEUR_TRAJECTOIRE = Color.gray;
-	public final static boolean TRAJECTOIRES = true;
-	public final static boolean TRAJECTOIRE_UNIQUE = true;
+	public final static boolean TRAJECTOIRES = false;
+	public final static boolean TRAJECTOIRE_UNIQUE = false;
 	
 	public final static int TAILLE_OBSTACLES = 40;
 	public final static Color COULEUR_OBSTACLE = Color.GREEN;

@@ -2,7 +2,7 @@ package IHM;
 
 import java.awt.Point;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -40,31 +40,20 @@ public class Ecran {
 		fenetre.setVisible(true);
 		fenetre.setLocationRelativeTo(null);
 		
+		
 		// Si vous voulez faire des tests en conditions normales d'execution (sans le drag&drop),
 		// mettez en commentaire le Listener ci-dessous.
 		
-		fenetre.addMouseListener(new MouseListener(){
+		fenetre.addMouseMotionListener(new MouseMotionListener() {
 			
-			public void mouseClicked(MouseEvent e) {
-		    }
-
 			@Override
-			public void mouseEntered(MouseEvent e) {		
-			}
-
+			public void mouseMoved(MouseEvent e) {}
+			
 			@Override
-			public void mouseExited(MouseEvent e) {		
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
+			public void mouseDragged(MouseEvent e) {
 				getOiseau().setC(e.getX()-Constantes.TAILLE_OISEAU/2,e.getY()-Constantes.TAILLE_OISEAU);
 				getOiseau().setC2(getOiseau().getC().x+50, getOiseau().getC().y);
-				affichage.repaint();
+				affichage.repaint();				
 			}
 		});
 		
@@ -110,6 +99,10 @@ public class Ecran {
 		obstacles.add(ob8);
 		obstacles.add(ob9);
 
+		
+		//initialisation de la position du bec
+		getOiseau().setC2(getOiseau().getC().x+50, getOiseau().getC().y);
+		
 		affichage = new Affichage(a, obstacles, compteurTouch);
 		fenetre.setContentPane(affichage);		
 
@@ -125,7 +118,6 @@ public class Ecran {
 		courbe(0.0005, -1, 500, a);
 		*/
 		
-
 	}
 
 	
