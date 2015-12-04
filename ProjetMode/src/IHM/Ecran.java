@@ -14,6 +14,8 @@ public class Ecran {
 	private JFrame fenetre;
 	private Oiseau a;
 	
+	
+	
 	// liste et obstacle
 	private ArrayList<Obstacle> obstacles = new ArrayList<>();
 	private Obstacle ob1;
@@ -83,16 +85,15 @@ public class Ecran {
 		fenetre.setContentPane(affichage);		
 
 		// differentes courbes
-		/*
 		courbe(0.0009, -1, 500, a);
-		courbeCubique(-0.0000005, 0.1, 450, a);
-		courbe(0.0009, -1, 500, a);
-		courbe(0.0008, -1.01, 500, a);
-		courbe(0.00077, -1.05, 500, a);
-		courbe(0.0007, -1.05, 500, a);
-		*/
+		//courbeCubique(-0.0000005, 0.1, 450, a);
+		//courbe(0.0009, -1, 500, a);
+		//courbe(0.0008, -1.01, 500, a);
+		//courbe(0.00077, -1.05, 500, a);
+		//courbe(0.0007, -1.05, 500, a);
 		courbeCubique(0.000001, 0.001, 450, a);
 		courbe(0.0005, -1, 500, a);
+		
 
 	}
 
@@ -101,13 +102,6 @@ public class Ecran {
 	void courbe(double a, double b, double c, Oiseau o) throws InterruptedException {
 		
 		affichage.setCollision(false);
-		
-		//collision avec le sol
-		//System.out.println(this.a.getC());
-		if(this.a.getC().getY() > Constantes.HAUTEUR_SOL){
-			Thread.sleep(1000);
-			System.out.println("collision");
-		}
 		
 		if(Constantes.TRAJECTOIRE_UNIQUE){
 			o.effacerTrajectoire();
@@ -130,11 +124,15 @@ public class Ecran {
 		int x2 = 50+50;
 		int y2 =0;
 		boolean touch = false;
+		boolean sol = false;
 		
 		long timeLancement = System.currentTimeMillis();
 		long timeFin = timeLancement + 15000;
 		
 		while (x <= 800 * 7 && !touch && timeLancement<timeFin) {
+			
+			//collision avec le sol
+			sol = (this.a.getC().getY() > Constantes.HAUTEUR_SOL - Constantes.TAILLE_OISEAU);
 			
 			timeLancement = System.currentTimeMillis();
 			// plus ou moins loin
@@ -170,7 +168,10 @@ public class Ecran {
 				if (ob.isActif() && this.a.getC().getX() > ob.getC().getX() - Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getX() < ob.getC().getX() + Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getY() > ob.getC().getY() - Constantes.TAILLE_OBSTACLES
-						&& this.a.getC().getY() < ob.getC().getY() + Constantes.TAILLE_OBSTACLES) {
+						&& this.a.getC().getY() < ob.getC().getY() + Constantes.TAILLE_OBSTACLES
+						
+						//collision avec le sol
+						|| sol) {
 					
 					affichage.setCollision(true);
 					touch = true;
@@ -179,6 +180,7 @@ public class Ecran {
 					affichage.repaint();
 					now = System.currentTimeMillis();
 					time = now + 2000;
+					sol=false;
 					
 					while (now < time) {
 						now = System.currentTimeMillis();
@@ -219,6 +221,7 @@ public class Ecran {
 		int x2 = 50+50;
 		int y2 =0;
 		boolean touch = false;
+		boolean sol = false;
 		
 		long timeLancement = System.currentTimeMillis();
 		long timeFin = timeLancement + 15000;
@@ -226,9 +229,7 @@ public class Ecran {
 		while (x <= 800 * 7 && !touch && timeLancement<timeFin) {
 			
 			//collision avec le sol
-			if(this.a.getC().getY() > Constantes.HAUTEUR_SOL - Constantes.TAILLE_OISEAU){
-				System.out.println("lel collision");
-			}
+			sol = (this.a.getC().getY() > Constantes.HAUTEUR_SOL - Constantes.TAILLE_OISEAU);
 			
 			timeLancement = System.currentTimeMillis();
 			// plus ou moins loin
@@ -265,7 +266,10 @@ public class Ecran {
 				if (ob.isActif() && this.a.getC().getX() > ob.getC().getX() - Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getX() < ob.getC().getX() + Constantes.TAILLE_OBSTACLES
 						&& this.a.getC().getY() > ob.getC().getY() - Constantes.TAILLE_OBSTACLES
-						&& this.a.getC().getY() < ob.getC().getY() + Constantes.TAILLE_OBSTACLES) {
+						&& this.a.getC().getY() < ob.getC().getY() + Constantes.TAILLE_OBSTACLES
+						
+						//collision avec le sol ?
+						|| sol) {
 					
 					affichage.setCollision(true);
 					touch = true;
@@ -274,6 +278,7 @@ public class Ecran {
 					affichage.repaint();
 					now = System.currentTimeMillis();
 					time = now + 2000;
+					sol=false;
 					
 					while (now < time) {
 						now = System.currentTimeMillis();

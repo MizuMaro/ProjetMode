@@ -84,33 +84,8 @@ public class Ellipse extends JFrame {
       Graphics2D g2D = (Graphics2D) g;
       ellipse = new Ellipse2D.Double(x, y, w, h);
       g2D.draw(ellipse);
-      if (boundingRec != null) {
-        drawHighlightSquares(g2D, boundingRec);
-      }
       if (curCursor != null)
         setCursor(curCursor);
-    }
-    public void drawHighlightSquares(Graphics2D g2D, Rectangle2D r) {
-      double x = r.getX();
-      double y = r.getY();
-      double w = r.getWidth();
-      double h = r.getHeight();
-      g2D.setColor(Color.black);
-
-      g2D.fill(new Rectangle.Double(x - 3.0, y - 3.0, 6.0, 6.0));
-      g2D
-          .fill(new Rectangle.Double(x + w * 0.5 - 3.0, y - 3.0, 6.0,
-              6.0));
-      g2D.fill(new Rectangle.Double(x + w - 3.0, y - 3.0, 6.0, 6.0));
-      g2D
-          .fill(new Rectangle.Double(x - 3.0, y + h * 0.5 - 3.0, 6.0,
-              6.0));
-      g2D.fill(new Rectangle.Double(x + w - 3.0, y + h * 0.5 - 3.0, 6.0,
-          6.0));
-      g2D.fill(new Rectangle.Double(x - 3.0, y + h - 3.0, 6.0, 6.0));
-      g2D.fill(new Rectangle.Double(x + w * 0.5 - 3.0, y + h - 3.0, 6.0,
-          6.0));
-      g2D.fill(new Rectangle.Double(x + w - 3.0, y + h - 3.0, 6.0, 6.0));
     }
 
     class MyMouseListener extends MouseAdapter {
