@@ -44,6 +44,7 @@ public class Ecran {
 		// Si vous voulez faire des tests en conditions normales d'execution (sans le drag&drop),
 		// mettez en commentaire le Listener ci-dessous et decommentez les fonctions courbes.
 		
+		/*
 		fenetre.addMouseMotionListener(new MouseMotionListener() {
 			
 			@Override
@@ -64,7 +65,7 @@ public class Ecran {
 					/*
 					getOiseau().setC2(getOiseau().getC().x+50, getOiseau().getC().y);	
 					getOiseau().setC(Constantes.COORDONNEES_ORIGINE.x, Constantes.COORDONNEES_ORIGINE.y);
-					*/
+					
 					getOiseau().setC2(getOiseau().getC().x+50, getOiseau().getC().y);	
 					getOiseau().setC(e.getX()-Constantes.TAILLE_OISEAU/2,e.getY()-Constantes.TAILLE_OISEAU);
 					
@@ -73,7 +74,7 @@ public class Ecran {
 				}
 			}
 		});
-		
+		*/
 		
 		// initialisation de l'oiseau
 		a = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
@@ -124,7 +125,7 @@ public class Ecran {
 		fenetre.setContentPane(affichage);		
 
 		// differentes courbes
-		/*
+
 		courbe(0.0009, -1, 500, a);
 		courbeCubique(-0.0000005, 0.1, 450, a);
 		courbe(0.0009, -1, 500, a);
@@ -133,7 +134,6 @@ public class Ecran {
 		courbe(0.0007, -1.05, 500, a);
 		courbeCubique(0.000001, 0.001, 450, a);
 		courbe(0.0005, -1, 500, a);
-		*/
 		
 	}
 
@@ -172,7 +172,7 @@ public class Ecran {
 		while (x <= 800 * 7 && !touch && timeLancement<timeFin) {
 			
 			//collision avec le sol
-			sol = (this.a.getC().getY() > Constantes.HAUTEUR_SOL - Constantes.TAILLE_OISEAU);
+			sol = (this.a.getC().getY() >= Constantes.HAUTEUR_SOL - Constantes.TAILLE_OISEAU);
 			
 			timeLancement = System.currentTimeMillis();
 			// plus ou moins loin
@@ -204,14 +204,10 @@ public class Ecran {
 					((ObstacleMouvant)ob).moveY();
 				}
 				
-				//test si un obstacle est touche
-				if (ob.isActif() && this.a.getC().getX() > ob.getC().getX() - Constantes.TAILLE_OBSTACLES
-						&& this.a.getC().getX() < ob.getC().getX() + Constantes.TAILLE_OBSTACLES
-						&& this.a.getC().getY() > ob.getC().getY() - Constantes.TAILLE_OBSTACLES
-						&& this.a.getC().getY() < ob.getC().getY() + Constantes.TAILLE_OBSTACLES
-						
-						//collision avec le sol
-						|| sol) {
+				if(ob.isActif() && affichage.distance(this.a.getC().getX(), this.a.getC().getY(), 
+								   ob.getC().getX(), ob.getC().getY()) <= (Constantes.TAILLE_OISEAU/2 + Constantes.TAILLE_OBSTACLES/2) 
+						// collision avec le sol ?
+						|| sol){
 					
 					affichage.setCollision(true);
 					touch = true;
@@ -269,7 +265,7 @@ public class Ecran {
 		while (x <= 800 * 7 && !touch && timeLancement<timeFin) {
 			
 			//collision avec le sol
-			sol = (this.a.getC().getY() > Constantes.HAUTEUR_SOL - Constantes.TAILLE_OISEAU);
+			sol = (this.a.getC().getY() >= Constantes.HAUTEUR_SOL - Constantes.TAILLE_OISEAU);
 			
 			timeLancement = System.currentTimeMillis();
 			// plus ou moins loin
@@ -302,14 +298,10 @@ public class Ecran {
 					((ObstacleMouvant)ob).moveY();
 				}
 				
-				// test si un obstacle est touche
-				if (ob.isActif() && this.a.getC().getX() > ob.getC().getX() - Constantes.TAILLE_OBSTACLES
-						&& this.a.getC().getX() < ob.getC().getX() + Constantes.TAILLE_OBSTACLES
-						&& this.a.getC().getY() > ob.getC().getY() - Constantes.TAILLE_OBSTACLES
-						&& this.a.getC().getY() < ob.getC().getY() + Constantes.TAILLE_OBSTACLES
-						
-						//collision avec le sol ?
-						|| sol) {
+				if(ob.isActif() && affichage.distance(this.a.getC().getX(), this.a.getC().getY(), 
+						   ob.getC().getX(), ob.getC().getY()) <= (Constantes.TAILLE_OISEAU/2 + Constantes.TAILLE_OBSTACLES/2) 
+						// collision avec le sol ?
+						|| sol){
 					
 					affichage.setCollision(true);
 					touch = true;

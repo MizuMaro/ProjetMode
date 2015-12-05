@@ -50,14 +50,16 @@ public class Affichage extends JPanel {
 		g.fillOval(Constantes.COORDONNEES_ORIGINE.x, Constantes.COORDONNEES_ORIGINE.y, Constantes.TAILLE_OISEAU, Constantes.TAILLE_OISEAU);
 		
 		//orientation de la courbe de lancer
-		g.setColor(Color.WHITE);
-		g.drawLine(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, a.getC().x+Constantes.TAILLE_OISEAU/2, a.getC().y+Constantes.TAILLE_OISEAU/2);
-		
-		//valeur du vecteur de lancer
-		if(distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, 
-				a.getC().x+Constantes.TAILLE_OISEAU/2, a.getC().y+Constantes.TAILLE_OISEAU/2) > Constantes.RAYON_DEPART){g.setColor(Color.red);}
-		g.drawString(String.valueOf(distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, a.getC().x+Constantes.TAILLE_OISEAU/2, a.getC().y+Constantes.TAILLE_OISEAU/2)), a.getC().x+Constantes.TAILLE_OISEAU, a.getC().y+Constantes.TAILLE_OISEAU/2-20);
-		
+		if(Constantes.DISTANCE){
+			g.setColor(Color.WHITE);
+			g.drawLine(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, a.getC().x+Constantes.TAILLE_OISEAU/2, a.getC().y+Constantes.TAILLE_OISEAU/2);
+
+
+			//valeur du vecteur de lancer
+			if(distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, 
+					a.getC().x+Constantes.TAILLE_OISEAU/2, a.getC().y+Constantes.TAILLE_OISEAU/2) > Constantes.RAYON_DEPART){g.setColor(Color.red);}
+			g.drawString(String.valueOf(distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, a.getC().x+Constantes.TAILLE_OISEAU/2, a.getC().y+Constantes.TAILLE_OISEAU/2)), a.getC().x+Constantes.TAILLE_OISEAU, a.getC().y+Constantes.TAILLE_OISEAU/2-20);
+		}
 		//zone possible au lancer
 		/*
 		g.setColor(Color.GRAY);
