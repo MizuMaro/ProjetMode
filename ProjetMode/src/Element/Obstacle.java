@@ -10,9 +10,10 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class Obstacle extends JPanel {
-	int taille;
-	Point c;
-	boolean actif;
+	private int taille;
+	private Point c;
+	private boolean actif;
+	private boolean carre;
 
 	/**
 	 * Constructeur a appeler pour creer un obstacle.
@@ -58,8 +59,8 @@ public class Obstacle extends JPanel {
 	}
 
 	/**
-	 * Cette fonction permet d'obtenir les coordonn�es de l'obstacle.
-	 * @return Point contenant les coordonn�es x et y de l'obstacle.
+	 * Cette fonction permet d'obtenir les coordonnees de l'obstacle.
+	 * @return Point contenant les coordonnees x et y de l'obstacle.
 	 */
 	public Point getC() {
 		return c;
@@ -67,11 +68,19 @@ public class Obstacle extends JPanel {
 
 	/**
 	 * Cette fonction permet de parametrer les coordonn�es de l'obstacle.
-	 * @param x Coordonn�e en x de l'obstacle.
-	 * @param y Coordonn�e en y de l'obstacle.
+	 * @param x Coordonnee en x de l'obstacle.
+	 * @param y Coordonnee en y de l'obstacle.
 	 */
 	public void setC(int x, int y) {
 		this.c.x = x;
 		this.c.y = y;
+	}
+	
+	public boolean isCarre(){
+		return this.carre;
+	}
+	
+	public void setCarre(boolean b){
+		this.carre = b;
 	}
 }

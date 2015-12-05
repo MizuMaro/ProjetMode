@@ -37,7 +37,7 @@ public class Constantes {
 	public final static int HAUTEUR_SOL = 550;
 	public final static Color COULEUR_SOL = Color.LIGHT_GRAY;
 	
-	public final static int RAYON_DEPART = 120;
+	public final static int RAYON_DEPART = 150;
 	public final static boolean DISTANCE = true;
 	
 	

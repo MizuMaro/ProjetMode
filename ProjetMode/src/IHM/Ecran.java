@@ -4,7 +4,6 @@ import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
@@ -47,7 +46,6 @@ public class Ecran {
 		// Si vous voulez faire des tests en conditions normales d'execution (sans le drag&drop),
 		// mettez en commentaire le Listener ci-dessous et decommentez les fonctions courbes.
 		
-		
 		fenetre.addMouseMotionListener(new MouseMotionListener() {
 			
 			@Override
@@ -57,7 +55,7 @@ public class Ecran {
 			public void mouseDragged(MouseEvent e) {	
 				
 				if(e.getX() < Constantes.COORDONNEES_ORIGINE.x+20+Constantes.RAYON_DEPART && e.getX() > Constantes.COORDONNEES_ORIGINE.x+20-Constantes.RAYON_DEPART
-						&& e.getY() < Constantes.COORDONNEES_ORIGINE.y+20+Constantes.RAYON_DEPART && e.getY() > Constantes.COORDONNEES_ORIGINE.y+20-Constantes.RAYON_DEPART
+						&& e.getY() < Constantes.COORDONNEES_ORIGINE.y+2*20+Constantes.RAYON_DEPART && e.getY() > Constantes.COORDONNEES_ORIGINE.y+20-Constantes.RAYON_DEPART
 						
 						&& affichage.distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, 
 						Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, 
@@ -86,6 +84,8 @@ public class Ecran {
 					getOiseau().setC(Constantes.COORDONNEES_ORIGINE.x, Constantes.COORDONNEES_ORIGINE.y);
 					getOiseau().setC2(getOiseau().getC().x+50, getOiseau().getC().y);	
 					affichage.repaint();
+				}else if(e.getKeyChar() == 'q'){
+					System.exit(0);
 				}
 				
 			}
@@ -119,7 +119,7 @@ public class Ecran {
 				fenetre.getHeight()/3));
 		ob9.setLimites_x(new int[]{fenetre.getWidth() - 1000, fenetre.getWidth() - 800});
 		ob9.setLimites_y(new int[]{fenetre.getHeight()/3, fenetre.getHeight()/3});
-		
+		ob9.setCarre(true);
 		
 		// ajout des obstacles dans la liste pour pouvoir les gerer
 		obstacles.add(ob1);
@@ -225,6 +225,8 @@ public class Ecran {
 						// collision avec le sol ?
 						|| sol){
 					
+					// implementer la collision avec les obstacles carres
+					
 					affichage.setCollision(true);
 					touch = true;
 					compteurTouch++;
@@ -318,6 +320,8 @@ public class Ecran {
 						   ob.getC().getX(), ob.getC().getY()) <= (Constantes.TAILLE_OISEAU/2 + Constantes.TAILLE_OBSTACLES/2) 
 						// collision avec le sol ?
 						|| sol){
+					
+					// implementer la collision avec les obstacles carres
 					
 					affichage.setCollision(true);
 					touch = true;

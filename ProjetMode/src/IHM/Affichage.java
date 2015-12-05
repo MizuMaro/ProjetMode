@@ -53,12 +53,6 @@ public class Affichage extends JPanel {
 		if(Constantes.DISTANCE){
 			g.setColor(Color.WHITE);
 			g.drawLine(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, a.getC().x+Constantes.TAILLE_OISEAU/2, a.getC().y+Constantes.TAILLE_OISEAU/2);
-
-
-			//valeur du vecteur de lancer
-			if(distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, 
-					a.getC().x+Constantes.TAILLE_OISEAU/2, a.getC().y+Constantes.TAILLE_OISEAU/2) > Constantes.RAYON_DEPART){g.setColor(Color.red);}
-			g.drawString(String.valueOf(distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, a.getC().x+Constantes.TAILLE_OISEAU/2, a.getC().y+Constantes.TAILLE_OISEAU/2)), a.getC().x+Constantes.TAILLE_OISEAU, a.getC().y+Constantes.TAILLE_OISEAU/2-20);
 		}
 
 		//dessin du bec
@@ -78,13 +72,17 @@ public class Affichage extends JPanel {
 		for (Obstacle o : listeObstacle) {
 
 			if (o.isActif()) {
-
 				g.setColor(Constantes.COULEUR_OBSTACLE);
-				g.drawOval(o.getC().x, o.getC().y, o.getTaille(), o.getTaille());
 			} else {
 				g.setColor(Constantes.COULEUR_OBSTACLE_TOUCHE);
-				g.drawOval(o.getC().x, o.getC().y, o.getTaille(), o.getTaille());
 			}
+			
+			if(!o.isCarre()){
+				g.drawOval(o.getC().x, o.getC().y, o.getTaille(), o.getTaille());
+			}else{
+				g.drawRect(o.getC().x, o.getC().y, o.getTaille(), o.getTaille());
+			}
+			
 		}
 
 		// dessin de l'oiseau
@@ -103,9 +101,12 @@ public class Affichage extends JPanel {
 		// Indications
 		g.setColor(Color.white);
 		g.drawString("Le rayon de battement est actuellement limité à " + Constantes.RAYON_DEPART + " pixels.", 10, 20);
+		if(distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, 
+				a.getC().x+Constantes.TAILLE_OISEAU/2, a.getC().y+Constantes.TAILLE_OISEAU/2) > Constantes.RAYON_DEPART){g.setColor(Color.red);}
 		g.drawString("La valeur actuelle de celui-ci est de " + 
-				distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, a.getC().x+Constantes.TAILLE_OISEAU/2, a.getC().y+Constantes.TAILLE_OISEAU/2)
+				(int)distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, a.getC().x+Constantes.TAILLE_OISEAU/2, a.getC().y+Constantes.TAILLE_OISEAU/2)
 				+ " pixels.", 10, 40);
+		g.setColor(Color.WHITE);
 		g.drawString("Pour repositionner l'oiseau sur la position de départ, appuyez sur la touche <r>.", 10, 60);
 
 	}

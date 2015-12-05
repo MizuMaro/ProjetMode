@@ -36,17 +36,17 @@ public class ObstacleMouvant extends Obstacle{
 		
 		if(this.limites_y[0] != this.limites_y[1]){			
 		
-			if(super.c.getY() <= this.getLimites_y()[0] ){
+			if(super.getC().getY() <= this.getLimites_y()[0] ){
 				descente = true;
-			}else if(super.c.getY() >= this.getLimites_y()[1]){
+			}else if(super.getC().getY() >= this.getLimites_y()[1]){
 				descente = false;
 			}
 			
 			if(descente){
-				super.c = new Point((int)super.c.getX(), (int)super.c.getY()+Constantes.VITESSE_OBSTACLES);
+				super.setC(super.getC().x, super.getC().y+Constantes.VITESSE_OBSTACLES);
 				//super.setY(super.getY()+1);
 			}else{
-				super.c = new Point((int)super.c.getX(), (int)super.c.getY()-Constantes.VITESSE_OBSTACLES);
+				super.setC(super.getC().x, super.getC().y-Constantes.VITESSE_OBSTACLES);
 				//super.setY(super.getY()-1);
 			}
 		
@@ -62,17 +62,17 @@ public class ObstacleMouvant extends Obstacle{
 		
 		if(limites_x[0] != limites_x[1]){
 			
-			if(super.c.getX() <= this.getLimites_x()[0]){
+			if(super.getC().getX() <= this.getLimites_x()[0]){
 				vers_droite = true;
-			}else if(super.c.getX() >= this.getLimites_x()[1]){
+			}else if(super.getC().getX() >= this.getLimites_x()[1]){
 				vers_droite = false;
 			}
 			
 			if(vers_droite){
-				super.c = new Point((int)super.c.getX()+Constantes.VITESSE_OBSTACLES, (int)super.c.getY());
+				super.setC(super.getC().x+Constantes.VITESSE_OBSTACLES, super.getC().y);
 				//super.setX(super.getX()+1);
 			}else{
-				super.c = new Point((int)super.c.getX()-Constantes.VITESSE_OBSTACLES, (int)super.c.getY());
+				super.setC(super.getC().x-Constantes.VITESSE_OBSTACLES, super.getC().y);
 				//super.setX(super.getX()-1);
 			}
 		}
