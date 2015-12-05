@@ -1,7 +1,10 @@
 package IHM;
 
 import java.awt.Point;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
@@ -44,7 +47,7 @@ public class Ecran {
 		// Si vous voulez faire des tests en conditions normales d'execution (sans le drag&drop),
 		// mettez en commentaire le Listener ci-dessous et decommentez les fonctions courbes.
 		
-		/*
+		
 		fenetre.addMouseMotionListener(new MouseMotionListener() {
 			
 			@Override
@@ -52,7 +55,11 @@ public class Ecran {
 			
 			@Override
 			public void mouseDragged(MouseEvent e) {	
-				if(affichage.distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, 
+				
+				if(e.getX() < Constantes.COORDONNEES_ORIGINE.x+20+Constantes.RAYON_DEPART && e.getX() > Constantes.COORDONNEES_ORIGINE.x+20-Constantes.RAYON_DEPART
+						&& e.getY() < Constantes.COORDONNEES_ORIGINE.y+20+Constantes.RAYON_DEPART && e.getY() > Constantes.COORDONNEES_ORIGINE.y+20-Constantes.RAYON_DEPART
+						
+						&& affichage.distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, 
 						Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, 
 						a.getC().x+Constantes.TAILLE_OISEAU/2, 
 						a.getC().y+Constantes.TAILLE_OISEAU/2)< Constantes.RAYON_DEPART){
@@ -60,21 +67,29 @@ public class Ecran {
 					getOiseau().setC2(getOiseau().getC().x+50, getOiseau().getC().y);	
 					getOiseau().setC(e.getX()-Constantes.TAILLE_OISEAU/2,e.getY()-Constantes.TAILLE_OISEAU);
 					affichage.repaint();
-				}else{
-					//sorti de la zone de depart
-					/*
-					getOiseau().setC2(getOiseau().getC().x+50, getOiseau().getC().y);	
-					getOiseau().setC(Constantes.COORDONNEES_ORIGINE.x, Constantes.COORDONNEES_ORIGINE.y);
-					
-					getOiseau().setC2(getOiseau().getC().x+50, getOiseau().getC().y);	
-					getOiseau().setC(e.getX()-Constantes.TAILLE_OISEAU/2,e.getY()-Constantes.TAILLE_OISEAU);
-					
-					
-					affichage.repaint();
 				}
 			}
 		});
-		*/
+		
+		fenetre.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent arg0) {}
+			
+			@Override
+			public void keyReleased(KeyEvent arg0) {}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				//reset a la position d'origine de l'oiseau
+				if(e.getKeyChar() == 'r'){
+					getOiseau().setC(Constantes.COORDONNEES_ORIGINE.x, Constantes.COORDONNEES_ORIGINE.y);
+					getOiseau().setC2(getOiseau().getC().x+50, getOiseau().getC().y);	
+					affichage.repaint();
+				}
+				
+			}
+		});
 		
 		// initialisation de l'oiseau
 		a = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
@@ -126,6 +141,7 @@ public class Ecran {
 
 		// differentes courbes
 
+		/*
 		courbe(0.0009, -1, 500, a);
 		courbeCubique(-0.0000005, 0.1, 450, a);
 		courbe(0.0009, -1, 500, a);
@@ -134,7 +150,7 @@ public class Ecran {
 		courbe(0.0007, -1.05, 500, a);
 		courbeCubique(0.000001, 0.001, 450, a);
 		courbe(0.0005, -1, 500, a);
-		
+		*/
 	}
 
 	
