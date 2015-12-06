@@ -3,11 +3,8 @@ package IHM;
 import java.awt.Point;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -40,7 +37,7 @@ public class Ecran {
 	public Ecran() throws InterruptedException {
 
 		this.fenetre = new JFrame(Constantes.TITRE);
-		fenetre.setSize(Constantes.LARGEUR_ECRAN, Constantes.HAUTEUR_ECRAN);
+		fenetre.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
 		fenetre.setResizable(false);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre.setVisible(true);
@@ -149,7 +146,7 @@ public class Ecran {
 
 		// differentes courbes
 
-		/*
+		
 		courbe(0.0009, -1, 500, a);
 		courbeCubique(-0.0000005, 0.1, 450, a);
 		courbe(0.0009, -1, 500, a);
@@ -158,23 +155,23 @@ public class Ecran {
 		courbe(0.0007, -1.05, 500, a);
 		courbeCubique(0.000001, 0.001, 450, a);
 		courbe(0.0005, -1, 500, a);
-		*/
+		
 	}
 
 	
 
 	void courbe(double a, double b, double c, Oiseau o) throws InterruptedException {
-		
-		affichage.setCollision(false);
-		
+			
 		if(Constantes.TRAJECTOIRE_UNIQUE){
 			o.effacerTrajectoire();
 			o.effacerTrajectoireTangeante();
 		}
 			
 		affichage.repaint();
+		
 		o.setC(50, 450);
 		o.setC2(100, 430);
+		
 		affichage.repaint();
 		
 		long premier = System.currentTimeMillis();
@@ -252,14 +249,13 @@ public class Ecran {
 				o.setC2(x2, y2);
 			}
 			
+			affichage.setCollision(false);
 			affichage.repaint();
 		}
 	}
 	
 	
 	void courbeCubique(double a, double b, double c, Oiseau o) throws InterruptedException {
-		
-		affichage.setCollision(false);
 		
 		if(Constantes.TRAJECTOIRE_UNIQUE){
 			o.effacerTrajectoire();
@@ -348,6 +344,7 @@ public class Ecran {
 				o.setC2(x2, y2);
 			}
 			
+			affichage.setCollision(false);
 			affichage.repaint();
 		}
 	}

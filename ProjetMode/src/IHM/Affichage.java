@@ -22,7 +22,7 @@ public class Affichage extends JPanel {
 	public Affichage(Oiseau a, ArrayList<Obstacle> listeObstacle, int i) {
 		this.a = a;
 		this.listeObstacle = listeObstacle;
-		this.setSize(Constantes.LARGEUR_ECRAN, Constantes.HAUTEUR_ECRAN);
+		this.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
 
 	}
 
@@ -65,7 +65,7 @@ public class Affichage extends JPanel {
 
 		// Dessin du sol
 		g.setColor(Constantes.COULEUR_SOL);
-		g.drawLine(0, Constantes.HAUTEUR_SOL, Constantes.LARGEUR_ECRAN, Constantes.HAUTEUR_SOL);
+		g.drawLine(0, Constantes.HAUTEUR_SOL, Constantes.TAILLE_ECRAN[0], Constantes.HAUTEUR_SOL);
 
 
 		// Dessin des obstacles
