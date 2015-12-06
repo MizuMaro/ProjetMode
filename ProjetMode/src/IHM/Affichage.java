@@ -100,14 +100,25 @@ public class Affichage extends JPanel {
 
 		// Indications
 		g.setColor(Color.white);
-		g.drawString("Le rayon de battement est actuellement limité à " + Constantes.RAYON_DEPART + " pixels.", 10, 20);
+		g.drawString("Le rayon de battement est actuellement contraint a " + Constantes.RAYON_DEPART + " pixels.", 10, 20);
 		if(distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, 
 				a.getC().x+Constantes.TAILLE_OISEAU/2, a.getC().y+Constantes.TAILLE_OISEAU/2) > Constantes.RAYON_DEPART){g.setColor(Color.red);}
 		g.drawString("La valeur actuelle de celui-ci est de " + 
 				(int)distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU/2, Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU/2, a.getC().x+Constantes.TAILLE_OISEAU/2, a.getC().y+Constantes.TAILLE_OISEAU/2)
 				+ " pixels.", 10, 40);
 		g.setColor(Color.WHITE);
-		g.drawString("Pour repositionner l'oiseau sur la position de départ, appuyez sur la touche <r>.", 10, 60);
+		g.drawString("Pour repositionner l'oiseau sur la position d'origine, appuyez sur la touche <r>.", 10, 60);
+		
+		// Coordonnees de l'oiseau
+		g.drawString("("+a.getC().x+","+a.getC().y+")", a.getC().x+10, a.getC().y - 10);
+		
+		// Coordonnees de l'origine
+		g.drawString("("+Constantes.COORDONNEES_ORIGINE.x+","+Constantes.COORDONNEES_ORIGINE.y+")", Constantes.COORDONNEES_ORIGINE.x+10, Constantes.COORDONNEES_ORIGINE.y - 10);
+		
+		// Equation de la droite
+		g.drawString("(" + Constantes.COORDONNEES_ORIGINE.y + " - " + a.getC().y + ")", 45, 90);
+		g.drawString("y = _________ = " + coeffDirecteur(), 27,94);
+		g.drawString("(" + Constantes.COORDONNEES_ORIGINE.x + " - " + a.getC().x + ")", 45, 110);
 
 	}
 
@@ -130,6 +141,17 @@ public class Affichage extends JPanel {
 
 	public double distance(double x1, double y1, double x2, double y2) {
 		return Math.round(Math.sqrt((y2 - y1)*(y2 - y1) + (x2 - x1)*(x2 - x1)));
+	}
+	
+	public double coeffDirecteur(){
+		double d = (a.getC().y - Constantes.COORDONNEES_ORIGINE.y);
+		double down = Math.abs(a.getC().x - Constantes.COORDONNEES_ORIGINE.x);
+		
+		if(down == 0){
+			return d;
+		}else{
+			return d/down;
+		}
 	}
 
 }
