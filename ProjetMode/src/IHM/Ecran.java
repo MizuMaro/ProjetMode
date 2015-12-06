@@ -1,13 +1,17 @@
 package IHM;
 
 import java.awt.Point;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.event.MouseInputAdapter;
 
 import Element.Constantes;
 import Element.Obstacle;
@@ -43,13 +47,30 @@ public class Ecran {
 		fenetre.setLocationRelativeTo(null);
 		
 		
-		// Si vous voulez faire des tests en conditions normales d'execution (sans le drag&drop),
-		// mettez en commentaire le Listener ci-dessous et decommentez les fonctions courbes.
 		
-		fenetre.addMouseMotionListener(new MouseMotionListener() {
-			
+		// Si vous voulez faire des tests en conditions normales d'execution (sans le drag&drop),
+		// mettez en commentaire les Listeners ci-dessous et decommentez les fonctions courbes.
+
+		
+		// Listener qui gere quelques actions au clavier
+		fenetre.addKeyListener(new KeyAdapter() {
+
 			@Override
-			public void mouseMoved(MouseEvent e) {}
+			public void keyPressed(KeyEvent e) {
+				//reset a la position d'origine de l'oiseau
+				if(e.getKeyChar() == 'r'){
+					getOiseau().setC(Constantes.COORDONNEES_ORIGINE.x, Constantes.COORDONNEES_ORIGINE.y);
+					getOiseau().setC2(getOiseau().getC().x+50, getOiseau().getC().y);	
+					affichage.repaint();
+				}else if(e.getKeyChar() == 'q'){
+					System.exit(0);
+				}
+
+			}
+		});
+		
+		// Listener qui gere le drag
+		fenetre.addMouseMotionListener(new MouseInputAdapter() {
 			
 			@Override
 			public void mouseDragged(MouseEvent e) {	
@@ -69,27 +90,14 @@ public class Ecran {
 			}
 		});
 		
-		fenetre.addKeyListener(new KeyListener() {
-			
-			@Override
-			public void keyTyped(KeyEvent arg0) {}
-			
-			@Override
-			public void keyReleased(KeyEvent arg0) {}
-			
-			@Override
-			public void keyPressed(KeyEvent e) {
-				//reset a la position d'origine de l'oiseau
-				if(e.getKeyChar() == 'r'){
-					getOiseau().setC(Constantes.COORDONNEES_ORIGINE.x, Constantes.COORDONNEES_ORIGINE.y);
-					getOiseau().setC2(getOiseau().getC().x+50, getOiseau().getC().y);	
-					affichage.repaint();
-				}else if(e.getKeyChar() == 'q'){
-					System.exit(0);
-				}
-				
+		// Listener qui gere le drop
+		fenetre.addMouseListener(new MouseAdapter() {
+			public void mouseReleased(MouseEvent e){
+				System.out.println("LANCEZ L'OISEAU !");
 			}
 		});
+		
+		
 		
 		// initialisation de l'oiseau
 		a = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
