@@ -95,7 +95,6 @@ public class Ecran {
 		});
 		
 		
-		
 		// initialisation de l'oiseau
 		a = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
 
@@ -143,20 +142,8 @@ public class Ecran {
 		
 		affichage = new Affichage(a, obstacles, compteurTouch);
 		fenetre.setContentPane(affichage);		
-
-		// differentes courbes
-
-		courbe(0.00077, -1.05, 500, a);courbe(0.00077, -1.05, 500, a);courbe(0.00077, -1.05, 500, a);courbe(0.00077, -1.05, 500, a);courbe(0.00077, -1.05, 500, a);
-		/*
-		courbe(0.0009, -1, 500, a);
-		courbeCubique(-0.0000005, 0.1, 450, a);
-		courbe(0.0009, -1, 500, a);
-		courbe(0.0008, -1.01, 500, a);
-		courbe(0.00077, -1.05, 500, a);
-		courbe(0.0007, -1.05, 500, a);
-		courbeCubique(0.000001, 0.001, 450, a);
-		courbe(0.0005, -1, 500, a);
-		*/
+		
+		courbesTest();
 	}
 
 	
@@ -370,6 +357,18 @@ public class Ecran {
 	
 	public Oiseau getOiseau() {
 		return a;
+	}
+	
+	public void courbesTest() throws InterruptedException{
+		courbe(0.00077, -1.05, 500, a);
+		courbe(0.0009, -1, 500, a);
+		courbeCubique(-0.0000005, 0.1, 450, a);
+		courbe(0.0009, -1, 500, a);
+		courbe(0.0008, -1.01, 500, a);
+		courbe(0.00077, -1.05, 500, a);
+		courbe(0.0007, -1.05, 500, a);
+		courbeCubique(0.000001, 0.001, 450, a);
+		courbe(0.0005, -1, 500, a);
 	}
 
 }
