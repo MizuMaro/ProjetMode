@@ -1,7 +1,10 @@
-package Element;
+package Obstacles;
 
 import java.awt.Point;
+
 import javax.swing.JPanel;
+
+import Element.Constantes;
 /**
  * La classe Obstacle est la classe incarnant les obstacles du projet.
  * @author Rmy

@@ -3,10 +3,10 @@ package Courbe;
 import java.util.ArrayList;
 
 import Element.Constantes;
-import Element.Obstacle;
-import Element.ObstacleMouvant;
 import Element.Oiseau;
 import IHM.Affichage;
+import Obstacles.Obstacle;
+import Obstacles.ObstacleMouvant;
 
 public class CourbesOld {
 

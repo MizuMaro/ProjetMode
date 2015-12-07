@@ -1,6 +1,8 @@
-package Element;
+package Obstacles;
 
 import java.awt.Point;
+
+import Element.Constantes;
 
 /**
  * La classe ObstacleMouvant, qui herite de la classe Obstacle, permet d'instancier

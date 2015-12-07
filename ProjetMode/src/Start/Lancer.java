@@ -1,5 +1,5 @@
 package Start;
-import IHM.Ecran;
+import Element.Ecran;
 
 /**
  * La classe Lancer est le point d'entree du programme, celle-ci contenant la methode main.

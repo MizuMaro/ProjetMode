@@ -1,7 +1,7 @@
 package IHM;
 import Element.Constantes;
 import Element.Oiseau;
-import Element.Obstacle;
+import Obstacles.Obstacle;
 
 import java.awt.Color;
 import java.awt.Graphics;

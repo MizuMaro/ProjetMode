@@ -5,10 +5,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import Element.Constantes;
-import Element.Obstacle;
-import Element.ObstacleMouvant;
 import Element.Oiseau;
 import IHM.Affichage;
+import Obstacles.Obstacle;
+import Obstacles.ObstacleMouvant;
 
 public class Courbe {
 
