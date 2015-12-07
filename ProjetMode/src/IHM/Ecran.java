@@ -90,7 +90,7 @@ public class Ecran {
 		// Listener qui gere le drop
 		fenetre.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e){
-				System.out.println("LANCE !");
+				TestTimer t = new TestTimer();
 			}
 		});
 		
@@ -143,7 +143,7 @@ public class Ecran {
 		affichage = new Affichage(a, obstacles, compteurTouch);
 		fenetre.setContentPane(affichage);		
 		
-		courbesTest();
+		//courbesTest();
 	}
 
 	
