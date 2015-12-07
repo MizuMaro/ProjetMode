@@ -117,7 +117,7 @@ public class Affichage extends JPanel {
 		
 		// Equation de la droite
 		g.drawString("(" + a.getC().y  + " - " +Constantes.COORDONNEES_ORIGINE.y+ ")", 45, 90);
-		g.drawString("y = _________ = " + coeffDirecteur() + "x² + bx + c", 27,94);
+		g.drawString("y = _________ = " + coeffDirecteur() + "x + b", 27,94);
 		g.drawString("(" + a.getC().x  + " - " +Constantes.COORDONNEES_ORIGINE.x+ ")", 45, 110);
 
 	}
