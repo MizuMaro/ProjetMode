@@ -72,9 +72,15 @@ public class Ecran {
 
 		// Listener qui gere le drop
 		fenetre.addMouseListener(new MouseAdapter() {
+			@SuppressWarnings("unused")
 			public void mouseReleased(MouseEvent e){
-				@SuppressWarnings("unused")
-				Courbe c = new Courbe(0.00077, -1.05, 500, a, affichage, obstacles);
+				//Courbe c = new Courbe(0.00077, -1.05, 500, a, affichage, obstacles);
+				
+				// courbes de Remi
+				double bonjourtoto = (double) getOiseau().getC().x;
+				double bonjourtiti = (double) getOiseau().getC().y;
+				Courbe c = new Courbe((bonjourtoto/1000000)*6 + 0.00030 , ((bonjourtiti-350)/7)-1.05-(1.02*((bonjourtiti-350)/7)) , 500, a, affichage, obstacles);
+			
 			}
 		});
 
