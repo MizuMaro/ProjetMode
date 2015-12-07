@@ -147,7 +147,7 @@ public class Ecran {
 		fenetre.setContentPane(affichage);	
 		
 		// fonctions du jalon 1
-		courbesTest();
+		//courbesTest();
 		
 	}
 	
