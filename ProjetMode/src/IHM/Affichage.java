@@ -25,6 +25,7 @@ public class Affichage extends JPanel {
 	private Image slingshot;
 	private Image slingshot_up;
 	private Image obstacle;
+	private Image caisse_ronde;
 
 	public Affichage(Oiseau a, ArrayList<Obstacle> listeObstacle, int i) {
 		if(!Constantes.DEBUG)
@@ -164,7 +165,11 @@ public class Affichage extends JPanel {
 				g.setColor(Constantes.COULEUR_OBSTACLE_TOUCHE);
 				
 				if(o.isActif()){
-					g.drawImage(obstacle, o.getC().x, o.getC().y, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES, null);
+					if(o.isCarre()){
+						g.drawImage(obstacle, o.getC().x, o.getC().y, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES, null);
+					}else{
+						g.drawImage(caisse_ronde, o.getC().x, o.getC().y, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES, null);
+					}
 				}else{
 					if(o.isCarre()){
 						g.drawRect(o.getC().x, o.getC().y, o.getTaille(), o.getTaille());
@@ -236,6 +241,7 @@ public class Affichage extends JPanel {
 			slingshot = ImageIO.read(new File("img/slingshot.png"));
 			slingshot_up = ImageIO.read(new File("img/slingshot_up.png"));
 			obstacle = ImageIO.read(new File("img/caisse.png"));
+			caisse_ronde = ImageIO.read(new File("img/caisse_ronde.png"));
 			slingshot = ImageIO.read(new File("img/slingshot.png"));
 		} catch (Exception e) {
 			e.getMessage();
