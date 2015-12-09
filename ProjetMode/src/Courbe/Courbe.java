@@ -125,7 +125,7 @@ public class Courbe {
 							o.setC(Constantes.COORDONNEES_ORIGINE.x, Constantes.COORDONNEES_ORIGINE.y);
 							o.setC2(o.getC().x+50, o.getC().y);	
 						}
-
+						
 						affichage.repaint();
 					}
 				}else{
