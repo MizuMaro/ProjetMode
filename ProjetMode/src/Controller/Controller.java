@@ -43,6 +43,7 @@ public class Controller {
 	}
 	public void volFini(){
 		this.m.vol(false);
+		
 	}
 	
 }
