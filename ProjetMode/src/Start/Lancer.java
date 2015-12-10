@@ -8,6 +8,8 @@ import Element.Ecran;
  */
 public class Lancer {
 
+	
+	
 	public static void main(String[] args) throws InterruptedException {
 		new Ecran();
 	}
