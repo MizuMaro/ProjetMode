@@ -1,7 +1,6 @@
 package Start;
 
 import Controller.Controller;
-import Element.Ecran;
 import Model.Model;
 import Vue.Vue;
 
@@ -22,7 +21,6 @@ public class Lancer {
 
 	public static void main(String[] args) throws InterruptedException {
 		new Lancer();
-		//new Ecran();
 	}
 
 }
