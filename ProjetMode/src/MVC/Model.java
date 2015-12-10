@@ -1,5 +1,5 @@
 
-package Model;
+package MVC;
 
 import java.awt.Point;
 import java.util.ArrayList;

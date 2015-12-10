@@ -4,11 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import Controller.Controller;
 import Courbe.Courbe;
 import IHM.Affichage;
-import Model.Model;
-import Vue.Vue;
+import MVC.Controller;
+import MVC.Model;
+import MVC.Vue;
 
 public class CourbeTest {
 //test inutile  ,  je voulais tester le timer

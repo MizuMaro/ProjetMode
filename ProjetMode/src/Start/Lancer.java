@@ -1,8 +1,8 @@
 package Start;
 
-import Controller.Controller;
-import Model.Model;
-import Vue.Vue;
+import MVC.Controller;
+import MVC.Model;
+import MVC.Vue;
 
 /**
  * La classe Lancer est le point d'entree du programme, celle-ci contenant la

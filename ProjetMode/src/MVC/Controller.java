@@ -1,10 +1,8 @@
-package Controller;
+package MVC;
 
 import java.util.ArrayList;
 
-import Model.Model;
 import Obstacles.Obstacle;
-import Vue.Vue;
 
 public class Controller {
 	Model m ;

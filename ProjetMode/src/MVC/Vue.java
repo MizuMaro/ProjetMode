@@ -1,4 +1,4 @@
-package Vue;
+package MVC;
 
 import java.awt.Point;
 import java.awt.event.KeyAdapter;
@@ -12,12 +12,10 @@ import java.util.Observer;
 import javax.swing.JFrame;
 import javax.swing.event.MouseInputAdapter;
 
-import Controller.Controller;
 import Courbe.Courbe;
 import Courbe.CourbesOld;
 import Element.Constantes;
 import IHM.Affichage;
-import Model.Model;
 import Obstacles.Obstacle;
 import Obstacles.ObstacleMouvant;
 
