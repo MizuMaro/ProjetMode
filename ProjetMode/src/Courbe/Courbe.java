@@ -134,6 +134,9 @@ public class Courbe {
 			}
 
 		};
+		
+		
+		
 		//intervalle de temps entre chaque repaint
 		timer.scheduleAtFixedRate(timerTask,0,2000);
 	}
