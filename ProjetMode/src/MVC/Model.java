@@ -14,6 +14,7 @@ import Obstacles.ObstacleMouvant;
 public class Model extends Observable {
 	Oiseau oiseau = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
 	boolean vol = false;
+	public static boolean debug = true;
 
 	ArrayList<Obstacle> obstacles = new ArrayList<>();
 
@@ -42,19 +43,19 @@ public class Model extends Observable {
 		Obstacle ob3 = new Obstacle(new Point(Constantes.TAILLE_ECRAN[0] - 140, Constantes.TAILLE_ECRAN[1] - 370));
 		Obstacle ob4 = new Obstacle(new Point(Constantes.TAILLE_ECRAN[0] - 160, Constantes.TAILLE_ECRAN[1] - 470));
 		Obstacle ob5 = new Obstacle(new Point(Constantes.TAILLE_ECRAN[0] - 180, Constantes.TAILLE_ECRAN[1] - 600));
-		Obstacle ob6 = new Obstacle(new Point(Constantes.TAILLE_ECRAN[0] - 600, Constantes.TAILLE_ECRAN[1] - 180));
-		Obstacle ob7 = new Obstacle(new Point(Constantes.TAILLE_ECRAN[0] - 200, Constantes.TAILLE_ECRAN[1] - 150));
+		Obstacle ob6 = new Obstacle(new Point(Constantes.TAILLE_ECRAN[0] - 200, Constantes.TAILLE_ECRAN[1] - 150));
+		ob3.setCarre(true);
+
+		ObstacleMouvant ob7 = new ObstacleMouvant(
+				new Point(Constantes.TAILLE_ECRAN[0] - 400, Constantes.TAILLE_ECRAN[1] - 550));
+		ob7.setLimites_x(new int[] { Constantes.TAILLE_ECRAN[0] - 400, Constantes.TAILLE_ECRAN[0] - 400 });
+		ob7.setLimites_y(new int[] { Constantes.TAILLE_ECRAN[1] - 550, Constantes.TAILLE_ECRAN[1] - 400 });
 
 		ObstacleMouvant ob8 = new ObstacleMouvant(
-				new Point(Constantes.TAILLE_ECRAN[0] - 400, Constantes.TAILLE_ECRAN[1] - 550));
-		ob8.setLimites_x(new int[] { Constantes.TAILLE_ECRAN[0] - 400, Constantes.TAILLE_ECRAN[0] - 400 });
-		ob8.setLimites_y(new int[] { Constantes.TAILLE_ECRAN[1] - 550, Constantes.TAILLE_ECRAN[1] - 400 });
-
-		ObstacleMouvant ob9 = new ObstacleMouvant(
 				new Point(Constantes.TAILLE_ECRAN[0] - 1000, Constantes.TAILLE_ECRAN[1] / 3));
-		ob9.setLimites_x(new int[] { Constantes.TAILLE_ECRAN[0] - 1000, Constantes.TAILLE_ECRAN[0] - 800 });
-		ob9.setLimites_y(new int[] { Constantes.TAILLE_ECRAN[1] / 3, Constantes.TAILLE_ECRAN[1] / 3 });
-		ob9.setCarre(true);
+		ob8.setLimites_x(new int[] { Constantes.TAILLE_ECRAN[0] - 1000, Constantes.TAILLE_ECRAN[0] - 800 });
+		ob8.setLimites_y(new int[] { Constantes.TAILLE_ECRAN[1] / 3, Constantes.TAILLE_ECRAN[1] / 3 });
+		ob8.setCarre(true);
 
 		obstacles.add(ob1);
 		obstacles.add(ob2);
@@ -64,7 +65,6 @@ public class Model extends Observable {
 		obstacles.add(ob6);
 		obstacles.add(ob7);
 		obstacles.add(ob8);
-		obstacles.add(ob9);
 
 		setChanged();
 		notifyObservers();

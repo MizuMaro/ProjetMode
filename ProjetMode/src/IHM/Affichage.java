@@ -1,6 +1,7 @@
 package IHM;
 import Element.Constantes;
 import Element.Oiseau;
+import MVC.Model;
 import Obstacles.Obstacle;
 
 import java.awt.Color;
@@ -28,8 +29,8 @@ public class Affichage extends JPanel {
 	private Image caisse_ronde;
 
 	public Affichage(Oiseau a, ArrayList<Obstacle> listeObstacle, int i) {
-		if(!Constantes.DEBUG)
-			initimg();
+
+		initimg();
 		this.a = a;
 		this.listeObstacle = listeObstacle;
 		this.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
@@ -40,7 +41,8 @@ public class Affichage extends JPanel {
 
 	public void paintComponent(Graphics g) {
 
-		if(Constantes.DEBUG){
+		
+		if(Model.debug){
 
 			// Dessin du background
 			g.setColor(Constantes.COULEUR_BACKGROUND);
@@ -197,7 +199,7 @@ public class Affichage extends JPanel {
 			
 			g.drawImage(bird, a.getC().x, a.getC().y, Constantes.TAILLE_OISEAU, Constantes.TAILLE_OISEAU,null);
 			
-			//lance-pierres (rapport d'echelle = 2.487)
+			//lance-pierres
 			g.drawImage(slingshot_up, Constantes.COORDONNEES_ORIGINE.x-30, 327, 90, 200, null);
 			
 		}
