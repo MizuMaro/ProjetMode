@@ -12,6 +12,9 @@ import java.io.File;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -27,17 +30,27 @@ public class Affichage extends JPanel {
 	private Image slingshot_up;
 	private Image obstacle;
 	private Image caisse_ronde;
+	private Icon load;
 
+	private Point[] p = new Point[3];
+	
 	public Affichage(Oiseau a, ArrayList<Obstacle> listeObstacle, int i) {
-
-		initimg();
+		
 		this.a = a;
 		this.listeObstacle = listeObstacle;
 		this.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
-
+		loading();		
+		initimg();
 	}
 
-	private Point[] p = new Point[3];
+	
+	public void loading(){
+		load = new ImageIcon("img/load.gif");
+		JLabel label = new JLabel(load);
+		this.add(label);
+	    this.setVisible(true);		
+	}
+	
 
 	public void paintComponent(Graphics g) {
 
@@ -246,6 +259,7 @@ public class Affichage extends JPanel {
 			obstacle = ImageIO.read(new File("img/caisse.png"));
 			caisse_ronde = ImageIO.read(new File("img/caisse_ronde.png"));
 			slingshot = ImageIO.read(new File("img/slingshot.png"));
+			
 		} catch (Exception e) {
 			e.getMessage();
 		}
