@@ -17,9 +17,6 @@ public class Controller {
 		m.setPositionOiseauC2(x,y);
 	}
 
-	public void compteurTouchInc(){
-		m.setCompteurTouch(m.getCompteurTouch()+1);
-	}
 	public void setObstacles(ArrayList<Obstacle> obstacles) {
 		this.m.setObstacles(obstacles);
 	}
