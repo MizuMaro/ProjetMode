@@ -11,6 +11,14 @@ import java.awt.Point;
  */
 public class Constantes {
 	
+	/**
+	 * Implementation du design pattern Singleton.
+	 * L'instance est creee a l'initialisation.
+	 */
+	private Constantes(){}
+	@SuppressWarnings("unused")
+	private static Constantes c = new Constantes();
+	
 	public final static String TITRE = "Angry Nerds";
 	
 	public final static int[] TAILLE_ECRAN = new int[]{1200,610};
