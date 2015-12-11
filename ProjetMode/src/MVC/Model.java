@@ -18,8 +18,6 @@ public class Model extends Observable {
 
 	ArrayList<Obstacle> obstacles = new ArrayList<>();
 
-	private int compteurTouch = 1;
-
 	Affichage affichage;
 
 	public void vol(boolean b) {
@@ -31,7 +29,7 @@ public class Model extends Observable {
 		return vol;
 	}
 	public void initAffichage() {
-		affichage = new Affichage(oiseau, obstacles, compteurTouch);
+		affichage = new Affichage(oiseau, obstacles);
 		setChanged();
 		notifyObservers();
 	}
@@ -86,16 +84,6 @@ public class Model extends Observable {
 
 	public void setObstacles(ArrayList<Obstacle> obstacles) {
 		this.obstacles = obstacles;
-		setChanged();
-		notifyObservers();
-	}
-
-	public int getCompteurTouch() {
-		return compteurTouch;
-	}
-
-	public void setCompteurTouch(int compteurTouch) {
-		this.compteurTouch = compteurTouch;
 		setChanged();
 		notifyObservers();
 	}
