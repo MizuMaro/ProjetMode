@@ -14,7 +14,7 @@ public class Courbe {
 
 	private boolean run = true;
 
-	public Courbe(final double a, final double b, final double c, final Oiseau o, final Affichage affichage, final ArrayList<Obstacle> obstacles){
+	public Courbe(final double a, final double b, final double c, final Oiseau o, final Affichage affichage, final ArrayList<Obstacle> obstacles, final double posX, final double posY){
 
 		final Timer timer = new Timer(); 
 		TimerTask timerTask = new TimerTask(){	
@@ -31,11 +31,11 @@ public class Courbe {
 					affichage.repaint();
 
 
-					o.setC(50, 450);
-					o.setC2(100, 430);
+					//o.setC(50, 450);
+					//o.setC2(100, 430);
 
 
-					affichage.repaint();
+					//affichage.repaint();
 
 					long premier = System.currentTimeMillis();
 					long deuxieme = premier;
@@ -43,16 +43,23 @@ public class Courbe {
 						premier=System.currentTimeMillis();
 					}
 
-					int y;
-					int x = 50;
-					int x2 = 50+50;
-					int y2 =0;
+					int y = 0;
+					int x = o.getC().x;
+					int x2 = x+50;
+					int y2 = 0;
 					boolean touch = false;
 					boolean sol = false;
 					boolean limites = false;
 
 					long timeLancement = System.currentTimeMillis();
 					long timeFin = timeLancement + 15000;
+					
+					double m = (posY-350)/(posX-150);
+					double e = 350-m*150;
+					
+					boolean pointe=false;
+					boolean modifC=false;
+					double cTest = c;
 
 					while (x <= 800 * 7 && !touch && timeLancement<timeFin) {
 
@@ -63,21 +70,54 @@ public class Courbe {
 
 						timeLancement = System.currentTimeMillis();
 						// plus ou moins loin
-						x += 4;
+						//x += 4;
 						//pour tangente
-						x2 = x+50;
-						y2 = (int) ((int) (a*2*x2+b)*(x2-a)+(a * Math.pow(x2, 2) + b * x2 + c));
-						// courbe ax2+bx+c
-						y = (int) (a * Math.pow(x, 2) + b * x + c);
-						if (Math.abs(y2-y) > 30){
-							while(Math.abs(y2-y) > 30){
-								if (y2-y>0){
-									y2--;
-								} else {
-									y2++;
+						//x2 = x+50;
+						
+						if (x < 150) {
+							x += 4;
+							x2 = x+50;
+							y2 = (int) (m*x2+e);
+							y = (int) (m * x + e);
+						} else {
+							if (!modifC) {
+								double neWc = 100;
+								double calcul = ((o.getC().getX() / 1000000) * 6 + 0.00030)
+										* Math.pow(o.getC().getX(), 2)
+										+ (((o.getC().getY() - 350) / 7) - 1.05 - (1.02 * ((o
+												.getC().getY() - 350) / 7)))
+										* o.getC().getX() + neWc;
+								while (Math.abs(calcul - o.getC().getY()) > 3
+										&& calcul < 1000) {
+									neWc = neWc + 2;
+									calcul = ((o.getC().getX() / 1000000) * 6 + 0.00030)
+											* Math.pow(o.getC().getX(), 2)
+											+ (((o.getC().getY() - 350) / 7) - 1.05 - (1.02 * ((o
+													.getC().getY() - 350) / 7)))
+											* o.getC().getX() + neWc;
+								}
+								cTest = neWc;
+								modifC = true;
+							}
+							
+							
+							x+=4;
+							x2=x+50;
+							y2 = (int) ((int) (a * 2 * x2 + b) * (x2 - a) + (a
+									* Math.pow(x2, 2) + b * x2 + cTest));
+							// courbe ax2+bx+c
+							y = (int) (a * Math.pow(x, 2) + b * x + cTest);
+							if (Math.abs(y2 - y) > 30) {
+								while (Math.abs(y2 - y) > 30) {
+									if (y2 - y > 0) {
+										y2--;
+									} else {
+										y2++;
+									}
 								}
 							}
 						}
+						
 
 						// System.out.println(y);
 						// nouvelle position de l'oiseau

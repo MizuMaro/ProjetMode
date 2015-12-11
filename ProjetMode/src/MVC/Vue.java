@@ -102,7 +102,7 @@ public class Vue implements Observer {
 				
 				Courbe courbe = new Courbe((posLanX / 1000000) * 6 + 0.00030,
 						((posLanY - 350) / 7) - 1.05 - (1.02 * ((posLanY - 350) / 7)), c, m.getOiseau(),
-						m.getAffichage(), m.getListObstacles());
+						m.getAffichage(), m.getListObstacles(), posLanX, posLanY);
 
 			}
 		});
