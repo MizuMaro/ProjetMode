@@ -1,11 +1,9 @@
 package MVC;
 
-import java.awt.Point;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -15,9 +13,6 @@ import javax.swing.event.MouseInputAdapter;
 import Courbe.Courbe;
 import Courbe.CourbesOld;
 import Element.Constantes;
-import IHM.Affichage;
-import Obstacles.Obstacle;
-import Obstacles.ObstacleMouvant;
 
 public class Vue implements Observer {
 	private JFrame fenetre;
@@ -75,7 +70,6 @@ public class Vue implements Observer {
 					c.setPositionOiseauC2(m.getPositionOiseau().x + 50, m.getPositionOiseau().y);
 					c.setPositionOiseau(e.getX() - Constantes.TAILLE_OISEAU / 2, e.getY() - Constantes.TAILLE_OISEAU);
 
-					System.out.println(e.getX() + " " + e.getY());
 					c.repaint();
 
 				}
