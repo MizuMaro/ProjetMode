@@ -24,7 +24,7 @@ public class Vue implements Observer {
 	protected Model m;
 	protected Controller c;
 
-	public Vue(Model m, Controller c) {
+	public Vue(final Model m, final Controller c) {
 		// MVC
 		this.m = m;
 		this.c = c;
@@ -90,10 +90,18 @@ public class Vue implements Observer {
 				// obstacles);
 
 				// courbes de Remi
-				double bonjourtoto = m.getPositionOiseau().getX();
-				double bonjourtiti = m.getPositionOiseau().getY();
-				Courbe courbe = new Courbe((bonjourtoto / 1000000) * 6 + 0.00030,
-						((bonjourtiti - 350) / 7) - 1.05 - (1.02 * ((bonjourtiti - 350) / 7)), 500, m.getOiseau(),
+				double posLanX = m.getPositionOiseau().getX();
+				double posLanY = m.getPositionOiseau().getY();
+				
+				double c = 100;
+				double calcul = ((posLanX/1000000)*6+0.00030)*Math.pow(m.getPositionOiseau().getX(), 2) + (((posLanY - 350) / 7) - 1.05 - (1.02 * ((posLanY - 350) / 7))) * m.getPositionOiseau().getX() + c;
+				while (Math.abs(calcul-posLanY) > 3 && calcul<1000){
+					c=c+2;
+					calcul = ((posLanX/1000000)*6+0.00030)*Math.pow(m.getPositionOiseau().getX(), 2) + (((posLanY - 350) / 7) - 1.05 - (1.02 * ((posLanY - 350) / 7))) * m.getPositionOiseau().getX() + c;
+				}
+				
+				Courbe courbe = new Courbe((posLanX / 1000000) * 6 + 0.00030,
+						((posLanY - 350) / 7) - 1.05 - (1.02 * ((posLanY - 350) / 7)), c, m.getOiseau(),
 						m.getAffichage(), m.getListObstacles());
 
 			}

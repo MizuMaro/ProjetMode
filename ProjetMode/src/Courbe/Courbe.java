@@ -69,6 +69,15 @@ public class Courbe {
 						y2 = (int) ((int) (a*2*x2+b)*(x2-a)+(a * Math.pow(x2, 2) + b * x2 + c));
 						// courbe ax2+bx+c
 						y = (int) (a * Math.pow(x, 2) + b * x + c);
+						if (Math.abs(y2-y) > 30){
+							while(Math.abs(y2-y) > 30){
+								if (y2-y>0){
+									y2--;
+								} else {
+									y2++;
+								}
+							}
+						}
 
 						// System.out.println(y);
 						// nouvelle position de l'oiseau
@@ -85,7 +94,7 @@ public class Courbe {
 
 						for (Obstacle ob : obstacles) {
 
-							//on bouge les obstacles qui se déplacent
+							//on bouge les obstacles qui se dï¿½placent
 							if(ob instanceof ObstacleMouvant && ob.isActif()){
 								((ObstacleMouvant)ob).moveX();
 								((ObstacleMouvant)ob).moveY();

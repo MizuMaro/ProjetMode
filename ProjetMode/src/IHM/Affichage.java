@@ -68,6 +68,7 @@ public class Affichage extends JPanel {
 			}
 
 			//dessin du bec
+			
 			CreerTriangle(a.getC().x+a.getTaille()/2, a.getC().y+a.getTaille(), a.getC().x+a.getTaille()/2, a.getC().y, (a.getC2().x-50)+a.getTaille()+a.getTaille()/2, a.getC2().y+a.getTaille()/2);
 			int[] px = { p[0].x, p[1].x, p[2].x };
 			int[] py = { p[0].y, p[1].y, p[2].y };

@@ -15,7 +15,7 @@ public class ObstacleTest {
 	@Test
 	public void testObstacleNonMouvant() {
 		Obstacle o = new Obstacle(new Point(400,600));
-		//teste si la taille de l'obstacle correspond à la constante
+		//teste si la taille de l'obstacle correspond ï¿½ la constante
 		assertEquals(o.getTaille(),Constantes.TAILLE_OBSTACLES);
 		o.setActif(true);
 		//test sur Actif
@@ -23,7 +23,7 @@ public class ObstacleTest {
 		// teste si le setTaille modifie bien la taille
 		o.setTaille(10);
 		assertEquals(o.getTaille(),10);
-		// test si l'obstacle est carré
+		// test si l'obstacle est carrï¿½
 		o.setCarre(true);
 		assertEquals(o.isCarre(),true);
 	}

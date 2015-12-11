@@ -39,7 +39,7 @@ public class Constantes {
 	public final static int RAYON_DEPART = 200;
 	public final static boolean DISTANCE = true;
 	
-	public final static boolean DEBUG = false;
+	public final static boolean DEBUG = true;
 	
 	
 }
