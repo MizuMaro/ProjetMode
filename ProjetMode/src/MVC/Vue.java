@@ -34,7 +34,7 @@ public class Vue implements Observer {
 		fenetre.setVisible(true);
 		fenetre.setLocationRelativeTo(null);
 
-		// Listener qui gere quelques actions au clavier
+		// Listener qui gere les actions au clavier
 		fenetre.addKeyListener(new KeyAdapter() {
 
 			@Override

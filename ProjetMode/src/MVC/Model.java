@@ -37,30 +37,30 @@ public class Model extends Observable {
 
 	public void initObstacles() {
 		Usine usine = new Usine();
-		Obstacle ob1 = usine.formerObstacle(TypeObstacle.CARRE,new Point(Constantes.TAILLE_ECRAN[0] - 100, Constantes.TAILLE_ECRAN[1] - 130));
-		Obstacle ob2 = usine.formerObstacle(TypeObstacle.CARRE,new Point(Constantes.TAILLE_ECRAN[0] - 120, Constantes.TAILLE_ECRAN[1] - 270));
-		Obstacle ob3 = usine.formerObstacle(TypeObstacle.ROND,new Point(Constantes.TAILLE_ECRAN[0] - 140, Constantes.TAILLE_ECRAN[1] - 370));
-		Obstacle ob4 = usine.formerObstacle(TypeObstacle.ROND,new Point(Constantes.TAILLE_ECRAN[0] - 160, Constantes.TAILLE_ECRAN[1] - 470));
-		Obstacle ob5 = usine.formerObstacle(TypeObstacle.CARREMOUVEMENT,new Point(Constantes.TAILLE_ECRAN[0] - 180, Constantes.TAILLE_ECRAN[1] - 600));
-		ob5.setLimites_x(new int[] { Constantes.TAILLE_ECRAN[0] - 400, Constantes.TAILLE_ECRAN[0] - 400 });
+		Obstacle ob1 = usine.formerObstacle(TypeObstacle.CARRE,
+				new Point(Constantes.TAILLE_ECRAN[0] - 100, Constantes.TAILLE_ECRAN[1] - 170));
+		Obstacle ob2 = usine.formerObstacle(TypeObstacle.CARRE,
+				new Point(Constantes.TAILLE_ECRAN[0] - 120, Constantes.TAILLE_ECRAN[1] - 270));
+		Obstacle ob3 = usine.formerObstacle(TypeObstacle.ROND,
+				new Point(Constantes.TAILLE_ECRAN[0] - 140, Constantes.TAILLE_ECRAN[1] - 370));
+		Obstacle ob4 = usine.formerObstacle(TypeObstacle.ROND,
+				new Point(Constantes.TAILLE_ECRAN[0] - 160, Constantes.TAILLE_ECRAN[1] - 470));
+		
+		Obstacle ob5 = usine.formerObstacle(TypeObstacle.CARREMOUVEMENT,
+				new Point(Constantes.TAILLE_ECRAN[0] - 500, Constantes.TAILLE_ECRAN[1] - 550));
 		ob5.setLimites_y(new int[] { Constantes.TAILLE_ECRAN[1] - 550, Constantes.TAILLE_ECRAN[1] - 400 });
 
-		Obstacle ob6 = usine.formerObstacle(TypeObstacle.CARREMOUVEMENT,new Point(Constantes.TAILLE_ECRAN[0] - 170, Constantes.TAILLE_ECRAN[1] - 500));
-		ob6.setLimites_x(new int[] { Constantes.TAILLE_ECRAN[0] - 200, Constantes.TAILLE_ECRAN[0] - 300 });
-		ob6.setLimites_y(new int[] { Constantes.TAILLE_ECRAN[1] - 550, Constantes.TAILLE_ECRAN[1] - 400 });
+		Obstacle ob6 = usine.formerObstacle(TypeObstacle.CARREMOUVEMENT,
+				new Point(Constantes.TAILLE_ECRAN[0] - 100, Constantes.TAILLE_ECRAN[1] - 560));
+		ob6.setLimites_x(new int[] { Constantes.TAILLE_ECRAN[0] - 200, Constantes.TAILLE_ECRAN[0] - 100 });
 		
-		Obstacle ob7 = usine.formerObstacle(TypeObstacle.RONDMOUVEMENT,new Point(Constantes.TAILLE_ECRAN[0] - 400, Constantes.TAILLE_ECRAN[1] - 550));
-		ob7.setLimites_x(new int[] { Constantes.TAILLE_ECRAN[0] - 400, Constantes.TAILLE_ECRAN[0] - 400 });
-		ob7.setLimites_y(new int[] { Constantes.TAILLE_ECRAN[1] - 250, Constantes.TAILLE_ECRAN[1] - 400 });
+		Obstacle ob7 = usine.formerObstacle(TypeObstacle.ROND,
+				new Point(Constantes.TAILLE_ECRAN[0] - 600, Constantes.TAILLE_ECRAN[1] - 550));
 
 		Obstacle ob8 =usine.formerObstacle(TypeObstacle.RONDMOUVEMENT,
-				new Point(Constantes.TAILLE_ECRAN[0] - 1000, Constantes.TAILLE_ECRAN[1] / 3));
-		ob8.setLimites_x(new int[] { Constantes.TAILLE_ECRAN[0] - 1000, Constantes.TAILLE_ECRAN[0] - 800 });
-		ob8.setLimites_y(new int[] { Constantes.TAILLE_ECRAN[1] / 3, Constantes.TAILLE_ECRAN[1] / 3 });
-		System.out.println("ob8 "+ob8.getNom());
-		System.out.println("ob6 "+ob6.getNom());
-		System.out.println("ob4 "+ob4.getNom());
-		System.out.println("ob2 "+ob2.getNom());
+				new Point(Constantes.TAILLE_ECRAN[0] - 600, Constantes.TAILLE_ECRAN[1] - 150));
+		ob8.setLimites_x(new int[] { Constantes.TAILLE_ECRAN[0] - 600, Constantes.TAILLE_ECRAN[0] - 400 });
+		
 		obstacles.add(ob1);
 		obstacles.add(ob2);
 		obstacles.add(ob3);

@@ -8,8 +8,6 @@ import Element.Constantes;
 import Element.Oiseau;
 import IHM.Affichage;
 import ObstacleFactory.Obstacle;
-import ObstacleFactory.ObstacleCarréMouvant;
-import ObstacleFactory.ObstacleRondMouvant;
 
 public class Courbe {
 
