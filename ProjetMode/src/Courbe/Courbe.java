@@ -7,8 +7,9 @@ import java.util.TimerTask;
 import Element.Constantes;
 import Element.Oiseau;
 import IHM.Affichage;
-import Obstacles.Obstacle;
-import Obstacles.ObstacleMouvant;
+import ObstacleFactory.Obstacle;
+import ObstacleFactory.ObstacleCarréMouvant;
+import ObstacleFactory.ObstacleRondMouvant;
 
 public class Courbe {
 
@@ -95,9 +96,9 @@ public class Courbe {
 						for (Obstacle ob : obstacles) {
 
 							//on bouge les obstacles qui se dï¿½placent
-							if(ob instanceof ObstacleMouvant && ob.isActif()){
-								((ObstacleMouvant)ob).moveX();
-								((ObstacleMouvant)ob).moveY();
+							if(ob.isMouvement() && ob.isActif()){
+								ob.moveX();
+								ob.moveY();
 							}
 
 							if(ob.isActif() && affichage.distance(o.getC().getX(), o.getC().getY(), 

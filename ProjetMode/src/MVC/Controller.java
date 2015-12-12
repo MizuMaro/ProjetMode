@@ -2,7 +2,7 @@ package MVC;
 
 import java.util.ArrayList;
 
-import Obstacles.Obstacle;
+import ObstacleFactory.Obstacle;
 
 public class Controller {
 	Model m ;
