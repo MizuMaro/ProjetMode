@@ -66,7 +66,7 @@ public class Courbe {
 							x += 4;
 							x2 = x+50;
 						} else {
-							x -= 2;
+							x -= 4;
 							x2 = x-30;
 						}
 						//pour tangente
@@ -121,7 +121,7 @@ public class Courbe {
 								}
 								affichage.repaint();
 								now = System.currentTimeMillis();
-								time = now + 2000;
+								time = now + 1000;
 								sol=false;
 								limites=false;
 
@@ -207,7 +207,7 @@ public class Courbe {
 							x += 4;
 							x2 = x+50;
 						} else {
-							x -= 2;
+							x -= 4;
 							x2 = x-30;
 						}
 						//pour tangente
