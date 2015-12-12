@@ -257,13 +257,13 @@ public class Affichage extends JPanel {
 
 	private void initimg() {
 		try {
-			bird = ImageIO.read(new File("img/birds/red/bird.png"));
-			background = ImageIO.read(new File("img/background.jpg"));
-			slingshot = ImageIO.read(new File("img/slingshot.png"));
-			slingshot_up = ImageIO.read(new File("img/slingshot_up.png"));
-			obstacle = ImageIO.read(new File("img/caisse.png"));
-			caisse_ronde = ImageIO.read(new File("img/caisse_ronde.png"));
-			slingshot = ImageIO.read(new File("img/slingshot.png"));
+			bird = ImageIO.read(new File("ProjetMode/img/birds/red/bird.png"));
+			background = ImageIO.read(new File("ProjetMode/img/background.jpg"));
+			slingshot = ImageIO.read(new File("ProjetMode/img/slingshot.png"));
+			slingshot_up = ImageIO.read(new File("ProjetMode/img/slingshot_up.png"));
+			obstacle = ImageIO.read(new File("ProjetMode/img/caisse.png"));
+			caisse_ronde = ImageIO.read(new File("ProjetMode/img/caisse_ronde.png"));
+			slingshot = ImageIO.read(new File("ProjetMode/img/slingshot.png"));
 
 		} catch (Exception e) {
 			e.getMessage();
