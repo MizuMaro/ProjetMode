@@ -146,13 +146,12 @@ public class Courbe {
 				}
 			}
 
-		};
-		
-		
+		};	
 		
 		//intervalle de temps entre chaque repaint
-		timer.scheduleAtFixedRate(timerTask,0,2000);
+		timer.scheduleAtFixedRate(timerTask,0,1000);
 	}
+	
 	
 	public Courbe(final double coefDir, final double hauteur, final Oiseau o, final Affichage affichage, final ArrayList<Obstacle> obstacles, final int i){
 
@@ -288,9 +287,7 @@ public class Courbe {
 			}
 
 		};
-		
-		
-		
+				
 		//intervalle de temps entre chaque repaint
 		timer.scheduleAtFixedRate(timerTask,0,2000);
 	}
