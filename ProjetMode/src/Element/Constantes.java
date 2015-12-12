@@ -1,3 +1,4 @@
+
 package Element;
 import java.awt.Color;
 import java.awt.Point;
@@ -10,6 +11,14 @@ import java.awt.Point;
  *
  */
 public class Constantes {
+	
+	/**
+	 * Implementation du design pattern Singleton.
+	 * L'instance est creee a l'initialisation.
+	 */
+	private Constantes(){}
+	@SuppressWarnings("unused")
+	private static Constantes c = new Constantes();
 	
 	public final static String TITRE = "Angry Nerds";
 	
@@ -25,8 +34,8 @@ public class Constantes {
 	public final static Color COULEUR_BEC = Color.ORANGE;
 	
 	public final static Color COULEUR_TRAJECTOIRE = Color.gray;
-	public final static boolean TRAJECTOIRES = false;
-	public final static boolean TRAJECTOIRE_UNIQUE = false;
+	public final static boolean TRAJECTOIRES = true;
+	public final static boolean TRAJECTOIRE_UNIQUE = true;
 	
 	public final static int TAILLE_OBSTACLES = 40;
 	public final static Color COULEUR_OBSTACLE = Color.GREEN;
@@ -38,8 +47,6 @@ public class Constantes {
 	
 	public final static int RAYON_DEPART = 200;
 	public final static boolean DISTANCE = true;
-	
-	public final static boolean DEBUG = false;
 	
 	
 }

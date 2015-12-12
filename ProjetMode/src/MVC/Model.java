@@ -8,16 +8,16 @@ import java.util.Observable;
 import Element.Constantes;
 import Element.Oiseau;
 import IHM.Affichage;
-import Obstacles.Obstacle;
-import Obstacles.ObstacleMouvant;
+import ObstacleFactory.Obstacle;
+import ObstacleFactory.TypeObstacle;
+import ObstacleFactory.Usine;
 
 public class Model extends Observable {
 	Oiseau oiseau = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
 	boolean vol = false;
+	public static boolean debug = true;
 
 	ArrayList<Obstacle> obstacles = new ArrayList<>();
-
-	private int compteurTouch = 1;
 
 	Affichage affichage;
 
@@ -30,32 +30,37 @@ public class Model extends Observable {
 		return vol;
 	}
 	public void initAffichage() {
-		affichage = new Affichage(oiseau, obstacles, compteurTouch);
+		affichage = new Affichage(oiseau, obstacles);
 		setChanged();
 		notifyObservers();
 	}
 
 	public void initObstacles() {
+		Usine usine = new Usine();
+		Obstacle ob1 = usine.formerObstacle(TypeObstacle.CARRE,
+				new Point(Constantes.TAILLE_ECRAN[0] - 100, Constantes.TAILLE_ECRAN[1] - 170));
+		Obstacle ob2 = usine.formerObstacle(TypeObstacle.CARRE,
+				new Point(Constantes.TAILLE_ECRAN[0] - 120, Constantes.TAILLE_ECRAN[1] - 270));
+		Obstacle ob3 = usine.formerObstacle(TypeObstacle.ROND,
+				new Point(Constantes.TAILLE_ECRAN[0] - 140, Constantes.TAILLE_ECRAN[1] - 370));
+		Obstacle ob4 = usine.formerObstacle(TypeObstacle.ROND,
+				new Point(Constantes.TAILLE_ECRAN[0] - 160, Constantes.TAILLE_ECRAN[1] - 470));
+		
+		Obstacle ob5 = usine.formerObstacle(TypeObstacle.CARREMOUVEMENT,
+				new Point(Constantes.TAILLE_ECRAN[0] - 500, Constantes.TAILLE_ECRAN[1] - 550));
+		ob5.setLimites_y(new int[] { Constantes.TAILLE_ECRAN[1] - 550, Constantes.TAILLE_ECRAN[1] - 400 });
 
-		Obstacle ob1 = new Obstacle(new Point(Constantes.TAILLE_ECRAN[0] - 100, Constantes.TAILLE_ECRAN[1] - 130));
-		Obstacle ob2 = new Obstacle(new Point(Constantes.TAILLE_ECRAN[0] - 120, Constantes.TAILLE_ECRAN[1] - 270));
-		Obstacle ob3 = new Obstacle(new Point(Constantes.TAILLE_ECRAN[0] - 140, Constantes.TAILLE_ECRAN[1] - 370));
-		Obstacle ob4 = new Obstacle(new Point(Constantes.TAILLE_ECRAN[0] - 160, Constantes.TAILLE_ECRAN[1] - 470));
-		Obstacle ob5 = new Obstacle(new Point(Constantes.TAILLE_ECRAN[0] - 180, Constantes.TAILLE_ECRAN[1] - 600));
-		Obstacle ob6 = new Obstacle(new Point(Constantes.TAILLE_ECRAN[0] - 600, Constantes.TAILLE_ECRAN[1] - 180));
-		Obstacle ob7 = new Obstacle(new Point(Constantes.TAILLE_ECRAN[0] - 200, Constantes.TAILLE_ECRAN[1] - 150));
+		Obstacle ob6 = usine.formerObstacle(TypeObstacle.CARREMOUVEMENT,
+				new Point(Constantes.TAILLE_ECRAN[0] - 100, Constantes.TAILLE_ECRAN[1] - 560));
+		ob6.setLimites_x(new int[] { Constantes.TAILLE_ECRAN[0] - 200, Constantes.TAILLE_ECRAN[0] - 100 });
+		
+		Obstacle ob7 = usine.formerObstacle(TypeObstacle.ROND,
+				new Point(Constantes.TAILLE_ECRAN[0] - 600, Constantes.TAILLE_ECRAN[1] - 550));
 
-		ObstacleMouvant ob8 = new ObstacleMouvant(
-				new Point(Constantes.TAILLE_ECRAN[0] - 400, Constantes.TAILLE_ECRAN[1] - 550));
-		ob8.setLimites_x(new int[] { Constantes.TAILLE_ECRAN[0] - 400, Constantes.TAILLE_ECRAN[0] - 400 });
-		ob8.setLimites_y(new int[] { Constantes.TAILLE_ECRAN[1] - 550, Constantes.TAILLE_ECRAN[1] - 400 });
-
-		ObstacleMouvant ob9 = new ObstacleMouvant(
-				new Point(Constantes.TAILLE_ECRAN[0] - 1000, Constantes.TAILLE_ECRAN[1] / 3));
-		ob9.setLimites_x(new int[] { Constantes.TAILLE_ECRAN[0] - 1000, Constantes.TAILLE_ECRAN[0] - 800 });
-		ob9.setLimites_y(new int[] { Constantes.TAILLE_ECRAN[1] / 3, Constantes.TAILLE_ECRAN[1] / 3 });
-		ob9.setCarre(true);
-
+		Obstacle ob8 =usine.formerObstacle(TypeObstacle.RONDMOUVEMENT,
+				new Point(Constantes.TAILLE_ECRAN[0] - 600, Constantes.TAILLE_ECRAN[1] - 150));
+		ob8.setLimites_x(new int[] { Constantes.TAILLE_ECRAN[0] - 600, Constantes.TAILLE_ECRAN[0] - 400 });
+		
 		obstacles.add(ob1);
 		obstacles.add(ob2);
 		obstacles.add(ob3);
@@ -64,7 +69,6 @@ public class Model extends Observable {
 		obstacles.add(ob6);
 		obstacles.add(ob7);
 		obstacles.add(ob8);
-		obstacles.add(ob9);
 
 		setChanged();
 		notifyObservers();
@@ -86,16 +90,6 @@ public class Model extends Observable {
 
 	public void setObstacles(ArrayList<Obstacle> obstacles) {
 		this.obstacles = obstacles;
-		setChanged();
-		notifyObservers();
-	}
-
-	public int getCompteurTouch() {
-		return compteurTouch;
-	}
-
-	public void setCompteurTouch(int compteurTouch) {
-		this.compteurTouch = compteurTouch;
 		setChanged();
 		notifyObservers();
 	}

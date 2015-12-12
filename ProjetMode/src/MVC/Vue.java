@@ -1,11 +1,10 @@
 package MVC;
 
-import java.awt.Point;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -15,9 +14,7 @@ import javax.swing.event.MouseInputAdapter;
 import Courbe.Courbe;
 import Courbe.CourbesOld;
 import Element.Constantes;
-import IHM.Affichage;
-import Obstacles.Obstacle;
-import Obstacles.ObstacleMouvant;
+
 
 public class Vue implements Observer {
 	private JFrame fenetre;
@@ -37,7 +34,7 @@ public class Vue implements Observer {
 		fenetre.setVisible(true);
 		fenetre.setLocationRelativeTo(null);
 
-		// Listener qui gere quelques actions au clavier
+		// Listener qui gere les actions au clavier
 		fenetre.addKeyListener(new KeyAdapter() {
 
 			@Override
@@ -50,6 +47,9 @@ public class Vue implements Observer {
 					c.repaint();
 				} else if (e.getKeyChar() == 'q') {
 					System.exit(0);
+				} else if (e.getKeyChar() == 'g') {
+					Model.debug = !Model.debug;
+					c.repaint();
 				}
 
 			}
@@ -75,7 +75,6 @@ public class Vue implements Observer {
 					c.setPositionOiseauC2(m.getPositionOiseau().x + 50, m.getPositionOiseau().y);
 					c.setPositionOiseau(e.getX() - Constantes.TAILLE_OISEAU / 2, e.getY() - Constantes.TAILLE_OISEAU);
 
-					System.out.println(e.getX() + " " + e.getY());
 					c.repaint();
 
 				}
@@ -84,10 +83,7 @@ public class Vue implements Observer {
 
 		// Listener qui gere le drop
 		fenetre.addMouseListener(new MouseAdapter() {
-			@SuppressWarnings("unused")
 			public void mouseReleased(MouseEvent e) {
-				// Courbe c = new Courbe(0.00077, -1.05, 500, a, affichage,
-				// obstacles);
 
 				// courbes de Remi
 				double posLanX = m.getPositionOiseau().getX();
@@ -100,7 +96,7 @@ public class Vue implements Observer {
 					calcul = ((posLanX/1000000)*6+0.00030)*Math.pow(m.getPositionOiseau().getX(), 2) + (((posLanY - 350) / 7) - 1.05 - (1.02 * ((posLanY - 350) / 7))) * m.getPositionOiseau().getX() + c;
 				}
 				
-				Courbe courbe = new Courbe((posLanX / 1000000) * 6 + 0.00030,
+				new Courbe((posLanX / 1000000) * 6 + 0.00030,
 						((posLanY - 350) / 7) - 1.05 - (1.02 * ((posLanY - 350) / 7)), c, m.getOiseau(),
 						m.getAffichage(), m.getListObstacles());
 
