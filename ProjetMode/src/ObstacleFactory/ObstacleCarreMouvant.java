@@ -7,9 +7,9 @@ import Element.Constantes;
 public class ObstacleCarreMouvant extends Obstacle {
 
 	/**
-	 * @param limites_x Dï¿½finit les limites du mouvement de l'obstacle sur l'axe x
-	 * @param limites_y Dï¿½finit les limites du mouvement de l'obstacle sur l'axe y
-	 * limites_x[0] et limites_y[0] doivent ï¿½tre ï¿½gales aux coordonï¿½es de dï¿½part de l'obstacle.
+	 * @param limites_x Définit les limites du mouvement de l'obstacle sur l'axe x
+	 * @param limites_y Définit les limites du mouvement de l'obstacle sur l'axe y
+	 * limites_x[0] et limites_y[0] doivent être égales aux coordonées de départ de l'obstacle.
 	 */
 	private int[] limites_x = {0,0};
 	private int[] limites_y = {0,0};
@@ -26,8 +26,8 @@ public class ObstacleCarreMouvant extends Obstacle {
 	}
 
 	/**
-	 * La fonction agit sur la coordonnï¿½e y de l'obstacle : c'est elle qu'il
-	 * faut appeler pour faire effectuer des translations horizontales ï¿½
+	 * La fonction agit sur la coordonnée y de l'obstacle : c'est elle qu'il
+	 * faut appeler pour faire effectuer des translations horizontales à
 	 * un obstacle.
 	 */
 	public void moveY(){
@@ -52,8 +52,8 @@ public class ObstacleCarreMouvant extends Obstacle {
 	}
 	
 	/**
-	 * La fonction agit sur la coordonnï¿½e x de l'obstacle : c'est elle qu'il
-	 * faut appeler pour faire effectuer des translations horizontales ï¿½
+	 * La fonction agit sur la coordonnée x de l'obstacle : c'est elle qu'il
+	 * faut appeler pour faire effectuer des translations horizontales à
 	 * un obstacle.
 	 */
 	public void moveX(){
