@@ -14,7 +14,6 @@ import ObstacleFactory.Usine;
 
 public class Model extends Observable {
 	Oiseau oiseau = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
-	boolean vol = false;
 	public static boolean debug = true;
 	boolean drag = false;
 	ArrayList<Obstacle> obstacles = new ArrayList<>();
@@ -29,13 +28,13 @@ public class Model extends Observable {
 	public boolean getDrag(){
 		return this.drag;
 	}
-	public void vol(boolean b) {
-		this.vol = b;
+	public void setVol(boolean b) {
+		this.oiseau.setVole(b);
 		setChanged();
 		notifyObservers();
 	}
 	public boolean getVol(){
-		return vol;
+		return this.oiseau.getVole();
 	}
 	public void initAffichage() {
 		affichage = new Affichage(oiseau, obstacles);

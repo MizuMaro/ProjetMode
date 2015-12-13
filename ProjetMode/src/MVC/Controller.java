@@ -36,12 +36,8 @@ public class Controller {
 	public void initAffichage(){
 		this.m.initAffichage();
 	}
-	public void vol(){
-		this.m.vol(true);
-	}
-	public void volFini(){
-		this.m.vol(false);
-		
+	public void SetVol(boolean b){
+		this.m.setVol(b);
 	}
 	
 }

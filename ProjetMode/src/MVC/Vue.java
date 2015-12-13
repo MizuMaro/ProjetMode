@@ -76,6 +76,7 @@ public class Vue implements Observer {
 
 						c.repaint();
 						c.setDrag(true);
+						
 					}
 				}
 			}
@@ -84,7 +85,8 @@ public class Vue implements Observer {
 		// Listener qui gere le drop
 		fenetre.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e) {
-				if (m.getDrag()) {
+				if (m.getDrag()&& !m.getVol()) {
+					c.setDrag(false);
 					// courbes de Remi
 					double posLanX = m.getPositionOiseau().getX();
 					double posLanY = m.getPositionOiseau().getY();
@@ -140,7 +142,6 @@ public class Vue implements Observer {
 
 					}
 
-					c.setDrag(false);
 				}
 			}
 
