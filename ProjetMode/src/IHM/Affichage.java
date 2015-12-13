@@ -132,7 +132,7 @@ public class Affichage extends JPanel {
 							a.getC().x + Constantes.TAILLE_OISEAU / 2, a.getC().y + Constantes.TAILLE_OISEAU / 2)
 					+ " pixels.", 10, 40);
 			g.setColor(Color.WHITE);
-			g.drawString("Pour repositionner l'oiseau sur la position d'origine, appuyez sur la touche <r>.", 10, 60);
+			g.drawString("Pour passer en mode graphique image, appuyez sur la touche <g>.", 10, 60);
 
 			// Coordonnees de l'oiseau
 			g.drawString("(" + a.getC().x + "," + a.getC().y + ")", a.getC().x + 10, a.getC().y - 10);
