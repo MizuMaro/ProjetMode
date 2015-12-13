@@ -26,6 +26,7 @@ public class ObstacleRondMouvant extends Obstacle {
 		this.mouvement = true;
 		this.carre = false;
 		this.actif = true;
+		this.nom ="RondMouvant";
 	}
 
 	/**
