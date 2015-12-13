@@ -51,7 +51,7 @@ public class Vue implements Observer {
 
 			}
 		});
-
+		
 		// Listener qui gere le drag
 		fenetre.addMouseMotionListener(new MouseInputAdapter() {
 
@@ -146,7 +146,7 @@ public class Vue implements Observer {
 			}
 
 		});
-
+		
 		// initialisation de la position du bec
 		c.setPositionOiseauC2(m.getPositionOiseau().x + 50, m.getPositionOiseau().y);
 		// initialisation des obstacles
@@ -159,22 +159,6 @@ public class Vue implements Observer {
 		// courbesTest();
 
 	}
-
-	public void courbesTest() {
-
-		CourbesOld courbesTest = new CourbesOld();
-
-		courbesTest.courbe(0.00077, -1.05, 500, m.getOiseau(), m.getAffichage(), m.getListObstacles());
-		courbesTest.courbe(0.0009, -1, 500, m.getOiseau(), m.getAffichage(), m.getListObstacles());
-		courbesTest.courbeCubique(-0.0000005, 0.1, 450, m.getOiseau(), m.getAffichage(), m.getListObstacles());
-		courbesTest.courbe(0.0009, -1, 500, m.getOiseau(), m.getAffichage(), m.getListObstacles());
-		courbesTest.courbe(0.0008, -1.01, 500, m.getOiseau(), m.getAffichage(), m.getListObstacles());
-		courbesTest.courbe(0.00077, -1.05, 500, m.getOiseau(), m.getAffichage(), m.getListObstacles());
-		courbesTest.courbe(0.0007, -1.05, 500, m.getOiseau(), m.getAffichage(), m.getListObstacles());
-		courbesTest.courbeCubique(0.000001, 0.001, 450, m.getOiseau(), m.getAffichage(), m.getListObstacles());
-		courbesTest.courbe(0.0005, -1, 500, m.getOiseau(), m.getAffichage(), m.getListObstacles());
-	}
-
 	@Override
 	public void update(Observable o, Object arg) {
 
