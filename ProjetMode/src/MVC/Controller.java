@@ -10,6 +10,9 @@ public class Controller {
 	public Controller(Model m) {
 		this.m=m;
 	}
+	public void setDrag(boolean b){
+		m.setDrag(b);
+	}
 	public void setPositionOiseau(int x , int y){
 		m.setPositionOiseau(x,y);
 		}

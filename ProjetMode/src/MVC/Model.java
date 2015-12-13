@@ -16,11 +16,19 @@ public class Model extends Observable {
 	Oiseau oiseau = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
 	boolean vol = false;
 	public static boolean debug = true;
-
+	boolean drag = false;
 	ArrayList<Obstacle> obstacles = new ArrayList<>();
 
 	Affichage affichage;
 
+	public void setDrag(boolean b){
+		this.drag = b;
+		setChanged();
+		notifyObservers();
+	}
+	public boolean getDrag(){
+		return this.drag;
+	}
 	public void vol(boolean b) {
 		this.vol = b;
 		setChanged();

@@ -159,7 +159,7 @@ public class Courbe {
 		TimerTask timerTask = new TimerTask(){	
 
 			public void run()  { 
-
+				
 				if(run){
 					run = false;
 					if(Constantes.TRAJECTOIRE_UNIQUE){
@@ -168,7 +168,7 @@ public class Courbe {
 					}
 
 					affichage.repaint();
-
+					o.setVole(true);
 
 					//o.setC(50, 450);
 					//o.setC2(100, 430);
@@ -268,6 +268,8 @@ public class Courbe {
 								while (now < time) {
 									now = System.currentTimeMillis();
 								}
+
+								o.setVole(false);
 							}
 							if (touch == false)
 								o.setC2(x2, y2);

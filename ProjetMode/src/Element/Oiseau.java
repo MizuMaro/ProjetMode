@@ -9,6 +9,7 @@ public class Oiseau {
 	private Point c2 = new Point();
 	private ArrayList<Point> passage = new ArrayList<>();
 	private ArrayList<Point> passageTangInter = new ArrayList<>();
+	private boolean vole;
 
 	// ajouter angle pour l'oiseau
 	/**
@@ -18,8 +19,17 @@ public class Oiseau {
 	public Oiseau(Point c) {
 		this.taille = Constantes.TAILLE_OISEAU;
 		this.c = c;
+		this.vole = false;
 	}
 
+	public void setVole(boolean b){
+		this.vole = b;
+	}
+
+	public boolean getVole(){
+		return this.vole;
+	}
+	
 	/**
 	 * Retourne la taille de l'oiseau.
 	 * @return taille de l'oiseau.
