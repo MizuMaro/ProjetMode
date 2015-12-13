@@ -131,14 +131,9 @@ public class Affichage extends JPanel {
 							Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU / 2,
 							a.getC().x + Constantes.TAILLE_OISEAU / 2, a.getC().y + Constantes.TAILLE_OISEAU / 2)
 					+ " pixels.", 10, 40);
-<<<<<<< HEAD
 			g.setColor(Color.WHITE);
 			g.drawString("Pour repositionner l'oiseau sur la position d'origine, appuyez sur la touche <r>.", 10, 60);
 			g.drawString("Pour passer du mode debug au mode graphique et inversement, appuyez sur la touche <g>.", 10, 80);
-=======
-			g.setColor(Color.WHITE);
-			g.drawString("Pour passer en mode graphique image, appuyez sur la touche <g>.", 10, 60);
->>>>>>> 9b8c2b549e84985e27161a07e5284700a1de0c3e
 
 			// Coordonnees de l'oiseau
 			g.drawString("(" + a.getC().x + "," + a.getC().y + ")", a.getC().x + 10, a.getC().y - 10);
@@ -150,14 +145,9 @@ public class Affichage extends JPanel {
 			// Equation de la droite
 			/*
 			g.drawString("(" + a.getC().y + " - " + Constantes.COORDONNEES_ORIGINE.y + ")", 45, 90);
-<<<<<<< HEAD
 			g.drawString("y = _________ = " + coeffDirecteur() + "x + b", 27, 94);
 			g.drawString("(" + a.getC().x + " - " + Constantes.COORDONNEES_ORIGINE.x + ")", 45, 110);
 			*/
-=======
-			g.drawString("y = _________ = " + coeffDirecteur() + "x + b", 27, 94);
-			g.drawString("(" + a.getC().x + " - " + Constantes.COORDONNEES_ORIGINE.x + ")", 45, 110);
->>>>>>> 9b8c2b549e84985e27161a07e5284700a1de0c3e
 
 		} else {
 
