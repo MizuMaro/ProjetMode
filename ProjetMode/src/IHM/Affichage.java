@@ -133,6 +133,7 @@ public class Affichage extends JPanel {
 					+ " pixels.", 10, 40);
 			g.setColor(Color.WHITE);
 			g.drawString("Pour repositionner l'oiseau sur la position d'origine, appuyez sur la touche <r>.", 10, 60);
+			g.drawString("Pour passer du mode debug au mode graphique et inversement, appuyez sur la touche <g>.", 10, 80);
 
 			// Coordonnees de l'oiseau
 			g.drawString("(" + a.getC().x + "," + a.getC().y + ")", a.getC().x + 10, a.getC().y - 10);
@@ -142,9 +143,11 @@ public class Affichage extends JPanel {
 					Constantes.COORDONNEES_ORIGINE.x + 10, Constantes.COORDONNEES_ORIGINE.y - 10);
 
 			// Equation de la droite
+			/*
 			g.drawString("(" + a.getC().y + " - " + Constantes.COORDONNEES_ORIGINE.y + ")", 45, 90);
 			g.drawString("y = _________ = " + coeffDirecteur() + "x + b", 27, 94);
 			g.drawString("(" + a.getC().x + " - " + Constantes.COORDONNEES_ORIGINE.x + ")", 45, 110);
+			*/
 
 		} else {
 

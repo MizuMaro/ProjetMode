@@ -121,7 +121,7 @@ public class Courbe {
 								}
 								affichage.repaint();
 								now = System.currentTimeMillis();
-								time = now + 1000;
+								time = now + 2000;
 								sol=false;
 								limites=false;
 
