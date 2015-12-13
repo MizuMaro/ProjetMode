@@ -133,10 +133,17 @@ public class Vue implements Observer {
 						new Courbe((posLanX / 1000000) * 6 + 0.00030,
 								((posLanY - 350) / 7) + 0.50 - (1.02 * ((posLanY - 350) / 7)), c, m.getOiseau(),
 								m.getAffichage(), m.getListObstacles(), 0);
+
+						new Courbe((posLanX / 1000000) * 6 + 0.00030,
+								((posLanY - 350) / 7) - 1.05 - (1.02 * ((posLanY - 350) / 7)), c, m.getOiseau(),
+								m.getAffichage(), m.getListObstacles(), 1);
+
 					}
+
 					c.setDrag(false);
 				}
 			}
+
 		});
 
 		// initialisation de la position du bec
