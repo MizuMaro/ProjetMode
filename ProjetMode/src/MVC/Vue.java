@@ -11,7 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.event.MouseInputAdapter;
 
 import Courbe.Courbe;
-import Courbe.CourbesOld;
 import Element.Constantes;
 
 public class Vue implements Observer {
