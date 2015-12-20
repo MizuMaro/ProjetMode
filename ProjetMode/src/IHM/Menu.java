@@ -13,6 +13,7 @@ import ObstacleFactory.Obstacle;
 @SuppressWarnings("serial")
 public class Menu extends JPanel {
 	JButton start;
+	
 	public Menu(Oiseau a, ArrayList<Obstacle> listeObstacle) {
 		this.start= new JButton("Start");
 		this.setLayout(null);
