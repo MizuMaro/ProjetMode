@@ -17,6 +17,7 @@ public class Menu extends JPanel {
 	
 	public boolean jouer_b = false;
 	public boolean quitter_b = false;
+	public boolean free_b = false;
 	
 	
 	public Menu(final Model m, final JFrame fenetre){
@@ -44,15 +45,22 @@ public class Menu extends JPanel {
 			
 			@Override
 			public void mouseMoved(MouseEvent e) {
-				if(e.getX() > 700 && e.getX() < 900 && e.getY() > 100 && e.getY() < 200){
+				if(e.getX() > 700 && e.getX() < 900 && e.getY() > 50 && e.getY() < 150){
 					jouer_b = true;
 					quitter_b = false;
-				}else if(e.getX() > 700 && e.getX() < 975 && e.getY() > 275-70 && e.getY() < 375-70){
+					free_b = false;
+				}else if(e.getX() > 700 && e.getX() < 975 && e.getY() > 250 && e.getY() < 350){
 					quitter_b = true;
+					jouer_b = false;
+					free_b = false;
+				}else if(e.getX() > 700 && e.getX() < 1000 && e.getY() > 150 && e.getY() < 250){
+					free_b = true;
+					quitter_b = false;
 					jouer_b = false;
 				}else{
 					jouer_b = false;
 					quitter_b = false;
+					free_b = false;
 				}
 				
 				fenetre.repaint();
@@ -69,16 +77,23 @@ public class Menu extends JPanel {
 		g.drawImage(Images.NAME, 25, 40, 600, 150, null);
 		
 		if(!jouer_b){
-			g.drawImage(Images.JOUER, 700, 100, 200, 100, null);
+			g.drawImage(Images.JOUER, 700, 50, 200, 100, null);
 		}else{
-			g.drawImage(Images.JOUER1, 700, 100, 200, 100, null);
+			g.drawImage(Images.JOUER1, 700, 50, 200, 100, null);
+		}
+		
+		if(!free_b){
+			g.drawImage(Images.FREE, 700, 150, 300, 100, null);
+		}else{
+			g.drawImage(Images.FREE1, 700, 150, 300, 100, null);
 		}
 		
 		if(!quitter_b){
-			g.drawImage(Images.QUITTER, 700, 200, 275, 100, null);
+			g.drawImage(Images.QUITTER, 700, 250, 275, 100, null);
 		}else{
-			g.drawImage(Images.QUITTER1, 700, 200, 275, 100, null);
+			g.drawImage(Images.QUITTER1, 700, 250, 275, 100, null);
 		}
+		
 		
 		g.drawImage(Images.GIF, 70, 425, 150, 150, this);
 		

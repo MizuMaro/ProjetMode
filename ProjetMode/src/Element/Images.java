@@ -22,6 +22,8 @@ public class Images {
 	public static Image QUITTER;
 	public static Image JOUER1;
 	public static Image QUITTER1;
+	public static Image FREE;
+	public static Image FREE1;
 	public static Image GIF;
 	
 	
@@ -48,6 +50,8 @@ public class Images {
 			QUITTER = ImageIO.read(new File("img/menu/Quitter.png"));
 			JOUER1 = ImageIO.read(new File("img/menu/Jouer1.png"));
 			QUITTER1 = ImageIO.read(new File("img/menu/Quitter1.png"));
+			FREE = ImageIO.read(new File("img/menu/Free.png"));
+			FREE1 = ImageIO.read(new File("img/menu/Free1.png"));
 			GIF = ImageIO.read(new File("img/menu/red.gif"));
 			
 			BIRD = ImageIO.read(new File("img/birds/red/bird.png"));
