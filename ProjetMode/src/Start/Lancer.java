@@ -4,6 +4,7 @@ package Start;
 import MVC.Controller;
 import MVC.Model;
 import MVC.Vue;
+import Menu.Menu;
 
 /**
  * La classe Lancer est le point d'entree du programme, celle-ci contenant la
@@ -21,7 +22,7 @@ public class Lancer {
 	}
 
 	public static void main(String[] args) throws InterruptedException {
-		new Lancer();
+		new Menu();
 	}
 
 }

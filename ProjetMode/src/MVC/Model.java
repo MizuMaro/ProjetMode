@@ -14,7 +14,7 @@ import ObstacleFactory.Usine;
 
 public class Model extends Observable {
 	Oiseau oiseau = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
-	public static boolean debug = true;
+	public static boolean debug = false;
 	boolean drag = false;
 	ArrayList<Obstacle> obstacles = new ArrayList<>();
 

@@ -19,12 +19,13 @@ import Start.Lancer;
 public class Menu extends JPanel {
 	
 	private JFrame fenetre;
-	public Image name;
-	public Image sky;
-	public Image jouer;
-	public Image quitter;
-	public Image jouer1;
-	public Image quitter1;
+	private Image name;
+	private Image sky;
+	private Image jouer;
+	private Image quitter;
+	private Image jouer1;
+	private Image quitter1;
+	private Image gif;
 	
 	public boolean jouer_b = false;
 	public boolean quitter_b = false;
@@ -38,6 +39,17 @@ public class Menu extends JPanel {
 			System.out.println(e.getMessage());
 		}
 			
+/*
+	    JLabel label = new JLabel(gif);
+	    label.setPreferredSize(new Dimension(300,300));
+
+	    JFrame f = new JFrame("Animation");
+	    f.getContentPane().add(label);
+	    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    f.pack();
+	    f.setLocationRelativeTo(null);
+	    f.setVisible(true);
+*/		
 		this.setLayout(null);
 		this.setBackground(Color.black);
 		this.setVisible(true);
@@ -49,7 +61,8 @@ public class Menu extends JPanel {
 		fenetre.setVisible(true);
 		fenetre.setLocationRelativeTo(null);
 		
-		fenetre.add(this);	
+		//this.add(label);
+		fenetre.add(this);
 		
 		fenetre.addMouseListener(new MouseAdapter() {
 			
@@ -62,7 +75,8 @@ public class Menu extends JPanel {
 				}
 				
 				if(jouer_b){
-					//new Lancer();
+					fenetre.setVisible(false);
+					new Lancer();
 				}
 				
 				jouer_b = false;
@@ -88,10 +102,6 @@ public class Menu extends JPanel {
 		
 	}
 	
-	public static void main(String[] args) {
-		new Menu();
-	}
-	
 	public void paintComponent(Graphics g){
 		
 		g.drawImage(sky, 0, 0, Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1], null);
@@ -109,6 +119,8 @@ public class Menu extends JPanel {
 			g.drawImage(quitter1, 700, 200, 275, 100, null);
 		}
 		
+		g.drawImage(gif, 70, 425, 150, 150, this);
+		
 	}
 	
 	public void initMenu() throws IOException{
@@ -118,6 +130,7 @@ public class Menu extends JPanel {
 		quitter = ImageIO.read(new File("img/menu/Quitter.png"));
 		jouer1 = ImageIO.read(new File("img/menu/Jouer1.png"));
 		quitter1 = ImageIO.read(new File("img/menu/Quitter1.png"));
+		gif = ImageIO.read(new File("img/menu/red.gif"));
 	}
 
 }
