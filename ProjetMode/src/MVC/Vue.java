@@ -13,6 +13,7 @@ import javax.swing.event.MouseInputAdapter;
 
 import Courbe.Courbe;
 import Element.Constantes;
+import Element.Images;
 import Menu.Menu;
 
 public class Vue implements Observer {
@@ -27,12 +28,13 @@ public class Vue implements Observer {
 		m.addObserver(this);
 
 		this.fenetre = new JFrame(Constantes.TITRE);
+		fenetre.setIconImage(Images.OBSTACLE);
 		fenetre.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
 		fenetre.setResizable(false);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre.setVisible(true);
 		fenetre.setLocationRelativeTo(null);
-		
+				
 		JPanel menu = new Menu(m, fenetre);
 
 		// Listener qui gere les actions au clavier

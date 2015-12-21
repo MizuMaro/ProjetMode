@@ -20,7 +20,7 @@ public class Constantes {
 	@SuppressWarnings("unused")
 	private static Constantes c = new Constantes();
 	
-	public final static String TITRE = "Angry Nerds : N3P1(L2)";
+	public final static String TITRE = "Angry Nerds";
 	
 	public final static int[] TAILLE_ECRAN = new int[]{1200,610};
 	public final static Color COULEUR_BACKGROUND = Color.BLACK;

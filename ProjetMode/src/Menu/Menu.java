@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -47,15 +46,16 @@ public class Menu extends JPanel {
 			public void mouseMoved(MouseEvent e) {
 				if(e.getX() > 700 && e.getX() < 900 && e.getY() > 100 && e.getY() < 200){
 					jouer_b = true;
-					fenetre.repaint();
+					quitter_b = false;
 				}else if(e.getX() > 700 && e.getX() < 975 && e.getY() > 275-70 && e.getY() < 375-70){
 					quitter_b = true;
-					fenetre.repaint();
+					jouer_b = false;
 				}else{
 					jouer_b = false;
 					quitter_b = false;
-					fenetre.repaint();
 				}
+				
+				fenetre.repaint();
 
 			}
 			
