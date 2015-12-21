@@ -9,23 +9,21 @@ import javax.swing.JPanel;
 
 import Element.Constantes;
 import Element.Images;
-import Start.Lancer;
+import MVC.Model;
 
 @SuppressWarnings("serial")
 public class Menu extends JPanel {
 	
-	private JFrame fenetre;	
 	public boolean jouer_b = false;
 	public boolean quitter_b = false;
 	
 	
-	public Menu(){
+	public Menu(final Model m, final JFrame fenetre){
 		
 		this.setLayout(null);
 		this.setBackground(Color.black);
 		this.setVisible(true);
 		
-		this.fenetre = new JFrame(Constantes.TITRE);
 		fenetre.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
 		fenetre.setResizable(false);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,8 +44,7 @@ public class Menu extends JPanel {
 				}
 				
 				if(jouer_b){
-					fenetre.setVisible(false);
-					new Lancer();
+					fenetre.setContentPane(m.getAffichage());
 				}
 				
 				jouer_b = false;

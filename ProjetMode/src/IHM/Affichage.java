@@ -3,12 +3,8 @@ package IHM;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Point;
-import java.io.File;
 import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import Element.Constantes;
@@ -23,14 +19,6 @@ public class Affichage extends JPanel {
 	private Oiseau a;
 	private ArrayList<Obstacle> listeObstacle;
 	private boolean collision = false;
-
-	private Image bird;
-	private Image background;
-	private Image slingshot;
-	private Image slingshot_up;
-	private Image obstacle;
-	private Image caisse_ronde;
-
 	private Point[] p = new Point[3];
 
 	public Affichage(Oiseau a, ArrayList<Obstacle> listeObstacle) {
@@ -258,21 +246,5 @@ public class Affichage extends JPanel {
 		}
 	}
 
-	private void initimg() {
-		try {
-			//attention au chamin des images
-			
-			bird = ImageIO.read(new File("img/birds/red/bird.png"));
-			background = ImageIO.read(new File("img/background.jpg"));
-			slingshot = ImageIO.read(new File("img/slingshot.png"));
-			slingshot_up = ImageIO.read(new File("img/slingshot_up.png"));
-			obstacle = ImageIO.read(new File("img/caisse.png"));
-			caisse_ronde = ImageIO.read(new File("img/caisse_ronde.png"));
-		
-
-		} catch (Exception e) {
-			e.getMessage();
-		}
-	}
 
 }

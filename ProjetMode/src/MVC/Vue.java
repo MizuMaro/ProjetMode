@@ -8,10 +8,12 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.event.MouseInputAdapter;
 
 import Courbe.Courbe;
 import Element.Constantes;
+import Menu.Menu;
 
 public class Vue implements Observer {
 	private JFrame fenetre;
@@ -30,6 +32,8 @@ public class Vue implements Observer {
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre.setVisible(true);
 		fenetre.setLocationRelativeTo(null);
+		
+		JPanel menu = new Menu(m, fenetre);
 
 		// Listener qui gere les actions au clavier
 		fenetre.addKeyListener(new KeyAdapter() {
@@ -152,7 +156,7 @@ public class Vue implements Observer {
 		c.initObstacles();
 		// initialisation du jPanel Affichage
 		c.initAffichage();
-		fenetre.setContentPane(m.getAffichage());
+		fenetre.setContentPane(menu);
 
 		// fonctions du jalon 1
 		// courbesTest();
