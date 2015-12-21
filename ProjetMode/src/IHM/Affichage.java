@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import Element.Constantes;
+import Element.Images;
 import Element.Oiseau;
 import MVC.Model;
 import ObstacleFactory.Obstacle;
@@ -33,7 +34,7 @@ public class Affichage extends JPanel {
 	private Point[] p = new Point[3];
 
 	public Affichage(Oiseau a, ArrayList<Obstacle> listeObstacle) {
-		initimg();
+		//initimg();
 		this.a = a;
 		this.listeObstacle = listeObstacle;
 		this.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
@@ -152,7 +153,7 @@ public class Affichage extends JPanel {
 		} else {
 
 			// Dessin du background
-			g.drawImage(background, 0, 0, Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1], null);
+			g.drawImage(Images.BACKGROUND, 0, 0, Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1], null);
 
 			// dessin de la trajectoire passee
 			if (Constantes.TRAJECTOIRES) {
@@ -176,7 +177,7 @@ public class Affichage extends JPanel {
 			}
 
 			// lance-pierres (rapport d'echelle = 2.487)
-			g.drawImage(slingshot, Constantes.COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
+			g.drawImage(Images.SLINGSHOT, Constantes.COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
 
 			// Dessin des obstacles
 			for (Obstacle o : listeObstacle) {
@@ -185,10 +186,10 @@ public class Affichage extends JPanel {
 
 				if (o.isActif()) {
 					if (o.isCarre()) {
-						g.drawImage(obstacle, o.getC().x, o.getC().y, Constantes.TAILLE_OBSTACLES,
+						g.drawImage(Images.OBSTACLE, o.getC().x, o.getC().y, Constantes.TAILLE_OBSTACLES,
 								Constantes.TAILLE_OBSTACLES, null);
 					} else {
-						g.drawImage(caisse_ronde, o.getC().x, o.getC().y, Constantes.TAILLE_OBSTACLES,
+						g.drawImage(Images.CAISSE_RONDE, o.getC().x, o.getC().y, Constantes.TAILLE_OBSTACLES,
 								Constantes.TAILLE_OBSTACLES, null);
 					}
 				} else {
@@ -217,10 +218,10 @@ public class Affichage extends JPanel {
 			int[] py = { p[0].y, p[1].y, p[2].y };
 			g.fillPolygon(px, py, 3);
 
-			g.drawImage(bird, a.getC().x, a.getC().y, Constantes.TAILLE_OISEAU, Constantes.TAILLE_OISEAU, null);
+			g.drawImage(Images.BIRD, a.getC().x, a.getC().y, Constantes.TAILLE_OISEAU, Constantes.TAILLE_OISEAU, null);
 
 			// lance-pierres
-			g.drawImage(slingshot_up, Constantes.COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
+			g.drawImage(Images.SLINGSHOT_UP, Constantes.COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
 
 		}
 	}
@@ -267,7 +268,7 @@ public class Affichage extends JPanel {
 			slingshot_up = ImageIO.read(new File("img/slingshot_up.png"));
 			obstacle = ImageIO.read(new File("img/caisse.png"));
 			caisse_ronde = ImageIO.read(new File("img/caisse_ronde.png"));
-			slingshot = ImageIO.read(new File("img/slingshot.png"));
+		
 
 		} catch (Exception e) {
 			e.getMessage();
