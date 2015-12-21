@@ -1,9 +1,9 @@
 package Menu;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -20,31 +20,16 @@ public class Menu extends JPanel {
 	
 	public Menu(final Model m, final JFrame fenetre){
 		
-		this.setLayout(null);
-		this.setBackground(Color.black);
-		this.setVisible(true);
-		
-		fenetre.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
-		fenetre.setResizable(false);
-		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		fenetre.setVisible(true);
-		fenetre.setLocationRelativeTo(null);
-		
-		//this.add(label);
 		fenetre.add(this);
-		
-		fenetre.addMouseListener(new MouseAdapter() {
+		this.addMouseListener(new MouseAdapter() {
 			
-			@Override
 			public void mouseReleased(MouseEvent e) {
 				fenetre.repaint();
 				
-				if(quitter_b){
-					System.exit(0);
-				}
-				
 				if(jouer_b){
 					fenetre.setContentPane(m.getAffichage());
+				}else if(quitter_b){
+					System.exit(0);
 				}
 				
 				jouer_b = false;
@@ -52,7 +37,6 @@ public class Menu extends JPanel {
 				fenetre.repaint();
 			}
 			
-			@Override
 			public void mousePressed(MouseEvent e) {
 				
 				if(e.getX() > 700 && e.getX() < 900 && e.getY() > 100+15 && e.getY() < 200+15){
@@ -62,9 +46,7 @@ public class Menu extends JPanel {
 					quitter_b = true;
 					fenetre.repaint();
 				}
-				
 			}
-			
 			
 		});
 		
