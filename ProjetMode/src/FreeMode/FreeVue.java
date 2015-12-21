@@ -17,6 +17,7 @@ public class FreeVue implements Observer {
 	private JFrame fenetre;
 	protected FreeModel m;
 	protected FreeController c;
+	
 
 	public FreeVue(final FreeModel m, final FreeController c) {
 		
@@ -138,9 +139,7 @@ public class FreeVue implements Observer {
 
 		// initialisation de la position du bec
 		c.setPositionOiseauC2(m.getPositionOiseau().x + 50, m.getPositionOiseau().y);
-		// initialisation des obstacles
 		c.initObstacles();
-		// initialisation du jPanel Affichage
 		c.initAffichage();
 		fenetre.setContentPane(m.getAffichage());
 	}

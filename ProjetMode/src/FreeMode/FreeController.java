@@ -30,14 +30,16 @@ public class FreeController {
 	public void addVue(FreeVue v){
 		this.v = v;
 	}
-	public void initObstacles(){
-		this.m.initObstacles();
-	}
+	
 	public void initAffichage(){
 		this.m.initAffichage();
 	}
 	public void SetVol(boolean b){
 		this.m.setVol(b);
+	}
+	public void initObstacles() {
+		this.m.initObstacles();
+		
 	}
 	
 }

@@ -15,7 +15,7 @@ public class FreeModel extends Observable {
 	Oiseau oiseau = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
 	public static boolean debug = false;
 	boolean drag = false;
-	ArrayList<Obstacle> obstacles = new ArrayList<>();
+	ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 
 	Affichage affichage;
 
@@ -37,51 +37,17 @@ public class FreeModel extends Observable {
 	}
 	public void initAffichage() {
 		affichage = new Affichage(oiseau, obstacles);
+		
 		setChanged();
 		notifyObservers();
 	}
-
+	
 	public void initObstacles() {
-		/*
-		Usine usine = new Usine();
-		Obstacle ob1 = usine.formerObstacle(TypeObstacle.CARRE,
-				new Point(Constantes.TAILLE_ECRAN[0] - 100, Constantes.TAILLE_ECRAN[1] - 170));
-		Obstacle ob2 = usine.formerObstacle(TypeObstacle.CARRE,
-				new Point(Constantes.TAILLE_ECRAN[0] - 120, Constantes.TAILLE_ECRAN[1] - 270));
-		Obstacle ob3 = usine.formerObstacle(TypeObstacle.ROND,
-				new Point(Constantes.TAILLE_ECRAN[0] - 140, Constantes.TAILLE_ECRAN[1] - 370));
-		Obstacle ob4 = usine.formerObstacle(TypeObstacle.ROND,
-				new Point(Constantes.TAILLE_ECRAN[0] - 160, Constantes.TAILLE_ECRAN[1] - 470));
-		
-		Obstacle ob5 = usine.formerObstacle(TypeObstacle.CARREMOUVEMENT,
-				new Point(Constantes.TAILLE_ECRAN[0] - 500, Constantes.TAILLE_ECRAN[1] - 550));
-		ob5.setLimites_y(new int[] { Constantes.TAILLE_ECRAN[1] - 550, Constantes.TAILLE_ECRAN[1] - 400 });
-
-		Obstacle ob6 = usine.formerObstacle(TypeObstacle.CARREMOUVEMENT,
-				new Point(Constantes.TAILLE_ECRAN[0] - 100, Constantes.TAILLE_ECRAN[1] - 560));
-		ob6.setLimites_x(new int[] { Constantes.TAILLE_ECRAN[0] - 200, Constantes.TAILLE_ECRAN[0] - 100 });
-		
-		Obstacle ob7 = usine.formerObstacle(TypeObstacle.ROND,
-				new Point(Constantes.TAILLE_ECRAN[0] - 600, Constantes.TAILLE_ECRAN[1] - 550));
-
-		Obstacle ob8 =usine.formerObstacle(TypeObstacle.RONDMOUVEMENT,
-				new Point(Constantes.TAILLE_ECRAN[0] - 600, Constantes.TAILLE_ECRAN[1] - 150));
-		ob8.setLimites_x(new int[] { Constantes.TAILLE_ECRAN[0] - 600, Constantes.TAILLE_ECRAN[0] - 400 });
-		
-		
-		obstacles.add(ob1);
-		obstacles.add(ob2);
-		obstacles.add(ob3);
-		obstacles.add(ob4);
-		obstacles.add(ob5);
-		obstacles.add(ob6);
-		obstacles.add(ob7);
-		obstacles.add(ob8);
-		*/
-
+		addObstacle(0,0);
 		setChanged();
 		notifyObservers();
 	}
+
 	
 	public void addObstacle(int x, int y){
 		

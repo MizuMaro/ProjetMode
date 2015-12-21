@@ -10,6 +10,9 @@ import javax.swing.JPanel;
 
 import Element.Constantes;
 import Element.Images;
+import FreeMode.FreeController;
+import FreeMode.FreeModel;
+import FreeMode.FreeVue;
 import MVC.Model;
 
 @SuppressWarnings("serial")
@@ -30,6 +33,9 @@ public class Menu extends JPanel {
 				
 				if(jouer_b){
 					fenetre.setContentPane(m.getAffichage());
+				}else if(free_b){
+					fenetre.setContentPane(m.getAffichage());
+					
 				}else if(quitter_b){
 					System.exit(0);
 				}

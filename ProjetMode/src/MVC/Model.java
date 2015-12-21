@@ -131,5 +131,9 @@ public class Model extends Observable {
 		setChanged();
 		notifyObservers();
 	}
+	public void addObstacle(int x, int y) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
