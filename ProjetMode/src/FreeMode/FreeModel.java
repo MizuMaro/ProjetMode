@@ -11,7 +11,7 @@ import ObstacleFactory.TypeObstacle;
 import ObstacleFactory.Usine;
 
 public class FreeModel extends Observable {
-	
+
 	Oiseau oiseau = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
 	public static boolean debug = false;
 	boolean drag = false;
@@ -41,45 +41,70 @@ public class FreeModel extends Observable {
 	}
 	public void initAffichage() {
 		affichage = new FreeAffichage(oiseau, obstacles, trajectoires);
-		
+
 		setChanged();
 		notifyObservers();
 	}
-	
+
 	public void initObstacles() {
 		addObstacle(0,0);
 		setChanged();
 		notifyObservers();
 	}
 
-	
+
 	public void addObstacle(int x, int y){
-		
+
 		if(FreeVue.carre){		
 			obstacles.add(usine.formerObstacle(TypeObstacle.CARRE,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
 		}else if(FreeVue.rond){		
 			obstacles.add(usine.formerObstacle(TypeObstacle.ROND,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
-			
+
 		}else if(FreeVue.carre_bouge && !ajout){
 			ajout = true;
 			encours = new Point(x-8,y-30);			
-			
+
 		}else if(FreeVue.carre_bouge && ajout){
-			trajectoires.put(encours,new Point(x-8,y-30));
+
+			// test si les 2 points sont les memes
+			if(encours.x+8 == x && encours.y+30 == y){
+				obstacles.add(usine.formerObstacle(TypeObstacle.CARRE,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
+				System.out.println("test");
+			}else{
+				trajectoires.put(encours,new Point(x-8,y-30));
+				Obstacle ob = usine.formerObstacle(TypeObstacle.CARREMOUVEMENT, new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES));
+
+				ob.setLimites_x(new int[]{encours.x-Constantes.TAILLE_OBSTACLES/2, x-Constantes.TAILLE_OBSTACLES/2});
+				ob.setLimites_y(new int[]{encours.y-Constantes.TAILLE_OBSTACLES/2, y-Constantes.TAILLE_OBSTACLES/2});
+				obstacles.add(ob);
+			}
 			ajout = false;
-			
+
+
 		}else if(FreeVue.rond_bouge && !ajout){		
 			ajout = true;
 			encours = new Point(x-8,y-30);			
-			
+
 		}else if(FreeVue.rond_bouge && ajout){
-			trajectoires.put(encours,new Point(x-8,y-30));
+
+			// test si les 2 points sont les memes
+			if(encours.x+8 == x && encours.y+30 == y){
+				obstacles.add(usine.formerObstacle(TypeObstacle.ROND,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
+				System.out.println("test");
+			}else{
+				trajectoires.put(encours,new Point(x-8,y-30));
+				Obstacle ob = usine.formerObstacle(TypeObstacle.RONDMOUVEMENT, new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES));
+
+				ob.setLimites_x(new int[]{encours.x-Constantes.TAILLE_OBSTACLES/2, x-Constantes.TAILLE_OBSTACLES/2});
+				ob.setLimites_y(new int[]{encours.y-Constantes.TAILLE_OBSTACLES/2, y-Constantes.TAILLE_OBSTACLES/2});
+				obstacles.add(ob);
+			}
 			ajout = false;
-			
+
 		}
 		setChanged();
 		notifyObservers();
-		
+
 	}
 
 	public Oiseau getOiseau() {

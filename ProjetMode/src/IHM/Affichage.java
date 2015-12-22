@@ -22,7 +22,6 @@ public class Affichage extends JPanel {
 	protected Point[] p = new Point[3];
 
 	public Affichage(Oiseau a, ArrayList<Obstacle> listeObstacle) {
-		//initimg();
 		this.a = a;
 		this.listeObstacle = listeObstacle;
 		this.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
