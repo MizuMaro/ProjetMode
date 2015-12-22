@@ -68,8 +68,14 @@ public class FreeModel extends Observable {
 			trajectoires.put(encours,new Point(x-8,y-30));
 			ajout = false;
 			
-		}else if(FreeVue.rond_bouge){		
-			obstacles.add(usine.formerObstacle(TypeObstacle.ROND,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
+		}else if(FreeVue.rond_bouge && !ajout){		
+			ajout = true;
+			encours = new Point(x-8,y-30);			
+			
+		}else if(FreeVue.rond_bouge && ajout){
+			trajectoires.put(encours,new Point(x-8,y-30));
+			ajout = false;
+			
 		}
 		setChanged();
 		notifyObservers();

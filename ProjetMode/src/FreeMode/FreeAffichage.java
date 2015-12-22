@@ -33,11 +33,14 @@ public class FreeAffichage extends Affichage {
 		// dessin des trajectoires des obstacles qui bougent
 		g.setColor(Color.GREEN);
 		for(Entry<Point, Point> entry : trajectoires.entrySet()){
-			//System.out.println(entry.getKey() + "/" + entry.getValue());
-			g.fillOval(entry.getKey().x, entry.getKey().y, 7, 7);
-			g.fillOval(entry.getValue().x, entry.getValue().y, 7, 7);
 			
-			g.drawLine(entry.getKey().x+4, entry.getKey().y+4,entry.getValue().x+4, entry.getValue().y+4);
+			g.fillOval(entry.getKey().x, entry.getKey().y, 15, 15);
+			g.fillOval(entry.getValue().x, entry.getValue().y, 15, 15);
+			
+			g.drawLine(entry.getKey().x+7, entry.getKey().y+7,entry.getValue().x+9, entry.getValue().y+9);
+			g.drawLine(entry.getKey().x+8, entry.getKey().y+8,entry.getValue().x+8, entry.getValue().y+8);
+			g.drawLine(entry.getKey().x+8, entry.getKey().y+8,entry.getValue().x+8, entry.getValue().y+8);
+			g.drawLine(entry.getKey().x+9, entry.getKey().y+9,entry.getValue().x+7, entry.getValue().y+7);
 		}
 
 		// dessin de la trajectoire passee
