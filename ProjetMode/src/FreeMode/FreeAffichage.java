@@ -92,6 +92,29 @@ public class FreeAffichage extends Affichage {
 
 		// lance-pierres
 		g.drawImage(Images.SLINGSHOT_UP, Constantes.COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
+		
+		
+		// fond du menu
+		g.setColor(Color.BLUE);
+		g.fill3DRect(10, 30, 70, 280, true);
+		
+		// selection actuelle
+		g.setColor(Color.RED);
+		if(FreeVue.carre){
+			g.fill3DRect(20, 45, Constantes.TAILLE_OBSTACLES+10, Constantes.TAILLE_OBSTACLES+10, true);
+		}else if(FreeVue.rond){
+			g.fill3DRect(20, 105, Constantes.TAILLE_OBSTACLES+10, Constantes.TAILLE_OBSTACLES+10, true);
+		}else if(FreeVue.carre_bouge){
+			g.fill3DRect(20, 165, Constantes.TAILLE_OBSTACLES+10, Constantes.TAILLE_OBSTACLES+20, true);
+		}else if(FreeVue.rond_bouge){
+			g.fill3DRect(20, 235, Constantes.TAILLE_OBSTACLES+10, Constantes.TAILLE_OBSTACLES+20, true);
+		}
+		
+		// menu de selection des items
+		g.drawImage(Images.OBSTACLE, 25, 50, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES, null);
+		g.drawImage(Images.CAISSE_RONDE, 25, 110, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES, null);
+		g.drawImage(Images.CAISSE_BOUGE, 25, 170, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES+10, null);
+		g.drawImage(Images.ROND_BOUGE, 25, 240, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES+10, null);
 
 
 	}

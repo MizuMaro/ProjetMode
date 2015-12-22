@@ -51,8 +51,11 @@ public class FreeModel extends Observable {
 	public void addObstacle(int x, int y){
 		
 		Usine usine = new Usine();
-		
-		obstacles.add(usine.formerObstacle(TypeObstacle.CARRE,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
+		if(FreeVue.carre){		
+			obstacles.add(usine.formerObstacle(TypeObstacle.CARRE,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
+		}else if(FreeVue.rond){		
+			obstacles.add(usine.formerObstacle(TypeObstacle.ROND,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
+		}
 		setChanged();
 		notifyObservers();
 		

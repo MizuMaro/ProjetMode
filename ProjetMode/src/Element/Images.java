@@ -36,6 +36,8 @@ public class Images {
 	public static Image SLINGSHOT_UP;
 	public static Image OBSTACLE;
 	public static Image CAISSE_RONDE;
+	public static Image CAISSE_BOUGE;
+	public static Image ROND_BOUGE;
 	
 	
 	
@@ -62,6 +64,8 @@ public class Images {
 			SLINGSHOT_UP = ImageIO.read(new File("img/slingshot_up.png"));
 			OBSTACLE = ImageIO.read(new File("img/caisse.png"));
 			CAISSE_RONDE = ImageIO.read(new File("img/caisse_ronde.png"));
+			CAISSE_BOUGE = ImageIO.read(new File("img/caisse_bouge.png"));
+			ROND_BOUGE = ImageIO.read(new File("img/rond_bouge.png"));
 			
 		} catch (IOException e) {
 			System.err.println(e.getMessage());
