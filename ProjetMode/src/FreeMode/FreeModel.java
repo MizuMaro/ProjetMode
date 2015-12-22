@@ -72,10 +72,29 @@ public class FreeModel extends Observable {
 				System.out.println("test");
 			}else{
 				trajectoires.put(encours,new Point(x-8,y-30));
+				
 				Obstacle ob = usine.formerObstacle(TypeObstacle.CARREMOUVEMENT, new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES));
-
-				ob.setLimites_x(new int[]{encours.x-Constantes.TAILLE_OBSTACLES/2, x-Constantes.TAILLE_OBSTACLES/2});
-				ob.setLimites_y(new int[]{encours.y-Constantes.TAILLE_OBSTACLES/2, y-Constantes.TAILLE_OBSTACLES/2});
+				
+				// X1 < X2 && Y1 < Y2 = cool
+				if(encours.x > x && encours.y > y){
+					ob.setLimites_x(new int[]{x-Constantes.TAILLE_OBSTACLES/2, encours.x-Constantes.TAILLE_OBSTACLES/2});
+					ob.setLimites_y(new int[]{y-Constantes.TAILLE_OBSTACLES/2, encours.y-Constantes.TAILLE_OBSTACLES/2});
+					
+					// X1 > X2 && Y1 < Y2
+				}else if(encours.x > x && encours.y < y){
+					ob.setLimites_x(new int[]{x-Constantes.TAILLE_OBSTACLES/2, encours.x-Constantes.TAILLE_OBSTACLES/2});
+					ob.setLimites_y(new int[]{encours.y-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES/2});
+					
+					// X1 < X2 && Y1 > Y2 
+				}else if(encours.x < x && encours.y > y){
+					ob.setLimites_x(new int[]{encours.x-Constantes.TAILLE_OBSTACLES/2,x-Constantes.TAILLE_OBSTACLES/2});
+					ob.setLimites_y(new int[]{y-Constantes.TAILLE_OBSTACLES/2,encours.y-Constantes.TAILLE_OBSTACLES/2});
+					
+				}else{
+					ob.setLimites_x(new int[]{encours.x-Constantes.TAILLE_OBSTACLES/2, x-Constantes.TAILLE_OBSTACLES/2});
+					ob.setLimites_y(new int[]{encours.y-Constantes.TAILLE_OBSTACLES/2, y-Constantes.TAILLE_OBSTACLES/2});
+					
+				}
 				obstacles.add(ob);
 			}
 			ajout = false;
@@ -90,13 +109,32 @@ public class FreeModel extends Observable {
 			// test si les 2 points sont les memes
 			if(encours.x+8 == x && encours.y+30 == y){
 				obstacles.add(usine.formerObstacle(TypeObstacle.ROND,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
-				System.out.println("test");
+				
 			}else{
 				trajectoires.put(encours,new Point(x-8,y-30));
+				
 				Obstacle ob = usine.formerObstacle(TypeObstacle.RONDMOUVEMENT, new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES));
-
-				ob.setLimites_x(new int[]{encours.x-Constantes.TAILLE_OBSTACLES/2, x-Constantes.TAILLE_OBSTACLES/2});
-				ob.setLimites_y(new int[]{encours.y-Constantes.TAILLE_OBSTACLES/2, y-Constantes.TAILLE_OBSTACLES/2});
+				
+				// X1 < X2 && Y1 < Y2 = cool
+				if(encours.x > x && encours.y > y){
+					ob.setLimites_x(new int[]{x-Constantes.TAILLE_OBSTACLES/2, encours.x-Constantes.TAILLE_OBSTACLES/2});
+					ob.setLimites_y(new int[]{y-Constantes.TAILLE_OBSTACLES/2, encours.y-Constantes.TAILLE_OBSTACLES/2});
+					
+					// X1 > X2 && Y1 < Y2
+				}else if(encours.x > x && encours.y < y){
+					ob.setLimites_x(new int[]{x-Constantes.TAILLE_OBSTACLES/2, encours.x-Constantes.TAILLE_OBSTACLES/2});
+					ob.setLimites_y(new int[]{encours.y-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES/2});
+					
+					// X1 < X2 && Y1 > Y2 
+				}else if(encours.x < x && encours.y > y){
+					ob.setLimites_x(new int[]{encours.x-Constantes.TAILLE_OBSTACLES/2,x-Constantes.TAILLE_OBSTACLES/2});
+					ob.setLimites_y(new int[]{y-Constantes.TAILLE_OBSTACLES/2,encours.y-Constantes.TAILLE_OBSTACLES/2});
+					
+				}else{
+					ob.setLimites_x(new int[]{encours.x-Constantes.TAILLE_OBSTACLES/2, x-Constantes.TAILLE_OBSTACLES/2});
+					ob.setLimites_y(new int[]{encours.y-Constantes.TAILLE_OBSTACLES/2, y-Constantes.TAILLE_OBSTACLES/2});
+					
+				}
 				obstacles.add(ob);
 			}
 			ajout = false;
