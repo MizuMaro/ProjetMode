@@ -31,6 +31,7 @@ public class Images {
 	
 	public static Image BIRD;
 	public static Image BACKGROUND;
+	public static Image FREE_BACKGROUND;
 	public static Image SLINGSHOT;
 	public static Image SLINGSHOT_UP;
 	public static Image OBSTACLE;
@@ -56,6 +57,7 @@ public class Images {
 			
 			BIRD = ImageIO.read(new File("img/birds/red/bird.png"));
 			BACKGROUND = ImageIO.read(new File("img/background.jpg"));
+			FREE_BACKGROUND = ImageIO.read(new File("img/free_background.png"));
 			SLINGSHOT = ImageIO.read(new File("img/slingshot.png"));
 			SLINGSHOT_UP = ImageIO.read(new File("img/slingshot_up.png"));
 			OBSTACLE = ImageIO.read(new File("img/caisse.png"));

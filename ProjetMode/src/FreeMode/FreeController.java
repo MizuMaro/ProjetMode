@@ -6,7 +6,8 @@ import ObstacleFactory.Obstacle;
 
 public class FreeController {
 	FreeModel m ;
-	FreeVue v= null;
+	FreeVue v ;
+	
 	public FreeController(FreeModel m) {
 		this.m=m;
 	}

@@ -5,7 +5,6 @@ import java.util.Observable;
 
 import Element.Constantes;
 import Element.Oiseau;
-import IHM.Affichage;
 import ObstacleFactory.Obstacle;
 import ObstacleFactory.TypeObstacle;
 import ObstacleFactory.Usine;
@@ -17,7 +16,7 @@ public class FreeModel extends Observable {
 	boolean drag = false;
 	ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 
-	Affichage affichage;
+	FreeAffichage affichage;
 
 	public void setDrag(boolean b){
 		this.drag = b;
@@ -36,7 +35,7 @@ public class FreeModel extends Observable {
 		return this.oiseau.getVole();
 	}
 	public void initAffichage() {
-		affichage = new Affichage(oiseau, obstacles);
+		affichage = new FreeAffichage(oiseau, obstacles);
 		
 		setChanged();
 		notifyObservers();
@@ -79,11 +78,11 @@ public class FreeModel extends Observable {
 		notifyObservers();
 	}
 
-	public Affichage getAffichage() {
+	public FreeAffichage getAffichage() {
 		return affichage;
 	}
 
-	public void setAffichage(Affichage affichage) {
+	public void setAffichage(FreeAffichage affichage) {
 		this.affichage = affichage;
 		setChanged();
 		notifyObservers();

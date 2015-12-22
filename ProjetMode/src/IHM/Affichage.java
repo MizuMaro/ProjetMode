@@ -16,10 +16,10 @@ import ObstacleFactory.Obstacle;
 @SuppressWarnings("serial")
 public class Affichage extends JPanel {
 
-	private Oiseau a;
-	private ArrayList<Obstacle> listeObstacle;
-	private boolean collision = false;
-	private Point[] p = new Point[3];
+	protected Oiseau a;
+	protected ArrayList<Obstacle> listeObstacle;
+	protected boolean collision = false;
+	protected Point[] p = new Point[3];
 
 	public Affichage(Oiseau a, ArrayList<Obstacle> listeObstacle) {
 		//initimg();

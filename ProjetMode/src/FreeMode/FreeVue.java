@@ -10,30 +10,19 @@ import javax.swing.event.MouseInputAdapter;
 
 import Courbe.Courbe;
 import Element.Constantes;
-import Element.Images;
 
-public class FreeVue implements Observer {
+public class FreeVue implements Observer  {
 	
-	private JFrame fenetre;
 	protected FreeModel m;
 	protected FreeController c;
 	
 
-	public FreeVue(final FreeModel m, final FreeController c) {
+	public FreeVue(final FreeModel m, final FreeController c, final JFrame fenetre) {
 		
 		// MVC
 		this.m = m;
 		this.c = c;
 		m.addObserver(this);
-
-		this.fenetre = new JFrame(Constantes.TITRE);
-		fenetre.setIconImage(Images.OBSTACLE);
-		fenetre.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
-		fenetre.setResizable(false);
-		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		fenetre.setVisible(true);
-		fenetre.setLocationRelativeTo(null);
-
 
 		// Listener qui gere le drag
 		fenetre.addMouseMotionListener(new MouseInputAdapter() {
@@ -141,6 +130,7 @@ public class FreeVue implements Observer {
 		c.setPositionOiseauC2(m.getPositionOiseau().x + 50, m.getPositionOiseau().y);
 		c.initObstacles();
 		c.initAffichage();
+		
 		fenetre.setContentPane(m.getAffichage());
 	}
 	

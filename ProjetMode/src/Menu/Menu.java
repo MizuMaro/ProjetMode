@@ -34,7 +34,13 @@ public class Menu extends JPanel {
 				if(jouer_b){
 					fenetre.setContentPane(m.getAffichage());
 				}else if(free_b){
-					fenetre.setContentPane(m.getAffichage());
+					
+					FreeModel model = new FreeModel();
+					FreeController control = new FreeController(model);
+					FreeVue vue = new FreeVue(model, control, fenetre);	
+					control.addVue(vue);
+					
+					fenetre.setContentPane(model.getAffichage());
 					
 				}else if(quitter_b){
 					System.exit(0);
