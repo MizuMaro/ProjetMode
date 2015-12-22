@@ -1,6 +1,7 @@
 package FreeMode;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Observable;
 
 import Element.Constantes;
@@ -14,7 +15,11 @@ public class FreeModel extends Observable {
 	Oiseau oiseau = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
 	public static boolean debug = false;
 	boolean drag = false;
+	boolean ajout = false;
+	Point encours = new Point();
+	Usine usine = new Usine();
 	ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
+	HashMap<Point, Point> trajectoires = new HashMap<Point,Point>();
 
 	FreeAffichage affichage;
 
@@ -35,7 +40,7 @@ public class FreeModel extends Observable {
 		return this.oiseau.getVole();
 	}
 	public void initAffichage() {
-		affichage = new FreeAffichage(oiseau, obstacles);
+		affichage = new FreeAffichage(oiseau, obstacles, trajectoires);
 		
 		setChanged();
 		notifyObservers();
@@ -50,10 +55,20 @@ public class FreeModel extends Observable {
 	
 	public void addObstacle(int x, int y){
 		
-		Usine usine = new Usine();
 		if(FreeVue.carre){		
 			obstacles.add(usine.formerObstacle(TypeObstacle.CARRE,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
 		}else if(FreeVue.rond){		
+			obstacles.add(usine.formerObstacle(TypeObstacle.ROND,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
+			
+		}else if(FreeVue.carre_bouge && !ajout){
+			ajout = true;
+			encours = new Point(x-8,y-30);			
+			
+		}else if(FreeVue.carre_bouge && ajout){
+			trajectoires.put(encours,new Point(x-8,y-30));
+			ajout = false;
+			
+		}else if(FreeVue.rond_bouge){		
 			obstacles.add(usine.formerObstacle(TypeObstacle.ROND,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
 		}
 		setChanged();

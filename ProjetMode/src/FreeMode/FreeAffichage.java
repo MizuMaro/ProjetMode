@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 import Element.Constantes;
 import Element.Images;
@@ -14,16 +16,29 @@ import ObstacleFactory.Obstacle;
 
 @SuppressWarnings("serial")
 public class FreeAffichage extends Affichage {
+	
+	private HashMap<Point,Point> trajectoires;
 
-	public FreeAffichage(Oiseau a, ArrayList<Obstacle> listeObstacle) {
+	public FreeAffichage(Oiseau a, ArrayList<Obstacle> listeObstacle, HashMap<Point,Point> trajectoires) {
 		super(a,listeObstacle);
 		super.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
+		this.trajectoires = trajectoires ;
 	}
 
 	public void paintComponent(Graphics g) {
 
 		// Dessin du background
 		g.drawImage(Images.FREE_BACKGROUND, 0, 0, Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1], null);
+		
+		// dessin des trajectoires des obstacles qui bougent
+		g.setColor(Color.GREEN);
+		for(Entry<Point, Point> entry : trajectoires.entrySet()){
+			//System.out.println(entry.getKey() + "/" + entry.getValue());
+			g.fillOval(entry.getKey().x, entry.getKey().y, 7, 7);
+			g.fillOval(entry.getValue().x, entry.getValue().y, 7, 7);
+			
+			g.drawLine(entry.getKey().x+4, entry.getKey().y+4,entry.getValue().x+4, entry.getValue().y+4);
+		}
 
 		// dessin de la trajectoire passee
 		if (Constantes.TRAJECTOIRES) {
