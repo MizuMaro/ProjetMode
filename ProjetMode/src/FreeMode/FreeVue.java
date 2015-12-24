@@ -84,8 +84,8 @@ public class FreeVue implements Observer  {
 					rond = false;
 					carre_bouge = false;
 					rond_bouge = true;
-				}else{						
-					m.addObstacle(e.getX(), e.getY());
+				}else{		
+					m.modObstacle(e.getX(), e.getY());
 					c.repaint();
 				}
 

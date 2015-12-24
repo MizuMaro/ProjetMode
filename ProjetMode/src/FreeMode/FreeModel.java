@@ -52,14 +52,29 @@ public class FreeModel extends Observable {
 	}
 
 	public void initObstacles() {
-		addObstacle(0,0);
+		// initialisation du modele avec un obstacle
+		modObstacle(0,0);
 		setChanged();
 		notifyObservers();
 	}
 
 
-	public void addObstacle(int x, int y){
+	public void modObstacle(int x, int y){
+		
+		// suppression d'un obstacle
+		for(Obstacle o : this.obstacles){
+			
+			// condition a verifier
+			if(x > o.getC().x && x < o.getC().x + Constantes.TAILLE_OBSTACLES &&
+					y > o.getC().y + Constantes.TAILLE_OBSTACLES/2 && y < o.getC().y + (Constantes.TAILLE_OBSTACLES/2)*3){
+				obstacles.remove(o);
+				this.remCptObstacles();
+				return;
+			}
+		}
 
+		// ajout d'un obstacle
+		
 		if(FreeVue.carre){		
 			obstacles.add(usine.formerObstacle(TypeObstacle.CARRE,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
 			addCptObstacles();
@@ -217,6 +232,12 @@ public class FreeModel extends Observable {
 	
 	public void addCptObstacles(){
 		this.cptObstacles++;
+		setChanged();
+		notifyObservers();
+	}
+	
+	public void remCptObstacles(){
+		this.cptObstacles--;
 		setChanged();
 		notifyObservers();
 	}

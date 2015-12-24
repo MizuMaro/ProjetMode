@@ -135,7 +135,9 @@ public class FreeAffichage extends Affichage {
 		g.drawImage(Images.ROND_BOUGE, 25, 240, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES+10, null);
 		
 		// nombre d'obstacles
-		if(this.m.getCptObstacles() == 0 || this.m.getCptObstacles() == 1){
+		if(this.m.getCptObstacles() == 0){
+			g.drawString(String.valueOf("Aucun obstacle"), 13, 330);
+		}else if(this.m.getCptObstacles() == 1){
 			g.drawString(String.valueOf(this.m.getCptObstacles() + " obstacle"), 13, 330);
 		}else{
 			g.drawString(String.valueOf(this.m.getCptObstacles() + " obstacles"), 13, 330);
