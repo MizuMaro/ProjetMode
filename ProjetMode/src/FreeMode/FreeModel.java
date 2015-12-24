@@ -12,35 +12,40 @@ import ObstacleFactory.Usine;
 
 public class FreeModel extends Observable {
 
-	Oiseau oiseau = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
-	public static boolean debug = false;
-	boolean drag = false;
-	boolean ajout = false;
-	Point encours = new Point();
-	Usine usine = new Usine();
-	ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
-	HashMap<Point, Point> trajectoires = new HashMap<Point,Point>();
+	private Oiseau oiseau = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
+	private boolean drag = false;
+	private boolean ajout = false;
+	private Point encours = new Point();
+	
+	private Usine usine = new Usine();
+	private ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
+	private HashMap<Point, Point> trajectoires = new HashMap<Point,Point>();
 
-	FreeAffichage affichage;
+	private int cptObstacles = -1;
+	private FreeAffichage affichage;
 
 	public void setDrag(boolean b){
 		this.drag = b;
 		setChanged();
 		notifyObservers();
 	}
+	
 	public boolean getDrag(){
 		return this.drag;
 	}
+	
 	public void setVol(boolean b) {
 		this.oiseau.setVole(b);
 		setChanged();
 		notifyObservers();
 	}
+	
 	public boolean getVol(){
 		return this.oiseau.getVole();
 	}
+	
 	public void initAffichage() {
-		affichage = new FreeAffichage(oiseau, obstacles, trajectoires);
+		affichage = new FreeAffichage(this);
 
 		setChanged();
 		notifyObservers();
@@ -57,8 +62,10 @@ public class FreeModel extends Observable {
 
 		if(FreeVue.carre){		
 			obstacles.add(usine.formerObstacle(TypeObstacle.CARRE,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
+			addCptObstacles();
 		}else if(FreeVue.rond){		
 			obstacles.add(usine.formerObstacle(TypeObstacle.ROND,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
+			addCptObstacles();
 
 		}else if(FreeVue.carre_bouge && !ajout){
 			ajout = true;
@@ -69,7 +76,8 @@ public class FreeModel extends Observable {
 			// test si les 2 points sont les memes
 			if(encours.x+8 == x && encours.y+30 == y){
 				obstacles.add(usine.formerObstacle(TypeObstacle.CARRE,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
-				System.out.println("test");
+				addCptObstacles();
+				
 			}else{
 				trajectoires.put(encours,new Point(x-8,y-30));
 				
@@ -96,6 +104,7 @@ public class FreeModel extends Observable {
 					
 				}
 				obstacles.add(ob);
+				addCptObstacles();
 			}
 			ajout = false;
 
@@ -109,6 +118,7 @@ public class FreeModel extends Observable {
 			// test si les 2 points sont les memes
 			if(encours.x+8 == x && encours.y+30 == y){
 				obstacles.add(usine.formerObstacle(TypeObstacle.ROND,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
+				addCptObstacles();
 				
 			}else{
 				trajectoires.put(encours,new Point(x-8,y-30));
@@ -136,6 +146,7 @@ public class FreeModel extends Observable {
 					
 				}
 				obstacles.add(ob);
+				addCptObstacles();
 			}
 			ajout = false;
 
@@ -192,6 +203,20 @@ public class FreeModel extends Observable {
 
 	public void setPositionOiseauC2(int x, int y) {
 		this.oiseau.setC2(x, y);
+		setChanged();
+		notifyObservers();
+	}
+	
+	public HashMap<Point, Point> getTrajectoires() {
+		return trajectoires;
+	}
+	
+	public int getCptObstacles() {
+		return cptObstacles;
+	}
+	
+	public void addCptObstacles(){
+		this.cptObstacles++;
 		setChanged();
 		notifyObservers();
 	}

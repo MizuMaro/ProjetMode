@@ -4,13 +4,11 @@ package FreeMode;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
 import Element.Constantes;
 import Element.Images;
-import Element.Oiseau;
 import IHM.Affichage;
 import ObstacleFactory.Obstacle;
 
@@ -18,11 +16,13 @@ import ObstacleFactory.Obstacle;
 public class FreeAffichage extends Affichage {
 	
 	private HashMap<Point,Point> trajectoires;
-
-	public FreeAffichage(Oiseau a, ArrayList<Obstacle> listeObstacle, HashMap<Point,Point> trajectoires) {
-		super(a,listeObstacle);
+	private FreeModel m;
+	
+	public FreeAffichage(FreeModel m){
+		super(m.getOiseau(),m.getListObstacles());
+		this.m=m;
 		super.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
-		this.trajectoires = trajectoires ;
+		this.trajectoires = m.getTrajectoires();
 	}
 
 	public void paintComponent(Graphics g) {
@@ -133,7 +133,13 @@ public class FreeAffichage extends Affichage {
 		g.drawImage(Images.CAISSE_RONDE, 25, 110, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES, null);
 		g.drawImage(Images.CAISSE_BOUGE, 25, 170, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES+10, null);
 		g.drawImage(Images.ROND_BOUGE, 25, 240, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES+10, null);
-
+		
+		// nombre d'obstacles
+		if(this.m.getCptObstacles() == 0 || this.m.getCptObstacles() == 1){
+			g.drawString(String.valueOf(this.m.getCptObstacles() + " obstacle"), 13, 330);
+		}else{
+			g.drawString(String.valueOf(this.m.getCptObstacles() + " obstacles"), 13, 330);
+		}
 
 	}
 
