@@ -118,13 +118,13 @@ public class FreeAffichage extends Affichage {
 		
 		// selection actuelle
 		g.setColor(Color.RED);
-		if(FreeVue.carre){
+		if(m.carre){
 			g.fill3DRect(20, 45, Constantes.TAILLE_OBSTACLES+10, Constantes.TAILLE_OBSTACLES+10, true);
-		}else if(FreeVue.rond){
+		}else if(m.rond){
 			g.fill3DRect(20, 105, Constantes.TAILLE_OBSTACLES+10, Constantes.TAILLE_OBSTACLES+10, true);
-		}else if(FreeVue.carre_bouge){
+		}else if(m.carre_bouge){
 			g.fill3DRect(20, 165, Constantes.TAILLE_OBSTACLES+10, Constantes.TAILLE_OBSTACLES+20, true);
-		}else if(FreeVue.rond_bouge){
+		}else if(m.rond_bouge){
 			g.fill3DRect(20, 235, Constantes.TAILLE_OBSTACLES+10, Constantes.TAILLE_OBSTACLES+20, true);
 		}
 		

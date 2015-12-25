@@ -16,11 +16,6 @@ public class FreeVue implements Observer  {
 	protected FreeModel m;
 	protected FreeController c;
 	
-	static boolean carre = true;
-	static boolean rond = false;
-	static boolean carre_bouge = false;
-	static boolean rond_bouge = false;
-	
 
 	public FreeVue(final FreeModel m, final FreeController c, final JFrame fenetre) {
 		
@@ -65,25 +60,25 @@ public class FreeVue implements Observer  {
 			public void mouseClicked(MouseEvent e){
 				
 				if(e.getX() > 25 && e.getX() < 65 && e.getY() > 50+25 && e.getY() < 90+25){
-					carre = true;
-					rond = false;
-					carre_bouge = false;
-					rond_bouge = false;
+					m.carre = true;
+					m.rond = false;
+					m.carre_bouge = false;
+					m.rond_bouge = false;
 				}else if(e.getX() > 25 && e.getX() < 65 && e.getY() > 110+25 && e.getY() < 150+25){
-					carre = false;
-					rond = true;
-					carre_bouge = false;
-					rond_bouge = false;
+					m.carre = false;
+					m.rond = true;
+					m.carre_bouge = false;
+					m.rond_bouge = false;
 				}else if(e.getX() > 25 && e.getX() < 65 && e.getY() > 165+25 && e.getY() < 220+25){
-					carre = false;
-					rond = false;
-					carre_bouge = true;
-					rond_bouge = false;
+					m.carre = false;
+					m.rond = false;
+					m.carre_bouge = true;
+					m.rond_bouge = false;
 				}else if(e.getX() > 25 && e.getX() < 65 && e.getY() > 235+25 && e.getY() < 290+25){
-					carre = false;
-					rond = false;
-					carre_bouge = false;
-					rond_bouge = true;
+					m.carre = false;
+					m.rond = false;
+					m.carre_bouge = false;
+					m.rond_bouge = true;
 				}else{		
 					m.modObstacle(e.getX(), e.getY());
 					c.repaint();

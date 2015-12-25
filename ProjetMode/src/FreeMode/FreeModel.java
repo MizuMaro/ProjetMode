@@ -23,9 +23,14 @@ public class FreeModel extends Observable {
 	
 	private ArrayList<Point> listePoints = new ArrayList<Point>();
 	private HashMap<Obstacle,ArrayList<Point>> trajecs = new HashMap<Obstacle,ArrayList<Point>>();
-
 	private int cptObstacles = -1;
+	
 	private FreeAffichage affichage;
+	protected boolean carre = true;
+	protected boolean rond = false;
+	protected boolean carre_bouge = false;
+	protected boolean rond_bouge = false;
+	
 
 	public void setDrag(boolean b){
 		this.drag = b;
@@ -78,18 +83,18 @@ public class FreeModel extends Observable {
 
 		// ajout d'un obstacle
 		
-		if(FreeVue.carre){		
+		if(carre){		
 			obstacles.add(usine.formerObstacle(TypeObstacle.CARRE,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
 			addCptObstacles();
-		}else if(FreeVue.rond){		
+		}else if(rond){		
 			obstacles.add(usine.formerObstacle(TypeObstacle.ROND,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
 			addCptObstacles();
 
-		}else if(FreeVue.carre_bouge && !ajout){
+		}else if(carre_bouge && !ajout){
 			ajout = true;
 			encours = new Point(x-8,y-30);			
 
-		}else if(FreeVue.carre_bouge && ajout){
+		}else if(carre_bouge && ajout){
 
 			// test si les 2 points sont les memes
 			if(encours.x+8 == x && encours.y+30 == y){
@@ -127,12 +132,12 @@ public class FreeModel extends Observable {
 			ajout = false;
 
 
-		}else if(FreeVue.rond_bouge && !ajout){		
+		}else if(rond_bouge && !ajout){		
 			ajout = true;
 			encours = new Point(x-8,y-30);	
 			listePoints.add(new Point(x-8,y-30));
 
-		}else if(FreeVue.rond_bouge && ajout){
+		}else if(rond_bouge && ajout){
 
 			// test si les 2 points sont les memes
 			if(encours.x+8 == x && encours.y+30 == y){
