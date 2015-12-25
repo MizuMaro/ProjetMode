@@ -176,7 +176,6 @@ public class FreeModel extends Observable {
 			}
 			ajout = false;
 			encours = null;
-			//System.out.println(this.getTrajecs());
 
 		}
 		setChanged();

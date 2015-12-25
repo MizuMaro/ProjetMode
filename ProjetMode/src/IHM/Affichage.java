@@ -35,20 +35,22 @@ public class Affichage extends JPanel {
 			g.setColor(Constantes.COULEUR_BACKGROUND);
 			g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
-			// dessin de la trajectoire passee
-			if (Constantes.TRAJECTOIRES) {
-				
-				for (int i = 0; i < a.getPassage().size(); i++) {
-					g.setColor(Constantes.COULEUR_TRAJECTOIRE1);
-					g.fillOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
-							3, 3);
-					
-					g.setColor(Constantes.COULEUR_TRAJECTOIRE2);
-					g.drawOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
-							3, 3);
-				}
+			// dessin de la trajectoire
+			g.setColor(Constantes.COULEUR_TRAJECTOIRE1);
+			g.fillOval(a.getDepart().x+Constantes.TAILLE_OISEAU/2-5, a.getDepart().y+Constantes.TAILLE_OISEAU/2, 8, 8);
+			g.setColor(Constantes.COULEUR_TRAJECTOIRE2);
+			g.drawOval(a.getDepart().x+Constantes.TAILLE_OISEAU/2-5, a.getDepart().y+Constantes.TAILLE_OISEAU/2, 8, 8);
+			
+			for (int i = 0; i < a.getPassage().size(); i++) {
+				g.setColor(Constantes.COULEUR_TRAJECTOIRE1);
+				g.fillOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
+						3, 3);
 
+				g.setColor(Constantes.COULEUR_TRAJECTOIRE2);
+				g.drawOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
+						3, 3);
 			}
+
 
 			// position de depart
 			g.setColor(Color.BLUE);
@@ -138,27 +140,13 @@ public class Affichage extends JPanel {
 			g.drawString("(" + a.getC().y + " - " + Constantes.COORDONNEES_ORIGINE.y + ")", 45, 90);
 			g.drawString("y = _________ = " + coeffDirecteur() + "x + b", 27, 94);
 			g.drawString("(" + a.getC().x + " - " + Constantes.COORDONNEES_ORIGINE.x + ")", 45, 110);
-			*/
+			 */
 
 		} else {
 
 			// Dessin du background
 			g.drawImage(Images.BACKGROUND, 0, 0, Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1], null);
 
-			// dessin de la trajectoire passee
-			if (Constantes.TRAJECTOIRES) {
-				
-				for (int i = 0; i < a.getPassage().size(); i++) {
-					g.setColor(Constantes.COULEUR_TRAJECTOIRE1);
-					g.fillOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
-							3, 3);
-					
-					g.setColor(Constantes.COULEUR_TRAJECTOIRE2);
-					g.drawOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
-							3, 3);
-				}
-
-			}
 
 			// fronde
 			if (a.getC().x < Constantes.COORDONNEES_ORIGINE.x) {
@@ -171,6 +159,22 @@ public class Affichage extends JPanel {
 
 			// lance-pierres (rapport d'echelle = 2.487)
 			g.drawImage(Images.SLINGSHOT, Constantes.COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
+
+			// dessin de la trajectoire
+			g.setColor(Constantes.COULEUR_TRAJECTOIRE1);
+			g.fillOval(a.getDepart().x+Constantes.TAILLE_OISEAU/2-5, a.getDepart().y+Constantes.TAILLE_OISEAU/2, 8, 8);
+			g.setColor(Constantes.COULEUR_TRAJECTOIRE2);
+			g.drawOval(a.getDepart().x+Constantes.TAILLE_OISEAU/2-5, a.getDepart().y+Constantes.TAILLE_OISEAU/2, 8, 8);
+			
+			for (int i = 0; i < a.getPassage().size(); i++) {
+				g.setColor(Constantes.COULEUR_TRAJECTOIRE1);
+				g.fillOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
+						3, 3);
+
+				g.setColor(Constantes.COULEUR_TRAJECTOIRE2);
+				g.drawOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
+						3, 3);
+			}
 
 			// Dessin des obstacles
 			for (Obstacle o : listeObstacle) {

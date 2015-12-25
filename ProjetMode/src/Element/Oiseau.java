@@ -7,6 +7,10 @@ public class Oiseau {
 	private int taille;
 	private Point c;
 	private Point c2 = new Point();
+	private Point depart = new Point();
+
+	private boolean trajectoire = false;
+
 	private ArrayList<Point> passage = new ArrayList<>();
 	private ArrayList<Point> passageTangInter = new ArrayList<>();
 	private boolean vole;
@@ -68,7 +72,7 @@ public class Oiseau {
 		this.c.y = y;
 
 		// pour afficher en pointilles
-		if (x % 3 == 0)
+		if (x % 3 == 0 && this.trajectoire)
 			passage.add(new Point(x, y));
 	}
 
@@ -93,5 +97,21 @@ public class Oiseau {
 	
 	public void effacerTrajectoireTangeante() {
 		passageTangInter.clear();
+	}
+	
+	public boolean getTrajectoire() {
+		return trajectoire;
+	}
+
+	public void setTrajectoire(boolean trajectoire) {
+		this.trajectoire = trajectoire;
+	}
+	
+	public Point getDepart() {
+		return depart;
+	}
+
+	public void setDepart(Point depart) {
+		this.depart = depart;
 	}
 }

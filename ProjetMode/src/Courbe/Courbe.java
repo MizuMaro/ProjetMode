@@ -1,5 +1,6 @@
 package Courbe;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,13 +30,6 @@ public class Courbe {
 
 					affichage.repaint();
 
-
-					//o.setC(50, 450);
-					//o.setC2(100, 430);
-
-
-					affichage.repaint();
-
 					long premier = System.currentTimeMillis();
 					long deuxieme = premier;
 					while(premier<deuxieme){
@@ -52,6 +46,9 @@ public class Courbe {
 
 					long timeLancement = System.currentTimeMillis();
 					long timeFin = timeLancement + 15000;
+					
+					o.setTrajectoire(true);
+					o.setDepart(new Point(o.getC().x, o.getC().y));
 
 					while (x <= 800 * 7 && !touch && timeLancement<timeFin) {
 
@@ -98,7 +95,7 @@ public class Courbe {
 
 						for (Obstacle ob : obstacles) {
 
-							//on bouge les obstacles qui se d�placent
+							//on bouge les obstacles qui se deplacent
 							if(ob.isMouvement() && ob.isActif()){
 								ob.moveX();
 								ob.moveY();
@@ -135,6 +132,7 @@ public class Courbe {
 
 						affichage.setCollision(false);
 						if(touch){
+							o.setTrajectoire(false);
 							o.setC(Constantes.COORDONNEES_ORIGINE.x, Constantes.COORDONNEES_ORIGINE.y);
 							o.setC2(o.getC().x+50, o.getC().y);	
 						}
@@ -169,11 +167,7 @@ public class Courbe {
 
 					affichage.repaint();
 					o.setVole(true);
-
-					//o.setC(50, 450);
-					//o.setC2(100, 430);
-
-
+					
 					affichage.repaint();
 
 					long premier = System.currentTimeMillis();
@@ -192,6 +186,9 @@ public class Courbe {
 
 					long timeLancement = System.currentTimeMillis();
 					long timeFin = timeLancement + 15000;
+					
+					o.setTrajectoire(true);
+					o.setDepart(new Point(o.getC().x, o.getC().y));
 
 					while (x <= 800 * 7 && !touch && timeLancement<timeFin) {
 
@@ -277,6 +274,7 @@ public class Courbe {
 
 						affichage.setCollision(false);
 						if(touch){
+							o.setTrajectoire(false);
 							o.setC(Constantes.COORDONNEES_ORIGINE.x, Constantes.COORDONNEES_ORIGINE.y);
 							o.setC2(o.getC().x+50, o.getC().y);	
 						}

@@ -14,6 +14,11 @@ public class FreeController {
 	public void setDrag(boolean b){
 		m.setDrag(b);
 	}
+	
+	public void setTrajectoire(boolean b){
+		m.getOiseau().setTrajectoire(b);
+	}
+	
 	public void setPositionOiseau(int x , int y){
 		m.setPositionOiseau(x,y);
 		}

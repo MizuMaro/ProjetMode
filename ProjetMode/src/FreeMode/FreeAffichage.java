@@ -13,9 +13,9 @@ import ObstacleFactory.Obstacle;
 
 @SuppressWarnings("serial")
 public class FreeAffichage extends Affichage {
-	
+
 	private FreeModel m;
-	
+
 	public FreeAffichage(FreeModel m){
 		super(m.getOiseau(),m.getListObstacles());
 		this.m=m;
@@ -26,33 +26,18 @@ public class FreeAffichage extends Affichage {
 
 		// Dessin du background
 		g.drawImage(Images.FREE_BACKGROUND, 0, 0, Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1], null);
-		
+
 		// dessin des trajectoires des obstacles qui bougent		
 		g.setColor(Color.GREEN);
-		
+
 		for(Entry<Obstacle,Point[]> entry : m.getTrajecs().entrySet()){
 			g.fillOval(entry.getValue()[0].x, entry.getValue()[0].y, 15, 15);
 			g.fillOval(entry.getValue()[1].x, entry.getValue()[1].y, 15, 15);
-			
+
 			g.drawLine(entry.getValue()[0].x+7, entry.getValue()[0].y+7, entry.getValue()[1].x+9, entry.getValue()[1].y+9);
 			g.drawLine(entry.getValue()[0].x+8, entry.getValue()[0].y+8, entry.getValue()[1].x+8, entry.getValue()[1].y+8);
 			g.drawLine(entry.getValue()[0].x+8, entry.getValue()[0].y+8, entry.getValue()[1].x+8, entry.getValue()[1].y+8);
 			g.drawLine(entry.getValue()[0].x+9, entry.getValue()[0].y+9, entry.getValue()[1].x+7, entry.getValue()[1].y+7);
-		}
-
-		// dessin de la trajectoire passee
-		if (Constantes.TRAJECTOIRES) {
-
-			// dessin de la trajectoire
-			for (int i = 0; i < super.a.getPassage().size(); i++) {
-				g.setColor(Color.WHITE);
-				g.fillOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
-						4, 4);
-				g.setColor(Color.BLACK);
-				g.drawOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
-						4, 4);
-			}
-
 		}
 
 		// fronde
@@ -66,6 +51,22 @@ public class FreeAffichage extends Affichage {
 
 		// lance-pierres (rapport d'echelle = 2.487)
 		g.drawImage(Images.SLINGSHOT, Constantes.COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
+
+		// dessin de la trajectoire
+		g.setColor(Constantes.COULEUR_TRAJECTOIRE1);
+		g.fillOval(m.getOiseau().getDepart().x+Constantes.TAILLE_OISEAU/2-5, m.getOiseau().getDepart().y+Constantes.TAILLE_OISEAU/2, 8, 8);
+		g.setColor(Constantes.COULEUR_TRAJECTOIRE2);
+		g.drawOval(m.getOiseau().getDepart().x+Constantes.TAILLE_OISEAU/2-5, m.getOiseau().getDepart().y+Constantes.TAILLE_OISEAU/2, 8, 8);
+		
+		for (int i = 0; i < a.getPassage().size(); i++) {
+			g.setColor(Constantes.COULEUR_TRAJECTOIRE1);
+			g.fillOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
+					3, 3);
+
+			g.setColor(Constantes.COULEUR_TRAJECTOIRE2);
+			g.drawOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
+					3, 3);
+		}
 
 		// Dessin des obstacles
 		for (Obstacle o : super.listeObstacle) {
@@ -110,12 +111,12 @@ public class FreeAffichage extends Affichage {
 
 		// lance-pierres
 		g.drawImage(Images.SLINGSHOT_UP, Constantes.COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
-		
-		
+
+
 		// fond du menu
 		g.setColor(Color.BLUE);
 		g.fill3DRect(10, 30, 70, 280, true);
-		
+
 		// selection actuelle
 		g.setColor(Color.RED);
 		if(m.carre){
@@ -127,13 +128,13 @@ public class FreeAffichage extends Affichage {
 		}else if(m.rond_bouge){
 			g.fill3DRect(20, 235, Constantes.TAILLE_OBSTACLES+10, Constantes.TAILLE_OBSTACLES+20, true);
 		}
-		
+
 		// menu de selection des items
 		g.drawImage(Images.OBSTACLE, 25, 50, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES, null);
 		g.drawImage(Images.CAISSE_RONDE, 25, 110, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES, null);
 		g.drawImage(Images.CAISSE_BOUGE, 25, 170, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES+10, null);
 		g.drawImage(Images.ROND_BOUGE, 25, 240, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES+10, null);
-		
+
 		// nombre d'obstacles
 		if(this.m.getCptObstacles() == 0){
 			g.drawString(String.valueOf("Aucun obstacle"), 13, 330);

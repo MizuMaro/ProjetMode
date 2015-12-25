@@ -29,6 +29,7 @@ public class FreeVue implements Observer  {
 
 			@Override
 			public void mouseDragged(MouseEvent e) {
+				
 				if (!m.getOiseau().getVole()) {
 					if (e.getX() < Constantes.COORDONNEES_ORIGINE.x + 20 + Constantes.RAYON_DEPART
 							&& e.getX() > Constantes.COORDONNEES_ORIGINE.x + 20 - Constantes.RAYON_DEPART
@@ -81,7 +82,6 @@ public class FreeVue implements Observer  {
 					m.rond_bouge = true;
 				}else{		
 					m.modObstacle(e.getX(), e.getY());
-					c.repaint();
 				}
 
 				c.repaint();
@@ -89,8 +89,11 @@ public class FreeVue implements Observer  {
 			
 			// fonction qui gere le drop
 			public void mouseReleased(MouseEvent e) {
+				
 				if (m.getDrag()&& !m.getVol()) {
+					
 					c.setDrag(false);
+					
 					// courbes de Remi
 					double posLanX = m.getPositionOiseau().getX();
 					double posLanY = m.getPositionOiseau().getY();
@@ -145,7 +148,6 @@ public class FreeVue implements Observer  {
 								m.getAffichage(), m.getListObstacles(), 1);
 
 					}
-
 				}
 			}
 
