@@ -20,6 +20,9 @@ public class FreeModel extends Observable {
 	private Usine usine = new Usine();
 	private ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
 	private HashMap<Point, Point> trajectoires = new HashMap<Point,Point>();
+	
+	private ArrayList<Point> listePoints = new ArrayList<Point>();
+	private HashMap<Obstacle,ArrayList<Point>> trajecs = new HashMap<Obstacle,ArrayList<Point>>();
 
 	private int cptObstacles = -1;
 	private FreeAffichage affichage;
@@ -126,7 +129,8 @@ public class FreeModel extends Observable {
 
 		}else if(FreeVue.rond_bouge && !ajout){		
 			ajout = true;
-			encours = new Point(x-8,y-30);			
+			encours = new Point(x-8,y-30);	
+			listePoints.add(new Point(x-8,y-30));
 
 		}else if(FreeVue.rond_bouge && ajout){
 
@@ -137,6 +141,7 @@ public class FreeModel extends Observable {
 				
 			}else{
 				trajectoires.put(encours,new Point(x-8,y-30));
+				listePoints.add(new Point(x-8,y-30));
 				
 				Obstacle ob = usine.formerObstacle(TypeObstacle.RONDMOUVEMENT, new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES));
 				
@@ -161,6 +166,9 @@ public class FreeModel extends Observable {
 					
 				}
 				obstacles.add(ob);
+				trajecs.put(ob, listePoints);
+				System.out.println(trajecs);
+				listePoints.clear();
 				addCptObstacles();
 			}
 			ajout = false;
