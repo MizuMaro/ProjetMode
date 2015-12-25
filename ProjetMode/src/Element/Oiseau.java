@@ -7,7 +7,7 @@ public class Oiseau {
 	private int taille;
 	private Point c;
 	private Point c2 = new Point();
-	private Point depart = new Point();
+	private Point depart = new Point(-50,-50);
 
 	private boolean trajectoire = false;
 
