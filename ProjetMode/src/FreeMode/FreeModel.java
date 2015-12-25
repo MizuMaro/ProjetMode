@@ -2,6 +2,7 @@ package FreeMode;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.Observable;
 
 import Element.Constantes;
@@ -19,10 +20,7 @@ public class FreeModel extends Observable {
 	
 	private Usine usine = new Usine();
 	private ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
-	private HashMap<Point, Point> trajectoires = new HashMap<Point,Point>();
-	
-	private ArrayList<Point> listePoints = new ArrayList<Point>();
-	private HashMap<Obstacle,ArrayList<Point>> trajecs = new HashMap<Obstacle,ArrayList<Point>>();
+	private HashMap<Obstacle,Point[]> trajecs = new HashMap<Obstacle,Point[]>();
 	private int cptObstacles = -1;
 	
 	private FreeAffichage affichage;
@@ -76,6 +74,11 @@ public class FreeModel extends Observable {
 			if(x > o.getC().x && x < o.getC().x + Constantes.TAILLE_OBSTACLES &&
 					y > o.getC().y + Constantes.TAILLE_OBSTACLES/2 && y < o.getC().y + (Constantes.TAILLE_OBSTACLES/2)*3){
 				obstacles.remove(o);
+				
+				for(Entry<Obstacle, Point[]> e : this.getTrajecs().entrySet()){
+					if(e.getKey().equals(o))
+						this.getTrajecs().remove(o);
+				}
 				this.remCptObstacles();
 				return;
 			}
@@ -102,7 +105,6 @@ public class FreeModel extends Observable {
 				addCptObstacles();
 				
 			}else{
-				trajectoires.put(encours,new Point(x-8,y-30));
 				
 				Obstacle ob = usine.formerObstacle(TypeObstacle.CARREMOUVEMENT, new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES));
 				
@@ -127,6 +129,7 @@ public class FreeModel extends Observable {
 					
 				}
 				obstacles.add(ob);
+				this.getTrajecs().put(ob, new Point[]{encours,new Point(x-8,y-30)});
 				addCptObstacles();
 			}
 			ajout = false;
@@ -135,7 +138,6 @@ public class FreeModel extends Observable {
 		}else if(rond_bouge && !ajout){		
 			ajout = true;
 			encours = new Point(x-8,y-30);	
-			listePoints.add(new Point(x-8,y-30));
 
 		}else if(rond_bouge && ajout){
 
@@ -145,8 +147,6 @@ public class FreeModel extends Observable {
 				addCptObstacles();
 				
 			}else{
-				trajectoires.put(encours,new Point(x-8,y-30));
-				listePoints.add(new Point(x-8,y-30));
 				
 				Obstacle ob = usine.formerObstacle(TypeObstacle.RONDMOUVEMENT, new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES));
 				
@@ -171,17 +171,21 @@ public class FreeModel extends Observable {
 					
 				}
 				obstacles.add(ob);
-				trajecs.put(ob, listePoints);
-				System.out.println(trajecs);
-				listePoints.clear();
+				this.getTrajecs().put(ob, new Point[]{encours,new Point(x-8,y-30)});
 				addCptObstacles();
 			}
 			ajout = false;
+			encours = null;
+			//System.out.println(this.getTrajecs());
 
 		}
 		setChanged();
 		notifyObservers();
 
+	}
+
+	public HashMap<Obstacle, Point[]> getTrajecs() {
+		return trajecs;
 	}
 
 	public Oiseau getOiseau() {
@@ -233,10 +237,6 @@ public class FreeModel extends Observable {
 		this.oiseau.setC2(x, y);
 		setChanged();
 		notifyObservers();
-	}
-	
-	public HashMap<Point, Point> getTrajectoires() {
-		return trajectoires;
 	}
 	
 	public int getCptObstacles() {

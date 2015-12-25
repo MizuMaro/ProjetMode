@@ -37,11 +37,14 @@ public class Affichage extends JPanel {
 
 			// dessin de la trajectoire passee
 			if (Constantes.TRAJECTOIRES) {
-				g.setColor(Constantes.COULEUR_TRAJECTOIRE);
-
-				// dessin de la trajectoire
+				
 				for (int i = 0; i < a.getPassage().size(); i++) {
+					g.setColor(Constantes.COULEUR_TRAJECTOIRE1);
 					g.fillOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
+							3, 3);
+					
+					g.setColor(Constantes.COULEUR_TRAJECTOIRE2);
+					g.drawOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
 							3, 3);
 				}
 
@@ -144,11 +147,14 @@ public class Affichage extends JPanel {
 
 			// dessin de la trajectoire passee
 			if (Constantes.TRAJECTOIRES) {
-				g.setColor(Constantes.COULEUR_TRAJECTOIRE);
-
-				// dessin de la trajectoire
+				
 				for (int i = 0; i < a.getPassage().size(); i++) {
+					g.setColor(Constantes.COULEUR_TRAJECTOIRE1);
 					g.fillOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
+							3, 3);
+					
+					g.setColor(Constantes.COULEUR_TRAJECTOIRE2);
+					g.drawOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
 							3, 3);
 				}
 

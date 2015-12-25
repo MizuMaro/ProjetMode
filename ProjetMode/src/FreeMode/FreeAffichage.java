@@ -4,7 +4,6 @@ package FreeMode;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.util.HashMap;
 import java.util.Map.Entry;
 
 import Element.Constantes;
@@ -15,14 +14,12 @@ import ObstacleFactory.Obstacle;
 @SuppressWarnings("serial")
 public class FreeAffichage extends Affichage {
 	
-	private HashMap<Point,Point> trajectoires;
 	private FreeModel m;
 	
 	public FreeAffichage(FreeModel m){
 		super(m.getOiseau(),m.getListObstacles());
 		this.m=m;
 		super.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
-		this.trajectoires = m.getTrajectoires();
 	}
 
 	public void paintComponent(Graphics g) {
@@ -30,27 +27,30 @@ public class FreeAffichage extends Affichage {
 		// Dessin du background
 		g.drawImage(Images.FREE_BACKGROUND, 0, 0, Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1], null);
 		
-		// dessin des trajectoires des obstacles qui bougent
+		// dessin des trajectoires des obstacles qui bougent		
 		g.setColor(Color.GREEN);
-		for(Entry<Point, Point> entry : trajectoires.entrySet()){
+		
+		for(Entry<Obstacle,Point[]> entry : m.getTrajecs().entrySet()){
+			g.fillOval(entry.getValue()[0].x, entry.getValue()[0].y, 15, 15);
+			g.fillOval(entry.getValue()[1].x, entry.getValue()[1].y, 15, 15);
 			
-			g.fillOval(entry.getKey().x, entry.getKey().y, 15, 15);
-			g.fillOval(entry.getValue().x, entry.getValue().y, 15, 15);
-			
-			g.drawLine(entry.getKey().x+7, entry.getKey().y+7,entry.getValue().x+9, entry.getValue().y+9);
-			g.drawLine(entry.getKey().x+8, entry.getKey().y+8,entry.getValue().x+8, entry.getValue().y+8);
-			g.drawLine(entry.getKey().x+8, entry.getKey().y+8,entry.getValue().x+8, entry.getValue().y+8);
-			g.drawLine(entry.getKey().x+9, entry.getKey().y+9,entry.getValue().x+7, entry.getValue().y+7);
+			g.drawLine(entry.getValue()[0].x+7, entry.getValue()[0].y+7, entry.getValue()[1].x+9, entry.getValue()[1].y+9);
+			g.drawLine(entry.getValue()[0].x+8, entry.getValue()[0].y+8, entry.getValue()[1].x+8, entry.getValue()[1].y+8);
+			g.drawLine(entry.getValue()[0].x+8, entry.getValue()[0].y+8, entry.getValue()[1].x+8, entry.getValue()[1].y+8);
+			g.drawLine(entry.getValue()[0].x+9, entry.getValue()[0].y+9, entry.getValue()[1].x+7, entry.getValue()[1].y+7);
 		}
 
 		// dessin de la trajectoire passee
 		if (Constantes.TRAJECTOIRES) {
-			g.setColor(Constantes.COULEUR_TRAJECTOIRE);
 
 			// dessin de la trajectoire
 			for (int i = 0; i < super.a.getPassage().size(); i++) {
+				g.setColor(Color.WHITE);
 				g.fillOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
-						3, 3);
+						4, 4);
+				g.setColor(Color.BLACK);
+				g.drawOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
+						4, 4);
 			}
 
 		}
@@ -144,27 +144,5 @@ public class FreeAffichage extends Affichage {
 		}
 
 	}
-
-	public double getAngle(Point c, Point c2) {
-		return super.getAngle(c, c2);
-
-	}
-
-	public void setCollision(boolean b) {
-		super.setCollision(b);
-	}
-
-	public void CreerTriangle(int x1, int y1, int x2, int y2, int x3, int y3) {
-		super.CreerTriangle(x1, y1, x2, y2, x3, y3);
-	}
-
-	public double distance(double x1, double y1, double x2, double y2) {
-		return super.distance(x1, y1, x2, y2);
-	}
-
-	public double coeffDirecteur() {
-		return super.coeffDirecteur();
-	}
-
 
 }

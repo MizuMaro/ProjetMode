@@ -33,7 +33,8 @@ public class Constantes {
 	
 	public final static Color COULEUR_BEC = Color.ORANGE;
 	
-	public final static Color COULEUR_TRAJECTOIRE = Color.gray;
+	public final static Color COULEUR_TRAJECTOIRE1 = Color.WHITE;
+	public final static Color COULEUR_TRAJECTOIRE2 = Color.GRAY;
 	public final static boolean TRAJECTOIRES = true;
 	public final static boolean TRAJECTOIRE_UNIQUE = true;
 	
