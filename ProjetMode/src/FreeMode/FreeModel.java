@@ -254,5 +254,16 @@ public class FreeModel extends Observable {
 		setChanged();
 		notifyObservers();
 	}
+	
+	public void reset(){		
+		oiseau = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
+		oiseau.setC2(Constantes.COORDONNEES_ORIGINE.x+50, Constantes.COORDONNEES_ORIGINE.y);
+		drag = false;
+		obstacles = new ArrayList<>();
+		cptObstacles = 0;
+		
+		this.initAffichage();
+		this.initObstacles();
+	}
 
 }

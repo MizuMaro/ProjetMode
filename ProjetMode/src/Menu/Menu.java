@@ -24,6 +24,9 @@ public class Menu extends JPanel {
 	public boolean quitter_b = false;
 	public boolean free_b = false;
 	
+	FreeModel model = new FreeModel();
+	FreeController control = new FreeController(model);
+	
 	
 	public Menu(final Model m, final JFrame fenetre){
 		
@@ -36,6 +39,7 @@ public class Menu extends JPanel {
 				if (e.getKeyChar() == 'q'){
 					fenetre.setContentPane(Menu.this);
 					m.reset();
+					model.reset();
 				}
 			}
 			
@@ -51,8 +55,6 @@ public class Menu extends JPanel {
 					
 				}else if(free_b){
 					
-					FreeModel model = new FreeModel();
-					FreeController control = new FreeController(model);
 					FreeVue vue = new FreeVue(model, control, fenetre);	
 					control.addVue(vue);
 					
