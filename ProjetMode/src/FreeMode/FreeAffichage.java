@@ -2,8 +2,13 @@
 package FreeMode;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
+import java.awt.GraphicsEnvironment;
 import java.awt.Point;
+import java.io.File;
+import java.io.IOException;
 import java.util.Map.Entry;
 
 import Element.Constantes;
@@ -15,14 +20,25 @@ import ObstacleFactory.Obstacle;
 public class FreeAffichage extends Affichage {
 
 	private FreeModel m;
+	private Font font;
 
 	public FreeAffichage(FreeModel m){
 		super(m.getOiseau(),m.getListObstacles());
 		this.m=m;
 		super.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
+		
+		try {
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT,new File("docs/font/font.ttf")));
+			font = new Font("AngryBirds",Font.BOLD,40);
+		} catch (IOException|FontFormatException e) {
+			System.err.println(e.getMessage());
+		}
 	}
 
 	public void paintComponent(Graphics g) {
+		
+		g.setFont(font);
 
 		// Dessin du background
 		g.drawImage(Images.FREE_BACKGROUND, 0, 0, Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1], null);
@@ -135,13 +151,25 @@ public class FreeAffichage extends Affichage {
 		g.drawImage(Images.CAISSE_BOUGE, 25, 170, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES+10, null);
 		g.drawImage(Images.ROND_BOUGE, 25, 240, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES+10, null);
 
+		
 		// nombre d'obstacles
+		g.setColor(Color.BLACK);
+		
 		if(this.m.getCptObstacles() == 0){
-			g.drawString(String.valueOf("Aucun obstacle"), 13, 330);
+			g.drawString(String.valueOf("Aucun obstacle"), 95, 70);
+			g.setColor(Color.WHITE);
+			g.drawString(String.valueOf("Aucun obstacle"), 90, 65);
+			
 		}else if(this.m.getCptObstacles() == 1){
-			g.drawString(String.valueOf(this.m.getCptObstacles() + " obstacle"), 13, 330);
+			g.drawString(String.valueOf(this.m.getCptObstacles() + " obstacle"), 95, 70);
+			g.setColor(Color.WHITE);
+			g.drawString(String.valueOf(this.m.getCptObstacles() + " obstacle"), 90, 65);
+			
 		}else{
-			g.drawString(String.valueOf(this.m.getCptObstacles() + " obstacles"), 13, 330);
+			g.drawString(String.valueOf(this.m.getCptObstacles() + " obstacles"), 95, 70);
+			g.setColor(Color.WHITE);
+			g.drawString(String.valueOf(this.m.getCptObstacles() + " obstacles"), 90, 65);
+			
 		}
 
 	}

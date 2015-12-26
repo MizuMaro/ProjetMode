@@ -15,6 +15,10 @@ public class FreeController {
 		m.setDrag(b);
 	}
 	
+	public boolean getDrag(){
+		return m.getDrag();
+	}
+	
 	public void setTrajectoire(boolean b){
 		m.getOiseau().setTrajectoire(b);
 	}

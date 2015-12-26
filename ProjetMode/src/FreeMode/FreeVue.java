@@ -65,23 +65,28 @@ public class FreeVue implements Observer  {
 					m.rond = false;
 					m.carre_bouge = false;
 					m.rond_bouge = false;
+					
 				}else if(e.getX() > 25 && e.getX() < 65 && e.getY() > 110+25 && e.getY() < 150+25){
 					m.carre = false;
 					m.rond = true;
 					m.carre_bouge = false;
 					m.rond_bouge = false;
+					
 				}else if(e.getX() > 25 && e.getX() < 65 && e.getY() > 165+25 && e.getY() < 220+25){
 					m.carre = false;
 					m.rond = false;
 					m.carre_bouge = true;
 					m.rond_bouge = false;
+					
 				}else if(e.getX() > 25 && e.getX() < 65 && e.getY() > 235+25 && e.getY() < 290+25){
 					m.carre = false;
 					m.rond = false;
 					m.carre_bouge = false;
 					m.rond_bouge = true;
-				}else{		
+					
+				}else if(!c.getDrag() && !m.getVol()){		
 					m.modObstacle(e.getX(), e.getY());
+					
 				}
 
 				c.repaint();
@@ -90,7 +95,7 @@ public class FreeVue implements Observer  {
 			// fonction qui gere le drop
 			public void mouseReleased(MouseEvent e) {
 				
-				if (m.getDrag()&& !m.getVol()) {
+				if (c.getDrag()&& !m.getVol()) {
 					
 					c.setDrag(false);
 					

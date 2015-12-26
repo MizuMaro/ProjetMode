@@ -49,6 +49,7 @@ public class Courbe {
 					
 					o.setTrajectoire(true);
 					o.setDepart(new Point(o.getC().x, o.getC().y));
+					o.setVole(true);
 
 					while (x <= 800 * 7 && !touch && timeLancement<timeFin) {
 
@@ -58,6 +59,7 @@ public class Courbe {
 						limites = (o.getC().x > Constantes.TAILLE_ECRAN[0] - Constantes.TAILLE_OISEAU || o.getC().x < 0);
 
 						timeLancement = System.currentTimeMillis();
+						
 						// plus ou moins loin
 						if (i==1) {
 							x += 4;
@@ -66,8 +68,10 @@ public class Courbe {
 							x -= 4;
 							x2 = x-30;
 						}
+						
 						//pour tangente
 						y2 = (int) ((int) (a*2*x2+b)*(x2-a)+(a * Math.pow(x2, 2) + b * x2 + c));
+						
 						// courbe ax2+bx+c
 						y = (int) (a * Math.pow(x, 2) + b * x + c);
 						if (Math.abs(y2-y) > 30){
@@ -80,12 +84,9 @@ public class Courbe {
 							}
 						}
 
-						// System.out.println(y);
 						// nouvelle position de l'oiseau
 						o.setC(x, y);
-						//o.setC2(x2, y2);
 
-						// utiliser timer
 						long now = System.currentTimeMillis();
 						long time = now + 10;
 
@@ -139,6 +140,7 @@ public class Courbe {
 						
 						affichage.repaint();
 					}
+					o.setVole(false);
 				}else{
 					timer.cancel();
 				}
@@ -208,6 +210,7 @@ public class Courbe {
 						}
 						//pour tangente
 						y2 = (int) ((coefDir*x2)+hauteur);
+						
 						// courbe ax2+bx+c
 						y =  (int) ((coefDir*x)+hauteur);
 						if (Math.abs(y2-y) > 30){
@@ -220,10 +223,9 @@ public class Courbe {
 							}
 						}
 
-						// System.out.println(y);
 						// nouvelle position de l'oiseau
 						o.setC(x, y);
-						//o.setC2(x2, y2);
+
 
 						// utiliser timer
 						long now = System.currentTimeMillis();
@@ -265,9 +267,8 @@ public class Courbe {
 								while (now < time) {
 									now = System.currentTimeMillis();
 								}
-
-								o.setVole(false);
 							}
+							
 							if (touch == false)
 								o.setC2(x2, y2);
 						}
@@ -281,6 +282,7 @@ public class Courbe {
 						
 						affichage.repaint();
 					}
+					o.setVole(false);
 				}else{
 					timer.cancel();
 				}
