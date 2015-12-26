@@ -135,5 +135,16 @@ public class Model extends Observable {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void reset(){		
+		oiseau = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
+		oiseau.setC2(Constantes.COORDONNEES_ORIGINE.x+50, Constantes.COORDONNEES_ORIGINE.y);
+		debug = false;
+		drag = false;
+		obstacles = new ArrayList<>();
+		
+		this.initAffichage();
+		this.initObstacles();
+	}
 
 }

@@ -1,6 +1,8 @@
 package Menu;
 
 import java.awt.Graphics;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
@@ -26,6 +28,19 @@ public class Menu extends JPanel {
 	public Menu(final Model m, final JFrame fenetre){
 		
 		fenetre.add(this);
+		
+		fenetre.addKeyListener(new KeyAdapter() {
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyChar() == 'q'){
+					fenetre.setContentPane(Menu.this);
+					m.reset();
+				}
+			}
+			
+		});
+		
 		this.addMouseListener(new MouseAdapter() {
 			
 			public void mouseReleased(MouseEvent e) {
@@ -33,6 +48,7 @@ public class Menu extends JPanel {
 				
 				if(jouer_b){
 					fenetre.setContentPane(m.getAffichage());
+					
 				}else if(free_b){
 					
 					FreeModel model = new FreeModel();

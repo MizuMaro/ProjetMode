@@ -47,8 +47,6 @@ public class Vue implements Observer {
 					c.setPositionOiseau(Constantes.COORDONNEES_ORIGINE.x, Constantes.COORDONNEES_ORIGINE.y);
 					c.setPositionOiseauC2((int) m.getPositionOiseau().getX(), (int) m.getPositionOiseau().getY());
 					c.repaint();
-				} else if (e.getKeyChar() == 'q') {
-					System.exit(0);
 				} else if (e.getKeyChar() == 'g') {
 					Model.debug = !Model.debug;
 					c.repaint();

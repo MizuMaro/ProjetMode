@@ -72,7 +72,8 @@ public class FreeModel extends Observable {
 
 				// condition a verifier
 				if(x > o.getC().x && x < o.getC().x + Constantes.TAILLE_OBSTACLES &&
-						y > o.getC().y + Constantes.TAILLE_OBSTACLES/2 && y < o.getC().y + (Constantes.TAILLE_OBSTACLES/2)*3){
+						y > o.getC().y + Constantes.TAILLE_OBSTACLES/2 && y < o.getC().y + (Constantes.TAILLE_OBSTACLES/2)*3
+						&& o.isActif()){
 					obstacles.remove(o);
 
 					for(Entry<Obstacle, Point[]> e : this.getTrajecs().entrySet()){
