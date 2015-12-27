@@ -29,8 +29,13 @@ public class Menu extends JPanel {
 	
 	
 	public Menu(final Model m, final JFrame fenetre){
-		
 		fenetre.add(this);
+		
+		FreeVue vue = new FreeVue(model, control, fenetre);	
+		control.addVue(vue);
+		
+		
+	
 		
 		fenetre.addKeyListener(new KeyAdapter() {
 
@@ -53,11 +58,7 @@ public class Menu extends JPanel {
 				if(jouer_b){
 					fenetre.setContentPane(m.getAffichage());
 					
-				}else if(free_b){
-					
-					FreeVue vue = new FreeVue(model, control, fenetre);	
-					control.addVue(vue);
-					
+				}else if(free_b){				
 					fenetre.setContentPane(model.getAffichage());
 					
 				}else if(quitter_b){

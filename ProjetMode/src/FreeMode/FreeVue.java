@@ -162,8 +162,6 @@ public class FreeVue implements Observer  {
 		c.setPositionOiseauC2(m.getPositionOiseau().x + 50, m.getPositionOiseau().y);
 		c.initObstacles();
 		c.initAffichage();
-		
-		fenetre.setContentPane(m.getAffichage());
 	}
 	
 	@Override
