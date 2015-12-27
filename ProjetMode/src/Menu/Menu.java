@@ -29,13 +29,10 @@ public class Menu extends JPanel {
 	
 	
 	public Menu(final Model m, final JFrame fenetre){
-		fenetre.add(this);
 		
+		fenetre.add(this);
 		FreeVue vue = new FreeVue(model, control, fenetre);	
 		control.addVue(vue);
-		
-		
-	
 		
 		fenetre.addKeyListener(new KeyAdapter() {
 

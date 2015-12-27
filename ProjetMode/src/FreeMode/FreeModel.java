@@ -260,6 +260,11 @@ public class FreeModel extends Observable {
 		oiseau.setC2(Constantes.COORDONNEES_ORIGINE.x+50, Constantes.COORDONNEES_ORIGINE.y);
 		drag = false;
 		obstacles = new ArrayList<>();
+		trajecs = new HashMap<Obstacle,Point[]>();
+		carre = true;
+		rond = false;
+		carre_bouge = false;
+		rond_bouge = false;
 		cptObstacles = -1;
 		
 		this.initAffichage();
