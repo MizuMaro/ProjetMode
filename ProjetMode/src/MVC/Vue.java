@@ -14,6 +14,8 @@ import javax.swing.event.MouseInputAdapter;
 import Courbe.Courbe;
 import Element.Constantes;
 import Element.Images;
+import FreeMode.FreeController;
+import FreeMode.FreeModel;
 import Menu.Menu;
 
 public class Vue implements Observer {
@@ -21,7 +23,7 @@ public class Vue implements Observer {
 	protected Model m;
 	protected Controller c;
 
-	public Vue(final Model m, final Controller c) {
+	public Vue(final Model m, final Controller c, final FreeModel model, final FreeController controller) {
 		// MVC
 		this.m = m;
 		this.c = c;
@@ -35,7 +37,7 @@ public class Vue implements Observer {
 		fenetre.setVisible(true);
 		fenetre.setLocationRelativeTo(null);
 				
-		JPanel menu = new Menu(m, fenetre);
+		JPanel menu = new Menu(m, model, controller, fenetre);
 
 		// Listener qui gere les actions au clavier
 		fenetre.addKeyListener(new KeyAdapter() {

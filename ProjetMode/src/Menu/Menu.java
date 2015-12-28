@@ -24,11 +24,13 @@ public class Menu extends JPanel {
 	public boolean quitter_b = false;
 	public boolean free_b = false;
 	
+	/*
 	FreeModel model = new FreeModel();
 	FreeController control = new FreeController(model);
+	*/
 	
 	
-	public Menu(final Model m, final JFrame fenetre){
+	public Menu(final Model m, final FreeModel model, FreeController control, final JFrame fenetre){
 		
 		fenetre.add(this);
 		FreeVue vue = new FreeVue(model, control, fenetre);	

@@ -1,6 +1,8 @@
 package Start;
 
 
+import FreeMode.FreeController;
+import FreeMode.FreeModel;
 import MVC.Controller;
 import MVC.Model;
 import MVC.Vue;
@@ -18,7 +20,10 @@ public class Lancer {
 		
 		Model model = new Model();
 		Controller control = new Controller(model);
-		Vue vue = new Vue(model, control);
+		FreeModel model1 = new FreeModel();
+		FreeController control1 = new FreeController(model1);
+		
+		Vue vue = new Vue(model, control, model1, control1);
 		control.addVue(vue);
 		
 	}
