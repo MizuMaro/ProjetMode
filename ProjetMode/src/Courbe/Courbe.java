@@ -116,6 +116,7 @@ public class Courbe {
 								touch = true;
 								if(sol==false && limites==false){
 									ob.setActif(false);
+									o.addToScore(1);
 								}
 								affichage.repaint();
 								now = System.currentTimeMillis();
@@ -257,6 +258,7 @@ public class Courbe {
 								touch = true;
 								if(sol==false && limites==false){
 									ob.setActif(false);
+									o.addToScore(1);
 								}
 								affichage.repaint();
 								now = System.currentTimeMillis();

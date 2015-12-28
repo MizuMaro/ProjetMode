@@ -14,6 +14,8 @@ public class Oiseau {
 	private ArrayList<Point> passage = new ArrayList<>();
 	private ArrayList<Point> passageTangInter = new ArrayList<>();
 	private boolean vole;
+	
+	private int score;
 
 	// ajouter angle pour l'oiseau
 	/**
@@ -24,6 +26,7 @@ public class Oiseau {
 		this.taille = Constantes.TAILLE_OISEAU;
 		this.c = c;
 		this.vole = false;
+		this.score = 0;
 	}
 
 	public void setVole(boolean b){
@@ -113,5 +116,13 @@ public class Oiseau {
 
 	public void setDepart(Point depart) {
 		this.depart = depart;
+	}
+	
+	public int getScore() {
+		return score;
+	}
+	
+	public void addToScore(int i) {
+		this.score += i;
 	}
 }

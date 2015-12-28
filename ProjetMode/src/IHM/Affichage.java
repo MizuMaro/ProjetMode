@@ -2,8 +2,13 @@
 package IHM;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
+import java.awt.GraphicsEnvironment;
 import java.awt.Point;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
@@ -20,11 +25,20 @@ public class Affichage extends JPanel {
 	protected ArrayList<Obstacle> listeObstacle;
 	protected boolean collision = false;
 	protected Point[] p = new Point[3];
+	private Font font;
 
 	public Affichage(Oiseau a, ArrayList<Obstacle> listeObstacle) {
 		this.a = a;
 		this.listeObstacle = listeObstacle;
 		this.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
+		
+		try {
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT,new File("docs/font/font.ttf")));
+			font = new Font("AngryBirds",Font.BOLD,40);
+		} catch (IOException|FontFormatException e) {
+			System.err.println(e.getMessage());
+		}
 	}
 
 	public void paintComponent(Graphics g) {
@@ -141,9 +155,15 @@ public class Affichage extends JPanel {
 			g.drawString("y = _________ = " + coeffDirecteur() + "x + b", 27, 94);
 			g.drawString("(" + a.getC().x + " - " + Constantes.COORDONNEES_ORIGINE.x + ")", 45, 110);
 			 */
+			
+			// Score
+			g.drawString("Score : 42 points", 20, 140);
 
 		} else {
 
+			// Police d'ecriture
+			g.setFont(font);
+			
 			// Dessin du background
 			g.drawImage(Images.BACKGROUND, 0, 0, Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1], null);
 
@@ -219,6 +239,18 @@ public class Affichage extends JPanel {
 
 			// lance-pierres
 			g.drawImage(Images.SLINGSHOT_UP, Constantes.COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
+			
+			// Score
+			g.setColor(Color.BLACK);
+			if(a.getScore() <= 1){
+				g.drawString("Score : " + a.getScore() + " point", 25, 55);
+				g.setColor(Color.WHITE);
+				g.drawString("Score : " + a.getScore() + " point", 20, 50);
+			}else{
+				g.drawString("Score : " + a.getScore() + " points", 25, 55);
+				g.setColor(Color.WHITE);
+				g.drawString("Score : " + a.getScore() + " points", 20, 50);
+			}
 
 		}
 	}

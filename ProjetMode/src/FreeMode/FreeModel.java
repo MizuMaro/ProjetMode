@@ -7,6 +7,7 @@ import java.util.Observable;
 
 import Element.Constantes;
 import Element.Oiseau;
+import IHM.Affichage;
 import ObstacleFactory.Obstacle;
 import ObstacleFactory.TypeObstacle;
 import ObstacleFactory.Usine;
@@ -23,7 +24,7 @@ public class FreeModel extends Observable {
 	private HashMap<Obstacle,Point[]> trajecs = new HashMap<Obstacle,Point[]>();
 	private int cptObstacles = -1;
 
-	private FreeAffichage affichage;
+	private Affichage affichage;
 	protected boolean carre = true;
 	protected boolean rond = false;
 	protected boolean carre_bouge = false;
@@ -208,7 +209,7 @@ public class FreeModel extends Observable {
 		notifyObservers();
 	}
 
-	public FreeAffichage getAffichage() {
+	public Affichage getAffichage() {
 		return affichage;
 	}
 
