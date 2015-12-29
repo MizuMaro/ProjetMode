@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import Element.Constantes;
 import Element.Images;
 import Element.Oiseau;
+import Element.Sound;
 import MVC.Model;
 import ObstacleFactory.Obstacle;
 
@@ -252,6 +253,16 @@ public class Affichage extends JPanel {
 				g.drawString("Score : " + a.getScore() + " points", 20, 50);
 			}
 
+		}
+		
+		if(a.getScore() != 0 && a.getScore() == this.listeObstacle.size()){
+			a.setVictory(true);
+			Sound.getInstance().playVictory();
+			g.drawImage(Images.VICTORY, 0, 0, 1200, 610, null);
+			a.addToScore(-a.getScore());
+			
+			// reset du modele
+			
 		}
 	}
 

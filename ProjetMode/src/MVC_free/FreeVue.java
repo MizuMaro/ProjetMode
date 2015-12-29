@@ -101,7 +101,7 @@ public class FreeVue implements Observer  {
 					// courbes de Remi
 					double posLanX = m.getPositionOiseau().getX();
 					double posLanY = m.getPositionOiseau().getY();
-
+					
 					if (posLanY >= 350 && posLanX <= 150) {
 
 						double c = 100;
@@ -152,6 +152,14 @@ public class FreeVue implements Observer  {
 								m.getAffichage(), m.getListObstacles(), 1);
 
 					}
+					
+					if(m.getOiseau().getScore() != 0 && m.getOiseau().getScore() == m.getCptObstacles()){
+						m.getOiseau().setVictory(true);		
+						// reset du modele (a faire)
+						m.getOiseau().addToScore(-m.getOiseau().getScore());
+						c.m.reset();
+					}
+
 				}
 				
 			}

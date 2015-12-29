@@ -12,10 +12,11 @@ import javax.swing.JPanel;
 
 import Element.Constantes;
 import Element.Images;
+import Element.Sound;
+import MVC.Model;
 import MVC_free.FreeController;
 import MVC_free.FreeModel;
 import MVC_free.FreeVue;
-import MVC.Model;
 
 @SuppressWarnings("serial")
 public class Menu extends JPanel {
@@ -30,6 +31,8 @@ public class Menu extends JPanel {
 		fenetre.add(this);
 		FreeVue vue = new FreeVue(model, control, fenetre);	
 		control.addVue(vue);
+		Sound.getInstance().playBackground();
+		
 		
 		fenetre.addKeyListener(new KeyAdapter() {
 

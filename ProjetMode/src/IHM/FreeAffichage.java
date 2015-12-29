@@ -13,6 +13,7 @@ import java.util.Map.Entry;
 
 import Element.Constantes;
 import Element.Images;
+import Element.Sound;
 import MVC_free.FreeModel;
 import ObstacleFactory.Obstacle;
 
@@ -186,9 +187,10 @@ public class FreeAffichage extends Affichage {
 		
 		if(m.getOiseau().getScore() != 0 && m.getOiseau().getScore() == m.getCptObstacles()){
 			m.getOiseau().setVictory(true);
+			Sound.getInstance().playVictory();
 			g.drawImage(Images.VICTORY, 0, 0, 1200, 610, null);
-			repaint();
-			//System.exit(0);
+			
+			
 		}
 
 	}

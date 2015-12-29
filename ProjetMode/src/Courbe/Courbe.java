@@ -141,7 +141,7 @@ public class Courbe {
 						
 						affichage.repaint();
 					}
-					o.setVole(false);
+					o.setVole(false);			
 				}else{
 					timer.cancel();
 				}

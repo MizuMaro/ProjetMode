@@ -146,5 +146,8 @@ public class Model extends Observable {
 		this.initAffichage();
 		this.initObstacles();
 	}
+	public int getCptObstacles() {
+		return this.getListObstacles().size();
+	}
 
 }
