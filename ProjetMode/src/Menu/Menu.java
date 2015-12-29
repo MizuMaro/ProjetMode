@@ -12,9 +12,9 @@ import javax.swing.JPanel;
 
 import Element.Constantes;
 import Element.Images;
-import FreeMode.FreeController;
-import FreeMode.FreeModel;
-import FreeMode.FreeVue;
+import MVC_free.FreeController;
+import MVC_free.FreeModel;
+import MVC_free.FreeVue;
 import MVC.Model;
 
 @SuppressWarnings("serial")
@@ -23,11 +23,6 @@ public class Menu extends JPanel {
 	public boolean jouer_b = false;
 	public boolean quitter_b = false;
 	public boolean free_b = false;
-	
-	/*
-	FreeModel model = new FreeModel();
-	FreeController control = new FreeController(model);
-	*/
 	
 	
 	public Menu(final Model m, final FreeModel model, FreeController control, final JFrame fenetre){

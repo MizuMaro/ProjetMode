@@ -1,4 +1,4 @@
-package FreeMode;
+package MVC_free;
 
 import java.util.ArrayList;
 

@@ -25,6 +25,7 @@ public class Images {
 	public static Image FREE;
 	public static Image FREE1;
 	public static Image GIF;
+	public static Image VICTORY;
 	
 	
 	// Images du jeu
@@ -66,6 +67,7 @@ public class Images {
 			CAISSE_RONDE = ImageIO.read(new File("img/caisse_ronde.png"));
 			CAISSE_BOUGE = ImageIO.read(new File("img/caisse_bouge.png"));
 			ROND_BOUGE = ImageIO.read(new File("img/rond_bouge.png"));
+			VICTORY = ImageIO.read(new File("img/victory.png"));
 			
 		} catch (IOException e) {
 			System.err.println(e.getMessage());

@@ -14,6 +14,7 @@ public class Oiseau {
 	private ArrayList<Point> passage = new ArrayList<>();
 	private ArrayList<Point> passageTangInter = new ArrayList<>();
 	private boolean vole;
+	private boolean victory;
 	
 	private int score;
 
@@ -26,6 +27,7 @@ public class Oiseau {
 		this.taille = Constantes.TAILLE_OISEAU;
 		this.c = c;
 		this.vole = false;
+		this.setVictory(false);
 		this.score = 0;
 	}
 
@@ -124,5 +126,13 @@ public class Oiseau {
 	
 	public void addToScore(int i) {
 		this.score += i;
+	}
+
+	public boolean isVictory() {
+		return victory;
+	}
+
+	public void setVictory(boolean victory) {
+		this.victory = victory;
 	}
 }

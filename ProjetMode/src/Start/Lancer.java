@@ -1,8 +1,8 @@
 package Start;
 
 
-import FreeMode.FreeController;
-import FreeMode.FreeModel;
+import MVC_free.FreeController;
+import MVC_free.FreeModel;
 import MVC.Controller;
 import MVC.Model;
 import MVC.Vue;

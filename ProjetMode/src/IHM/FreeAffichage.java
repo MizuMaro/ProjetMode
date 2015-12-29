@@ -1,5 +1,5 @@
 
-package FreeMode;
+package IHM;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,7 +13,7 @@ import java.util.Map.Entry;
 
 import Element.Constantes;
 import Element.Images;
-import IHM.Affichage;
+import MVC_free.FreeModel;
 import ObstacleFactory.Obstacle;
 
 @SuppressWarnings("serial")
@@ -26,7 +26,7 @@ public class FreeAffichage extends Affichage {
 		super(m.getOiseau(),m.getListObstacles());
 		this.m=m;
 		super.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
-		
+
 		try {
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT,new File("docs/font/font.ttf")));
@@ -37,7 +37,7 @@ public class FreeAffichage extends Affichage {
 	}
 
 	public void paintComponent(Graphics g) {
-		
+
 		g.setFont(font);
 
 		// Dessin du background
@@ -73,7 +73,7 @@ public class FreeAffichage extends Affichage {
 		g.fillOval(m.getOiseau().getDepart().x+Constantes.TAILLE_OISEAU/2-5, m.getOiseau().getDepart().y+Constantes.TAILLE_OISEAU/2, 8, 8);
 		g.setColor(Constantes.COULEUR_TRAJECTOIRE2);
 		g.drawOval(m.getOiseau().getDepart().x+Constantes.TAILLE_OISEAU/2-5, m.getOiseau().getDepart().y+Constantes.TAILLE_OISEAU/2, 8, 8);
-		
+
 		for (int i = 0; i < a.getPassage().size(); i++) {
 			g.setColor(Constantes.COULEUR_TRAJECTOIRE1);
 			g.fillOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
@@ -135,13 +135,13 @@ public class FreeAffichage extends Affichage {
 
 		// selection actuelle
 		g.setColor(Color.RED);
-		if(m.carre){
+		if(m.isCarre()){
 			g.fill3DRect(20, 45, Constantes.TAILLE_OBSTACLES+10, Constantes.TAILLE_OBSTACLES+10, true);
-		}else if(m.rond){
+		}else if(m.isRond()){
 			g.fill3DRect(20, 105, Constantes.TAILLE_OBSTACLES+10, Constantes.TAILLE_OBSTACLES+10, true);
-		}else if(m.carre_bouge){
+		}else if(m.isCarre_bouge()){
 			g.fill3DRect(20, 165, Constantes.TAILLE_OBSTACLES+10, Constantes.TAILLE_OBSTACLES+20, true);
-		}else if(m.rond_bouge){
+		}else if(m.isRond_bouge()){
 			g.fill3DRect(20, 235, Constantes.TAILLE_OBSTACLES+10, Constantes.TAILLE_OBSTACLES+20, true);
 		}
 
@@ -151,25 +151,44 @@ public class FreeAffichage extends Affichage {
 		g.drawImage(Images.CAISSE_BOUGE, 25, 170, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES+10, null);
 		g.drawImage(Images.ROND_BOUGE, 25, 240, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES+10, null);
 
-		
+
 		// nombre d'obstacles
 		g.setColor(Color.BLACK);
-		
+
 		if(this.m.getCptObstacles() == 0){
 			g.drawString(String.valueOf("Aucun obstacle"), 95, 70);
 			g.setColor(Color.WHITE);
 			g.drawString(String.valueOf("Aucun obstacle"), 90, 65);
-			
+
 		}else if(this.m.getCptObstacles() == 1){
 			g.drawString(String.valueOf(this.m.getCptObstacles() + " obstacle"), 95, 70);
 			g.setColor(Color.WHITE);
 			g.drawString(String.valueOf(this.m.getCptObstacles() + " obstacle"), 90, 65);
-			
+
 		}else{
 			g.drawString(String.valueOf(this.m.getCptObstacles() + " obstacles"), 95, 70);
 			g.setColor(Color.WHITE);
 			g.drawString(String.valueOf(this.m.getCptObstacles() + " obstacles"), 90, 65);
-			
+
+		}
+
+		// Score
+		g.setColor(Color.BLACK);
+		if(a.getScore() <= 1){
+			g.drawString("Score : " + a.getScore() + " point", 95, 120);
+			g.setColor(Color.WHITE);
+			g.drawString("Score : " + a.getScore() + " point", 90, 115);
+		}else{
+			g.drawString("Score : " + a.getScore() + " points", 95, 120);
+			g.setColor(Color.WHITE);
+			g.drawString("Score : " + a.getScore() + " points", 90, 115);
+		}
+		
+		if(m.getOiseau().getScore() != 0 && m.getOiseau().getScore() == m.getCptObstacles()){
+			m.getOiseau().setVictory(true);
+			g.drawImage(Images.VICTORY, 0, 0, 1200, 610, null);
+			repaint();
+			//System.exit(0);
 		}
 
 	}

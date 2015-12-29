@@ -1,4 +1,4 @@
-package FreeMode;
+package MVC_free;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,6 +8,7 @@ import java.util.Observable;
 import Element.Constantes;
 import Element.Oiseau;
 import IHM.Affichage;
+import IHM.FreeAffichage;
 import ObstacleFactory.Obstacle;
 import ObstacleFactory.TypeObstacle;
 import ObstacleFactory.Usine;
@@ -254,6 +255,22 @@ public class FreeModel extends Observable {
 		this.cptObstacles--;
 		setChanged();
 		notifyObservers();
+	}
+	
+	public boolean isCarre() {
+		return carre;
+	}
+
+	public boolean isRond() {
+		return rond;
+	}
+
+	public boolean isCarre_bouge() {
+		return carre_bouge;
+	}
+
+	public boolean isRond_bouge() {
+		return rond_bouge;
 	}
 	
 	public void reset(){		

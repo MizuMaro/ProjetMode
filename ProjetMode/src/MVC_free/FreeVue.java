@@ -1,4 +1,4 @@
-package FreeMode;
+package MVC_free;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -27,7 +27,6 @@ public class FreeVue implements Observer  {
 		// Listener qui gere le drag
 		fenetre.addMouseMotionListener(new MouseInputAdapter() {
 
-			@Override
 			public void mouseDragged(MouseEvent e) {
 				
 				if (!m.getOiseau().getVole()) {
@@ -154,6 +153,7 @@ public class FreeVue implements Observer  {
 
 					}
 				}
+				
 			}
 
 		});
@@ -162,6 +162,8 @@ public class FreeVue implements Observer  {
 		c.setPositionOiseauC2(m.getPositionOiseau().x + 50, m.getPositionOiseau().y);
 		c.initObstacles();
 		c.initAffichage();
+		
+		
 	}
 	
 	@Override

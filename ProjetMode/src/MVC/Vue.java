@@ -14,8 +14,8 @@ import javax.swing.event.MouseInputAdapter;
 import Courbe.Courbe;
 import Element.Constantes;
 import Element.Images;
-import FreeMode.FreeController;
-import FreeMode.FreeModel;
+import MVC_free.FreeController;
+import MVC_free.FreeModel;
 import Menu.Menu;
 
 public class Vue implements Observer {
