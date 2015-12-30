@@ -22,7 +22,7 @@ public class Sound {
 	}
 	
 	public void playBackground(){
-		play("/sounds/background.wav",true);
+		play("./sounds/background.wav",true);
 	}
 	
 	public void playWeeee(){
