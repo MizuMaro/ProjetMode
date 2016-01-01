@@ -23,7 +23,7 @@ public class Courbe {
 
 				if(run){
 					run = false;
-					if(Constantes.TRAJECTOIRE_UNIQUE){
+					if(Constantes.getInstance().TRAJECTOIRE_UNIQUE){
 						o.effacerTrajectoire();
 						o.effacerTrajectoireTangeante();
 					}
@@ -54,9 +54,9 @@ public class Courbe {
 					while (x <= 800 * 7 && !touch && timeLancement<timeFin) {
 
 						// collision avec le sol
-						sol = (o.getC().y >= Constantes.HAUTEUR_SOL - Constantes.TAILLE_OISEAU);
+						sol = (o.getC().y >= Constantes.getInstance().HAUTEUR_SOL - Constantes.getInstance().TAILLE_OISEAU);
 						// sortie de l'ecran
-						limites = (o.getC().x > Constantes.TAILLE_ECRAN[0] - Constantes.TAILLE_OISEAU || o.getC().x < 0);
+						limites = (o.getC().x > Constantes.getInstance().TAILLE_ECRAN[0] - Constantes.getInstance().TAILLE_OISEAU || o.getC().x < 0);
 
 						timeLancement = System.currentTimeMillis();
 						
@@ -103,7 +103,7 @@ public class Courbe {
 							}
 
 							if(ob.isActif() && affichage.distance(o.getC().getX(), o.getC().getY(), 
-									ob.getC().getX(), ob.getC().getY()) <= (Constantes.TAILLE_OISEAU/2 + Constantes.TAILLE_OBSTACLES/2) 
+									ob.getC().getX(), ob.getC().getY()) <= (Constantes.getInstance().TAILLE_OISEAU/2 + Constantes.getInstance().TAILLE_OBSTACLES/2) 
 									// collision avec le sol ?
 									|| sol 
 
@@ -135,7 +135,7 @@ public class Courbe {
 						affichage.setCollision(false);
 						if(touch){
 							o.setTrajectoire(false);
-							o.setC(Constantes.COORDONNEES_ORIGINE.x, Constantes.COORDONNEES_ORIGINE.y);
+							o.setC(Constantes.getInstance().COORDONNEES_ORIGINE.x, Constantes.getInstance().COORDONNEES_ORIGINE.y);
 							o.setC2(o.getC().x+50, o.getC().y);	
 						}
 						
@@ -163,7 +163,7 @@ public class Courbe {
 				
 				if(run){
 					run = false;
-					if(Constantes.TRAJECTOIRE_UNIQUE){
+					if(Constantes.getInstance().TRAJECTOIRE_UNIQUE){
 						o.effacerTrajectoire();
 						o.effacerTrajectoireTangeante();
 					}
@@ -196,9 +196,9 @@ public class Courbe {
 					while (x <= 800 * 7 && !touch && timeLancement<timeFin) {
 
 						// collision avec le sol
-						sol = (o.getC().y >= Constantes.HAUTEUR_SOL - Constantes.TAILLE_OISEAU);
+						sol = (o.getC().y >= Constantes.getInstance().HAUTEUR_SOL - Constantes.getInstance().TAILLE_OISEAU);
 						// sortie de l'ecran
-						limites = (o.getC().x > Constantes.TAILLE_ECRAN[0] - Constantes.TAILLE_OISEAU || o.getC().x < 0);
+						limites = (o.getC().x > Constantes.getInstance().TAILLE_ECRAN[0] - Constantes.getInstance().TAILLE_OISEAU || o.getC().x < 0);
 
 						timeLancement = System.currentTimeMillis();
 						// plus ou moins loin
@@ -245,7 +245,7 @@ public class Courbe {
 							}
 
 							if(ob.isActif() && affichage.distance(o.getC().getX(), o.getC().getY(), 
-									ob.getC().getX(), ob.getC().getY()) <= (Constantes.TAILLE_OISEAU/2 + Constantes.TAILLE_OBSTACLES/2) 
+									ob.getC().getX(), ob.getC().getY()) <= (Constantes.getInstance().TAILLE_OISEAU/2 + Constantes.getInstance().TAILLE_OBSTACLES/2) 
 									// collision avec le sol ?
 									|| sol 
 
@@ -278,7 +278,7 @@ public class Courbe {
 						affichage.setCollision(false);
 						if(touch){
 							o.setTrajectoire(false);
-							o.setC(Constantes.COORDONNEES_ORIGINE.x, Constantes.COORDONNEES_ORIGINE.y);
+							o.setC(Constantes.getInstance().COORDONNEES_ORIGINE.x, Constantes.getInstance().COORDONNEES_ORIGINE.y);
 							o.setC2(o.getC().x+50, o.getC().y);	
 						}
 						

@@ -31,9 +31,9 @@ public class Vue implements Observer {
 		this.c = c;
 		m.addObserver(this);
 
-		this.fenetre = new JFrame(Constantes.TITRE);
-		fenetre.setIconImage(Images.OBSTACLE);
-		fenetre.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
+		this.fenetre = new JFrame(Constantes.getInstance().TITRE);
+		fenetre.setIconImage(Images.getInstance().OBSTACLE);
+		fenetre.setSize(Constantes.getInstance().TAILLE_ECRAN[0], Constantes.getInstance().TAILLE_ECRAN[1]);
 		fenetre.setResizable(false);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre.setVisible(true);
@@ -48,7 +48,7 @@ public class Vue implements Observer {
 			public void keyPressed(KeyEvent e) {
 				// reset a la position d'origine de l'oiseau
 				if (e.getKeyChar() == 'r') {
-					c.setPositionOiseau(Constantes.COORDONNEES_ORIGINE.x, Constantes.COORDONNEES_ORIGINE.y);
+					c.setPositionOiseau(Constantes.getInstance().COORDONNEES_ORIGINE.x, Constantes.getInstance().COORDONNEES_ORIGINE.y);
 					c.setPositionOiseauC2((int) m.getPositionOiseau().getX(), (int) m.getPositionOiseau().getY());
 					c.repaint();
 				} else if (e.getKeyChar() == 'g') {
@@ -65,21 +65,21 @@ public class Vue implements Observer {
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				if (!m.getOiseau().getVole()) {
-					if (e.getX() < Constantes.COORDONNEES_ORIGINE.x + 20 + Constantes.RAYON_DEPART
-							&& e.getX() > Constantes.COORDONNEES_ORIGINE.x + 20 - Constantes.RAYON_DEPART
-							&& e.getY() < Constantes.COORDONNEES_ORIGINE.y + 2 * 20 + Constantes.RAYON_DEPART
-							&& e.getY() > Constantes.COORDONNEES_ORIGINE.y + 20 - Constantes.RAYON_DEPART
+					if (e.getX() < Constantes.getInstance().COORDONNEES_ORIGINE.x + 20 + Constantes.getInstance().RAYON_DEPART
+							&& e.getX() > Constantes.getInstance().COORDONNEES_ORIGINE.x + 20 - Constantes.getInstance().RAYON_DEPART
+							&& e.getY() < Constantes.getInstance().COORDONNEES_ORIGINE.y + 2 * 20 + Constantes.getInstance().RAYON_DEPART
+							&& e.getY() > Constantes.getInstance().COORDONNEES_ORIGINE.y + 20 - Constantes.getInstance().RAYON_DEPART
 
 							&& m.getAffichage().distance(
-									Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU / 2,
-									Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU / 2,
-									m.getPositionOiseau().getX() + Constantes.TAILLE_OISEAU / 2,
+									Constantes.getInstance().COORDONNEES_ORIGINE.x + Constantes.getInstance().TAILLE_OISEAU / 2,
+									Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2,
+									m.getPositionOiseau().getX() + Constantes.getInstance().TAILLE_OISEAU / 2,
 									m.getPositionOiseau().getY()
-									+ Constantes.TAILLE_OISEAU / 2) < Constantes.RAYON_DEPART) {
+									+ Constantes.getInstance().TAILLE_OISEAU / 2) < Constantes.getInstance().RAYON_DEPART) {
 
 						c.setPositionOiseauC2(m.getPositionOiseau().x + 50, m.getPositionOiseau().y);
-						c.setPositionOiseau(e.getX() - Constantes.TAILLE_OISEAU / 2,
-								e.getY() - Constantes.TAILLE_OISEAU);
+						c.setPositionOiseau(e.getX() - Constantes.getInstance().TAILLE_OISEAU / 2,
+								e.getY() - Constantes.getInstance().TAILLE_OISEAU);
 
 						c.repaint();
 						c.setDrag(true);

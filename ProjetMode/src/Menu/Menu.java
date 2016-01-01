@@ -101,29 +101,29 @@ public class Menu extends JPanel {
 	
 	public void paintComponent(Graphics g){
 		
-		g.drawImage(Images.SKY, 0, 0, Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1], null);
-		g.drawImage(Images.NAME, 25, 40, 600, 150, null);
+		g.drawImage(Images.getInstance().SKY, 0, 0, Constantes.getInstance().TAILLE_ECRAN[0], Constantes.getInstance().TAILLE_ECRAN[1], null);
+		g.drawImage(Images.getInstance().NAME, 25, 40, 600, 150, null);
 		
 		if(!jouer_b){
-			g.drawImage(Images.JOUER, 700, 50, 200, 100, null);
+			g.drawImage(Images.getInstance().JOUER, 700, 50, 200, 100, null);
 		}else{
-			g.drawImage(Images.JOUER1, 700, 50, 200, 100, null);
+			g.drawImage(Images.getInstance().JOUER1, 700, 50, 200, 100, null);
 		}
 		
 		if(!free_b){
-			g.drawImage(Images.FREE, 700, 150, 300, 100, null);
+			g.drawImage(Images.getInstance().FREE, 700, 150, 300, 100, null);
 		}else{
-			g.drawImage(Images.FREE1, 700, 150, 300, 100, null);
+			g.drawImage(Images.getInstance().FREE1, 700, 150, 300, 100, null);
 		}
 		
 		if(!quitter_b){
-			g.drawImage(Images.QUITTER, 700, 250, 275, 100, null);
+			g.drawImage(Images.getInstance().QUITTER, 700, 250, 275, 100, null);
 		}else{
-			g.drawImage(Images.QUITTER1, 700, 250, 275, 100, null);
+			g.drawImage(Images.getInstance().QUITTER1, 700, 250, 275, 100, null);
 		}
 		
 		
-		g.drawImage(Images.GIF, 70, 425, 150, 150, this);
+		g.drawImage(Images.getInstance().GIF, 70, 425, 150, 150, this);
 		
 	}
 	

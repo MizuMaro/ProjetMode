@@ -56,29 +56,29 @@ public class Images {
 	
 	// Images du menu
 	
-	public static Image NAME;
-	public static Image SKY;
-	public static Image JOUER;
-	public static Image QUITTER;
-	public static Image JOUER1;
-	public static Image QUITTER1;
-	public static Image FREE;
-	public static Image FREE1;
-	public static Image GIF;
-	public static Image VICTORY;
+	public Image NAME;
+	public Image SKY;
+	public Image JOUER;
+	public Image QUITTER;
+	public Image JOUER1;
+	public Image QUITTER1;
+	public Image FREE;
+	public Image FREE1;
+	public Image GIF;
+	public Image VICTORY;
 	
 	
 	// Images du jeu
 	
-	public static Image BIRD;
-	public static Image BACKGROUND;
-	public static Image FREE_BACKGROUND;
-	public static Image SLINGSHOT;
-	public static Image SLINGSHOT_UP;
-	public static Image OBSTACLE;
-	public static Image CAISSE_RONDE;
-	public static Image CAISSE_BOUGE;
-	public static Image ROND_BOUGE;
+	public Image BIRD;
+	public Image BACKGROUND;
+	public Image FREE_BACKGROUND;
+	public Image SLINGSHOT;
+	public Image SLINGSHOT_UP;
+	public Image OBSTACLE;
+	public Image CAISSE_RONDE;
+	public Image CAISSE_BOUGE;
+	public Image ROND_BOUGE;
 	
 }
 	

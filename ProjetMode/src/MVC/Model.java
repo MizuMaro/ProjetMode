@@ -13,7 +13,7 @@ import ObstacleFactory.TypeObstacle;
 import ObstacleFactory.Usine;
 
 public class Model extends Observable {
-	Oiseau oiseau = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
+	Oiseau oiseau = new Oiseau(new Point(Constantes.getInstance().COORDONNEES_ORIGINE));
 	public static boolean debug = false;
 	boolean drag = false;
 	ArrayList<Obstacle> obstacles = new ArrayList<>();
@@ -45,28 +45,28 @@ public class Model extends Observable {
 	public void initObstacles() {
 		Usine usine = new Usine();
 		Obstacle ob1 = usine.formerObstacle(TypeObstacle.CARRE,
-				new Point(Constantes.TAILLE_ECRAN[0] - 100, Constantes.TAILLE_ECRAN[1] - 170));
+				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 100, Constantes.getInstance().TAILLE_ECRAN[1] - 170));
 		Obstacle ob2 = usine.formerObstacle(TypeObstacle.CARRE,
-				new Point(Constantes.TAILLE_ECRAN[0] - 120, Constantes.TAILLE_ECRAN[1] - 270));
+				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 120, Constantes.getInstance().TAILLE_ECRAN[1] - 270));
 		Obstacle ob3 = usine.formerObstacle(TypeObstacle.ROND,
-				new Point(Constantes.TAILLE_ECRAN[0] - 140, Constantes.TAILLE_ECRAN[1] - 370));
+				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 140, Constantes.getInstance().TAILLE_ECRAN[1] - 370));
 		Obstacle ob4 = usine.formerObstacle(TypeObstacle.ROND,
-				new Point(Constantes.TAILLE_ECRAN[0] - 160, Constantes.TAILLE_ECRAN[1] - 470));
+				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 160, Constantes.getInstance().TAILLE_ECRAN[1] - 470));
 		
 		Obstacle ob5 = usine.formerObstacle(TypeObstacle.CARREMOUVEMENT,
-				new Point(Constantes.TAILLE_ECRAN[0] - 500, Constantes.TAILLE_ECRAN[1] - 550));
-		ob5.setLimites_y(new int[] { Constantes.TAILLE_ECRAN[1] - 550, Constantes.TAILLE_ECRAN[1] - 400 });
+				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 500, Constantes.getInstance().TAILLE_ECRAN[1] - 550));
+		ob5.setLimites_y(new int[] { Constantes.getInstance().TAILLE_ECRAN[1] - 550, Constantes.getInstance().TAILLE_ECRAN[1] - 400 });
 
 		Obstacle ob6 = usine.formerObstacle(TypeObstacle.CARREMOUVEMENT,
-				new Point(Constantes.TAILLE_ECRAN[0] - 100, Constantes.TAILLE_ECRAN[1] - 560));
-		ob6.setLimites_x(new int[] { Constantes.TAILLE_ECRAN[0] - 200, Constantes.TAILLE_ECRAN[0] - 100 });
+				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 100, Constantes.getInstance().TAILLE_ECRAN[1] - 560));
+		ob6.setLimites_x(new int[] { Constantes.getInstance().TAILLE_ECRAN[0] - 200, Constantes.getInstance().TAILLE_ECRAN[0] - 100 });
 		
 		Obstacle ob7 = usine.formerObstacle(TypeObstacle.ROND,
-				new Point(Constantes.TAILLE_ECRAN[0] - 600, Constantes.TAILLE_ECRAN[1] - 550));
+				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 600, Constantes.getInstance().TAILLE_ECRAN[1] - 550));
 
 		Obstacle ob8 =usine.formerObstacle(TypeObstacle.RONDMOUVEMENT,
-				new Point(Constantes.TAILLE_ECRAN[0] - 600, Constantes.TAILLE_ECRAN[1] - 150));
-		ob8.setLimites_x(new int[] { Constantes.TAILLE_ECRAN[0] - 600, Constantes.TAILLE_ECRAN[0] - 400 });
+				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 600, Constantes.getInstance().TAILLE_ECRAN[1] - 150));
+		ob8.setLimites_x(new int[] { Constantes.getInstance().TAILLE_ECRAN[0] - 600, Constantes.getInstance().TAILLE_ECRAN[0] - 400 });
 		
 		obstacles.add(ob1);
 		obstacles.add(ob2);
@@ -137,8 +137,8 @@ public class Model extends Observable {
 	}
 	
 	public void reset(){		
-		oiseau = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
-		oiseau.setC2(Constantes.COORDONNEES_ORIGINE.x+50, Constantes.COORDONNEES_ORIGINE.y);
+		oiseau = new Oiseau(new Point(Constantes.getInstance().COORDONNEES_ORIGINE));
+		oiseau.setC2(Constantes.getInstance().COORDONNEES_ORIGINE.x+50, Constantes.getInstance().COORDONNEES_ORIGINE.y);
 		debug = false;
 		drag = false;
 		obstacles = new ArrayList<>();
