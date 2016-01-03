@@ -30,21 +30,21 @@ public class FreeVue implements Observer  {
 			public void mouseDragged(MouseEvent e) {
 				
 				if (!m.getOiseau().getVole()) {
-					if (e.getX() < Constantes.COORDONNEES_ORIGINE.x + 20 + Constantes.RAYON_DEPART
-							&& e.getX() > Constantes.COORDONNEES_ORIGINE.x + 20 - Constantes.RAYON_DEPART
-							&& e.getY() < Constantes.COORDONNEES_ORIGINE.y + 2 * 20 + Constantes.RAYON_DEPART
-							&& e.getY() > Constantes.COORDONNEES_ORIGINE.y + 20 - Constantes.RAYON_DEPART
+					if (e.getX() < Constantes.getInstance().COORDONNEES_ORIGINE.x + 20 + Constantes.getInstance().RAYON_DEPART
+							&& e.getX() > Constantes.getInstance().COORDONNEES_ORIGINE.x + 20 - Constantes.getInstance().RAYON_DEPART
+							&& e.getY() < Constantes.getInstance().COORDONNEES_ORIGINE.y + 2 * 20 + Constantes.getInstance().RAYON_DEPART
+							&& e.getY() > Constantes.getInstance().COORDONNEES_ORIGINE.y + 20 - Constantes.getInstance().RAYON_DEPART
 
 							&& m.getAffichage().distance(
-									Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU / 2,
-									Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU / 2,
-									m.getPositionOiseau().getX() + Constantes.TAILLE_OISEAU / 2,
+									Constantes.getInstance().COORDONNEES_ORIGINE.x + Constantes.getInstance().TAILLE_OISEAU / 2,
+									Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2,
+									m.getPositionOiseau().getX() + Constantes.getInstance().TAILLE_OISEAU / 2,
 									m.getPositionOiseau().getY()
-									+ Constantes.TAILLE_OISEAU / 2) < Constantes.RAYON_DEPART) {
+									+ Constantes.getInstance().TAILLE_OISEAU / 2) < Constantes.getInstance().RAYON_DEPART) {
 
 						c.setPositionOiseauC2(m.getPositionOiseau().x + 50, m.getPositionOiseau().y);
-						c.setPositionOiseau(e.getX() - Constantes.TAILLE_OISEAU / 2,
-								e.getY() - Constantes.TAILLE_OISEAU);
+						c.setPositionOiseau(e.getX() - Constantes.getInstance().TAILLE_OISEAU / 2,
+								e.getY() - Constantes.getInstance().TAILLE_OISEAU);
 
 						c.repaint();
 						c.setDrag(true);
@@ -101,7 +101,7 @@ public class FreeVue implements Observer  {
 					// courbes de Remi
 					double posLanX = m.getPositionOiseau().getX();
 					double posLanY = m.getPositionOiseau().getY();
-
+					
 					if (posLanY >= 350 && posLanX <= 150) {
 
 						double c = 100;
@@ -152,6 +152,14 @@ public class FreeVue implements Observer  {
 								m.getAffichage(), m.getListObstacles(), 1);
 
 					}
+					
+					if(m.getOiseau().getScore() != 0 && m.getOiseau().getScore() == m.getCptObstacles()){
+						m.getOiseau().setVictory(true);		
+						// reset du modele (a faire)
+						m.getOiseau().addToScore(-m.getOiseau().getScore());
+						c.m.reset();
+					}
+
 				}
 				
 			}

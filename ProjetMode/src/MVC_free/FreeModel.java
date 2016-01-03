@@ -15,7 +15,7 @@ import ObstacleFactory.Usine;
 
 public class FreeModel extends Observable {
 
-	private Oiseau oiseau = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
+	private Oiseau oiseau = new Oiseau(new Point(Constantes.getInstance().COORDONNEES_ORIGINE));
 	private boolean drag = false;
 	private boolean ajout = false;
 	private Point encours = new Point();
@@ -73,8 +73,8 @@ public class FreeModel extends Observable {
 			for(Obstacle o : this.obstacles){
 
 				// condition a verifier
-				if(x > o.getC().x && x < o.getC().x + Constantes.TAILLE_OBSTACLES &&
-						y > o.getC().y + Constantes.TAILLE_OBSTACLES/2 && y < o.getC().y + (Constantes.TAILLE_OBSTACLES/2)*3
+				if(x > o.getC().x && x < o.getC().x + Constantes.getInstance().TAILLE_OBSTACLES &&
+						y > o.getC().y + Constantes.getInstance().TAILLE_OBSTACLES/2 && y < o.getC().y + (Constantes.getInstance().TAILLE_OBSTACLES/2)*3
 						&& o.isActif()){
 					obstacles.remove(o);
 
@@ -90,10 +90,10 @@ public class FreeModel extends Observable {
 			// ajout d'un obstacle
 
 			if(carre){		
-				obstacles.add(usine.formerObstacle(TypeObstacle.CARRE,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
+				obstacles.add(usine.formerObstacle(TypeObstacle.CARRE,new Point(x-Constantes.getInstance().TAILLE_OBSTACLES/2,y-Constantes.getInstance().TAILLE_OBSTACLES)));
 				addCptObstacles();
 			}else if(rond){		
-				obstacles.add(usine.formerObstacle(TypeObstacle.ROND,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
+				obstacles.add(usine.formerObstacle(TypeObstacle.ROND,new Point(x-Constantes.getInstance().TAILLE_OBSTACLES/2,y-Constantes.getInstance().TAILLE_OBSTACLES)));
 				addCptObstacles();
 
 			}else if(carre_bouge && !ajout){
@@ -104,31 +104,31 @@ public class FreeModel extends Observable {
 
 				// test si les 2 points sont les memes
 				if(encours.x+8 == x && encours.y+30 == y){
-					obstacles.add(usine.formerObstacle(TypeObstacle.CARRE,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
+					obstacles.add(usine.formerObstacle(TypeObstacle.CARRE,new Point(x-Constantes.getInstance().TAILLE_OBSTACLES/2,y-Constantes.getInstance().TAILLE_OBSTACLES)));
 					addCptObstacles();
 
 				}else{
 
-					Obstacle ob = usine.formerObstacle(TypeObstacle.CARREMOUVEMENT, new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES));
+					Obstacle ob = usine.formerObstacle(TypeObstacle.CARREMOUVEMENT, new Point(x-Constantes.getInstance().TAILLE_OBSTACLES/2,y-Constantes.getInstance().TAILLE_OBSTACLES));
 
 					// X1 < X2 && Y1 < Y2 = cool
 					if(encours.x > x && encours.y > y){
-						ob.setLimites_x(new int[]{x-Constantes.TAILLE_OBSTACLES/2, encours.x-Constantes.TAILLE_OBSTACLES/2});
-						ob.setLimites_y(new int[]{y-Constantes.TAILLE_OBSTACLES/2, encours.y-Constantes.TAILLE_OBSTACLES/2});
+						ob.setLimites_x(new int[]{x-Constantes.getInstance().TAILLE_OBSTACLES/2, encours.x-Constantes.getInstance().TAILLE_OBSTACLES/2});
+						ob.setLimites_y(new int[]{y-Constantes.getInstance().TAILLE_OBSTACLES/2, encours.y-Constantes.getInstance().TAILLE_OBSTACLES/2});
 
 						// X1 > X2 && Y1 < Y2
 					}else if(encours.x > x && encours.y < y){
-						ob.setLimites_x(new int[]{x-Constantes.TAILLE_OBSTACLES/2, encours.x-Constantes.TAILLE_OBSTACLES/2});
-						ob.setLimites_y(new int[]{encours.y-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES/2});
+						ob.setLimites_x(new int[]{x-Constantes.getInstance().TAILLE_OBSTACLES/2, encours.x-Constantes.getInstance().TAILLE_OBSTACLES/2});
+						ob.setLimites_y(new int[]{encours.y-Constantes.getInstance().TAILLE_OBSTACLES/2,y-Constantes.getInstance().TAILLE_OBSTACLES/2});
 
 						// X1 < X2 && Y1 > Y2 
 					}else if(encours.x < x && encours.y > y){
-						ob.setLimites_x(new int[]{encours.x-Constantes.TAILLE_OBSTACLES/2,x-Constantes.TAILLE_OBSTACLES/2});
-						ob.setLimites_y(new int[]{y-Constantes.TAILLE_OBSTACLES/2,encours.y-Constantes.TAILLE_OBSTACLES/2});
+						ob.setLimites_x(new int[]{encours.x-Constantes.getInstance().TAILLE_OBSTACLES/2,x-Constantes.getInstance().TAILLE_OBSTACLES/2});
+						ob.setLimites_y(new int[]{y-Constantes.getInstance().TAILLE_OBSTACLES/2,encours.y-Constantes.getInstance().TAILLE_OBSTACLES/2});
 
 					}else{
-						ob.setLimites_x(new int[]{encours.x-Constantes.TAILLE_OBSTACLES/2, x-Constantes.TAILLE_OBSTACLES/2});
-						ob.setLimites_y(new int[]{encours.y-Constantes.TAILLE_OBSTACLES/2, y-Constantes.TAILLE_OBSTACLES/2});
+						ob.setLimites_x(new int[]{encours.x-Constantes.getInstance().TAILLE_OBSTACLES/2, x-Constantes.getInstance().TAILLE_OBSTACLES/2});
+						ob.setLimites_y(new int[]{encours.y-Constantes.getInstance().TAILLE_OBSTACLES/2, y-Constantes.getInstance().TAILLE_OBSTACLES/2});
 
 					}
 					obstacles.add(ob);
@@ -146,31 +146,31 @@ public class FreeModel extends Observable {
 
 				// test si les 2 points sont les memes
 				if(encours.x+8 == x && encours.y+30 == y){
-					obstacles.add(usine.formerObstacle(TypeObstacle.ROND,new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES)));
+					obstacles.add(usine.formerObstacle(TypeObstacle.ROND,new Point(x-Constantes.getInstance().TAILLE_OBSTACLES/2,y-Constantes.getInstance().TAILLE_OBSTACLES)));
 					addCptObstacles();
 
 				}else{
 
-					Obstacle ob = usine.formerObstacle(TypeObstacle.RONDMOUVEMENT, new Point(x-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES));
+					Obstacle ob = usine.formerObstacle(TypeObstacle.RONDMOUVEMENT, new Point(x-Constantes.getInstance().TAILLE_OBSTACLES/2,y-Constantes.getInstance().TAILLE_OBSTACLES));
 
 					// X1 < X2 && Y1 < Y2 = cool
 					if(encours.x > x && encours.y > y){
-						ob.setLimites_x(new int[]{x-Constantes.TAILLE_OBSTACLES/2, encours.x-Constantes.TAILLE_OBSTACLES/2});
-						ob.setLimites_y(new int[]{y-Constantes.TAILLE_OBSTACLES/2, encours.y-Constantes.TAILLE_OBSTACLES/2});
+						ob.setLimites_x(new int[]{x-Constantes.getInstance().TAILLE_OBSTACLES/2, encours.x-Constantes.getInstance().TAILLE_OBSTACLES/2});
+						ob.setLimites_y(new int[]{y-Constantes.getInstance().TAILLE_OBSTACLES/2, encours.y-Constantes.getInstance().TAILLE_OBSTACLES/2});
 
 						// X1 > X2 && Y1 < Y2
 					}else if(encours.x > x && encours.y < y){
-						ob.setLimites_x(new int[]{x-Constantes.TAILLE_OBSTACLES/2, encours.x-Constantes.TAILLE_OBSTACLES/2});
-						ob.setLimites_y(new int[]{encours.y-Constantes.TAILLE_OBSTACLES/2,y-Constantes.TAILLE_OBSTACLES/2});
+						ob.setLimites_x(new int[]{x-Constantes.getInstance().TAILLE_OBSTACLES/2, encours.x-Constantes.getInstance().TAILLE_OBSTACLES/2});
+						ob.setLimites_y(new int[]{encours.y-Constantes.getInstance().TAILLE_OBSTACLES/2,y-Constantes.getInstance().TAILLE_OBSTACLES/2});
 
 						// X1 < X2 && Y1 > Y2 
 					}else if(encours.x < x && encours.y > y){
-						ob.setLimites_x(new int[]{encours.x-Constantes.TAILLE_OBSTACLES/2,x-Constantes.TAILLE_OBSTACLES/2});
-						ob.setLimites_y(new int[]{y-Constantes.TAILLE_OBSTACLES/2,encours.y-Constantes.TAILLE_OBSTACLES/2});
+						ob.setLimites_x(new int[]{encours.x-Constantes.getInstance().TAILLE_OBSTACLES/2,x-Constantes.getInstance().TAILLE_OBSTACLES/2});
+						ob.setLimites_y(new int[]{y-Constantes.getInstance().TAILLE_OBSTACLES/2,encours.y-Constantes.getInstance().TAILLE_OBSTACLES/2});
 
 					}else{
-						ob.setLimites_x(new int[]{encours.x-Constantes.TAILLE_OBSTACLES/2, x-Constantes.TAILLE_OBSTACLES/2});
-						ob.setLimites_y(new int[]{encours.y-Constantes.TAILLE_OBSTACLES/2, y-Constantes.TAILLE_OBSTACLES/2});
+						ob.setLimites_x(new int[]{encours.x-Constantes.getInstance().TAILLE_OBSTACLES/2, x-Constantes.getInstance().TAILLE_OBSTACLES/2});
+						ob.setLimites_y(new int[]{encours.y-Constantes.getInstance().TAILLE_OBSTACLES/2, y-Constantes.getInstance().TAILLE_OBSTACLES/2});
 
 					}
 					obstacles.add(ob);
@@ -274,8 +274,8 @@ public class FreeModel extends Observable {
 	}
 	
 	public void reset(){		
-		oiseau = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
-		oiseau.setC2(Constantes.COORDONNEES_ORIGINE.x+50, Constantes.COORDONNEES_ORIGINE.y);
+		oiseau = new Oiseau(new Point(Constantes.getInstance().COORDONNEES_ORIGINE));
+		oiseau.setC2(Constantes.getInstance().COORDONNEES_ORIGINE.x+50, Constantes.getInstance().COORDONNEES_ORIGINE.y);
 		drag = false;
 		obstacles = new ArrayList<>();
 		trajecs = new HashMap<Obstacle,Point[]>();

@@ -13,14 +13,14 @@ public class OiseauTest {
 
 	@Test
 	public void testOiseauCourant() {
-		Oiseau a = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
+		Oiseau a = new Oiseau(new Point(Constantes.getInstance().COORDONNEES_ORIGINE));
 		assertEquals(a.getC().x,150);
 		assertEquals(a.getC().y,350);
-		assertEquals(a.getTaille(),Constantes.TAILLE_OISEAU);
+		assertEquals(a.getTaille(),Constantes.getInstance().TAILLE_OISEAU);
 	}
 	@Test
 	public void testSetOiseau(){
-		Oiseau a = new Oiseau(new Point(Constantes.COORDONNEES_ORIGINE));
+		Oiseau a = new Oiseau(new Point(Constantes.getInstance().COORDONNEES_ORIGINE));
 		a.setTaille(42);
 		a.setC(200, 200);
 		assertEquals(a.getTaille(),42);

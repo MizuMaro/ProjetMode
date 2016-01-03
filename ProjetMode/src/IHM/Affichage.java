@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import Element.Constantes;
 import Element.Images;
 import Element.Oiseau;
+import Element.Sound;
 import MVC.Model;
 import ObstacleFactory.Obstacle;
 
@@ -30,7 +31,7 @@ public class Affichage extends JPanel {
 	public Affichage(Oiseau a, ArrayList<Obstacle> listeObstacle) {
 		this.a = a;
 		this.listeObstacle = listeObstacle;
-		this.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
+		this.setSize(Constantes.getInstance().TAILLE_ECRAN[0], Constantes.getInstance().TAILLE_ECRAN[1]);
 		
 		try {
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -46,21 +47,21 @@ public class Affichage extends JPanel {
 		if (Model.debug) {
 
 			// Dessin du background
-			g.setColor(Constantes.COULEUR_BACKGROUND);
+			g.setColor(Constantes.getInstance().COULEUR_BACKGROUND);
 			g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
 			// dessin de la trajectoire
-			g.setColor(Constantes.COULEUR_TRAJECTOIRE1);
-			g.fillOval(a.getDepart().x+Constantes.TAILLE_OISEAU/2-5, a.getDepart().y+Constantes.TAILLE_OISEAU/2, 8, 8);
-			g.setColor(Constantes.COULEUR_TRAJECTOIRE2);
-			g.drawOval(a.getDepart().x+Constantes.TAILLE_OISEAU/2-5, a.getDepart().y+Constantes.TAILLE_OISEAU/2, 8, 8);
+			g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE1);
+			g.fillOval(a.getDepart().x+Constantes.getInstance().TAILLE_OISEAU/2-5, a.getDepart().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
+			g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE2);
+			g.drawOval(a.getDepart().x+Constantes.getInstance().TAILLE_OISEAU/2-5, a.getDepart().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
 			
 			for (int i = 0; i < a.getPassage().size(); i++) {
-				g.setColor(Constantes.COULEUR_TRAJECTOIRE1);
+				g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE1);
 				g.fillOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
 						3, 3);
 
-				g.setColor(Constantes.COULEUR_TRAJECTOIRE2);
+				g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE2);
 				g.drawOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
 						3, 3);
 			}
@@ -68,15 +69,15 @@ public class Affichage extends JPanel {
 
 			// position de depart
 			g.setColor(Color.BLUE);
-			g.fillOval(Constantes.COORDONNEES_ORIGINE.x, Constantes.COORDONNEES_ORIGINE.y, Constantes.TAILLE_OISEAU,
-					Constantes.TAILLE_OISEAU);
+			g.fillOval(Constantes.getInstance().COORDONNEES_ORIGINE.x, Constantes.getInstance().COORDONNEES_ORIGINE.y, Constantes.getInstance().TAILLE_OISEAU,
+					Constantes.getInstance().TAILLE_OISEAU);
 
 			// orientation de la courbe de lancer
-			if (Constantes.DISTANCE) {
+			if (Constantes.getInstance().DISTANCE) {
 				g.setColor(Color.WHITE);
-				g.drawLine(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU / 2,
-						Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU / 2,
-						a.getC().x + Constantes.TAILLE_OISEAU / 2, a.getC().y + Constantes.TAILLE_OISEAU / 2);
+				g.drawLine(Constantes.getInstance().COORDONNEES_ORIGINE.x + Constantes.getInstance().TAILLE_OISEAU / 2,
+						Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2,
+						a.getC().x + Constantes.getInstance().TAILLE_OISEAU / 2, a.getC().y + Constantes.getInstance().TAILLE_OISEAU / 2);
 			}
 
 			// dessin du bec
@@ -86,20 +87,20 @@ public class Affichage extends JPanel {
 					a.getC2().y + a.getTaille() / 2);
 			int[] px = { p[0].x, p[1].x, p[2].x };
 			int[] py = { p[0].y, p[1].y, p[2].y };
-			g.setColor(Constantes.COULEUR_BEC);
+			g.setColor(Constantes.getInstance().COULEUR_BEC);
 			g.fillPolygon(px, py, 3);
 
 			// Dessin du sol
-			g.setColor(Constantes.COULEUR_SOL);
-			g.drawLine(0, Constantes.HAUTEUR_SOL, Constantes.TAILLE_ECRAN[0], Constantes.HAUTEUR_SOL);
+			g.setColor(Constantes.getInstance().COULEUR_SOL);
+			g.drawLine(0, Constantes.getInstance().HAUTEUR_SOL, Constantes.getInstance().TAILLE_ECRAN[0], Constantes.getInstance().HAUTEUR_SOL);
 
 			// Dessin des obstacles
 			for (Obstacle o : listeObstacle) {
 
 				if (o.isActif()) {
-					g.setColor(Constantes.COULEUR_OBSTACLE);
+					g.setColor(Constantes.getInstance().COULEUR_OBSTACLE);
 				} else {
-					g.setColor(Constantes.COULEUR_OBSTACLE_TOUCHE);
+					g.setColor(Constantes.getInstance().COULEUR_OBSTACLE_TOUCHE);
 				}
 
 				if (!o.isCarre()) {
@@ -112,9 +113,9 @@ public class Affichage extends JPanel {
 
 			// dessin de l'oiseau
 			if (!collision) {
-				g.setColor(Constantes.COULEUR_OISEAU);
+				g.setColor(Constantes.getInstance().COULEUR_OISEAU);
 			} else {
-				g.setColor(Constantes.COULEUR_OISEAU_TOUCHE);
+				g.setColor(Constantes.getInstance().COULEUR_OISEAU_TOUCHE);
 			}
 
 			g.fillOval(a.getC().x, a.getC().y, a.getTaille(), a.getTaille());
@@ -125,18 +126,18 @@ public class Affichage extends JPanel {
 
 			// Indications
 			g.setColor(Color.white);
-			g.drawString("Le rayon de battement est actuellement contraint a " + Constantes.RAYON_DEPART + " pixels.",
+			g.drawString("Le rayon de battement est actuellement contraint a " + Constantes.getInstance().RAYON_DEPART + " pixels.",
 					10, 20);
-			if (distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU / 2,
-					Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU / 2,
-					a.getC().x + Constantes.TAILLE_OISEAU / 2,
-					a.getC().y + Constantes.TAILLE_OISEAU / 2) > Constantes.RAYON_DEPART) {
+			if (distance(Constantes.getInstance().COORDONNEES_ORIGINE.x + Constantes.getInstance().TAILLE_OISEAU / 2,
+					Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2,
+					a.getC().x + Constantes.getInstance().TAILLE_OISEAU / 2,
+					a.getC().y + Constantes.getInstance().TAILLE_OISEAU / 2) > Constantes.getInstance().RAYON_DEPART) {
 				g.setColor(Color.red);
 			}
 			g.drawString("La valeur actuelle de celui-ci est de "
-					+ (int) distance(Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU / 2,
-							Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU / 2,
-							a.getC().x + Constantes.TAILLE_OISEAU / 2, a.getC().y + Constantes.TAILLE_OISEAU / 2)
+					+ (int) distance(Constantes.getInstance().COORDONNEES_ORIGINE.x + Constantes.getInstance().TAILLE_OISEAU / 2,
+							Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2,
+							a.getC().x + Constantes.getInstance().TAILLE_OISEAU / 2, a.getC().y + Constantes.getInstance().TAILLE_OISEAU / 2)
 					+ " pixels.", 10, 40);
 			g.setColor(Color.WHITE);
 			g.drawString("Pour repositionner l'oiseau sur la position d'origine, appuyez sur la touche <r>.", 10, 60);
@@ -146,14 +147,14 @@ public class Affichage extends JPanel {
 			g.drawString("(" + a.getC().x + "," + a.getC().y + ")", a.getC().x + 10, a.getC().y - 10);
 
 			// Coordonnees de l'origine
-			g.drawString("(" + Constantes.COORDONNEES_ORIGINE.x + "," + Constantes.COORDONNEES_ORIGINE.y + ")",
-					Constantes.COORDONNEES_ORIGINE.x + 10, Constantes.COORDONNEES_ORIGINE.y - 10);
+			g.drawString("(" + Constantes.getInstance().COORDONNEES_ORIGINE.x + "," + Constantes.getInstance().COORDONNEES_ORIGINE.y + ")",
+					Constantes.getInstance().COORDONNEES_ORIGINE.x + 10, Constantes.getInstance().COORDONNEES_ORIGINE.y - 10);
 
 			// Equation de la droite
 			/*
-			g.drawString("(" + a.getC().y + " - " + Constantes.COORDONNEES_ORIGINE.y + ")", 45, 90);
+			g.drawString("(" + a.getC().y + " - " + Constantes.getInstance().COORDONNEES_ORIGINE.y + ")", 45, 90);
 			g.drawString("y = _________ = " + coeffDirecteur() + "x + b", 27, 94);
-			g.drawString("(" + a.getC().x + " - " + Constantes.COORDONNEES_ORIGINE.x + ")", 45, 110);
+			g.drawString("(" + a.getC().x + " - " + Constantes.getInstance().COORDONNEES_ORIGINE.x + ")", 45, 110);
 			 */
 			
 			// Score
@@ -165,33 +166,33 @@ public class Affichage extends JPanel {
 			g.setFont(font);
 			
 			// Dessin du background
-			g.drawImage(Images.BACKGROUND, 0, 0, Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1], null);
+			g.drawImage(Images.getInstance().BACKGROUND, 0, 0, Constantes.getInstance().TAILLE_ECRAN[0], Constantes.getInstance().TAILLE_ECRAN[1], null);
 
 
 			// fronde
-			if (a.getC().x < Constantes.COORDONNEES_ORIGINE.x) {
+			if (a.getC().x < Constantes.getInstance().COORDONNEES_ORIGINE.x) {
 				g.setColor(Color.BLACK);
-				g.drawLine(a.getC().x + Constantes.TAILLE_OISEAU / 2, a.getC().y + Constantes.TAILLE_OISEAU / 2, 200,
+				g.drawLine(a.getC().x + Constantes.getInstance().TAILLE_OISEAU / 2, a.getC().y + Constantes.getInstance().TAILLE_OISEAU / 2, 200,
 						350);
-				g.drawLine(a.getC().x + Constantes.TAILLE_OISEAU / 2, a.getC().y + Constantes.TAILLE_OISEAU / 2, 150,
+				g.drawLine(a.getC().x + Constantes.getInstance().TAILLE_OISEAU / 2, a.getC().y + Constantes.getInstance().TAILLE_OISEAU / 2, 150,
 						350);
 			}
 
 			// lance-pierres (rapport d'echelle = 2.487)
-			g.drawImage(Images.SLINGSHOT, Constantes.COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
+			g.drawImage(Images.getInstance().SLINGSHOT, Constantes.getInstance().COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
 
 			// dessin de la trajectoire
-			g.setColor(Constantes.COULEUR_TRAJECTOIRE1);
-			g.fillOval(a.getDepart().x+Constantes.TAILLE_OISEAU/2-5, a.getDepart().y+Constantes.TAILLE_OISEAU/2, 8, 8);
-			g.setColor(Constantes.COULEUR_TRAJECTOIRE2);
-			g.drawOval(a.getDepart().x+Constantes.TAILLE_OISEAU/2-5, a.getDepart().y+Constantes.TAILLE_OISEAU/2, 8, 8);
+			g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE1);
+			g.fillOval(a.getDepart().x+Constantes.getInstance().TAILLE_OISEAU/2-5, a.getDepart().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
+			g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE2);
+			g.drawOval(a.getDepart().x+Constantes.getInstance().TAILLE_OISEAU/2-5, a.getDepart().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
 			
 			for (int i = 0; i < a.getPassage().size(); i++) {
-				g.setColor(Constantes.COULEUR_TRAJECTOIRE1);
+				g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE1);
 				g.fillOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
 						3, 3);
 
-				g.setColor(Constantes.COULEUR_TRAJECTOIRE2);
+				g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE2);
 				g.drawOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
 						3, 3);
 			}
@@ -199,15 +200,15 @@ public class Affichage extends JPanel {
 			// Dessin des obstacles
 			for (Obstacle o : listeObstacle) {
 
-				g.setColor(Constantes.COULEUR_OBSTACLE_TOUCHE);
+				g.setColor(Constantes.getInstance().COULEUR_OBSTACLE_TOUCHE);
 
 				if (o.isActif()) {
 					if (o.isCarre()) {
-						g.drawImage(Images.OBSTACLE, o.getC().x, o.getC().y, Constantes.TAILLE_OBSTACLES,
-								Constantes.TAILLE_OBSTACLES, null);
+						g.drawImage(Images.getInstance().OBSTACLE, o.getC().x, o.getC().y, Constantes.getInstance().TAILLE_OBSTACLES,
+								Constantes.getInstance().TAILLE_OBSTACLES, null);
 					} else {
-						g.drawImage(Images.CAISSE_RONDE, o.getC().x, o.getC().y, Constantes.TAILLE_OBSTACLES,
-								Constantes.TAILLE_OBSTACLES, null);
+						g.drawImage(Images.getInstance().CAISSE_RONDE, o.getC().x, o.getC().y, Constantes.getInstance().TAILLE_OBSTACLES,
+								Constantes.getInstance().TAILLE_OBSTACLES, null);
 					}
 				} else {
 					if (o.isCarre()) {
@@ -220,9 +221,9 @@ public class Affichage extends JPanel {
 
 			// dessin de l'oiseau
 			if (!collision) {
-				g.setColor(Constantes.COULEUR_OISEAU);
+				g.setColor(Constantes.getInstance().COULEUR_OISEAU);
 			} else {
-				g.setColor(Constantes.COULEUR_OISEAU_TOUCHE);
+				g.setColor(Constantes.getInstance().COULEUR_OISEAU_TOUCHE);
 			}
 
 			g.fillOval(a.getC().x, a.getC().y, a.getTaille(), a.getTaille());
@@ -235,10 +236,10 @@ public class Affichage extends JPanel {
 			int[] py = { p[0].y, p[1].y, p[2].y };
 			g.fillPolygon(px, py, 3);
 
-			g.drawImage(Images.BIRD, a.getC().x, a.getC().y, Constantes.TAILLE_OISEAU, Constantes.TAILLE_OISEAU, null);
+			g.drawImage(Images.getInstance().BIRD, a.getC().x, a.getC().y, Constantes.getInstance().TAILLE_OISEAU, Constantes.getInstance().TAILLE_OISEAU, null);
 
 			// lance-pierres
-			g.drawImage(Images.SLINGSHOT_UP, Constantes.COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
+			g.drawImage(Images.getInstance().SLINGSHOT_UP, Constantes.getInstance().COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
 			
 			// Score
 			g.setColor(Color.BLACK);
@@ -252,6 +253,16 @@ public class Affichage extends JPanel {
 				g.drawString("Score : " + a.getScore() + " points", 20, 50);
 			}
 
+		}
+		
+		if(a.getScore() != 0 && a.getScore() == this.listeObstacle.size()){
+			a.setVictory(true);
+			Sound.getInstance().playVictory();
+			g.drawImage(Images.getInstance().VICTORY, 0, 0, 1200, 610, null);
+			a.addToScore(-a.getScore());
+			
+			// reset du modele
+			
 		}
 	}
 
@@ -277,8 +288,8 @@ public class Affichage extends JPanel {
 	}
 
 	public double coeffDirecteur() {
-		double d = (a.getC().y - Constantes.COORDONNEES_ORIGINE.y);
-		double down = Math.abs(a.getC().x - Constantes.COORDONNEES_ORIGINE.x);
+		double d = (a.getC().y - Constantes.getInstance().COORDONNEES_ORIGINE.y);
+		double down = Math.abs(a.getC().x - Constantes.getInstance().COORDONNEES_ORIGINE.x);
 
 		if (down == 0) {
 			return d;

@@ -13,6 +13,7 @@ import java.util.Map.Entry;
 
 import Element.Constantes;
 import Element.Images;
+import Element.Sound;
 import MVC_free.FreeModel;
 import ObstacleFactory.Obstacle;
 
@@ -25,7 +26,7 @@ public class FreeAffichage extends Affichage {
 	public FreeAffichage(FreeModel m){
 		super(m.getOiseau(),m.getListObstacles());
 		this.m=m;
-		super.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
+		super.setSize(Constantes.getInstance().TAILLE_ECRAN[0], Constantes.getInstance().TAILLE_ECRAN[1]);
 
 		try {
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -41,7 +42,7 @@ public class FreeAffichage extends Affichage {
 		g.setFont(font);
 
 		// Dessin du background
-		g.drawImage(Images.FREE_BACKGROUND, 0, 0, Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1], null);
+		g.drawImage(Images.getInstance().FREE_BACKGROUND, 0, 0, Constantes.getInstance().TAILLE_ECRAN[0], Constantes.getInstance().TAILLE_ECRAN[1], null);
 
 		// dessin des trajectoires des obstacles qui bougent		
 		g.setColor(Color.GREEN);
@@ -57,29 +58,29 @@ public class FreeAffichage extends Affichage {
 		}
 
 		// fronde
-		if (a.getC().x < Constantes.COORDONNEES_ORIGINE.x) {
+		if (a.getC().x < Constantes.getInstance().COORDONNEES_ORIGINE.x) {
 			g.setColor(Color.BLACK);
-			g.drawLine(a.getC().x + Constantes.TAILLE_OISEAU / 2, a.getC().y + Constantes.TAILLE_OISEAU / 2, 200,
+			g.drawLine(a.getC().x + Constantes.getInstance().TAILLE_OISEAU / 2, a.getC().y + Constantes.getInstance().TAILLE_OISEAU / 2, 200,
 					350);
-			g.drawLine(a.getC().x + Constantes.TAILLE_OISEAU / 2, a.getC().y + Constantes.TAILLE_OISEAU / 2, 150,
+			g.drawLine(a.getC().x + Constantes.getInstance().TAILLE_OISEAU / 2, a.getC().y + Constantes.getInstance().TAILLE_OISEAU / 2, 150,
 					350);
 		}
 
 		// lance-pierres (rapport d'echelle = 2.487)
-		g.drawImage(Images.SLINGSHOT, Constantes.COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
+		g.drawImage(Images.getInstance().SLINGSHOT, Constantes.getInstance().COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
 
 		// dessin de la trajectoire
-		g.setColor(Constantes.COULEUR_TRAJECTOIRE1);
-		g.fillOval(m.getOiseau().getDepart().x+Constantes.TAILLE_OISEAU/2-5, m.getOiseau().getDepart().y+Constantes.TAILLE_OISEAU/2, 8, 8);
-		g.setColor(Constantes.COULEUR_TRAJECTOIRE2);
-		g.drawOval(m.getOiseau().getDepart().x+Constantes.TAILLE_OISEAU/2-5, m.getOiseau().getDepart().y+Constantes.TAILLE_OISEAU/2, 8, 8);
+		g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE1);
+		g.fillOval(m.getOiseau().getDepart().x+Constantes.getInstance().TAILLE_OISEAU/2-5, m.getOiseau().getDepart().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
+		g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE2);
+		g.drawOval(m.getOiseau().getDepart().x+Constantes.getInstance().TAILLE_OISEAU/2-5, m.getOiseau().getDepart().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
 
 		for (int i = 0; i < a.getPassage().size(); i++) {
-			g.setColor(Constantes.COULEUR_TRAJECTOIRE1);
+			g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE1);
 			g.fillOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
 					3, 3);
 
-			g.setColor(Constantes.COULEUR_TRAJECTOIRE2);
+			g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE2);
 			g.drawOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
 					3, 3);
 		}
@@ -87,15 +88,15 @@ public class FreeAffichage extends Affichage {
 		// Dessin des obstacles
 		for (Obstacle o : super.listeObstacle) {
 
-			g.setColor(Constantes.COULEUR_OBSTACLE_TOUCHE);
+			g.setColor(Constantes.getInstance().COULEUR_OBSTACLE_TOUCHE);
 
 			if (o.isActif()) {
 				if (o.isCarre()) {
-					g.drawImage(Images.OBSTACLE, o.getC().x, o.getC().y, Constantes.TAILLE_OBSTACLES,
-							Constantes.TAILLE_OBSTACLES, null);
+					g.drawImage(Images.getInstance().OBSTACLE, o.getC().x, o.getC().y, Constantes.getInstance().TAILLE_OBSTACLES,
+							Constantes.getInstance().TAILLE_OBSTACLES, null);
 				} else {
-					g.drawImage(Images.CAISSE_RONDE, o.getC().x, o.getC().y, Constantes.TAILLE_OBSTACLES,
-							Constantes.TAILLE_OBSTACLES, null);
+					g.drawImage(Images.getInstance().CAISSE_RONDE, o.getC().x, o.getC().y, Constantes.getInstance().TAILLE_OBSTACLES,
+							Constantes.getInstance().TAILLE_OBSTACLES, null);
 				}
 			} else {
 				if (o.isCarre()) {
@@ -108,9 +109,9 @@ public class FreeAffichage extends Affichage {
 
 		// dessin de l'oiseau
 		if (!collision) {
-			g.setColor(Constantes.COULEUR_OISEAU);
+			g.setColor(Constantes.getInstance().COULEUR_OISEAU);
 		} else {
-			g.setColor(Constantes.COULEUR_OISEAU_TOUCHE);
+			g.setColor(Constantes.getInstance().COULEUR_OISEAU_TOUCHE);
 		}
 
 		g.fillOval(a.getC().x, a.getC().y, a.getTaille(), a.getTaille());
@@ -123,10 +124,10 @@ public class FreeAffichage extends Affichage {
 		int[] py = { p[0].y, p[1].y, p[2].y };
 		g.fillPolygon(px, py, 3);
 
-		g.drawImage(Images.BIRD, a.getC().x, a.getC().y, Constantes.TAILLE_OISEAU, Constantes.TAILLE_OISEAU, null);
+		g.drawImage(Images.getInstance().BIRD, a.getC().x, a.getC().y, Constantes.getInstance().TAILLE_OISEAU, Constantes.getInstance().TAILLE_OISEAU, null);
 
 		// lance-pierres
-		g.drawImage(Images.SLINGSHOT_UP, Constantes.COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
+		g.drawImage(Images.getInstance().SLINGSHOT_UP, Constantes.getInstance().COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
 
 
 		// fond du menu
@@ -136,20 +137,20 @@ public class FreeAffichage extends Affichage {
 		// selection actuelle
 		g.setColor(Color.RED);
 		if(m.isCarre()){
-			g.fill3DRect(20, 45, Constantes.TAILLE_OBSTACLES+10, Constantes.TAILLE_OBSTACLES+10, true);
+			g.fill3DRect(20, 45, Constantes.getInstance().TAILLE_OBSTACLES+10, Constantes.getInstance().TAILLE_OBSTACLES+10, true);
 		}else if(m.isRond()){
-			g.fill3DRect(20, 105, Constantes.TAILLE_OBSTACLES+10, Constantes.TAILLE_OBSTACLES+10, true);
+			g.fill3DRect(20, 105, Constantes.getInstance().TAILLE_OBSTACLES+10, Constantes.getInstance().TAILLE_OBSTACLES+10, true);
 		}else if(m.isCarre_bouge()){
-			g.fill3DRect(20, 165, Constantes.TAILLE_OBSTACLES+10, Constantes.TAILLE_OBSTACLES+20, true);
+			g.fill3DRect(20, 165, Constantes.getInstance().TAILLE_OBSTACLES+10, Constantes.getInstance().TAILLE_OBSTACLES+20, true);
 		}else if(m.isRond_bouge()){
-			g.fill3DRect(20, 235, Constantes.TAILLE_OBSTACLES+10, Constantes.TAILLE_OBSTACLES+20, true);
+			g.fill3DRect(20, 235, Constantes.getInstance().TAILLE_OBSTACLES+10, Constantes.getInstance().TAILLE_OBSTACLES+20, true);
 		}
 
 		// menu de selection des items
-		g.drawImage(Images.OBSTACLE, 25, 50, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES, null);
-		g.drawImage(Images.CAISSE_RONDE, 25, 110, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES, null);
-		g.drawImage(Images.CAISSE_BOUGE, 25, 170, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES+10, null);
-		g.drawImage(Images.ROND_BOUGE, 25, 240, Constantes.TAILLE_OBSTACLES, Constantes.TAILLE_OBSTACLES+10, null);
+		g.drawImage(Images.getInstance().OBSTACLE, 25, 50, Constantes.getInstance().TAILLE_OBSTACLES, Constantes.getInstance().TAILLE_OBSTACLES, null);
+		g.drawImage(Images.getInstance().CAISSE_RONDE, 25, 110, Constantes.getInstance().TAILLE_OBSTACLES, Constantes.getInstance().TAILLE_OBSTACLES, null);
+		g.drawImage(Images.getInstance().CAISSE_BOUGE, 25, 170, Constantes.getInstance().TAILLE_OBSTACLES, Constantes.getInstance().TAILLE_OBSTACLES+10, null);
+		g.drawImage(Images.getInstance().ROND_BOUGE, 25, 240, Constantes.getInstance().TAILLE_OBSTACLES, Constantes.getInstance().TAILLE_OBSTACLES+10, null);
 
 
 		// nombre d'obstacles
@@ -186,9 +187,10 @@ public class FreeAffichage extends Affichage {
 		
 		if(m.getOiseau().getScore() != 0 && m.getOiseau().getScore() == m.getCptObstacles()){
 			m.getOiseau().setVictory(true);
-			g.drawImage(Images.VICTORY, 0, 0, 1200, 610, null);
-			repaint();
-			//System.exit(0);
+			Sound.getInstance().playVictory();
+			g.drawImage(Images.getInstance().VICTORY, 0, 0, 1200, 610, null);
+			
+			
 		}
 
 	}

@@ -7,7 +7,7 @@ import Element.Constantes;
 public class ObstacleRond extends Obstacle {
 
 	public ObstacleRond(Point c) {
-		this.taille = Constantes.TAILLE_OBSTACLES;
+		this.taille = Constantes.getInstance().TAILLE_OBSTACLES;
 		this.c = c;
 		this.actif = true;
 		this.carre = false;

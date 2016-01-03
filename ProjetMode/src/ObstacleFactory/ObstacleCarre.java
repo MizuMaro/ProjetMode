@@ -6,7 +6,7 @@ import Element.Constantes;
 public class ObstacleCarre extends Obstacle {
 
 	public ObstacleCarre(Point c) {
-		this.taille = Constantes.TAILLE_OBSTACLES;
+		this.taille = Constantes.getInstance().TAILLE_OBSTACLES;
 		this.c = c;
 		this.actif = true;
 		this.setCarre(true);

@@ -6,6 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,6 +15,7 @@ import javax.swing.event.MouseInputAdapter;
 import Courbe.Courbe;
 import Element.Constantes;
 import Element.Images;
+import Element.Sound;
 import MVC_free.FreeController;
 import MVC_free.FreeModel;
 import Menu.Menu;
@@ -29,14 +31,14 @@ public class Vue implements Observer {
 		this.c = c;
 		m.addObserver(this);
 
-		this.fenetre = new JFrame(Constantes.TITRE);
-		fenetre.setIconImage(Images.OBSTACLE);
-		fenetre.setSize(Constantes.TAILLE_ECRAN[0], Constantes.TAILLE_ECRAN[1]);
+		this.fenetre = new JFrame(Constantes.getInstance().TITRE);
+		fenetre.setIconImage(Images.getInstance().OBSTACLE);
+		fenetre.setSize(Constantes.getInstance().TAILLE_ECRAN[0], Constantes.getInstance().TAILLE_ECRAN[1]);
 		fenetre.setResizable(false);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre.setVisible(true);
 		fenetre.setLocationRelativeTo(null);
-				
+
 		JPanel menu = new Menu(m, model, controller, fenetre);
 
 		// Listener qui gere les actions au clavier
@@ -46,7 +48,7 @@ public class Vue implements Observer {
 			public void keyPressed(KeyEvent e) {
 				// reset a la position d'origine de l'oiseau
 				if (e.getKeyChar() == 'r') {
-					c.setPositionOiseau(Constantes.COORDONNEES_ORIGINE.x, Constantes.COORDONNEES_ORIGINE.y);
+					c.setPositionOiseau(Constantes.getInstance().COORDONNEES_ORIGINE.x, Constantes.getInstance().COORDONNEES_ORIGINE.y);
 					c.setPositionOiseauC2((int) m.getPositionOiseau().getX(), (int) m.getPositionOiseau().getY());
 					c.repaint();
 				} else if (e.getKeyChar() == 'g') {
@@ -56,32 +58,32 @@ public class Vue implements Observer {
 
 			}
 		});
-		
+
 		// Listener qui gere le drag
 		fenetre.addMouseMotionListener(new MouseInputAdapter() {
 
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				if (!m.getOiseau().getVole()) {
-					if (e.getX() < Constantes.COORDONNEES_ORIGINE.x + 20 + Constantes.RAYON_DEPART
-							&& e.getX() > Constantes.COORDONNEES_ORIGINE.x + 20 - Constantes.RAYON_DEPART
-							&& e.getY() < Constantes.COORDONNEES_ORIGINE.y + 2 * 20 + Constantes.RAYON_DEPART
-							&& e.getY() > Constantes.COORDONNEES_ORIGINE.y + 20 - Constantes.RAYON_DEPART
+					if (e.getX() < Constantes.getInstance().COORDONNEES_ORIGINE.x + 20 + Constantes.getInstance().RAYON_DEPART
+							&& e.getX() > Constantes.getInstance().COORDONNEES_ORIGINE.x + 20 - Constantes.getInstance().RAYON_DEPART
+							&& e.getY() < Constantes.getInstance().COORDONNEES_ORIGINE.y + 2 * 20 + Constantes.getInstance().RAYON_DEPART
+							&& e.getY() > Constantes.getInstance().COORDONNEES_ORIGINE.y + 20 - Constantes.getInstance().RAYON_DEPART
 
 							&& m.getAffichage().distance(
-									Constantes.COORDONNEES_ORIGINE.x + Constantes.TAILLE_OISEAU / 2,
-									Constantes.COORDONNEES_ORIGINE.y + Constantes.TAILLE_OISEAU / 2,
-									m.getPositionOiseau().getX() + Constantes.TAILLE_OISEAU / 2,
+									Constantes.getInstance().COORDONNEES_ORIGINE.x + Constantes.getInstance().TAILLE_OISEAU / 2,
+									Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2,
+									m.getPositionOiseau().getX() + Constantes.getInstance().TAILLE_OISEAU / 2,
 									m.getPositionOiseau().getY()
-											+ Constantes.TAILLE_OISEAU / 2) < Constantes.RAYON_DEPART) {
+									+ Constantes.getInstance().TAILLE_OISEAU / 2) < Constantes.getInstance().RAYON_DEPART) {
 
 						c.setPositionOiseauC2(m.getPositionOiseau().x + 50, m.getPositionOiseau().y);
-						c.setPositionOiseau(e.getX() - Constantes.TAILLE_OISEAU / 2,
-								e.getY() - Constantes.TAILLE_OISEAU);
+						c.setPositionOiseau(e.getX() - Constantes.getInstance().TAILLE_OISEAU / 2,
+								e.getY() - Constantes.getInstance().TAILLE_OISEAU);
 
 						c.repaint();
 						c.setDrag(true);
-						
+
 					}
 				}
 			}
@@ -98,16 +100,19 @@ public class Vue implements Observer {
 
 					if (posLanY >= 350 && posLanX <= 150) {
 
+						if(new Random().nextInt(5) == 0)
+							Sound.getInstance().playWeeee();
+
 						double c = 100;
 						double calcul = ((posLanX / 1000000) * 6 + 0.00030) * Math.pow(m.getPositionOiseau().getX(), 2)
 								+ (((posLanY - 350) / 7) - 1.05 - (1.02 * ((posLanY - 350) / 7)))
-										* m.getPositionOiseau().getX()
+								* m.getPositionOiseau().getX()
 								+ c;
 						while (Math.abs(calcul - posLanY) > 3 && calcul < 1000) {
 							c = c + 2;
 							calcul = ((posLanX / 1000000) * 6 + 0.00030) * Math.pow(m.getPositionOiseau().getX(), 2)
 									+ (((posLanY - 350) / 7) - 1.05 - (1.02 * ((posLanY - 350) / 7)))
-											* m.getPositionOiseau().getX()
+									* m.getPositionOiseau().getX()
 									+ c;
 						}
 
@@ -128,13 +133,13 @@ public class Vue implements Observer {
 						double c = 100;
 						double calcul = ((posLanX / 1000000) * 6 + 0.00030) * Math.pow(m.getPositionOiseau().getX(), 2)
 								+ (((posLanY - 350) / 7) + 0.50 - (1.02 * ((posLanY - 350) / 7)))
-										* m.getPositionOiseau().getX()
+								* m.getPositionOiseau().getX()
 								+ c;
 						while (Math.abs(calcul - posLanY) > 3 && calcul < 1000) {
 							c = c + 2;
 							calcul = ((posLanX / 1000000) * 6 + 0.00030) * Math.pow(m.getPositionOiseau().getX(), 2)
 									+ (((posLanY - 350) / 7) + 0.50 - (1.02 * ((posLanY - 350) / 7)))
-											* m.getPositionOiseau().getX()
+									* m.getPositionOiseau().getX()
 									+ c;
 						}
 						new Courbe((posLanX / 1000000) * 6 + 0.00030,
@@ -147,11 +152,20 @@ public class Vue implements Observer {
 
 					}
 
+					if(m.getOiseau().getScore() != 0 && m.getOiseau().getScore() == m.getCptObstacles()){
+						m.getOiseau().setVictory(true);		
+						// reset du modele (a faire)
+						m.getOiseau().addToScore(-m.getOiseau().getScore());
+						c.m.reset();
+						c.repaint();
+					}
+
 				}
+
 			}
 
 		});
-		
+
 		// initialisation de la position du bec
 		c.setPositionOiseauC2(m.getPositionOiseau().x + 50, m.getPositionOiseau().y);
 		// initialisation des obstacles

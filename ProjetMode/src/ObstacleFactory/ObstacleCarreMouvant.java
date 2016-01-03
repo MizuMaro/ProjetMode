@@ -17,7 +17,7 @@ public class ObstacleCarreMouvant extends Obstacle {
 	private boolean vers_droite = true;
 	
 	public ObstacleCarreMouvant(Point c) {
-		this.taille = Constantes.TAILLE_OBSTACLES;
+		this.taille = Constantes.getInstance().TAILLE_OBSTACLES;
 		this.c = c;
 		this.actif = true;
 		this.carre= true;
@@ -41,10 +41,10 @@ public class ObstacleCarreMouvant extends Obstacle {
 			}
 			
 			if(descente){
-				super.setC(super.getC().x, super.getC().y+Constantes.VITESSE_OBSTACLES);
+				super.setC(super.getC().x, super.getC().y+Constantes.getInstance().VITESSE_OBSTACLES);
 				//super.setY(super.getY()+1);
 			}else{
-				super.setC(super.getC().x, super.getC().y-Constantes.VITESSE_OBSTACLES);
+				super.setC(super.getC().x, super.getC().y-Constantes.getInstance().VITESSE_OBSTACLES);
 				//super.setY(super.getY()-1);
 			}
 		
@@ -67,10 +67,10 @@ public class ObstacleCarreMouvant extends Obstacle {
 			}
 			
 			if(vers_droite){
-				super.setC(super.getC().x+Constantes.VITESSE_OBSTACLES, super.getC().y);
+				super.setC(super.getC().x+Constantes.getInstance().VITESSE_OBSTACLES, super.getC().y);
 				//super.setX(super.getX()+1);
 			}else{
-				super.setC(super.getC().x-Constantes.VITESSE_OBSTACLES, super.getC().y);
+				super.setC(super.getC().x-Constantes.getInstance().VITESSE_OBSTACLES, super.getC().y);
 				//super.setX(super.getX()-1);
 			}
 		}

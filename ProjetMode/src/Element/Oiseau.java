@@ -24,7 +24,7 @@ public class Oiseau {
 	 * @param c Coordonnees ou l'on souhaite placer l'oiseau.
 	 */
 	public Oiseau(Point c) {
-		this.taille = Constantes.TAILLE_OISEAU;
+		this.taille = Constantes.getInstance().TAILLE_OISEAU;
 		this.c = c;
 		this.vole = false;
 		this.setVictory(false);
