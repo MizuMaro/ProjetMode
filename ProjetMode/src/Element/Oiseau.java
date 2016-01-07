@@ -8,6 +8,7 @@ public class Oiseau {
 	private Point c;
 	private Point c2 = new Point();
 	private Point depart = new Point(-50,-50);
+	private Point arrivee = new Point(-50,-50);
 
 	private boolean trajectoire = false;
 
@@ -134,5 +135,13 @@ public class Oiseau {
 
 	public void setVictory(boolean victory) {
 		this.victory = victory;
+	}
+
+	public Point getArrivee() {
+		return arrivee;
+	}
+
+	public void setArrivee(Point arrivee) {
+		this.arrivee = arrivee;
 	}
 }

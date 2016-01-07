@@ -32,7 +32,7 @@ public class Affichage extends JPanel {
 		this.a = a;
 		this.listeObstacle = listeObstacle;
 		this.setSize(Constantes.getInstance().TAILLE_ECRAN[0], Constantes.getInstance().TAILLE_ECRAN[1]);
-		
+
 		try {
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT,new File("docs/font/font.ttf")));
@@ -50,12 +50,20 @@ public class Affichage extends JPanel {
 			g.setColor(Constantes.getInstance().COULEUR_BACKGROUND);
 			g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
-			// dessin de la trajectoire
+			// dessin de la trajectoire 
+
+			// position de depart
 			g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE1);
 			g.fillOval(a.getDepart().x+Constantes.getInstance().TAILLE_OISEAU/2-5, a.getDepart().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
 			g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE2);
 			g.drawOval(a.getDepart().x+Constantes.getInstance().TAILLE_OISEAU/2-5, a.getDepart().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
-			
+
+			// position d'arrivee
+			g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE1);
+			g.fillOval(a.getArrivee().x+Constantes.getInstance().TAILLE_OISEAU/2, a.getArrivee().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
+			g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE2);
+			g.drawOval(a.getArrivee().x+Constantes.getInstance().TAILLE_OISEAU/2, a.getArrivee().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
+
 			for (int i = 0; i < a.getPassage().size(); i++) {
 				g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE1);
 				g.fillOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
@@ -150,13 +158,6 @@ public class Affichage extends JPanel {
 			g.drawString("(" + Constantes.getInstance().COORDONNEES_ORIGINE.x + "," + Constantes.getInstance().COORDONNEES_ORIGINE.y + ")",
 					Constantes.getInstance().COORDONNEES_ORIGINE.x + 10, Constantes.getInstance().COORDONNEES_ORIGINE.y - 10);
 
-			// Equation de la droite
-			/*
-			g.drawString("(" + a.getC().y + " - " + Constantes.getInstance().COORDONNEES_ORIGINE.y + ")", 45, 90);
-			g.drawString("y = _________ = " + coeffDirecteur() + "x + b", 27, 94);
-			g.drawString("(" + a.getC().x + " - " + Constantes.getInstance().COORDONNEES_ORIGINE.x + ")", 45, 110);
-			 */
-			
 			// Score
 			g.drawString("Score : 42 points", 20, 140);
 
@@ -164,7 +165,7 @@ public class Affichage extends JPanel {
 
 			// Police d'ecriture
 			g.setFont(font);
-			
+
 			// Dessin du background
 			g.drawImage(Images.getInstance().BACKGROUND, 0, 0, Constantes.getInstance().TAILLE_ECRAN[0], Constantes.getInstance().TAILLE_ECRAN[1], null);
 
@@ -182,11 +183,19 @@ public class Affichage extends JPanel {
 			g.drawImage(Images.getInstance().SLINGSHOT, Constantes.getInstance().COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
 
 			// dessin de la trajectoire
+
+			// position de depart
 			g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE1);
 			g.fillOval(a.getDepart().x+Constantes.getInstance().TAILLE_OISEAU/2-5, a.getDepart().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
 			g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE2);
 			g.drawOval(a.getDepart().x+Constantes.getInstance().TAILLE_OISEAU/2-5, a.getDepart().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
-			
+
+			// position d'arrivee
+			g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE1);
+			g.fillOval(a.getArrivee().x+Constantes.getInstance().TAILLE_OISEAU/2, a.getArrivee().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
+			g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE2);
+			g.drawOval(a.getArrivee().x+Constantes.getInstance().TAILLE_OISEAU/2, a.getArrivee().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
+
 			for (int i = 0; i < a.getPassage().size(); i++) {
 				g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE1);
 				g.fillOval(a.getPassage().get(i).x + a.getTaille() / 2, a.getPassage().get(i).y + a.getTaille() / 2,
@@ -240,7 +249,7 @@ public class Affichage extends JPanel {
 
 			// lance-pierres
 			g.drawImage(Images.getInstance().SLINGSHOT_UP, Constantes.getInstance().COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
-			
+
 			// Score
 			g.setColor(Color.BLACK);
 			if(a.getScore() <= 1){
@@ -254,15 +263,15 @@ public class Affichage extends JPanel {
 			}
 
 		}
-		
+
 		if(a.getScore() != 0 && a.getScore() == this.listeObstacle.size()){
 			a.setVictory(true);
 			Sound.getInstance().playVictory();
 			g.drawImage(Images.getInstance().VICTORY, 0, 0, 1200, 610, null);
 			a.addToScore(-a.getScore());
-			
+
 			// reset du modele
-			
+
 		}
 	}
 

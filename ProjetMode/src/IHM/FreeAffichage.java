@@ -39,6 +39,10 @@ public class FreeAffichage extends Affichage {
 
 	public void paintComponent(Graphics g) {
 
+		if(m.getOiseau().isVictory()){
+			System.exit(0);
+		}
+		
 		g.setFont(font);
 
 		// Dessin du background
@@ -69,11 +73,20 @@ public class FreeAffichage extends Affichage {
 		// lance-pierres (rapport d'echelle = 2.487)
 		g.drawImage(Images.getInstance().SLINGSHOT, Constantes.getInstance().COORDONNEES_ORIGINE.x - 30, 327, 90, 200, null);
 
-		// dessin de la trajectoire
+		
+		// dessin de la trajectoire 
+
+		// position de depart
 		g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE1);
-		g.fillOval(m.getOiseau().getDepart().x+Constantes.getInstance().TAILLE_OISEAU/2-5, m.getOiseau().getDepart().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
+		g.fillOval(a.getDepart().x+Constantes.getInstance().TAILLE_OISEAU/2-5, a.getDepart().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
 		g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE2);
-		g.drawOval(m.getOiseau().getDepart().x+Constantes.getInstance().TAILLE_OISEAU/2-5, m.getOiseau().getDepart().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
+		g.drawOval(a.getDepart().x+Constantes.getInstance().TAILLE_OISEAU/2-5, a.getDepart().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
+
+		// position d'arrivee
+		g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE1);
+		g.fillOval(a.getArrivee().x+Constantes.getInstance().TAILLE_OISEAU/2, a.getArrivee().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
+		g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE2);
+		g.drawOval(a.getArrivee().x+Constantes.getInstance().TAILLE_OISEAU/2, a.getArrivee().y+Constantes.getInstance().TAILLE_OISEAU/2, 8, 8);
 
 		for (int i = 0; i < a.getPassage().size(); i++) {
 			g.setColor(Constantes.getInstance().COULEUR_TRAJECTOIRE1);
@@ -184,13 +197,13 @@ public class FreeAffichage extends Affichage {
 			g.setColor(Color.WHITE);
 			g.drawString("Score : " + a.getScore() + " points", 90, 115);
 		}
-		
+
 		if(m.getOiseau().getScore() != 0 && m.getOiseau().getScore() == m.getCptObstacles()){
 			m.getOiseau().setVictory(true);
 			Sound.getInstance().playVictory();
 			g.drawImage(Images.getInstance().VICTORY, 0, 0, 1200, 610, null);
-			
-			
+
+
 		}
 
 	}

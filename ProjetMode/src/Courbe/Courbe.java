@@ -48,7 +48,11 @@ public class Courbe {
 					long timeFin = timeLancement + 15000;
 					
 					o.setTrajectoire(true);
+					
+					//dessin des positions de depart et d'arrivee
 					o.setDepart(new Point(o.getC().x, o.getC().y));
+					o.setArrivee(new Point(-50,-50));
+					
 					o.setVole(true);
 
 					while (x <= 800 * 7 && !touch && timeLancement<timeFin) {
@@ -112,6 +116,7 @@ public class Courbe {
 
 								// implementer la collision avec les obstacles carres
 
+								o.setArrivee(new Point(o.getC().x, o.getC().y));
 								affichage.setCollision(true);
 								touch = true;
 								if(sol==false && limites==false){
@@ -191,7 +196,12 @@ public class Courbe {
 					long timeFin = timeLancement + 15000;
 					
 					o.setTrajectoire(true);
+					
+					//dessin des positions de depart et d'arrivee
 					o.setDepart(new Point(o.getC().x, o.getC().y));
+					o.setArrivee(new Point(-50,-50));
+					
+					o.setVole(true);
 
 					while (x <= 800 * 7 && !touch && timeLancement<timeFin) {
 
@@ -254,6 +264,8 @@ public class Courbe {
 
 								// implementer la collision avec les obstacles carres
 
+								o.setArrivee(new Point(o.getC().x, o.getC().y));
+								
 								affichage.setCollision(true);
 								touch = true;
 								if(sol==false && limites==false){
