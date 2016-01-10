@@ -20,6 +20,9 @@ public class Courbe {
 		TimerTask timerTask = new TimerTask(){	
 
 			public void run()  { 
+				
+				// compteur d'iterations de la boucle
+				int cpt = 0;
 
 				if(run){
 					run = false;
@@ -89,7 +92,8 @@ public class Courbe {
 						}
 
 						// nouvelle position de l'oiseau
-						o.setC(x, y);
+						// on simule la gravite en l'accentuant au fil du temps
+						o.setC(x, y+cpt);
 
 						long now = System.currentTimeMillis();
 						long time = now + 10;
@@ -145,6 +149,7 @@ public class Courbe {
 						}
 						
 						affichage.repaint();
+						cpt++;
 					}
 					o.setVole(false);			
 				}else{
@@ -165,6 +170,9 @@ public class Courbe {
 		TimerTask timerTask = new TimerTask(){	
 
 			public void run()  { 
+				
+				// compteur d'iterations de la boucle
+				int cpt = 0;
 				
 				if(run){
 					run = false;
@@ -235,7 +243,8 @@ public class Courbe {
 						}
 
 						// nouvelle position de l'oiseau
-						o.setC(x, y);
+						// on simule la gravite en l'accentuant au fil du temps
+						o.setC(x, y+cpt);
 
 
 						// utiliser timer
@@ -283,6 +292,7 @@ public class Courbe {
 								}
 							}
 							
+							
 							if (touch == false)
 								o.setC2(x2, y2);
 						}
@@ -295,6 +305,7 @@ public class Courbe {
 						}
 						
 						affichage.repaint();
+						cpt++;
 					}
 					o.setVole(false);
 				}else{
