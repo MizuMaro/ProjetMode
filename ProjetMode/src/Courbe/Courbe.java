@@ -106,7 +106,7 @@ public class Courbe {
 								ob.moveY();
 							}
 
-							if(ob.isActif() && affichage.distance(o.getC().getX(), o.getC().getY(), 
+							if(ob.isActif() && o.distance(o.getC().getX(), o.getC().getY(), 
 									ob.getC().getX(), ob.getC().getY()) <= (Constantes.getInstance().TAILLE_OISEAU/2 + Constantes.getInstance().TAILLE_OBSTACLES/2) 
 									// collision avec le sol ?
 									|| sol 
@@ -254,7 +254,7 @@ public class Courbe {
 								ob.moveY();
 							}
 
-							if(ob.isActif() && affichage.distance(o.getC().getX(), o.getC().getY(), 
+							if(ob.isActif() && o.distance(o.getC().getX(), o.getC().getY(), 
 									ob.getC().getX(), ob.getC().getY()) <= (Constantes.getInstance().TAILLE_OISEAU/2 + Constantes.getInstance().TAILLE_OBSTACLES/2) 
 									// collision avec le sol ?
 									|| sol 

@@ -35,7 +35,7 @@ public class FreeVue implements Observer  {
 							&& e.getY() < Constantes.getInstance().COORDONNEES_ORIGINE.y + 2 * 20 + Constantes.getInstance().RAYON_DEPART
 							&& e.getY() > Constantes.getInstance().COORDONNEES_ORIGINE.y + 20 - Constantes.getInstance().RAYON_DEPART
 
-							&& m.getAffichage().distance(
+							&& m.getOiseau().distance(
 									Constantes.getInstance().COORDONNEES_ORIGINE.x + Constantes.getInstance().TAILLE_OISEAU / 2,
 									Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2,
 									m.getPositionOiseau().getX() + Constantes.getInstance().TAILLE_OISEAU / 2,

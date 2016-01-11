@@ -69,13 +69,19 @@ public class Controller {
 							&& e.getY() < Constantes.getInstance().COORDONNEES_ORIGINE.y + 2 * 20 + Constantes.getInstance().RAYON_DEPART
 							&& e.getY() > Constantes.getInstance().COORDONNEES_ORIGINE.y + 20 - Constantes.getInstance().RAYON_DEPART
 
-							&& m.getAffichage().distance(
+							&& m.getOiseau().distance(
 									Constantes.getInstance().COORDONNEES_ORIGINE.x + Constantes.getInstance().TAILLE_OISEAU / 2,
 									Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2,
 									m.getPositionOiseau().getX() + Constantes.getInstance().TAILLE_OISEAU / 2,
 									m.getPositionOiseau().getY()
 									+ Constantes.getInstance().TAILLE_OISEAU / 2) < Constantes.getInstance().RAYON_DEPART) {
-
+						
+						
+						m.getOiseau().setVitesse((int)m.getOiseau().distance(Constantes.getInstance().COORDONNEES_ORIGINE.x + Constantes.getInstance().TAILLE_OISEAU / 2,
+								Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2,
+								m.getOiseau().getC().x + Constantes.getInstance().TAILLE_OISEAU / 2, m.getOiseau().getC().y + Constantes.getInstance().TAILLE_OISEAU / 2));
+						
+						
 						setPositionOiseauC2(m.getPositionOiseau().x + 50, m.getPositionOiseau().y);
 						setPositionOiseau(e.getX() - Constantes.getInstance().TAILLE_OISEAU / 2,
 								e.getY() - Constantes.getInstance().TAILLE_OISEAU);

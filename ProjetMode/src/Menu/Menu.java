@@ -41,7 +41,6 @@ public class Menu extends JPanel {
 		String sep = File.separator;
 		JLabel redBird = new JLabel();
 		redBird.setIcon(new ImageIcon("img"+sep+"menu"+sep+"red.gif"));
-		//redBird.setBounds(70, 425, 150, 150);
 		redBird.setBounds(70, 350, 300, 300);
 		this.add(redBird);
 		
