@@ -6,8 +6,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.io.File;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Element.Constantes;
@@ -28,10 +31,19 @@ public class Menu extends JPanel {
 	
 	public Menu(final Model m, final FreeModel model, FreeController control, final JFrame fenetre){
 		
+		this.setLayout(null);
+		
 		fenetre.add(this);
 		FreeVue vue = new FreeVue(model, control, fenetre);	
 		control.addVue(vue);
 		Sound.getInstance().playBackground();
+		
+		String sep = File.separator;
+		JLabel redBird = new JLabel();
+		redBird.setIcon(new ImageIcon("img"+sep+"menu"+sep+"red.gif"));
+		//redBird.setBounds(70, 425, 150, 150);
+		redBird.setBounds(70, 350, 300, 300);
+		this.add(redBird);
 		
 		
 		fenetre.addKeyListener(new KeyAdapter() {
