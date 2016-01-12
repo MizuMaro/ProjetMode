@@ -23,12 +23,12 @@ public class Physique {
 		TimerTask timerTask = new TimerTask(){
 			public void run() {
 				t+=0.015;
-				o.setCoord(coordParabole(t,vitesse,angle,0,Constantes.getInstance().HAUTEUR_ECRAN));
+				o.setCoord(coordParabole(t,vitesse,angle,0,525-350));
 				double t2 = t+0.002;
-				o.setProchaineCoord(coordParabole(t2,vitesse,angle,0,Constantes.getInstance().HAUTEUR_ECRAN));
+				o.setProchaineCoord(coordParabole(t2,vitesse,angle,0,525-350));
 				while(o.getC().distance(o.getProchaineCoord()) < o.getTaille()/2+10){
 					t2+=0.002;
-					o.setProchaineCoord(coordParabole(t2,vitesse,angle,0,Constantes.getInstance().HAUTEUR_ECRAN));
+					o.setProchaineCoord(coordParabole(t2,vitesse,angle,0,525-350));
 				}
 				for(Obstacle c : m.getListObstacles()){
 					if(c.getC().distance(o.getC()) < (c.getTaille()/2 + o.getTaille()/2)){
@@ -47,6 +47,7 @@ public class Physique {
 	}
 	
 	static Point coordParabole(double t, double vitesse, double anglen, int posDepX, int posDepY) {
+		anglen = Math.toRadians(anglen);
 		double x = vitesse*Math.cos(anglen)*t + posDepX;
 		
 		double truc = x /(vitesse*Math.cos(anglen));

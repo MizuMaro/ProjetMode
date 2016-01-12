@@ -19,7 +19,7 @@ public class Oiseau {
 	private boolean victory;
 	
 	private int score;
-	private int vitesse;
+	private double vitesse;
 	private double angle;
 
 
@@ -163,12 +163,12 @@ public class Oiseau {
 		this.arrivee = arrivee;
 	}
 	
-	public int getVitesse() {
+	public double getVitesse() {
 		return vitesse;
 	}
 
-	public void setVitesse(int vitesse) {
-		this.vitesse = vitesse;
+	public void setVitesse(double d) {
+		this.vitesse = d;
 	}
 	
 	public double getAngle() {

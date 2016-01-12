@@ -1,5 +1,6 @@
 package MVC;
 
+import java.awt.Point;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -63,8 +64,8 @@ public class Controller {
 			public void mouseDragged(MouseEvent e) {
 				if (!m.getOiseau().getVole()) {
 					
-					// calcul de l'angle
-					
+					// calcul de l'angle à Remy
+						/*
 					double aa = m.getOiseau().distance(m.getOiseau().getC().x + Constantes.getInstance().TAILLE_OISEAU/2, m.getOiseau().getC().y + Constantes.getInstance().TAILLE_OISEAU/2,
 							Constantes.getInstance().COORDONNEES_ORIGINE.x-100 + Constantes.getInstance().TAILLE_OISEAU/2, Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU/2);
 					
@@ -77,6 +78,7 @@ public class Controller {
 							Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2, 
 							m.getOiseau().getC().x+ Constantes.getInstance().TAILLE_OISEAU / 2, m.getOiseau().getC().y+ Constantes.getInstance().TAILLE_OISEAU / 2);
 					
+					*/
 					
 					if (e.getX() < Constantes.getInstance().COORDONNEES_ORIGINE.x + 20 + Constantes.getInstance().RAYON_DEPART
 							&& e.getX() > Constantes.getInstance().COORDONNEES_ORIGINE.x + 20 - Constantes.getInstance().RAYON_DEPART
@@ -89,17 +91,33 @@ public class Controller {
 									m.getPositionOiseau().getX() + Constantes.getInstance().TAILLE_OISEAU / 2,
 									m.getPositionOiseau().getY()
 									+ Constantes.getInstance().TAILLE_OISEAU / 2) < Constantes.getInstance().RAYON_DEPART) {
+				
+					// Calcul de l'angle à Remi
+					
+					double angle = (double) Math.toDegrees(Math.atan2(m.getOiseau().getC().getY() - 350, m.getOiseau().getC().getX()- 150));
+				    if(angle < 0){
+				        angle += 360;
+				    }
+	
 						
+					//double verti = m.getOiseau().getC().getY() - 350;
+					//double hori = 150 - m.getOiseau().getC().getX();
 						
-						m.getOiseau().setVitesse((int)m.getOiseau().distance(Constantes.getInstance().COORDONNEES_ORIGINE.x + Constantes.getInstance().TAILLE_OISEAU / 2,
-								Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2,
-								m.getOiseau().getC().x + Constantes.getInstance().TAILLE_OISEAU / 2, m.getOiseau().getC().y + Constantes.getInstance().TAILLE_OISEAU / 2));
-						
-						m.getOiseau().setAngle((bb*bb + cc*cc - aa*aa) / (2*bb*cc));
 						
 						setPositionOiseauC2(m.getPositionOiseau().x + 50, m.getPositionOiseau().y);
 						setPositionOiseau(e.getX() - Constantes.getInstance().TAILLE_OISEAU / 2,
 								e.getY() - Constantes.getInstance().TAILLE_OISEAU);
+						
+						
+						//Vitesse
+						Point cooOr = Constantes.getInstance().COORDONNEES_ORIGINE;
+						Point lach = m.getOiseau().getC();
+						
+						m.getOiseau().setVitesse(lach.distance(cooOr));
+						
+						//Angle
+						m.getOiseau().setAngle(angle-90);
+						//m.getOiseau().setAngle((bb*bb + cc*cc - aa*aa) / (2*bb*cc));
 
 						repaint();
 						setDrag(true);
@@ -172,10 +190,11 @@ public class Controller {
 
 					}*/
 					
-					double vitesse = (double) m.getOiseau().getVitesse();
+					double vitesse = m.getOiseau().getVitesse();
 					double angle = m.getOiseau().getAngle();
+					double rad = Math.toRadians(angle);
 					Physique phy= new Physique();
-					phy.trajectoireParabole(m.getOiseau(), vitesse, angle, m.getAffichage(), m);
+					phy.trajectoireParabole(m.getOiseau(), vitesse, rad, m.getAffichage(), m);
 					
 					
 
