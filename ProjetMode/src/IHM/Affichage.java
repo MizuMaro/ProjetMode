@@ -79,6 +79,10 @@ public class Affichage extends JPanel {
 			g.setColor(Color.BLUE);
 			g.fillOval(Constantes.getInstance().COORDONNEES_ORIGINE.x, Constantes.getInstance().COORDONNEES_ORIGINE.y, Constantes.getInstance().TAILLE_OISEAU,
 					Constantes.getInstance().TAILLE_OISEAU);
+			// position pour le calcul de l'angle de depart
+
+			g.fillOval(Constantes.getInstance().COORDONNEES_ORIGINE.x-100, Constantes.getInstance().COORDONNEES_ORIGINE.y, Constantes.getInstance().TAILLE_OISEAU,
+					Constantes.getInstance().TAILLE_OISEAU);
 
 			// position pour le calcul de l'angle de depart
 			g.fillOval(Constantes.getInstance().COORDONNEES_ORIGINE.x-100, Constantes.getInstance().COORDONNEES_ORIGINE.y, Constantes.getInstance().TAILLE_OISEAU,
@@ -93,6 +97,13 @@ public class Affichage extends JPanel {
 				g.drawLine(Constantes.getInstance().COORDONNEES_ORIGINE.x + Constantes.getInstance().TAILLE_OISEAU / 2,
 						Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2,
 						a.getC().x + Constantes.getInstance().TAILLE_OISEAU / 2, a.getC().y + Constantes.getInstance().TAILLE_OISEAU / 2);
+			}
+
+			// droite entre le point d'horizontale et l'oiseau
+			if(!a.getVole()){
+				g.setColor(Color.YELLOW);
+				g.drawLine(a.getC().x + Constantes.getInstance().TAILLE_OISEAU / 2, a.getC().y + Constantes.getInstance().TAILLE_OISEAU / 2, 
+						Constantes.getInstance().COORDONNEES_ORIGINE.x-100 + Constantes.getInstance().TAILLE_OISEAU/2, Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU/2);
 			}
 
 			// dessin du bec
@@ -157,27 +168,61 @@ public class Affichage extends JPanel {
 							a.getC().x + Constantes.getInstance().TAILLE_OISEAU / 2, a.getC().y + Constantes.getInstance().TAILLE_OISEAU / 2)
 					+ " pixels.", 10, 40);
 			 */
+
+			// distances
+			double aa = a.distance(a.getC().x + Constantes.getInstance().TAILLE_OISEAU/2, a.getC().y + Constantes.getInstance().TAILLE_OISEAU/2,
+					Constantes.getInstance().COORDONNEES_ORIGINE.x-100 + Constantes.getInstance().TAILLE_OISEAU/2, Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU/2);
+			double cc = a.distance(Constantes.getInstance().COORDONNEES_ORIGINE.x + Constantes.getInstance().TAILLE_OISEAU / 2,
+					Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2, 
+					Constantes.getInstance().COORDONNEES_ORIGINE.x-100 + Constantes.getInstance().TAILLE_OISEAU/2, 
+					Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU/2);
+			double bb = a.distance(Constantes.getInstance().COORDONNEES_ORIGINE.x + Constantes.getInstance().TAILLE_OISEAU / 2,
+					Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2, 
+					a.getC().x+ Constantes.getInstance().TAILLE_OISEAU / 2, a.getC().y+ Constantes.getInstance().TAILLE_OISEAU / 2);
+			
+					
+			g.setColor(Color.GREEN);
+			g.drawString(String.valueOf(bb), 350, 70);
+
+			g.setColor(Color.RED);
+			g.drawString(String.valueOf(cc), 400, 70);
+
+			g.setColor(Color.YELLOW);
+			g.drawString(String.valueOf(aa), 450, 70);
+
+
+			// position de depart
+
+			g.setColor(Color.red);
+			g.drawLine(Constantes.getInstance().COORDONNEES_ORIGINE.x+Constantes.getInstance().TAILLE_OISEAU/2, Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU/2, 
+					Constantes.getInstance().COORDONNEES_ORIGINE.x-100 + Constantes.getInstance().TAILLE_OISEAU/2, Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU/2);
+
+			// orientation de la courbe de lancer
+			if (Constantes.getInstance().DISTANCE && !a.getVole()) {
+				g.setColor(Color.GREEN);
+				g.drawLine(Constantes.getInstance().COORDONNEES_ORIGINE.x + Constantes.getInstance().TAILLE_OISEAU / 2,
+						Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2,
+						a.getC().x + Constantes.getInstance().TAILLE_OISEAU / 2, a.getC().y + Constantes.getInstance().TAILLE_OISEAU / 2);
+			}
+
+
+			g.setColor(Color.WHITE);
 			// vitesse de l'oiseau
 			g.drawString("La valeur de la vitesse de l'oiseau est de " + a.getVitesse() + " pixels.", 10, 50);
-			g.drawString("L'angle de lancer est de " + Math.cos(
-
-					// horizontale
-					a.distance(Constantes.getInstance().COORDONNEES_ORIGINE.x + Constantes.getInstance().TAILLE_OISEAU / 2,
-							Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2, 
-							a.getC().x+ Constantes.getInstance().TAILLE_OISEAU / 2, a.getC().y+ Constantes.getInstance().TAILLE_OISEAU / 2)
-					/
+			g.drawString("L'angle de lancer est de " + 
 					
-					// segment entre la position de depart de l'oiseau et sa position de lancer
-					a.distance(Constantes.getInstance().COORDONNEES_ORIGINE.x + Constantes.getInstance().TAILLE_OISEAU / 2,
-							Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2, 
-							Constantes.getInstance().COORDONNEES_ORIGINE.x-100 + Constantes.getInstance().TAILLE_OISEAU/2, Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU/2) 
+					// (b² + c² - a²)/(2*b*c)
+					//(bb*bb + cc*cc - aa*aa) / (2*bb*cc)
+					a.getAngle()
+					
+					+ " radians.", 10, 70);
 
 
-					) + " degres.", 10, 70);
 
 			g.setColor(Color.WHITE);
 			g.drawString("Pour repositionner l'oiseau sur la position d'origine, appuyez sur la touche <r>.", 10, 100);
 			g.drawString("Pour passer du mode debug au mode graphique et inversement, appuyez sur la touche <g>.", 10, 120);
+
 
 			// Coordonnees de l'oiseau
 			g.drawString("(" + a.getC().x + "," + a.getC().y + ")", a.getC().x + 10, a.getC().y - 10);
@@ -188,6 +233,8 @@ public class Affichage extends JPanel {
 
 			// Score
 			g.drawString("Score : " + a.getScore() + " points", 20, 140);
+
+
 
 		} else {
 

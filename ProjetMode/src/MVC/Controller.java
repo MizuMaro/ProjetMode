@@ -64,6 +64,22 @@ public class Controller {
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				if (!m.getOiseau().getVole()) {
+					
+					// calcul de l'angle
+					
+					double aa = m.getOiseau().distance(m.getOiseau().getC().x + Constantes.getInstance().TAILLE_OISEAU/2, m.getOiseau().getC().y + Constantes.getInstance().TAILLE_OISEAU/2,
+							Constantes.getInstance().COORDONNEES_ORIGINE.x-100 + Constantes.getInstance().TAILLE_OISEAU/2, Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU/2);
+					
+					double cc = m.getOiseau().distance(Constantes.getInstance().COORDONNEES_ORIGINE.x + Constantes.getInstance().TAILLE_OISEAU / 2,
+							Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2, 
+							Constantes.getInstance().COORDONNEES_ORIGINE.x-100 + Constantes.getInstance().TAILLE_OISEAU/2, 
+							Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU/2);
+					
+					double bb = m.getOiseau().distance(Constantes.getInstance().COORDONNEES_ORIGINE.x + Constantes.getInstance().TAILLE_OISEAU / 2,
+							Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2, 
+							m.getOiseau().getC().x+ Constantes.getInstance().TAILLE_OISEAU / 2, m.getOiseau().getC().y+ Constantes.getInstance().TAILLE_OISEAU / 2);
+					
+					
 					if (e.getX() < Constantes.getInstance().COORDONNEES_ORIGINE.x + 20 + Constantes.getInstance().RAYON_DEPART
 							&& e.getX() > Constantes.getInstance().COORDONNEES_ORIGINE.x + 20 - Constantes.getInstance().RAYON_DEPART
 							&& e.getY() < Constantes.getInstance().COORDONNEES_ORIGINE.y + 2 * 20 + Constantes.getInstance().RAYON_DEPART
@@ -81,6 +97,7 @@ public class Controller {
 								Constantes.getInstance().COORDONNEES_ORIGINE.y + Constantes.getInstance().TAILLE_OISEAU / 2,
 								m.getOiseau().getC().x + Constantes.getInstance().TAILLE_OISEAU / 2, m.getOiseau().getC().y + Constantes.getInstance().TAILLE_OISEAU / 2));
 						
+						m.getOiseau().setAngle((bb*bb + cc*cc - aa*aa) / (2*bb*cc));
 						
 						setPositionOiseauC2(m.getPositionOiseau().x + 50, m.getPositionOiseau().y);
 						setPositionOiseau(e.getX() - Constantes.getInstance().TAILLE_OISEAU / 2,
