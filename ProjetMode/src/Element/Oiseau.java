@@ -7,6 +7,7 @@ public class Oiseau {
 	private int taille;
 	private Point c;
 	private Point c2 = new Point();
+	private Point prochCoord;
 	private Point depart = new Point(-50,-50);
 	private Point arrivee = new Point(-50,-50);
 
@@ -80,6 +81,20 @@ public class Oiseau {
 		// pour afficher en pointilles
 		if (x % 3 == 0 && this.trajectoire)
 			passage.add(new Point(x, y));
+	}
+	
+	public void setCoord(Point p){
+		this.c=p;
+		if (p.x % 3 == 0 && this.trajectoire)
+			passage.add(p);
+	}
+	
+	public void setProchaineCoord(Point p){
+		this.prochCoord=p;
+	}
+	
+	public Point getProchaineCoord(){
+		return this.prochCoord;
 	}
 
 	public void setC2(int x2, int y2) {

@@ -27,6 +27,7 @@ public class Constantes {
 	public final String TITRE = "Angry Nerds";
 	
 	public final int[] TAILLE_ECRAN = new int[]{1200,610};
+	public final int HAUTEUR_ECRAN = 610;
 	public final Color COULEUR_BACKGROUND = Color.BLACK;
 	public final Point COORDONNEES_ORIGINE = new Point(150,350);
 	
