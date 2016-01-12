@@ -19,6 +19,9 @@ public class Oiseau {
 	private boolean victory;
 	
 	private int score;
+	private int vitesse;
+	private double angle;
+
 
 	// ajouter angle pour l'oiseau
 	/**
@@ -158,5 +161,25 @@ public class Oiseau {
 
 	public void setArrivee(Point arrivee) {
 		this.arrivee = arrivee;
+	}
+	
+	public int getVitesse() {
+		return vitesse;
+	}
+
+	public void setVitesse(int vitesse) {
+		this.vitesse = vitesse;
+	}
+	
+	public double getAngle() {
+		return angle;
+	}
+
+	public void setAngle(double angle) {
+		this.angle = angle;
+	}
+	
+	public double distance(double x1, double y1, double x2, double y2) {
+		return Math.round(Math.sqrt((y2 - y1) * (y2 - y1) + (x2 - x1) * (x2 - x1)));
 	}
 }
