@@ -1,3 +1,4 @@
+package Courbe;
 import java.awt.Point;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -9,12 +10,14 @@ import MVC.Model;
 import ObstacleFactory.Obstacle;
 
 
-public class bidon {
-	
-	double t;
-	Model m = new Model();
+public class Physique {
+	static double t;
 
-	public void trajectoireParabole(final Oiseau o, final double vitesse, final double angle, final Affichage a){
+	public Physique(){
+		
+	}
+	
+	public void trajectoireParabole(final Oiseau o, final double vitesse, final double angle, final Affichage a, final Model m){
 		t=0;
 		final Timer timer = new Timer();
 		TimerTask timerTask = new TimerTask(){

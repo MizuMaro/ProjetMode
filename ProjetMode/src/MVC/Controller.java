@@ -5,13 +5,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Random;
 
 import javax.swing.event.MouseInputAdapter;
 
-import Courbe.Courbe;
+import Courbe.Physique;
 import Element.Constantes;
-import Element.Sound;
 import ObstacleFactory.Obstacle;
 
 public class Controller {
@@ -116,7 +114,7 @@ public class Controller {
 			public void mouseReleased(MouseEvent e) {
 				if (m.getDrag()&& !m.getVol()) {
 					setDrag(false);
-					// courbes de Remi
+					/* courbes de Remi
 					double posLanX = m.getPositionOiseau().getX();
 					double posLanY = m.getPositionOiseau().getY();
 
@@ -172,7 +170,14 @@ public class Controller {
 								((posLanY - 350) / 7) - 1.05 - (1.02 * ((posLanY - 350) / 7)), c, m.getOiseau(),
 								m.getAffichage(), m.getListObstacles(), 1);
 
-					}
+					}*/
+					
+					double vitesse = (double) m.getOiseau().getVitesse();
+					double angle = m.getOiseau().getAngle();
+					Physique phy= new Physique();
+					phy.trajectoireParabole(m.getOiseau(), vitesse, angle, m.getAffichage(), m);
+					
+					
 
 					if(m.getOiseau().getScore() != 0 && m.getOiseau().getScore() == m.getCptObstacles()){
 						m.getOiseau().setVictory(true);		
