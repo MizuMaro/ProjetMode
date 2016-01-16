@@ -50,7 +50,7 @@ public class Physique {
 		double x = vitesse*Math.cos(anglen)*t + posDepX;
 		
 		double truc = x /(vitesse*Math.cos(anglen));
-		final double G = 9.81;
+		final double G = 3;
 		
 		double y = (-(G/2))*truc*truc + vitesse*Math.sin(anglen)*truc + posDepY;
 		return new Point((int) x, (int)y);
