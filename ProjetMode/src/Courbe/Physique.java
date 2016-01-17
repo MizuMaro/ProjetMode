@@ -24,11 +24,11 @@ public class Physique {
 	/**
 	 * permet de lancer un oiseau selon une courbe parametrique, avec une gestion de l'affichage
 	 * et des obstacles.
-	 * @param o
-	 * @param vitesse
-	 * @param angle
-	 * @param a
-	 * @param m
+	 * @param o L'oiseau a envoyer.
+	 * @param vitesse La vitesse de l'oiseau au lancement.
+	 * @param angle L'angle de l'oiseau au lancement.
+	 * @param a L'affichage sur lequel doit s'effectuer le graphisme du programme.
+	 * @param m Le model d'ou l'on tire les donnees necessaires a l'execution du programme.
 	 */
 	public void trajectoireParabole(final Oiseau o, final double vitesse, final double angle, final Affichage a, final Model m){
 		t=0;

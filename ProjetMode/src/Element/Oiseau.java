@@ -93,7 +93,7 @@ public class Oiseau {
 	
 	/**
 	 * rentre un point dans la trajectoire de passage de l'oiseau
-	 * @param p
+	 * @param p point a entrer.
 	 */
 	public void setCoord(Point p){
 		this.c=p;

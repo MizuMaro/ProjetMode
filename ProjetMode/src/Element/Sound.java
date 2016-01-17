@@ -21,7 +21,10 @@ public class Sound {
 	/** Instance unique pré-initialisée */
 	private static Sound INSTANCE = new Sound();
 
-	/** Point d'accès pour l'instance unique du singleton */
+	/**
+	 * Point d'acces pour l'instance unique du singleton
+	 * @return retourne l'instance Sound, afin d'acceder a son contenu.
+	 */
 	public static Sound getInstance(){	
 		return INSTANCE;
 	}

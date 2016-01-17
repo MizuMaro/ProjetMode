@@ -12,13 +12,16 @@ import java.awt.Point;
  */
 public class Constantes {
 	
-	/** Constructeur privé */
+	/** Constructeur prive */
 	private Constantes(){}
 
-	/** Instance unique pré-initialisée */
+	/** Instance unique pre-initialisee */
 	private static Constantes INSTANCE = new Constantes();
 
-	/** Point d'accès pour l'instance unique du singleton */
+	/**
+	 * Point d'acces pour l'instance unique du singleton
+	 * @return retourne l'instance Constantes, afin d'acceder a son contenu.
+	 */
 	public static Constantes getInstance(){	
 		return INSTANCE;
 	}

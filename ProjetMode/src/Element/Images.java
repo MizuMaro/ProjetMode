@@ -49,7 +49,10 @@ public class Images {
 	/** Instance unique pré-initialisée */
 	private static Images INSTANCE = new Images();
 	
-	/** Point d'accès pour l'instance unique du singleton */
+	/**
+	 * Point d'acces pour l'instance unique du singleton
+	 * @return retourne l'instance Images, afin d'acceder a son contenu.
+	 */
 	public static Images getInstance(){	
 		return INSTANCE;
 	}
