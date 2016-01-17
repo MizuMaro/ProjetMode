@@ -37,7 +37,7 @@ public class Physique {
 		TimerTask timerTask = new TimerTask(){
 			public void run() {
 				t+=0.015;
-				o.setCoord(coordParabole(t,vitesse,angle,150,350));
+				o.setCoord(coordParabole(t,vitesse,angle,Constantes.getInstance().COORDONNEES_ORIGINE.x,Constantes.getInstance().COORDONNEES_ORIGINE.y));
 				double t2 = t+0.002;
 				o.setProchaineCoord(coordParabole(t2,vitesse,angle,150,350));
 				while(o.getC().distance(o.getProchaineCoord()) < o.getTaille()/2 + 10){

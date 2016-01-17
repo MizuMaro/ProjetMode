@@ -1,0 +1,1 @@
+Afin de lancer un .jar spécifique, il suffit de placer celui-ci à la racine du projet, au même niveau que les dossiers 'bin', 'docs', 'img', 'javadoc', 'sounds' et 'src'.
