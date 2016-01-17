@@ -1,0 +1,27 @@
+Designs patterns utilisés : 
+
+
+- Factory Pattern (Omar Al yasini): 
+
+La factory pattern a été utilisé pour générer les obstacles. 
+J'ai commencé par créer une classe abstraite Obstacle puis j'ai créé les classes concrètes qui étendent Obstacle.
+J'ai énumeré les différents obstacles possibles, puis créé une fabrique qui crée les objets.
+J'ai ensuite utilisé la fabrique dans l'usine pour former l'obstacle.
+
+
+- MVC (Omar Al yasini) 
+
+C'était compliqué mais j'ai essayé de transformer notre code en MVC. 
+J'ai commencé par séparer sur papier ce qui allait être dans chaque module (model view controller).
+J'ai ensuite commencé par créer la classe Model avec tous les objets utilisés dans la vue.
+Je me suis mis a faire la vue avec notre affichage du terrain ; parallèlement je créais les controller 
+dont j'avais besoin.
+
+
+- Singleton (Rémy Raes)
+
+J'ai appliqué le design pattern Singleton à plusieurs classes de notre projet :
+Constantes, Images et Sound.
+Tout d'abord, il fallait rendre le constructeur privé et initialiser l'unique instance disponible.
+Ensuite, la mise en place d'une méthode statique par classe permet aux classes extérieurs d'accéder
+à l'instance unique de chacune de ces trois classes.
