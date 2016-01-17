@@ -1,0 +1,2 @@
+ERROR - 19:40:43: org.xml.sax.SAXParseExceptionpublicId: /ProjetMode/src/MVC_free/FreeController.java; systemId: file:///ProjetMode/src/MVC_free/FreeController.java; lineNumber: 1; columnNumber: 1; Contenu non autorisé dans le prologue.
+ERROR - 19:40:43: org.xml.sax.SAXParseExceptionpublicId: /ProjetMode/src/MVC_free/FreeController.java; systemId: file:///ProjetMode/src/MVC_free/FreeController.java; lineNumber: 1; columnNumber: 1; Contenu non autorisé dans le prologue.
