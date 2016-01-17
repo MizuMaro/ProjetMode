@@ -27,6 +27,9 @@ public class Controller {
 	Model m;
 	Vue v = null;
 
+	/**
+	 * methode qui permet de relier le model au controller.
+	 */
 	public Controller(Model m) {
 		this.m = m;
 	}
@@ -51,6 +54,9 @@ public class Controller {
 		this.m.getAffichage().repaint();
 	}
 
+	/**
+	 * methode qui permet de relier la vue au controller.
+	 */
 	public void addVue(Vue v) {
 		this.v = v;
 
@@ -290,14 +296,23 @@ public class Controller {
 
 	}
 
+	/**
+	 * methode qui permet de initialiser les obstacles.
+	 */
 	public void initObstacles() {
 		this.m.initObstacles();
 	}
+	/**
+	 * methode qui permet de réinitialiser l'oiseau a sa place.
+	 */
 
 	public void initAffichage() {
 		this.m.initAffichage();
 	}
 
+	/**
+	 * methode qui permet de savoir si l'oiseau est en vol ou non .
+	 */
 	public void SetVol(boolean b) {
 		this.m.setVol(b);
 	}

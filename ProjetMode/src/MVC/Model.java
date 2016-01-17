@@ -27,22 +27,34 @@ public class Model extends Observable {
 
 	Affichage affichage;
 
+	/**
+	 * methode qui permet d'initialiser le boolean drag.
+	 */
 	public void setDrag(boolean b) {
 		this.drag = b;
 		setChanged();
 		notifyObservers();
 	}
 
+	/**
+	 * methode qui permet de recuperer le boolean drag.
+	 */
 	public boolean getDrag() {
 		return this.drag;
 	}
 
+	/**
+	 * methode qui permet d'initiliser le boolean vol qui permet de savoir si l'oiseau vol ou non.
+	 */
 	public void setVol(boolean b) {
 		this.oiseau.setVole(b);
 		setChanged();
 		notifyObservers();
 	}
 
+	/**
+	 * methode qui permet de recuperer le boolean vol.
+	 */
 	public boolean getVol() {
 		return this.oiseau.getVole();
 	}
@@ -53,6 +65,9 @@ public class Model extends Observable {
 		notifyObservers();
 	}
 
+	/**
+	 * methode qui d'initialiser les obstacles.
+	 */
 	public void initObstacles() {
 		Usine usine = new Usine();
 		Obstacle ob1 = usine.formerObstacle(TypeObstacle.CARRE,
