@@ -15,6 +15,7 @@ import ObstacleFactory.Usine;
 public class Model extends Observable {
 	Oiseau oiseau = new Oiseau(new Point(Constantes.getInstance().COORDONNEES_ORIGINE));
 	public static boolean debug = false;
+	public static boolean physique = false;
 	boolean drag = false;
 	ArrayList<Obstacle> obstacles = new ArrayList<>();
 
@@ -140,6 +141,7 @@ public class Model extends Observable {
 		oiseau = new Oiseau(new Point(Constantes.getInstance().COORDONNEES_ORIGINE));
 		oiseau.setC2(Constantes.getInstance().COORDONNEES_ORIGINE.x+50, Constantes.getInstance().COORDONNEES_ORIGINE.y);
 		debug = false;
+		physique = false;
 		drag = false;
 		obstacles = new ArrayList<>();
 		

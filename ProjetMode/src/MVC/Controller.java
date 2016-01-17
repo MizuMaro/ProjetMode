@@ -6,11 +6,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.event.MouseInputAdapter;
 
+import Courbe.Courbe;
 import Courbe.Physique;
 import Element.Constantes;
+import Element.Sound;
 import ObstacleFactory.Obstacle;
 
 public class Controller {
@@ -52,6 +55,8 @@ public class Controller {
 				} else if (e.getKeyChar() == 'g') {
 					Model.debug = !Model.debug;
 					repaint();
+				} else if (e.getKeyChar() == 'p') {
+					Model.physique = !Model.physique;
 				}
 
 			}
@@ -132,7 +137,10 @@ public class Controller {
 			public void mouseReleased(MouseEvent e) {
 				if (m.getDrag()&& !m.getVol()) {
 					setDrag(false);
-					/* courbes de Remi
+					// courbes de Remi
+	
+					if (Model.physique == false) {
+	
 					double posLanX = m.getPositionOiseau().getX();
 					double posLanY = m.getPositionOiseau().getY();
 
@@ -187,8 +195,12 @@ public class Controller {
 						new Courbe((posLanX / 1000000) * 6 + 0.00030,
 								((posLanY - 350) / 7) - 1.05 - (1.02 * ((posLanY - 350) / 7)), c, m.getOiseau(),
 								m.getAffichage(), m.getListObstacles(), 1);
+								
 
-					}*/
+					}
+					
+					
+				} else {
 					
 					double vitesse = m.getOiseau().getVitesse();
 					double angle = m.getOiseau().getAngle();
@@ -207,6 +219,7 @@ public class Controller {
 					}
 				}
 			}
+		}
 		});		
 		
 	}
