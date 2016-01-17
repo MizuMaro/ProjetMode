@@ -7,7 +7,6 @@ import java.util.ArrayList;
  * La classe Oiseau permet d'instancier un oiseau avec ses differents parametres : 
  * sa taille, ses coordonnees, son angle, sa vitesse...
  * @author Rémy
- *
  */
 public class Oiseau {
 	private int taille;
@@ -31,7 +30,7 @@ public class Oiseau {
 
 	/**
 	 * Constructeur de l'oiseau.
-	 * @param c Coordonnees ou l'on souhaite placer l'oiseau.
+	 * @param c - Coordonnees ou l'on souhaite placer l'oiseau.
 	 */
 	public Oiseau(Point c) {
 		this.taille = Constantes.getInstance().TAILLE_OISEAU;
@@ -41,17 +40,25 @@ public class Oiseau {
 		this.score = 0;
 	}
 
+	/**
+	 * Definie si l'oiseau vole ou non.
+	 * @param b - Vrai si l'oiseau vole, faux dans le cas contraire.
+	 */
 	public void setVole(boolean b){
 		this.vole = b;
 	}
 
+	/**
+	 * Retourne un boolean pour savoir si l'oiseau vole.
+	 * @return Vrai si l'oiseau vole, faux dans le cas contraire.
+	 */
 	public boolean getVole(){
 		return this.vole;
 	}
 	
 	/**
 	 * Retourne la taille de l'oiseau.
-	 * @return taille de l'oiseau.
+	 * @return La taille de l'oiseau.
 	 */
 	public int getTaille() {
 		return this.taille;
@@ -59,7 +66,7 @@ public class Oiseau {
 
 	/**
 	 * Parametre la taille de l'oiseau.
-	 * @param taille Taille souhaitee pour l'oiseau.
+	 * @param taille - Taille souhaitee pour l'oiseau.
 	 */
 	public void setTaille(int taille) {
 		this.taille = taille;
@@ -79,8 +86,8 @@ public class Oiseau {
 
 	/**
 	 * Parametre la position de l'oiseau.
-	 * @param x Coordonnee en x de l'oiseau.
-	 * @param y Coordonnee en y de l'oiseau.
+	 * @param x - Coordonnee en x de l'oiseau.
+	 * @param y - Coordonnee en y de l'oiseau.
 	 */
 	public void setC(int x, int y) {
 		this.c.x = x;
@@ -92,8 +99,8 @@ public class Oiseau {
 	}
 	
 	/**
-	 * rentre un point dans la trajectoire de passage de l'oiseau
-	 * @param p point a entrer.
+	 * Rentre un point dans la trajectoire de passage de l'oiseau
+	 * @param p - Point a entrer.
 	 */
 	public void setCoord(Point p){
 		this.c=p;
@@ -110,9 +117,9 @@ public class Oiseau {
 	}
 
 	/**
-	 * permet d'ajuster les coordonnees du prochain point du bec de l'oiseau
-	 * @param x2 coordonnee X 
-	 * @param y2 coordonnee Y
+	 * Permet d'ajuster les coordonnees du prochain point du bec de l'oiseau.
+	 * @param x2 - Coordonnee en X. 
+	 * @param y2 - coordonnee en Y.
 	 */
 	public void setC2(int x2, int y2) {
 		this.c2.x = x2;

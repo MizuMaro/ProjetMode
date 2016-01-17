@@ -13,8 +13,8 @@ import ObstacleFactory.Obstacle;
  * La classe Physique implemente le moteur physique du projet.
  * Celle-ci permet de lancer un oiseau tout en gerant l'acceleration, la vitesse de celui-ci et des 
  * obstacles ainsi que plusieurs parametres tels que la gravite.
- * @author Rémy
- *
+ * @author Rémy & Rémi
+ *  
  */
 public class Physique {
 	static double t;
@@ -26,6 +26,7 @@ public class Physique {
 	 * et des obstacles.
 	 * @param o L'oiseau a envoyer.
 	 * @param vitesse La vitesse de l'oiseau au lancement.
+	 * 
 	 * @param angle L'angle de l'oiseau au lancement.
 	 * @param a L'affichage sur lequel doit s'effectuer le graphisme du programme.
 	 * @param m Le model d'ou l'on tire les donnees necessaires a l'execution du programme.
@@ -59,6 +60,16 @@ public class Physique {
 		timer.scheduleAtFixedRate(timerTask,0,1);
 	}
 	
+	/**
+	 * Permet de définir les différents points de coordonnées de l'oiseau en fonction du temps
+	 * @param t La variable du temps
+	 * @param vitesse La vitesse initiale au lancement de l'oiseau
+	 * @param anglen L'angle initial au lancement de l'oiseau
+	 * @param posDepX La position initiale de l'oiseau sur le lance-pierre en abscisse
+	 * @param posDepY La position initiale de l'oiseau sur le lance-pierre en ordonnée
+	 * 
+	 * @return Le point correspondant a la coordonnée suivante de l'oiseau
+	 */
 	static Point coordParabole(double t, double vitesse, double anglen, int posDepX, int posDepY) {
 		double x = vitesse*Math.cos(anglen)*t + posDepX;
 		
