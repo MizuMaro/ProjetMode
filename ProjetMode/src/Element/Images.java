@@ -13,9 +13,9 @@ import javax.imageio.ImageIO;
  *
  */
 public class Images {
-	
+
 	/** Constructeur privé */
-	private Images(){
+	private Images() {
 		try {
 			NAME = ImageIO.read(new File("img/menu/name.png"));
 			SKY = ImageIO.read(new File("img/menu/sky.jpg"));
@@ -26,7 +26,7 @@ public class Images {
 			FREE = ImageIO.read(new File("img/menu/Free.png"));
 			FREE1 = ImageIO.read(new File("img/menu/Free1.png"));
 			GIF = ImageIO.read(new File("img/menu/red.gif"));
-			
+
 			BIRD = ImageIO.read(new File("img/birds/red/bird.png"));
 			BACKGROUND = ImageIO.read(new File("img/background.jpg"));
 			FREE_BACKGROUND = ImageIO.read(new File("img/free_background.png"));
@@ -37,28 +37,30 @@ public class Images {
 			CAISSE_BOUGE = ImageIO.read(new File("img/caisse_bouge.png"));
 			ROND_BOUGE = ImageIO.read(new File("img/rond_bouge.png"));
 			VICTORY = ImageIO.read(new File("img/victory.png"));
-			
+
 		} catch (IOException e) {
 			System.err.println(e.getMessage());
 		}
-	
+
 	}
+
 	@SuppressWarnings("unused")
 	private static Images i = new Images();
 
 	/** Instance unique pré-initialisée */
 	private static Images INSTANCE = new Images();
-	
+
 	/**
 	 * Point d'acces pour l'instance unique du singleton
+	 * 
 	 * @return retourne l'instance Images, afin d'acceder a son contenu.
 	 */
-	public static Images getInstance(){	
+	public static Images getInstance() {
 		return INSTANCE;
 	}
-	
+
 	// Images du menu
-	
+
 	public Image NAME;
 	public Image SKY;
 	public Image JOUER;
@@ -69,10 +71,9 @@ public class Images {
 	public Image FREE1;
 	public Image GIF;
 	public Image VICTORY;
-	
-	
+
 	// Images du jeu
-	
+
 	public Image BIRD;
 	public Image BACKGROUND;
 	public Image FREE_BACKGROUND;
@@ -82,8 +83,5 @@ public class Images {
 	public Image CAISSE_RONDE;
 	public Image CAISSE_BOUGE;
 	public Image ROND_BOUGE;
-	
-}
-	
-	
 
+}

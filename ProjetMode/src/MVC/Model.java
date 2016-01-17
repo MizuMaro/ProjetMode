@@ -1,4 +1,3 @@
-
 package MVC;
 
 import java.awt.Point;
@@ -13,7 +12,8 @@ import ObstacleFactory.TypeObstacle;
 import ObstacleFactory.Usine;
 
 public class Model extends Observable {
-	Oiseau oiseau = new Oiseau(new Point(Constantes.getInstance().COORDONNEES_ORIGINE));
+	Oiseau oiseau = new Oiseau(new Point(
+			Constantes.getInstance().COORDONNEES_ORIGINE));
 	public static boolean debug = false;
 	public static boolean physique = false;
 	boolean drag = false;
@@ -21,22 +21,26 @@ public class Model extends Observable {
 
 	Affichage affichage;
 
-	public void setDrag(boolean b){
+	public void setDrag(boolean b) {
 		this.drag = b;
 		setChanged();
 		notifyObservers();
 	}
-	public boolean getDrag(){
+
+	public boolean getDrag() {
 		return this.drag;
 	}
+
 	public void setVol(boolean b) {
 		this.oiseau.setVole(b);
 		setChanged();
 		notifyObservers();
 	}
-	public boolean getVol(){
+
+	public boolean getVol() {
 		return this.oiseau.getVole();
 	}
+
 	public void initAffichage() {
 		affichage = new Affichage(oiseau, obstacles);
 		setChanged();
@@ -46,29 +50,43 @@ public class Model extends Observable {
 	public void initObstacles() {
 		Usine usine = new Usine();
 		Obstacle ob1 = usine.formerObstacle(TypeObstacle.CARRE,
-				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 100, Constantes.getInstance().TAILLE_ECRAN[1] - 170));
+				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 100,
+						Constantes.getInstance().TAILLE_ECRAN[1] - 170));
 		Obstacle ob2 = usine.formerObstacle(TypeObstacle.CARRE,
-				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 120, Constantes.getInstance().TAILLE_ECRAN[1] - 270));
+				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 120,
+						Constantes.getInstance().TAILLE_ECRAN[1] - 270));
 		Obstacle ob3 = usine.formerObstacle(TypeObstacle.ROND,
-				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 140, Constantes.getInstance().TAILLE_ECRAN[1] - 370));
+				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 140,
+						Constantes.getInstance().TAILLE_ECRAN[1] - 370));
 		Obstacle ob4 = usine.formerObstacle(TypeObstacle.ROND,
-				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 160, Constantes.getInstance().TAILLE_ECRAN[1] - 470));
-		
+				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 160,
+						Constantes.getInstance().TAILLE_ECRAN[1] - 470));
+
 		Obstacle ob5 = usine.formerObstacle(TypeObstacle.CARREMOUVEMENT,
-				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 500, Constantes.getInstance().TAILLE_ECRAN[1] - 550));
-		ob5.setLimites_y(new int[] { Constantes.getInstance().TAILLE_ECRAN[1] - 550, Constantes.getInstance().TAILLE_ECRAN[1] - 400 });
+				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 500,
+						Constantes.getInstance().TAILLE_ECRAN[1] - 550));
+		ob5.setLimites_y(new int[] {
+				Constantes.getInstance().TAILLE_ECRAN[1] - 550,
+				Constantes.getInstance().TAILLE_ECRAN[1] - 400 });
 
 		Obstacle ob6 = usine.formerObstacle(TypeObstacle.CARREMOUVEMENT,
-				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 100, Constantes.getInstance().TAILLE_ECRAN[1] - 560));
-		ob6.setLimites_x(new int[] { Constantes.getInstance().TAILLE_ECRAN[0] - 200, Constantes.getInstance().TAILLE_ECRAN[0] - 100 });
-		
-		Obstacle ob7 = usine.formerObstacle(TypeObstacle.ROND,
-				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 600, Constantes.getInstance().TAILLE_ECRAN[1] - 550));
+				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 100,
+						Constantes.getInstance().TAILLE_ECRAN[1] - 560));
+		ob6.setLimites_x(new int[] {
+				Constantes.getInstance().TAILLE_ECRAN[0] - 200,
+				Constantes.getInstance().TAILLE_ECRAN[0] - 100 });
 
-		Obstacle ob8 =usine.formerObstacle(TypeObstacle.RONDMOUVEMENT,
-				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 600, Constantes.getInstance().TAILLE_ECRAN[1] - 150));
-		ob8.setLimites_x(new int[] { Constantes.getInstance().TAILLE_ECRAN[0] - 600, Constantes.getInstance().TAILLE_ECRAN[0] - 400 });
-		
+		Obstacle ob7 = usine.formerObstacle(TypeObstacle.ROND,
+				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 600,
+						Constantes.getInstance().TAILLE_ECRAN[1] - 550));
+
+		Obstacle ob8 = usine.formerObstacle(TypeObstacle.RONDMOUVEMENT,
+				new Point(Constantes.getInstance().TAILLE_ECRAN[0] - 600,
+						Constantes.getInstance().TAILLE_ECRAN[1] - 150));
+		ob8.setLimites_x(new int[] {
+				Constantes.getInstance().TAILLE_ECRAN[0] - 600,
+				Constantes.getInstance().TAILLE_ECRAN[0] - 400 });
+
 		obstacles.add(ob1);
 		obstacles.add(ob2);
 		obstacles.add(ob3);
@@ -132,22 +150,26 @@ public class Model extends Observable {
 		setChanged();
 		notifyObservers();
 	}
+
 	public void addObstacle(int x, int y) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	public void reset(){		
-		oiseau = new Oiseau(new Point(Constantes.getInstance().COORDONNEES_ORIGINE));
-		oiseau.setC2(Constantes.getInstance().COORDONNEES_ORIGINE.x+50, Constantes.getInstance().COORDONNEES_ORIGINE.y);
+
+	public void reset() {
+		oiseau = new Oiseau(new Point(
+				Constantes.getInstance().COORDONNEES_ORIGINE));
+		oiseau.setC2(Constantes.getInstance().COORDONNEES_ORIGINE.x + 50,
+				Constantes.getInstance().COORDONNEES_ORIGINE.y);
 		debug = false;
 		physique = false;
 		drag = false;
 		obstacles = new ArrayList<>();
-		
+
 		this.initAffichage();
 		this.initObstacles();
 	}
+
 	public int getCptObstacles() {
 		return this.getListObstacles().size();
 	}

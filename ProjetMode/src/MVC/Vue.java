@@ -17,7 +17,8 @@ public class Vue implements Observer {
 	protected Model m;
 	protected Controller c;
 
-	public Vue(final Model m, final Controller c, final FreeModel model, final FreeController controller) {
+	public Vue(final Model m, final Controller c, final FreeModel model,
+			final FreeController controller) {
 		// MVC
 		this.m = m;
 		this.c = c;
@@ -25,7 +26,8 @@ public class Vue implements Observer {
 
 		this.fenetre = new JFrame(Constantes.getInstance().TITRE);
 		fenetre.setIconImage(Images.getInstance().OBSTACLE);
-		fenetre.setSize(Constantes.getInstance().TAILLE_ECRAN[0], Constantes.getInstance().TAILLE_ECRAN[1]);
+		fenetre.setSize(Constantes.getInstance().TAILLE_ECRAN[0],
+				Constantes.getInstance().TAILLE_ECRAN[1]);
 		fenetre.setResizable(false);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre.setVisible(true);
@@ -34,7 +36,8 @@ public class Vue implements Observer {
 		JPanel menu = new Menu(m, model, controller, fenetre);
 
 		// initialisation de la position du bec
-		c.setPositionOiseauC2(m.getPositionOiseau().x + 50, m.getPositionOiseau().y);
+		c.setPositionOiseauC2(m.getPositionOiseau().x + 50,
+				m.getPositionOiseau().y);
 		// initialisation des obstacles
 		c.initObstacles();
 		// initialisation du jPanel Affichage
@@ -45,17 +48,18 @@ public class Vue implements Observer {
 		// courbesTest();
 
 	}
+
 	@Override
 	public void update(Observable o, Object arg) {
 
 	}
+
 	public JFrame getFenetre() {
 		return fenetre;
 	}
+
 	public void setFenetre(JFrame fenetre) {
 		this.fenetre = fenetre;
 	}
-	
-	
 
 }
