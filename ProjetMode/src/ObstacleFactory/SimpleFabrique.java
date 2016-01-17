@@ -2,6 +2,11 @@ package ObstacleFactory;
 
 import java.awt.Point;
 
+/**
+ * La classe SimpleFabrique créer un obstacle puis lui donne une forme demander en parametre.
+ * @author Omar
+ * 
+ */
 public class SimpleFabrique {
 	public Obstacle creerObstacle(TypeObstacle type,Point c){
 		Obstacle o = null;/*

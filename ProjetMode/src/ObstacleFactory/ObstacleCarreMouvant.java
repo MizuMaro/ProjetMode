@@ -4,6 +4,12 @@ import java.awt.Point;
 
 import Element.Constantes;
 
+/**
+ * La classe ObstaclecarréMouvant est un des obstacles que peut generer la factory 
+ * Il etend d'obstacle.
+ * @author Omar
+ * 
+ */
 public class ObstacleCarreMouvant extends Obstacle {
 
 	/**

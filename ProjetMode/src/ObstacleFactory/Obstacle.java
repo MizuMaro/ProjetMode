@@ -1,6 +1,15 @@
 package ObstacleFactory;
 
 import java.awt.Point;
+
+
+/**
+ * La classe Obstacle est la classe dont va herité toutes les autres classes qui
+ * seront obstacle 
+ * Elle sert a la factory comme base.
+ * @author Omar
+ * 
+ */
 public abstract class Obstacle {
 	protected int taille;
 	protected Point c;
