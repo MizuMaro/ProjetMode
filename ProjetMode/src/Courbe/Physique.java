@@ -9,14 +9,27 @@ import IHM.Affichage;
 import MVC.Model;
 import ObstacleFactory.Obstacle;
 
-
+/**
+ * La classe Physique implemente le moteur physique du projet.
+ * Celle-ci permet de lancer un oiseau tout en gerant l'acceleration, la vitesse de celui-ci et des 
+ * obstacles ainsi que plusieurs parametres tels que la gravite.
+ * @author Rémy
+ *
+ */
 public class Physique {
 	static double t;
 
-	public Physique(){
-		
-	}
+	public Physique(){}
 	
+	/**
+	 * permet de lancer un oiseau selon une courbe parametrique, avec une gestion de l'affichage
+	 * et des obstacles.
+	 * @param o
+	 * @param vitesse
+	 * @param angle
+	 * @param a
+	 * @param m
+	 */
 	public void trajectoireParabole(final Oiseau o, final double vitesse, final double angle, final Affichage a, final Model m){
 		t=0;
 		final Timer timer = new Timer();

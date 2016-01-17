@@ -7,6 +7,11 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.SwingUtilities;
 
+/**
+ * La classe Sound permet de jouer des sons et musiques dans le projet.
+ * @author Rémy
+ *
+ */
 public class Sound {
 
 
@@ -34,6 +39,11 @@ public class Sound {
 	}
 
 
+	/**
+	 * permet de jouer un son.
+	 * @param fileName Chemin relatif du fichier cible.
+	 * @param loop Lecture en boucle ou non.
+	 */
 	public void play(String fileName, final boolean loop){
 		
 		try {

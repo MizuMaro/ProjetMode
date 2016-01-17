@@ -3,6 +3,12 @@ package Element;
 import java.awt.Point;
 import java.util.ArrayList;
 
+/**
+ * La classe Oiseau permet d'instancier un oiseau avec ses differents parametres : 
+ * sa taille, ses coordonnees, son angle, sa vitesse...
+ * @author Rémy
+ *
+ */
 public class Oiseau {
 	private int taille;
 	private Point c;
@@ -23,7 +29,6 @@ public class Oiseau {
 	private double angle;
 
 
-	// ajouter angle pour l'oiseau
 	/**
 	 * Constructeur de l'oiseau.
 	 * @param c Coordonnees ou l'on souhaite placer l'oiseau.
@@ -86,6 +91,10 @@ public class Oiseau {
 			passage.add(new Point(x, y));
 	}
 	
+	/**
+	 * rentre un point dans la trajectoire de passage de l'oiseau
+	 * @param p
+	 */
 	public void setCoord(Point p){
 		this.c=p;
 		if (p.x % 3 == 0 && this.trajectoire)
@@ -100,6 +109,11 @@ public class Oiseau {
 		return this.prochCoord;
 	}
 
+	/**
+	 * permet d'ajuster les coordonnees du prochain point du bec de l'oiseau
+	 * @param x2 coordonnee X 
+	 * @param y2 coordonnee Y
+	 */
 	public void setC2(int x2, int y2) {
 		this.c2.x = x2;
 		this.c2.y = y2;

@@ -18,6 +18,11 @@ import Element.Sound;
 import MVC.Model;
 import ObstacleFactory.Obstacle;
 
+/**
+ * La classe Affichage permet un retour graphique de l'execution du programme.
+ * @author Rémy
+ *
+ */
 @SuppressWarnings("serial")
 public class Affichage extends JPanel {
 
@@ -27,6 +32,11 @@ public class Affichage extends JPanel {
 	protected Point[] p = new Point[3];
 	private Font font;
 
+	/**
+	 * permet d'instancier un objet Affichage.
+	 * @param a Oiseau a passer.
+	 * @param listeObstacle Liste des obstacles a passer.
+	 */
 	public Affichage(Oiseau a, ArrayList<Obstacle> listeObstacle) {
 		this.a = a;
 		this.listeObstacle = listeObstacle;
@@ -41,6 +51,9 @@ public class Affichage extends JPanel {
 		}
 	}
 
+	/**
+	 * methode principale qui permet le repaint de l'affichage.
+	 */
 	public void paintComponent(Graphics g) {
 
 		if (Model.debug) {
@@ -349,12 +362,6 @@ public class Affichage extends JPanel {
 		}
 	}
 
-	public double getAngle(Point c, Point c2) {
-		double xDiff = c2.x - c.x;
-		double yDiff = c2.y - c.y;
-		return Math.toDegrees(Math.atan2(yDiff, xDiff));
-
-	}
 
 	public void setCollision(boolean b) {
 		this.collision = b;
@@ -366,17 +373,6 @@ public class Affichage extends JPanel {
 		p[2] = new Point(x3, y3);
 	}
 
-
-	public double coeffDirecteur() {
-		double d = (a.getC().y - Constantes.getInstance().COORDONNEES_ORIGINE.y);
-		double down = Math.abs(a.getC().x - Constantes.getInstance().COORDONNEES_ORIGINE.x);
-
-		if (down == 0) {
-			return d;
-		} else {
-			return d / down;
-		}
-	}
 
 
 }

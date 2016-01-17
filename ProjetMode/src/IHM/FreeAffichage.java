@@ -17,6 +17,12 @@ import Element.Sound;
 import MVC_free.FreeModel;
 import ObstacleFactory.Obstacle;
 
+/**
+ * La classe FreeAffichage permet l'affichage du mode creatif.
+ * Voir la javadoc de la classe Affichage pour plus d'informations.
+ * @author Rémy
+ *
+ */
 @SuppressWarnings("serial")
 public class FreeAffichage extends Affichage {
 

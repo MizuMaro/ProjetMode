@@ -21,6 +21,12 @@ import MVC_free.FreeController;
 import MVC_free.FreeModel;
 import MVC_free.FreeVue;
 
+/**
+ * La classe Menu permet d'avoir un menu graphique au lancement du programme, avec 
+ * une selection d'options possibles pour l'utilisateur.
+ * @author Rémy
+ *
+ */
 @SuppressWarnings("serial")
 public class Menu extends JPanel {
 	
@@ -110,6 +116,9 @@ public class Menu extends JPanel {
 		
 	}
 	
+	/**
+	 * methode principale qui permet le repaint du menu.
+	 */
 	public void paintComponent(Graphics g){
 		
 		g.drawImage(Images.getInstance().SKY, 0, 0, Constantes.getInstance().TAILLE_ECRAN[0], Constantes.getInstance().TAILLE_ECRAN[1], null);

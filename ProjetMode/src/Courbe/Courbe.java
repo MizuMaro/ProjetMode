@@ -14,6 +14,17 @@ public class Courbe {
 
 	private boolean run = true;
 
+	/**
+	 * La methode Courbe permet de lancer un oiseau selon une courbe parametrique, avec une gestion de l'affichage
+	 * et des obstacles.
+	 * @param a Premier parametre de la courbe parametrique.
+	 * @param b Deuxieme parametre de la courbe parametrique.
+	 * @param c Troisieme parametre de la courbe parametrique.
+	 * @param o L'oiseau que l'on veut lancer.
+	 * @param affichage L'affichage sur lequel on veut afficher le resultat de cette fonction.
+	 * @param obstacles La liste d'obstacles que l'on veut gerer.
+	 * @param i Parametre qui gere l'inclinaison au lancement de l'oiseau.
+	 */
 	public Courbe(final double a, final double b, final double c, final Oiseau o, final Affichage affichage, final ArrayList<Obstacle> obstacles, final int i){
 
 		final Timer timer = new Timer(); 
@@ -158,7 +169,16 @@ public class Courbe {
 		timer.scheduleAtFixedRate(timerTask,0,1000);
 	}
 	
-	
+	/**
+	 * La methode Courbe permet de lancer un oiseau selon une courbe parametrique, avec une gestion de l'affichage
+	 * et des obstacles.
+	 * @param coefDir Le coefficient directeur au lancer de l'oiseau.
+	 * @param hauteur Hauteur au lancer de l'oiseau. 
+	 * @param o L'oiseau que l'on veut lancer.
+	 * @param affichage L'affichage sur lequel on veut afficher le resultat de cette fonction.
+	 * @param obstacles La liste d'obstacles que l'on veut gerer.
+	 * @param i Parametre qui gere l'inclinaison au lancement de l'oiseau.
+	 */
 	public Courbe(final double coefDir, final double hauteur, final Oiseau o, final Affichage affichage, final ArrayList<Obstacle> obstacles, final int i){
 
 		final Timer timer = new Timer(); 

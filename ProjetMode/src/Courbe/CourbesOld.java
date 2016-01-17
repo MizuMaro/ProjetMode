@@ -7,6 +7,12 @@ import Element.Oiseau;
 import IHM.Affichage;
 import ObstacleFactory.Obstacle;
 
+/**
+ * Ancienne classe qui servait a lancer les oiseaux.
+ * Celle-ci n'est plus utilisee car elle n'utilisait pas de Timer.
+ * @author Rémy
+ *
+ */
 public class CourbesOld {
 
 	public void courbe(double a, double b, double c, Oiseau o, Affichage affichage, ArrayList<Obstacle> obstacles) {
