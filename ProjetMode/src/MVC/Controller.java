@@ -16,6 +16,13 @@ import Element.Constantes;
 import Element.Sound;
 import ObstacleFactory.Obstacle;
 
+/**
+ * La classe Controller est la partie controller MVC du projet. Celle-ci permet
+ * de gerer les evenement sur l'oiseau, les objets etc... . Il reçoit tous les evenement de
+ *  la vue et enclanche les actions à effectuer.
+ * @author Omar
+ * 
+ */
 public class Controller {
 	Model m;
 	Vue v = null;

@@ -17,6 +17,13 @@ public class Vue implements Observer {
 	protected Model m;
 	protected Controller c;
 
+/**
+ * La classe Vue est la partie Vue MVC du projet. Celle-ci permet
+ * de presenter les evenement sur l'oiseau, les objets etc... qui ont été effectué via le controller 
+ * sur le model. Tous les modification effectué sur les objets sont affiché ici
+ * @author Omar
+ * 
+ */
 	public Vue(final Model m, final Controller c, final FreeModel model,
 			final FreeController controller) {
 		// MVC

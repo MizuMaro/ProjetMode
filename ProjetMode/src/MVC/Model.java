@@ -3,7 +3,6 @@ package MVC;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Observable;
-
 import Element.Constantes;
 import Element.Oiseau;
 import IHM.Affichage;
@@ -11,6 +10,13 @@ import ObstacleFactory.Obstacle;
 import ObstacleFactory.TypeObstacle;
 import ObstacleFactory.Usine;
 
+/**
+ * La classe Model est la partie Modele MVC du projet. Celle-ci est la base du contenu MVC 
+ * il etends d'observable pour permetre a la vue d'avoir accès aux objets dans le model
+ * 
+ * @author Omar
+ * 
+ */
 public class Model extends Observable {
 	Oiseau oiseau = new Oiseau(new Point(
 			Constantes.getInstance().COORDONNEES_ORIGINE));
